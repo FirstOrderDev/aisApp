@@ -1,14 +1,75 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      AIS
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <div class="frame">
+
+    <ion-grid>
+
+      <ion-row>
+        <ion-col>
+          <div class = "generalCard" (click)="open('General')">
+            <i class="icon icon-general cardIcon"></i>
+            <p class= "cardTxt">General</p>
+
+          </div>
+
+        </ion-col>
+
+        <ion-col>
+          <div class = "travelCard" (click)="open('Travel')">
+            <i class="icon icon-travel cardIcon"></i>
+            <p class= "cardTxt">Travel</p>
+
+          </div>
+
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <div class = "motorCard" (click)="open('Motor')">
+            <i class="icon icon-motor cardIcon"></i>
+            <p class= "cardTxt">Motor</p>
+
+          </div>
+
+        </ion-col>
+
+        <ion-col>
+          <div class = "roadsideCard" (click)="open('Roadside')">
+            <i class="icon icon-roadside cardIcon"></i>
+            <p class= "cardTxt">Roadside</p>
+
+          </div>
+
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <div class = "settingsCard" (click)="open('Settings')">
+            <i class="icon icon-settings cardIcon"></i>
+            <p class= "cardTxt">Settings</p>
+
+          </div>
+
+        </ion-col>
+
+        <ion-col>
+          <div class = "generalCard" (click)="open('Camera')">
+            <i class="icon icon-general cardIcon"></i>
+            <p class= "cardTxt">General</p>
+
+          </div>
+
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+
+  </div>
+
+
 </ion-content>

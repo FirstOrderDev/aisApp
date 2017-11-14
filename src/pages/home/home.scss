@@ -1,3 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+
 page-home {
+
+  ion-grid{
+    // padding: 20px;
+
+    margin-top: 10vh;
+  }
+
+  ion-row{
+    // position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right:0;
+    text-align: center;
+    margin-top: 1vh;
+    width:80vw;
+
+  }
+
+
+
+  .generalCard, .travelCard, .motorCard, .roadsideCard, .settingsCard {
+    // border:1px solid black;
+    height: 20vh;
+    box-shadow: 0px 0px 10px #aeaeae;
+    border-radius: 6px;
+    background-color: #f4f4f4;
+
+
+    .cardIcon {
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right:0;
+      text-align: center;
+      font-size: 90px;
+      margin-top: 2vh;
+      padding-left: 2vw;
+
+
+    }
+
+    .cardTxt {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 16px;
+      color: #6d6d6d;
+      position: absolute;
+      margin-top: 15vh;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right:0;
+      text-align: center;
+
+    }
+
+  }
+
+  .generalCard{
+    i{
+      color: #59ABE3;
+    }
+
+  }
+
+  .travelCard{
+    i{
+      color: #4DAF7C;
+    }
+
+  }
+
+  .motorCard{
+    i{
+      color: #D24D57;
+    }
+
+  }
+
+  .roadsideCard{
+    i{
+      color: #875F9A;
+    }
+
+  }
+
+  .settingsCard{
+    i{
+      color: #6C7A89;
+    }
+
+  }
+
+
+
+
 
 }
