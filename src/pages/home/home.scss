@@ -22,7 +22,7 @@ page-home {
 
 
 
-  .motorVehicle, .travelCard, .propertyCard, .roadsideCard, .settingsCard {
+  .motorVehicle, .travelCard, .propertyCard, .roadsideCard, .settingsCard, .instantSnapCard {
     // border:1px solid black;
     height: 20vh;
     box-shadow: 0px 0px 10px #aeaeae;
@@ -89,6 +89,13 @@ page-home {
   }
 
   .settingsCard{
+    i{
+      color: #6C7A89;
+    }
+
+  }
+
+  .instantSnapCard{
     i{
       color: #6C7A89;
     }
