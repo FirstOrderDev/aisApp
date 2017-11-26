@@ -22,7 +22,7 @@ page-home {
 
 
 
-  .generalCard, .travelCard, .motorCard, .roadsideCard, .settingsCard {
+  .motorVehicle, .travelCard, .propertyCard, .roadsideCard, .settingsCard {
     // border:1px solid black;
     height: 20vh;
     box-shadow: 0px 0px 10px #aeaeae;
@@ -60,7 +60,7 @@ page-home {
 
   }
 
-  .generalCard{
+  .motorVehicle{
     i{
       color: #59ABE3;
     }
@@ -74,7 +74,7 @@ page-home {
 
   }
 
-  .motorCard{
+  .propertyCard{
     i{
       color: #D24D57;
     }
