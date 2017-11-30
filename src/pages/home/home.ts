@@ -13,7 +13,7 @@ export class HomePage {
 
   open(cardTapped){
     console.log(cardTapped);
-
+    
   }
 
 
