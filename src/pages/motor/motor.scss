@@ -9,33 +9,49 @@ page-motor {
     .stepOne{
        background: linear-gradient(to bottom right, #3a7bd5 0%, #3a6073 100%);
        .stepOneCard{
-         background: #f3f3f3;
          margin-left: auto;
          margin-right: auto;
          left: 0;
          right: 0;
-         width: 90vw;
-         height: 70vh;
+         width: 87vw;
+         height: 83vh;
          margin-top: 10vh;
-         box-shadow: 0px 0px 10px #8e8e8e;
-         border-radius: 10px 10px 10px 10px;
+         background: #f8f8f8;
+         border-radius: 5px 5px 5px 5px;
+         box-shadow: 0px 0px 10px 0px;
+
+         ion-item{
+           width: 82vw;
+         }
+         .policyInput{
+           background: #f8f8f8;
+           padding-top: 10vh;
+         }
+
+        .nameInput{
+          background: #f8f8f8;
+          padding-top: 10vh;
+
+        }
+
+        .contactInput{
+          background: #f8f8f8;
+          padding-top: 10vh;
+          margin-left: 2vw;
+        }
+        }
+       .nextButton {
+         float: right;
+         padding-right: 12vw;
+         padding-left: 12vw;
+         margin-right: 10vw;
+         margin-top: 5vh;
+
+       .backButton {
+         padding-right: 12vw;
+         padding-left: 12vw;
        }
-
-       .policyInput{
-         background: #f3f3f3;
-         padding-top: 10vh;
        }
-      .nameInput{
-        background: #f3f3f3;
-        padding-top: 10vh;
-
-      }
-      .contactInput{
-        background: #f3f3f3;
-        padding-top: 10vh;
-
-      }
-
     }
     .stepTwo{
 
