@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MotorPage } from '../motor/motor';
+import { TravelPage } from '../travel/travel';
 
 @Component({
   selector: 'page-home',
@@ -13,7 +14,14 @@ export class HomePage {
   }
 
   open(cardTapped){
-    this.navCtrl.push(MotorPage);
+
+    if(cardTapped=='Motor'){
+      this.navCtrl.push(MotorPage);
+    }
+    else if(cardTapped=='Travel'){
+      this.navCtrl.push(TravelPage);
+    }
+
 
   }
 
