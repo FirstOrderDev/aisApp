@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { MotorPage } from '../motor/motor';
 
 @Component({
   selector: 'page-home',
@@ -12,7 +13,7 @@ export class HomePage {
   }
 
   open(cardTapped){
-    console.log(cardTapped);
+    this.navCtrl.push(MotorPage);
 
   }
 
