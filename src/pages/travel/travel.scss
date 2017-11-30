@@ -11,6 +11,7 @@ page-travel {
   .slideContainer{
     background: linear-gradient(to bottom right, #26a65b 0%, #26c281 100%);
 
+
     .stepOne{
        //background: linear-gradient(to bottom right, #3a7bd5 0%, #3a6073 100%);
        .stepOneCard{
@@ -24,6 +25,18 @@ page-travel {
          background: #efefef;
          border-radius: 5px;
          box-shadow: 0px 0px 10px #006442;
+
+         .policyInput, .nameInput, .contactInput{
+           background: none;
+           border: none;
+           margin-top: 10vh;
+           border-bottom: 1px solid #aeaeae;
+           width: 75vw;
+         }
+
+        .contactInput{
+
+        }
        }
     }
     .stepTwo{
@@ -34,20 +47,53 @@ page-travel {
         right: 0;
         width: 87vw;
         height: 83vh;
-        margin-top: -14vh;
+        margin-top: 10vh;
         background: #efefef;
         border-radius: 5px;
         box-shadow: 0px 0px 10px #006442;
       }
     }
     .stepThree{
-
+      .stepThreeCard{
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        width: 87vw;
+        height: 83vh;
+        margin-top: 10vh;
+        background: #efefef;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px #006442;
+      }
     }
     .stepFour{
-
+      .stepFourCard{
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        width: 87vw;
+        height: 83vh;
+        margin-top: 10vh;
+        background: #efefef;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px #006442;
+      }
     }
     .stepFive{
-
+      .stepFiveCard{
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        width: 87vw;
+        height: 83vh;
+        margin-top: 10vh;
+        background: #efefef;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px #006442;
+      }
     }
   }
 
