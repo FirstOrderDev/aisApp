@@ -8,6 +8,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TravelPage } from '../pages/travel/travel';
 import { MotorPage } from '../pages/motor/motor';
+import { PropertyPage } from '../pages/property/property';
+
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { MotorPage } from '../pages/motor/motor';
     MyApp,
     HomePage,
     TravelPage,
-    MotorPage
+    MotorPage,
+    PropertyPage
 
   ],
   imports: [
@@ -27,7 +30,9 @@ import { MotorPage } from '../pages/motor/motor';
     MyApp,
     HomePage,
     TravelPage,
-    MotorPage
+    MotorPage,
+    PropertyPage
+
 
   ],
   providers: [

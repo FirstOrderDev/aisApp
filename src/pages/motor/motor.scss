@@ -20,26 +20,14 @@ page-motor {
          border-radius: 5px 5px 5px 5px;
          box-shadow: 0px 0px 10px 0px;
 
-         ion-item{
-           width: 82vw;
+         .policyInput, .nameInput, .contactInput{
+           background: none;
+           border: none;
+           margin-top: 10vh;
+           border-bottom: 1px solid #aeaeae;
+           width: 75vw;
          }
-         .policyInput{
-           background: #f8f8f8;
-           padding-top: 10vh;
-         }
 
-        .nameInput{
-          background: #f8f8f8;
-          padding-top: 10vh;
-
-        }
-
-        .contactInput{
-          background: #f8f8f8;
-          padding-top: 10vh;
-          margin-left: 2vw;
-        }
-        }
        .nextButton {
          float: right;
          padding-right: 12vw;
@@ -47,10 +35,10 @@ page-motor {
          margin-right: 10vw;
          margin-top: 5vh;
 
-       .backButton {
-         padding-right: 12vw;
-         padding-left: 12vw;
-       }
+         .backButton {
+           padding-right: 12vw;
+           padding-left: 12vw;
+        }
        }
     }
     .stepTwo{
@@ -66,5 +54,5 @@ page-motor {
 
     }
   }
-
+}
 }
