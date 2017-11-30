@@ -1,11 +1,14 @@
 page-travel {
 
+  .topBar{
+    background: green;
+  }
+
   no-scroll .scroll-content{
     overflow: hidden;
   }
 
   .slideContainer{
-    margin-top: 12vh;
     background: linear-gradient(to bottom right, #26a65b 0%, #26c281 100%);
 
     .stepOne{
@@ -17,14 +20,25 @@ page-travel {
          right: 0;
          width: 87vw;
          height: 83vh;
-         margin-top: -14vh;
+         margin-top: 10vh;
          background: #efefef;
          border-radius: 5px;
          box-shadow: 0px 0px 10px #006442;
        }
     }
     .stepTwo{
-
+      .stepTwoCard{
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        width: 87vw;
+        height: 83vh;
+        margin-top: -14vh;
+        background: #efefef;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px #006442;
+      }
     }
     .stepThree{
 
