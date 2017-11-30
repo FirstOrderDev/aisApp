@@ -9,9 +9,17 @@
     <ion-slide class= "stepOne">
       <div class="stepOneCard">
 
-        <input placeholder="Policy Number" class="policyInput"/>
+        <input placeholder="Policy Number" class="policyInput" [(ngModel)]="policyInput"/>
         <input placeholder="Your Name" class="nameInput"/>
         <input placeholder="Contact Number (+61)" class="contactInput" type="tel"/>
+
+        <button class="cancelBtn" (click)="cancel()">
+          Cancel
+        </button>
+
+        <button class="nextBtn" (click)="nextFromOne()">
+          Next
+        </button>
 
       </div>
     </ion-slide>
