@@ -11,6 +11,37 @@ page-travel {
   .slideContainer{
     background: linear-gradient(to bottom right, #26a65b 0%, #26c281 100%);
 
+    .cancelBtn{
+      font-size: 18px;
+      color: #ecf0f1;
+      background: #f58f84;
+      padding-top: 3vh;
+      padding-bottom: 3vh;
+      padding-left: 4vw;
+      padding-right: 4vw;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0px 0px 4px #aeaeae;
+      margin-top: 30vh;
+      width: 38vw;
+      height: 9vh;
+    }
+
+    .nextBtn{
+      font-size: 18px;
+      color: #ecf0f1;
+      background: #95a5a6;
+      padding-top: 3vh;
+      padding-bottom: 3vh;
+      padding-left: 4vw;
+      padding-right: 4vw;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0px 0px 4px #aeaeae;
+      margin-top: 30vh;
+      width: 38vw;
+      height: 9vh;
+    }
 
     .stepOne{
        //background: linear-gradient(to bottom right, #3a7bd5 0%, #3a6073 100%);
@@ -35,7 +66,7 @@ page-travel {
          }
 
         .contactInput{
-          
+
         }
        }
     }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ViewChild } from '@angular/core';
+import { Slides } from 'ionic-angular';
 
 /**
  * Generated class for the TravelPage page.
@@ -15,11 +17,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TravelPage {
 
+  policyInput: any;
+
+  @ViewChild(Slides) slides: Slides;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TravelPage');
+  }
+
+  nextFromOne() {
+    this.slides.slideNext();
+
+    console.log(this.policyInput)
+  }
+
+  cancel() {
+    this.navCtrl.pop();
   }
 
 }
