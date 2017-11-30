@@ -26,7 +26,7 @@ import { MotorPage } from '../pages/motor/motor';
   entryComponents: [
     MyApp,
     HomePage,
-    TravelPage
+    TravelPage,
     MotorPage
 
   ],
