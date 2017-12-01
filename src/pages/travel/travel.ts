@@ -34,6 +34,12 @@ export class TravelPage {
     console.log(this.policyInput)
   }
 
+  lastFromOne(){
+    this.slides.slidePrev();
+
+    console.log(this.policyInput)
+  }
+
   cancel() {
     this.navCtrl.pop();
   }
