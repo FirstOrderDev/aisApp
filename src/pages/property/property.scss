@@ -11,6 +11,61 @@ page-property {
   .slideContainer{
     background: linear-gradient(to bottom right, #ffccff 0%, #9966ff 100%);
 
+    .cancelBtn, .backBtn{
+      font-size: 18px;
+      color: #ecf0f1;
+      background: #f58f84;
+      padding-top: 3vh;
+      padding-bottom: 3vh;
+      padding-left: 4vw;
+      padding-right: 4vw;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0px 0px 4px #aeaeae;
+      margin-top: 30vh;
+      width: 38vw;
+      height: 9vh;
+    }
+
+    .nextBtn{
+      font-size: 18px;
+      color: #ecf0f1;
+      background: #95a5a6;
+      padding-top: 3vh;
+      padding-bottom: 3vh;
+      padding-left: 4vw;
+      padding-right: 4vw;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0px 0px 4px #aeaeae;
+      margin-top: 30vh;
+      width: 38vw;
+      height: 9vh;
+    }
+
+    .submitBtn{
+      font-size: 18px;
+      color: #ecf0f1;
+      background: #26a65b;
+      padding-top: 3vh;
+      padding-bottom: 3vh;
+      padding-left: 4vw;
+      padding-right: 4vw;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0px 0px 4px #aeaeae;
+      margin-top: 30vh;
+      width: 38vw;
+      height: 9vh;
+    }
+
+    .infoInputBasic{
+      background: none;
+      border: none;
+      margin-top: 10vh;
+      border-bottom: 1px solid #aeaeae;
+      width: 75vw;
+    }
 
     .stepOne{
        //background: linear-gradient(to bottom right, #3a7bd5 0%, #3a6073 100%);
