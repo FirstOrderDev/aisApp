@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
+import { Geolocation } from '@ionic-native/geolocation';
+
 
 /**
  * Generated class for the MotorPage page.
@@ -21,7 +23,7 @@ export class MotorPage {
 
   @ViewChild(Slides) slides: Slides;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
   }
 
   ionViewDidLoad() {
@@ -42,6 +44,15 @@ export class MotorPage {
 
   cancel(){
     this.navCtrl.pop();
+  }
+
+  getCurrentLoc(){
+    this.geolocation.getCurrentPosition().then((resp) => {
+      console.log(resp.coords.latitude);
+      console.log(resp.coords.longitude);
+    }).catch((error) => {
+    console.log('Error getting location', error);
+    });
   }
 
 }
