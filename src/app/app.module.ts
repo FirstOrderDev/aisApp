@@ -10,6 +10,8 @@ import { TravelPage } from '../pages/travel/travel';
 import { MotorPage } from '../pages/motor/motor';
 import { PropertyPage } from '../pages/property/property';
 
+import { Geolocation } from '@ionic-native/geolocation';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { PropertyPage } from '../pages/property/property';
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
+    NativeGeocoder,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

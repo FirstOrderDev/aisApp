@@ -7,7 +7,7 @@ page-motor {
   .slideContainer{
     background: linear-gradient(to bottom right, #3a7bd5 0%, #3a6073 100%);
 
-    .cancelBtn, .backBtn{
+    .cancelBtn, .backBtn, .backBtn2{
       font-size: 18px;
       color: #ecf0f1;
       background: #f58f84;
@@ -23,7 +23,7 @@ page-motor {
       height: 9vh;
     }
 
-    .nextBtn{
+    .nextBtn, .nextBtn2{
       font-size: 18px;
       color: #ecf0f1;
       background: #95a5a6;
@@ -34,7 +34,7 @@ page-motor {
       border: none;
       border-radius: 5px;
       box-shadow: 0px 0px 4px #aeaeae;
-      margin-top: 30vh;
+      margin-top: 10vh;
       width: 38vw;
       height: 9vh;
     }
@@ -50,8 +50,21 @@ page-motor {
       border: none;
       border-radius: 5px;
       box-shadow: 0px 0px 4px #aeaeae;
-      margin-top: 30vh;
+      margin-top: 10vh;
       width: 38vw;
+      height: 9vh;
+    }
+
+    .currrentLocBtn{
+      font-size: 18px;
+      color: #ecf0f1;
+      text-align: center;
+      background: #409cf6;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0px 0px 4px #aeaeae;
+      margin-left: 1vw;
+      width: 76vw;
       height: 9vh;
     }
 
@@ -61,6 +74,15 @@ page-motor {
       margin-top: 10vh;
       border-bottom: 1px solid #aeaeae;
       width: 75vw;
+    }
+
+    .basicTextLeft{
+      color: #6d6d6d;
+      text-align: left;
+      margin-top: 0vh;
+      margin-bottom: 1vh;
+      margin-left: 6vw;
+      padding-top: 7vh;
     }
 
     .stepOne{
@@ -95,8 +117,43 @@ page-motor {
         height: 83vh;
         margin-top: 10vh;
         background: #efefef;
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px #006442;
+        border-radius: 5px 5px 5px 5px;
+        box-shadow: 0px 0px 10px 0px;
+
+        .dateBox{
+          margin-left: auto;
+          margin-right: auto;
+          left: 0;
+          right: 0;
+          text-align: left;
+          border: none;
+          border-radius: 5px;
+          box-shadow: 0px 0px 4px #aeaeae;
+          width: 76vw;
+          height: 9vh;
+
+          i{
+            font-size: 23px;
+          }
+        }
+
+        .adressBox{
+          font-size: 18px;
+          color: #161616;
+          text-align: center;
+          background: #ffffff;
+          border: none;
+          border-radius: 5px;
+          box-shadow: 0px 0px 4px #aeaeae;
+          margin-left: 1vw;
+          width: 76vw;
+          height: 9vh;
+        }
+
+        .backBtn2, .nextBtn2{
+          margin-top: 13vh;
+        }
+
       }
     }
     .stepThree{
