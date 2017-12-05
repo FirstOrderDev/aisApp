@@ -46,9 +46,20 @@
     <ion-slide class= "stepThree">
       <div class="stepThreeCard">
 
-        <input placeholder="placeholder" class="infoInputBasic" [(ngModel)]="policyInput"/>
-        <input placeholder="placeholder" class="infoInputBasic"/>
-        <input placeholder="placeholder" class="infoInputBasic" type="tel"/>
+        <p class="titleThreeCard">What happened?</p>
+
+          <div class="select">
+            <select>
+              <option>--Select--</option>
+              <option>Car Crash</option>
+              <option>Obstacle Collision</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <p class="photoInfoThreeCard">
+            Tap below to add a photo of your drivers license
+          </p>
 
         <button class="backBtn" (click)="lastFromOne()">
           Back
