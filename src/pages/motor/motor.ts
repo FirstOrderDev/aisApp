@@ -49,6 +49,8 @@ export class MotorPage {
     this.navCtrl.pop();
   }
 
+  //step 3 (card 2) of motor
+
   getCurrentLoc(){
     this.geolocation.getCurrentPosition().then((resp) => {
       var lat = resp.coords.latitude;
@@ -56,7 +58,7 @@ export class MotorPage {
       console.log(lat);
       console.log(long);
       this.nativeGeocoder.reverseGeocode(lat, long)
-      .then((result: NativeGeocoderReverseResult) => this.address = JSON.stringify(result))
+      .then((result: NativeGeocoderReverseResult) => this.address = result.subThoroughfare + ', ' + result.thoroughfare + ', ' + result.administrativeArea + ', ' + result.postalcode)
       .catch((error: any) => console.log(error));
     }).catch((error) => {
     console.log('Error getting location', error);
