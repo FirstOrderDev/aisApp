@@ -13,6 +13,9 @@ import { CameraModelPage } from '../pages/camera-model/camera-model';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
+import { Base64 } from '@ionic-native/base64';
+import { Camera } from '@ionic-native/camera';
+import { ImagePicker } from '@ionic-native/image-picker';
 
 
 @NgModule({
@@ -45,6 +48,9 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
     SplashScreen,
     Geolocation,
     NativeGeocoder,
+    Base64,
+    Camera,
+    ImagePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

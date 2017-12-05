@@ -7,15 +7,15 @@
     <ion-slide class= "stepOne">
       <div class="stepOneCard">
 
-        <input placeholder="Policy Number" class="policyInput"/>
-        <input placeholder="Your Name" class="nameInput"/>
-        <input placeholder="Contact Number (+61)" class="contactInput" type="tel"/>
+        <input placeholder="Policy Number" class="policyInput" [(ngModel)]="policyInput"/>
+        <input placeholder="Your Name" class="nameInput" [(ngModel)]="nameInput"/>
+        <input placeholder="Contact Number (+61)" class="contactInput" type="tel" [(ngModel)]="numberInput"/>
 
         <button class="cancelBtn" (click)="cancel()">
           Cancel
         </button>
 
-        <button class="nextBtn" (click)="nextFromOne()">
+        <button class="nextBtn" (click)="nextFromOne('1')">
           Next
         </button>
 
@@ -48,7 +48,7 @@
           -- Or --
         </p>
 
-        <button class="adressBox">
+        <button class="adressBox" (click)="enterAddress()">
           {{address}}
         </button>
 
@@ -58,7 +58,7 @@
           Back
         </button>
 
-        <button class="nextBtn2" (click)="nextFromOne()">
+        <button class="nextBtn2" (click)="nextFromOne('2')">
           Next
         </button>
 
@@ -92,7 +92,11 @@
           Back
           </button>
 
+<<<<<<< HEAD
           <button class="nextBtn3" (click)="nextFromOne()">
+=======
+        <button class="nextBtn" (click)="nextFromOne('3')">
+>>>>>>> b204ac6e5315ae174390af20ce7649211908d2d5
           Next
           </button>
 
@@ -110,7 +114,7 @@
           Back
         </button>
 
-        <button class="nextBtn" (click)="nextFromOne()">
+        <button class="nextBtn" (click)="nextFromOne('4')">
           Next
         </button>
 
@@ -120,9 +124,23 @@
     <ion-slide class= "stepFive">
       <div class="stepFiveCard">
 
-        <input placeholder="placeholder" class="infoInputBasic" [(ngModel)]="policyInput"/>
-        <input placeholder="placeholder" class="infoInputBasic"/>
-        <input placeholder="placeholder" class="infoInputBasic" type="tel"/>
+        <p class="basicTextLeft">
+          Tap to add photos from your gallery or camera
+        </p>
+
+        <button class="stepFiveBtns">
+          1
+        </button>
+
+        <button class="stepFiveBtns">
+          2
+        </button>
+
+        <button class="stepFiveBtns">
+          3
+        </button>
+
+        <br />
 
         <button class="backBtn" (click)="lastFromOne()">
           Back

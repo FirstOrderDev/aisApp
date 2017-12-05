@@ -76,7 +76,7 @@ page-motor {
       width: 75vw;
     }
 
-    .basicTextLeft{
+    .basicTextLeft, .basicTextLeftV6{
       color: #6d6d6d;
       text-align: left;
       margin-top: 0vh;
@@ -246,6 +246,23 @@ page-motor {
         background: #efefef;
         border-radius: 5px;
         box-shadow: 0px 0px 10px #006442;
+
+        .stepFiveBtns{
+          font-size: 18px;
+          color: #ecf0f1;
+          background: #606060;
+          padding-top: 3vh;
+          padding-bottom: 3vh;
+          padding-left: 4vw;
+          padding-right: 4vw;
+          border: none;
+          border-radius: 5px;
+          box-shadow: 0px 0px 4px #aeaeae;
+          margin-top: 0vh;
+          margin-left: 1vw;
+          width: 24vw;
+          height: 13vh;
+        }
       }
     }
   }
