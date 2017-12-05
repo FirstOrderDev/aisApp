@@ -5,7 +5,7 @@ page-motor {
   }
 
   .slideContainer{
-    background: linear-gradient(to bottom right, #3a7bd5 0%, #3a6073 100%);
+    background: linear-gradient(to bottom right, #3a7bd5 0%, #409cf6 100%);
 
     .cancelBtn, .backBtn, .backBtn2{
       font-size: 18px;
@@ -199,6 +199,7 @@ page-motor {
           color: #aeaeae;
         }
       }
+    }
 
     .stepFour{
       .stepFourCard{
@@ -229,5 +230,4 @@ page-motor {
       }
     }
   }
-}
 }
