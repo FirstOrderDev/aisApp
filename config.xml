@@ -88,4 +88,9 @@
     <plugin name="cordova-plugin-nativegeocoder" spec="^2.0.4">
         <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="Use geocoder service" />
     </plugin>
+    <plugin name="com-badrit-base64" spec="^0.2.0" />
+    <plugin name="cordova-plugin-camera" spec="^3.0.0" />
+    <plugin name="com.synconset.imagepicker" spec="~2.1.8">
+        <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="Upload photos to claims" />
+    </plugin>
 </widget>
