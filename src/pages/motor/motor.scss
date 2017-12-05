@@ -77,11 +77,12 @@ page-motor {
     }
 
     .basicTextLeft{
+      color: #6d6d6d;
       text-align: left;
       margin-top: 0vh;
       margin-bottom: 1vh;
       margin-left: 6vw;
-      padding-top: 4vh;
+      padding-top: 7vh;
     }
 
     .stepOne{
@@ -130,6 +131,10 @@ page-motor {
           box-shadow: 0px 0px 4px #aeaeae;
           width: 76vw;
           height: 9vh;
+
+          i{
+            font-size: 23px;
+          }
         }
 
         .adressBox{
@@ -146,7 +151,7 @@ page-motor {
         }
 
         .backBtn2, .nextBtn2{
-          margin-top: 19vh;
+          margin-top: 13vh;
         }
 
       }
