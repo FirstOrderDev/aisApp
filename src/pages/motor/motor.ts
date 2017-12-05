@@ -4,6 +4,8 @@ import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
+import { AlertController } from 'ionic-angular';
+
 
 /**
  * Generated class for the MotorPage page.
@@ -19,12 +21,18 @@ import { NativeGeocoder, NativeGeocoderReverseResult } from '@ionic-native/nativ
 })
 export class MotorPage {
 
-  address: any;
+  //card 1
   policyInput: any;
+  nameInput: any;
+  numberInput: any;
+
+  //card 2
+  myDate: any;
+  address: any;
 
   @ViewChild(Slides) slides: Slides;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController) {
 
     this.address = "Enter an address"
   }
@@ -33,16 +41,18 @@ export class MotorPage {
     console.log('ionViewDidLoad MotorPage');
   }
 
-  nextFromOne() {
+  nextFromOne(cardNumber) {
+    console.log(cardNumber);
     this.slides.slideNext();
 
-    console.log(this.policyInput)
+    console.log(this.policyInput);
+    console.log(this.nameInput);
+    console.log(this.numberInput);
+
   }
 
   lastFromOne(){
     this.slides.slidePrev();
-
-    console.log(this.policyInput)
   }
 
   cancel(){
@@ -64,6 +74,35 @@ export class MotorPage {
     console.log('Error getting location', error);
     });
     console.log(this.address);
+  }
+
+  enterAddress(){
+    let alert = this.alertCtrl.create({
+    title: 'Enter address',
+    inputs: [
+      {
+        name: 'address',
+        placeholder: 'Address'
+      },
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Confirm',
+        handler: data => {
+          console.log(data.address);
+          this.address = data.address;
+        }
+      }
+    ]
+  });
+  alert.present();
   }
 
 }

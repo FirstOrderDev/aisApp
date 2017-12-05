@@ -7,15 +7,15 @@
     <ion-slide class= "stepOne">
       <div class="stepOneCard">
 
-        <input placeholder="Policy Number" class="policyInput"/>
-        <input placeholder="Your Name" class="nameInput"/>
-        <input placeholder="Contact Number (+61)" class="contactInput" type="tel"/>
+        <input placeholder="Policy Number" class="policyInput" [(ngModel)]="policyInput"/>
+        <input placeholder="Your Name" class="nameInput" [(ngModel)]="nameInput"/>
+        <input placeholder="Contact Number (+61)" class="contactInput" type="tel" [(ngModel)]="numberInput"/>
 
         <button class="cancelBtn" (click)="cancel()">
           Cancel
         </button>
 
-        <button class="nextBtn" (click)="nextFromOne()">
+        <button class="nextBtn" (click)="nextFromOne('1')">
           Next
         </button>
 
@@ -48,7 +48,7 @@
           -- Or --
         </p>
 
-        <button class="adressBox">
+        <button class="adressBox" (click)="enterAddress()">
           {{address}}
         </button>
 
@@ -58,7 +58,7 @@
           Back
         </button>
 
-        <button class="nextBtn2" (click)="nextFromOne()">
+        <button class="nextBtn2" (click)="nextFromOne('2')">
           Next
         </button>
 
@@ -87,7 +87,7 @@
           Back
         </button>
 
-        <button class="nextBtn" (click)="nextFromOne()">
+        <button class="nextBtn" (click)="nextFromOne('3')">
           Next
         </button>
 
@@ -105,7 +105,7 @@
           Back
         </button>
 
-        <button class="nextBtn" (click)="nextFromOne()">
+        <button class="nextBtn" (click)="nextFromOne('4')">
           Next
         </button>
 
