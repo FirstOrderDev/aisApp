@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { TravelPage } from '../pages/travel/travel';
 import { MotorPage } from '../pages/motor/motor';
 import { PropertyPage } from '../pages/property/property';
+import { CameraModelPage } from '../pages/camera-model/camera-model';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
@@ -23,7 +24,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     HomePage,
     TravelPage,
     MotorPage,
-    PropertyPage
+    PropertyPage,
+    CameraModelPage
 
   ],
   imports: [
@@ -36,7 +38,10 @@ import { ImagePicker } from '@ionic-native/image-picker';
     HomePage,
     TravelPage,
     MotorPage,
-    PropertyPage
+    PropertyPage,
+    CameraModelPage
+
+
   ],
   providers: [
     StatusBar,
