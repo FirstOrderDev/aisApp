@@ -21,6 +21,8 @@ import { AlertController } from 'ionic-angular';
 })
 export class MotorPage {
 
+  currentCard: number;
+
   //card 1
   policyInput: any;
   nameInput: any;
@@ -33,7 +35,7 @@ export class MotorPage {
   @ViewChild(Slides) slides: Slides;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController) {
-
+    this.currentCard = 0;
     this.address = "Enter an address"
   }
 
@@ -41,23 +43,35 @@ export class MotorPage {
     console.log('ionViewDidLoad MotorPage');
   }
 
-  nextFromOne(cardNumber) {
-    console.log(cardNumber);
-    this.slides.slideNext();
-
-    console.log(this.policyInput);
-    console.log(this.nameInput);
-    console.log(this.numberInput);
+  slideChanged() {
+    this.currentCard = this.slides.getActiveIndex();
 
   }
 
-  lastFromOne(){
+  nextCard() {
+    this.currentCard += 1;
+    console.log(this.currentCard);
+
+    this.slides.slideNext();
+
+    // console.log(this.policyInput);
+    // console.log(this.nameInput);
+    // console.log(this.numberInput);
+
+
+
+  }
+
+  previousCard(){
+    this.currentCard -= 1;
+    console.log(this.currentCard)
     this.slides.slidePrev();
   }
 
   cancel(){
     this.navCtrl.pop();
   }
+
 
   //step 3 (card 2) of motor
 
