@@ -160,27 +160,54 @@
           Tap to add photos from your gallery or camera
         </p>
 
-        <button class="stepFiveBtns" (click)="select()">
-          1
+        <button class="stepFiveBtns1" (click)="select()">
+          <i class="icon icon-gallery"></i>
         </button>
 
-        <button class="stepFiveBtns">
-          2
+        <button class="stepFiveBtns2" (click)="openCamera()">
+          <i class="icon icon-picture"></i>
         </button>
 
-        <button class="stepFiveBtns">
-          3
+        <button class="stepFiveBtns3">
+          <i class="icon icon-edit"></i>
         </button>
 
         <br />
 
-        <div class="imageGrid">
+        <!-- <div class="imageGrid">
           <div class="one-image" *ngFor="let image of images">
             <img src="{{image}}">
           </div>
+        </div> -->
+
+        <!-- <ion-grid class="imageGrid">
+          <ion-row>
+            <ion-col col-6 col-md-4 col-xl-3 *ngFor="let image of images">
+              <div class="image-container" [style.background-image]="image.value"></div>
+            </ion-col>
+          </ion-row>
+        </ion-grid> -->
+
+        <div class="galleryContent">
+          <ion-content>
+            <div class="spacebrick"></div>
+            <ion-grid class="imageGrid">
+              <ion-row>
+                <ion-col *ngFor="let image of images; let i = index" col-4>
+                  <!-- <p class="imageTitle"># {{i+1}}</p>
+                  <button class="detailsButton" (click)="openImageSettings(i)">
+                    <i class="icon icon-add detailsIcon"></i>
+                  </button> -->
+                  <div class="image-container" [style.background-image]="image.value">
+                    <img [src]="image.pic" width="120">
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-content>
         </div>
 
-        <button class="backBtn" (click)="previousCard()">
+        <button class="backBtn5" (click)="previousCard()">
           Back
         </button>
 

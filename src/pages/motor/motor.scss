@@ -50,7 +50,7 @@ page-motor {
   .slideContainer{
     background: linear-gradient(to bottom right, #3a7bd5 0%, #409cf6 100%);
 
-    .cancelBtn, .backBtn, .backBtn2, .backBtn3{
+    .cancelBtn, .backBtn, .backBtn2, .backBtn3, .backBtn5{
       font-size: 18px;
       color: #ecf0f1;
       background: #f58f84;
@@ -93,7 +93,7 @@ page-motor {
       border: none;
       border-radius: 5px;
       box-shadow: 0px 0px 4px #aeaeae;
-      margin-top: 10vh;
+      margin-top: 39vh;
       width: 38vw;
       height: 9vh;
     }
@@ -292,14 +292,11 @@ page-motor {
         border-radius: 5px;
         box-shadow: 0px 0px 10px #006442;
 
-        .stepFiveBtns{
+        .stepFiveBtns1, .stepFiveBtns2, .stepFiveBtns3{
           font-size: 18px;
           color: #ecf0f1;
           background: #606060;
-          padding-top: 3vh;
-          padding-bottom: 3vh;
-          padding-left: 4vw;
-          padding-right: 4vw;
+
           border: none;
           border-radius: 5px;
           box-shadow: 0px 0px 4px #aeaeae;
@@ -307,7 +304,12 @@ page-motor {
           margin-left: 1vw;
           width: 24vw;
           height: 13vh;
+          i{
+            text-align: center;
+            font-size: 70px;
+          }
         }
+
         .imagePick{
           margin-top:5vh;
           width:100%;
@@ -347,36 +349,45 @@ page-motor {
         }
         }
 
-        .imageGrid{
-        margin-top: 5vh;
+        .galleryContent{
+          margin-top: 1vh;
+          position: absolute;
+          margin-left: auto;
+          margin-right: auto;
+          left: 0;
+          right: 0;
+          text-align: center;
+          width: 75vw;
+          border: 1px solid black;
         }
 
-        @media (min-width: 0px) {
-        .imageGrid {
-        column-count: 2;
-        }
-        }
-
-        @media (min-width: 400px) {
-            .imageGrid {
-                column-count: 3;
-            }
-        }
-
-        @media (min-width: 720px) {
-            .imageGrid {
-                column-count: 4;
-            }
-        }
-
-        .one-image {
-            margin: 1px;
-        }
-
-        img{
+        .image-container{
+          background-size: cover;
+          height:20vh;
+          width: 120px;
           border-radius: 5px;
+
+          img{
+            object-fit: cover;
+            height: 20vh;
+            border-radius: 5px;
+          }
         }
+
+        .spacebrick{
+            height: 2vh;
+        }
+
+
       }
+
+
+
+
+      .backbtn5{
+        margin-top: 15vh;
+      }
+
     }
   }
 }
