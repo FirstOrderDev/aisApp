@@ -5,6 +5,9 @@ import { Slides } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
 import { AlertController } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Base64 } from '@ionic-native/base64';
 
 
 /**
@@ -32,11 +35,20 @@ export class MotorPage {
   myDate: any;
   address: any;
 
+  //card 5
+  options: any;
+  images: any;
+
   @ViewChild(Slides) slides: Slides;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation,
+    private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController, private imagePicker: ImagePicker,
+    private base64: Base64, public loadingCtrl: LoadingController) {
     this.currentCard = 0;
     this.address = "Enter an address"
+
+    this.options = null;
+    this.images = [];
   }
 
   ionViewDidLoad() {
@@ -82,7 +94,7 @@ export class MotorPage {
       console.log(lat);
       console.log(long);
       this.nativeGeocoder.reverseGeocode(lat, long)
-      .then((result: NativeGeocoderReverseResult) => this.address = result.subThoroughfare + ', ' + result.thoroughfare + ', ' + result.administrativeArea + ', ' + result.postalCode)
+      .then((result: NativeGeocoderReverseResult) => this.address = result.subThoroughfare + result.thoroughfare + ', ' + result.administrativeArea + ', ' + result.postalCode)
       .catch((error: any) => console.log(error));
     }).catch((error) => {
     console.log('Error getting location', error);
@@ -118,5 +130,24 @@ export class MotorPage {
   });
   alert.present();
   }
+
+  select(){
+    const loading = this.loadingCtrl.create({
+    content: 'Please wait...'
+    });
+    loading.present();
+    this.imagePicker.getPictures(this.options).then((results) => {
+    for (var i = 0; i < results.length; i++) {
+
+          this.base64.encodeFile(results[i]).then((base64File: string) => {
+            //console.log(base64File);
+            this.images.push(base64File);
+          }, (err) => {
+            console.log(err);
+          });
+      }
+      loading.dismiss();
+    }, (err) => { });
+    }
 
 }
