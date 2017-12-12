@@ -141,7 +141,8 @@ export class MotorPage {
 
           this.base64.encodeFile(results[i]).then((base64File: string) => {
             //console.log(base64File);
-            this.images.push(base64File);
+            this.images.push({
+            pic: base64File});
           }, (err) => {
             console.log(err);
           });
