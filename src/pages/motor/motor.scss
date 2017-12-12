@@ -347,36 +347,40 @@ page-motor {
         }
         }
 
-        .imageGrid{
-        margin-top: 5vh;
+        .galleryContent{
+          margin-top: 1vh;
+          position: absolute;
+          margin-left: auto;
+          margin-right: auto;
+          left: 0;
+          right: 0;
+          text-align: center;
+          width: 75vw;
+          border: 1px solid black;
         }
 
-        @media (min-width: 0px) {
-        .imageGrid {
-        column-count: 2;
-        }
-        }
-
-        @media (min-width: 400px) {
-            .imageGrid {
-                column-count: 3;
-            }
-        }
-
-        @media (min-width: 720px) {
-            .imageGrid {
-                column-count: 4;
-            }
-        }
-
-        .one-image {
-            margin: 1px;
-        }
-
-        img{
+        .image-container{
+          background-size: cover;
+          height:20vh;
+          width: 120px;
           border-radius: 5px;
+
+          img{
+            object-fit: cover;
+            height: 20vh;
+            border-radius: 5px;
+          }
         }
+
+        .spacebrick{
+            height: 2vh;
+        }
+
+
       }
+
+
+
 
       .backbtn5{
         margin-top: 15vh;
