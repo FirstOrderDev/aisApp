@@ -239,7 +239,7 @@ export class MotorPage {
 
       ],
       subject: 'Cordova Icons',
-      body: 'How are you? Nice greetings from Leipzig' + this.policyInput,
+      body: 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput,
       isHtml: true
     };
 
