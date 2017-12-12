@@ -147,7 +147,8 @@ export class MotorPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64:
      let base64Image = 'data:image/jpeg;base64,' + imageData;
-     this.images.push(base64Image);
+     this.images.push({
+       pic: base64Image});
     }, (err) => {
      // Handle error
     });

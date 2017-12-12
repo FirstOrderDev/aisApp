@@ -347,6 +347,18 @@ page-motor {
         }
         }
 
+        .galleryContent{
+          margin-top: 1vh;
+          position: absolute;
+          margin-left: auto;
+          margin-right: auto;
+          left: 0;
+          right: 0;
+          text-align: center;
+          width: 75vw;
+          border: 1px solid black;
+        }
+
         .image-container{
           background-size: cover;
           height:20vh;
@@ -364,7 +376,11 @@ page-motor {
             height: 2vh;
         }
 
+
       }
+
+
+
 
       .backbtn5{
         margin-top: 15vh;
