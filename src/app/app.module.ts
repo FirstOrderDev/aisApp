@@ -17,6 +17,7 @@ import { Base64 } from '@ionic-native/base64';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { CameraPreview } from '@ionic-native/camera-preview';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { CameraPreview } from '@ionic-native/camera-preview';
     Camera,
     ImagePicker,
     CameraPreview,
+    EmailComposer,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
