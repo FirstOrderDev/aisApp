@@ -95,7 +95,7 @@ export class MotorPage {
       console.log(lat);
       console.log(long);
       this.nativeGeocoder.reverseGeocode(lat, long)
-      .then((result: NativeGeocoderReverseResult) => this.address = result.subThoroughfare + result.thoroughfare + ', ' + result.administrativeArea + ', ' + result.postalCode)
+      .then((result: NativeGeocoderReverseResult) => this.address = result.subThoroughfare + ' ' + result.thoroughfare + ', ' + result.administrativeArea + ', ' + result.postalCode)
       .catch((error: any) => console.log(error));
     }).catch((error) => {
     console.log('Error getting location', error);
