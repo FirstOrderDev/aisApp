@@ -16,6 +16,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { Base64 } from '@ionic-native/base64';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { CameraPreview } from '@ionic-native/camera-preview';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
     Base64,
     Camera,
     ImagePicker,
+    CameraPreview,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

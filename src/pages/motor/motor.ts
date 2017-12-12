@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -8,6 +8,8 @@ import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
+import { CameraModelPage } from '../camera-model/camera-model';
+
 
 
 /**
@@ -43,7 +45,7 @@ export class MotorPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController, private imagePicker: ImagePicker,
-    private base64: Base64, public loadingCtrl: LoadingController) {
+    private base64: Base64, public loadingCtrl: LoadingController, public modal: ModalController) {
     this.currentCard = 0;
     this.address = "Enter an address"
 
@@ -84,6 +86,14 @@ export class MotorPage {
     this.navCtrl.pop();
   }
 
+  //card 3 camera model
+  openCameraModel(){
+    let cameraModel = this.modal.create(CameraModelPage)
+    cameraModel.onDidDismiss(data => {
+     console.log(data);
+    });
+    cameraModel.present();
+  }
 
   //step 3 (card 2) of motor
 
