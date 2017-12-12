@@ -41,9 +41,9 @@
     <ion-slide class= "stepOne">
       <div class="stepOneCard">
 
-        <input placeholder="Policy Number" class="policyInput" [(ngModel)]="policyInput"/>
-        <input placeholder="Your Name" class="nameInput" [(ngModel)]="nameInput"/>
-        <input placeholder="Contact Number (+61)" class="contactInput" type="tel" [(ngModel)]="numberInput"/>
+        <input id="p2" placeholder="{{policy_input}}" class="policyInput" [(ngModel)]="policyInput"/>
+        <input placeholder="{{name_input}}" class="nameInput" [(ngModel)]="nameInput"/>
+        <input placeholder="{{number_input}}" class="contactInput" type="tel" [(ngModel)]="numberInput"/>
 
         <button class="cancelBtn" (click)="cancel()">
           Cancel
@@ -204,7 +204,7 @@
                     <i class="icon icon-add detailsIcon"></i>
                   </button> -->
                   <div class="image-container" [style.background-image]="image.value">
-                    <img [src]="image.pic" width="120">
+                    <img [src]="image.pic" width="80">
                   </div>
                 </ion-col>
               </ion-row>

@@ -10,6 +10,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { CameraModelPage } from '../camera-model/camera-model';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 
 
@@ -34,6 +35,10 @@ export class MotorPage {
   nameInput: any;
   numberInput: any;
 
+  policy_input: any;
+  name_input: any;
+  number_input: any;
+
   //card 2
   myDate: any;
   address: any;
@@ -47,9 +52,13 @@ export class MotorPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController, private imagePicker: ImagePicker,
     private base64: Base64, public loadingCtrl: LoadingController, public modal: ModalController,
-    private camera: Camera) {
+    private camera: Camera, private emailComposer: EmailComposer) {
     this.currentCard = 0;
     this.address = "Enter an address"
+
+    this.policy_input = "Policy Number";
+    this.name_input = "Your Name";
+    this.number_input = "Contact Number (+61)";
 
     this.options = null;
     this.images = [];
@@ -189,6 +198,16 @@ export class MotorPage {
     if(this.policyInput && this.nameInput && this.numberInput){
 
     } else {
+      if(!this.policyInput){
+        this.policy_input = "*Please input a policy number";
+        document.getElementById("p2").style.color = "red";
+      }
+      if(!this.nameInput){
+        this.name_input = "*Please input your name";
+      }
+      if(!this.numberInput){
+        this.number_input = "*Please input a contact number";
+      }
       this.slides.slideTo(0);
       return;
     }
@@ -201,12 +220,31 @@ export class MotorPage {
     }
 
 
-
+    /*
     if(this.options && this.images){
 
     } else {
       return;
-    }
+    }*/
+
+    this.emailComposer.isAvailable().then((available: boolean) =>{
+    if(available) {
+       //Now we know we can send
+     }
+    });
+
+    let email = {
+      to: 'harrison.croaker@hotmail.com',
+      attachments: [
+
+      ],
+      subject: 'Cordova Icons',
+      body: 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput,
+      isHtml: true
+    };
+
+    // Send a text message using default options
+    this.emailComposer.open(email);
 
   }
 
