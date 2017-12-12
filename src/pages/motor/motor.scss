@@ -244,7 +244,7 @@ page-motor {
         }
 
         .cameraModel{
-          margin-top: 5vh;
+          margin-top: 1vh;
           margin-left: 4.5vw;
           width: 90%;
           height: 27vh;
@@ -252,12 +252,14 @@ page-motor {
           border-radius:10px;
           background:#ffffff;
           z-index: 9000;
+        }
 
-
+        .cameraIcon{
+          font-size: 160px
         }
 
         .nextBtn3, .backBtn3{
-          margin-top: 10vh;
+          margin-top: 5vh;
         }
 
       }
