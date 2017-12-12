@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
-import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+import { CameraPreview, CameraPreviewOptions } from '@ionic-native/camera-preview';
 
 /**
  * Generated class for the CameraModelPage page.
@@ -13,11 +13,11 @@ import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, Camer
 @Component({
   selector: 'page-camera-model',
   templateUrl: 'camera-model.html',
+  providers: [CameraPreview]
 })
 export class CameraModelPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private cameraPreview: CameraPreview, public viewCtrl: ViewController ) {
-
     // camera options (Size and location). In the following example, the preview uses the rear camera and display the preview in the back of the webview
     const cameraPreviewOpts: CameraPreviewOptions = {
       x: 0,
@@ -31,12 +31,12 @@ export class CameraModelPage {
       alpha: 1
     };
 
-    // picture options
-    const pictureOpts: CameraPreviewPictureOptions = {
-      width: 1280,
-      height: 1280,
-      quality: 85
-    }
+    // // picture options
+    // const pictureOpts: CameraPreviewPictureOptions = {
+    //   width: 1280,
+    //   height: 1280,
+    //   quality: 85
+    // }
 
     // start camera
     this.cameraPreview.startCamera(cameraPreviewOpts).then(
