@@ -185,4 +185,29 @@ export class MotorPage {
     }, (err) => { });
     }
 
+  submit(){
+    if(this.policyInput && this.nameInput && this.numberInput){
+
+    } else {
+      this.slides.slideTo(0);
+      return;
+    }
+
+    if(this.myDate && this.address){
+
+    } else {
+      this.slides.slideTo(1);
+      return;
+    }
+
+
+
+    if(this.options && this.images){
+
+    } else {
+      return;
+    }
+
+  }
+
 }
