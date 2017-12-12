@@ -50,7 +50,7 @@ page-motor {
   .slideContainer{
     background: linear-gradient(to bottom right, #3a7bd5 0%, #409cf6 100%);
 
-    .cancelBtn, .backBtn, .backBtn2, .backBtn3{
+    .cancelBtn, .backBtn, .backBtn2, .backBtn3, .backBtn5{
       font-size: 18px;
       color: #ecf0f1;
       background: #f58f84;
@@ -93,7 +93,7 @@ page-motor {
       border: none;
       border-radius: 5px;
       box-shadow: 0px 0px 4px #aeaeae;
-      margin-top: 10vh;
+      margin-top: 39vh;
       width: 38vw;
       height: 9vh;
     }
@@ -290,14 +290,11 @@ page-motor {
         border-radius: 5px;
         box-shadow: 0px 0px 10px #006442;
 
-        .stepFiveBtns{
+        .stepFiveBtns1, .stepFiveBtns2, .stepFiveBtns3{
           font-size: 18px;
           color: #ecf0f1;
           background: #606060;
-          padding-top: 3vh;
-          padding-bottom: 3vh;
-          padding-left: 4vw;
-          padding-right: 4vw;
+
           border: none;
           border-radius: 5px;
           box-shadow: 0px 0px 4px #aeaeae;
@@ -305,7 +302,12 @@ page-motor {
           margin-left: 1vw;
           width: 24vw;
           height: 13vh;
+          i{
+            text-align: center;
+            font-size: 70px;
+          }
         }
+
         .imagePick{
           margin-top:5vh;
           width:100%;
@@ -375,6 +377,11 @@ page-motor {
           border-radius: 5px;
         }
       }
+
+      .backbtn5{
+        margin-top: 15vh;
+      }
+
     }
   }
 }
