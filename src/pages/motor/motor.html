@@ -138,15 +138,20 @@
     <ion-slide class= "stepFour">
       <div class="stepFourCard">
 
-        <p class="photoInfoFourCard">
+        <p style="font-family:Arial;" class="photoInfoFourCard">
           Tap below to add a photo of the other drivers license
         </p>
 
-        <button class="backBtn" (click)="previousCard()">
+        <div class="cameraModel" (click)="openCameraModel()">
+          <i class="icon icon-camera cameraIcon">
+          </i>
+        </div>
+
+        <button class="backBtn4" (click)="previousCard()">
           Back
         </button>
 
-        <button class="nextBtn" (click)="nextCard()">
+        <button class="nextBtn4" (click)="nextCard()">
           Next
         </button>
 
