@@ -43,6 +43,9 @@ export class MotorPage {
   myDate: any;
   address: any;
 
+  //card 3
+  selfLicense: any;
+
   //card 5
   options: any;
   images: any;
@@ -54,18 +57,28 @@ export class MotorPage {
     private base64: Base64, public loadingCtrl: LoadingController, public modal: ModalController,
     private camera: Camera, private emailComposer: EmailComposer) {
     this.currentCard = 0;
-    this.address = "Enter an address"
 
     this.policy_input = "Policy Number";
     this.name_input = "Your Name";
     this.number_input = "Contact Number (+61)";
 
+    this.address = "Enter an address"
+
+
+
     this.options = null;
     this.images = [];
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MotorPage');
+  }
+
+  ionViewDidEnter(){
+    this.selfLicense = this.navParams.get('pic');
+    console.log("pic");
+    console.log(this.navParams.get('test'));
   }
 
   slideChanged() {
@@ -100,6 +113,7 @@ export class MotorPage {
   //card 3 camera model
   openCameraModel(){
     this.navCtrl.push(CameraModelPage);
+    console.log("hey")
   }
 
   //step 3 (card 2) of motor
@@ -153,18 +167,17 @@ export class MotorPage {
   openCamera(){
 
     const options: CameraOptions = {
-    quality: 100,
-    destinationType: this.camera.DestinationType.DATA_URL,
-    encodingType: this.camera.EncodingType.JPEG,
-    mediaType: this.camera.MediaType.PICTURE
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
     }
 
     this.camera.getPicture(options).then((imageData) => {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64:
      let base64Image = 'data:image/jpeg;base64,' + imageData;
-     this.images.push({
-       pic: base64Image});
+     this.images.push(base64Image);
     }, (err) => {
      // Handle error
     });
@@ -174,14 +187,14 @@ export class MotorPage {
     const loading = this.loadingCtrl.create({
     content: 'Please wait...'
     });
-    loading.present();
+
     this.imagePicker.getPictures(this.options).then((results) => {
+    loading.present();
     for (var i = 0; i < results.length; i++) {
 
           this.base64.encodeFile(results[i]).then((base64File: string) => {
             //console.log(base64File);
-            this.images.push({
-            pic: base64File});
+            this.images.push(base64File);
           }, (err) => {
             console.log(err);
           });

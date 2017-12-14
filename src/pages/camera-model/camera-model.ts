@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, AlertController } from 'ionic-angular';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 import { Ng2ImgToolsService } from 'ng2-img-tools';
+import { MotorPage } from '../motor/motor';
 
 
 
@@ -21,7 +22,7 @@ export class CameraModelPage {
 
   picture: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private cameraPreview: CameraPreview, public plt: Platform, private ng2ImgToolsService: Ng2ImgToolsService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private cameraPreview: CameraPreview, public plt: Platform, private ng2ImgToolsService: Ng2ImgToolsService, private alertCtrl: AlertController) {
 
     this.plt.ready().then(()=> {
        let options = {
@@ -64,26 +65,51 @@ export class CameraModelPage {
     // take a picture
     this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
       this.picture = 'data:image/jpeg;base64,' + imageData;
-      console.log(this.picture);
-      var blob = new Blob([this.picture], {type: 'image/png'});
-      var file = new File([blob], 'imageFileName.png');
+      // console.log(this.picture);
+      // var blob = new Blob([this.picture], {type: 'image/png'});
+      // var file = new File([blob], 'imageFileName.png');
+      //
+      // var image = new Image();
+      // image.src = this.picture;
+      //
+      // console.log(file);
+      // this.ng2ImgToolsService.resize([file], 100, 100).subscribe(result => {
+      //     //all good, result is a file
+      //     console.info(result);
+      //     console.log("test 2");
+      // }, error => {
+      //   console.log("error in resizing")
+      //     //something went wrong
+      //     //use result.compressedFile or handle specific error cases individually
+      // });
 
-      var image = new Image();
-      image.src = this.picture;
-
-      console.log(file);
-      this.ng2ImgToolsService.resize([file], 100, 100).subscribe(result => {
-          //all good, result is a file
-          console.info(result);
-          console.log("test 2");
-      }, error => {
-        console.log("error in resizing")
-          //something went wrong
-          //use result.compressedFile or handle specific error cases individually
+      let alert = this.alertCtrl.create({
+        title: 'Use this picture?',
+        message: '<img src="this.picture"/>',
+        buttons: [
+          {
+            text: 'Retake',
+            role: 'cancel',
+            handler: () => {
+              this.picture = null;
+            }
+          },
+          {
+            text: 'Confirm',
+            handler: () => {
+              this.cameraPreview.stopCamera();
+              this.navCtrl.popTo(MotorPage, {
+                pic: this.picture,
+                test: 'test'
+              });
+            }
+          }
+        ]
       });
+      alert.present();
     }, (err) => {
       console.log(err);
-      this.picture = 'assets/img/test.jpg';
+      this.picture = null;
     });
 
     console.log("test 1");
@@ -92,18 +118,13 @@ export class CameraModelPage {
 
     console.log("test 3");
 
-
-
-  }
-
-  submit(){
-    this.cameraPreview.stopCamera();
-    this.navCtrl.pop();
   }
 
   cancel(){
     this.cameraPreview.stopCamera();
-    this.navCtrl.pop();
+    this.navCtrl.popTo(MotorPage, {
+      test: "test"
+    });
   }
 
 

@@ -7,12 +7,10 @@
 
 <ion-content padding class="no-scroll">
 
-  <button (click)="submit()">Submit</button>
+  <button class="cancelBtn" (click)="cancel()"><i class="icon icon-close"></i></button>
 
   <div class="licenseTemplate"></div>
 
   <button (click)="takePicture()" class="takePic"><i class="icon icon-camera"></i></button>
-
-  <img src="{{picture}}" />
 
 </ion-content>
