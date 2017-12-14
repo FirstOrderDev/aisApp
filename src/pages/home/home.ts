@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { MotorPage } from '../motor/motor';
 import { TravelPage } from '../travel/travel';
 import { PropertyPage } from '../property/property';
+import { SettingsPage } from '../settings/settings';
 
 
 @Component({
@@ -26,6 +27,10 @@ export class HomePage {
     else if(cardTapped=='Property'){
       this.navCtrl.push(PropertyPage);
     }
+    else if(cardTapped=='Settings'){
+      this.navCtrl.push(SettingsPage);
+    }
+
 
 
   }
