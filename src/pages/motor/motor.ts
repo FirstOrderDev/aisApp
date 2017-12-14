@@ -99,11 +99,7 @@ export class MotorPage {
 
   //card 3 camera model
   openCameraModel(){
-    let cameraModel = this.modal.create(CameraModelPage)
-    cameraModel.onDidDismiss(data => {
-     console.log(data);
-    });
-    cameraModel.present();
+    this.navCtrl.push(CameraModelPage);
   }
 
   //step 3 (card 2) of motor

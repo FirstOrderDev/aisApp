@@ -18,6 +18,7 @@ import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { CameraPreview } from '@ionic-native/camera-preview';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { Ng2ImgToolsModule } from 'ng2-img-tools';
 
 
 @NgModule({
@@ -28,10 +29,10 @@ import { EmailComposer } from '@ionic-native/email-composer';
     MotorPage,
     PropertyPage,
     CameraModelPage
-
   ],
   imports: [
     BrowserModule,
+    Ng2ImgToolsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -42,8 +43,6 @@ import { EmailComposer } from '@ionic-native/email-composer';
     MotorPage,
     PropertyPage,
     CameraModelPage
-
-
   ],
   providers: [
     StatusBar,
