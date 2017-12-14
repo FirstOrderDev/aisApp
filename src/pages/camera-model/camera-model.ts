@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, Platform, AlertController } from '
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 import { Ng2ImgToolsService } from 'ng2-img-tools';
 import { MotorPage } from '../motor/motor';
+import { Storage } from '@ionic/storage';
 
 
 
@@ -22,7 +23,7 @@ export class CameraModelPage {
 
   picture: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private cameraPreview: CameraPreview, public plt: Platform, private ng2ImgToolsService: Ng2ImgToolsService, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private cameraPreview: CameraPreview, public plt: Platform, private ng2ImgToolsService: Ng2ImgToolsService, private alertCtrl: AlertController, private storage: Storage) {
 
     this.plt.ready().then(()=> {
        let options = {
@@ -98,10 +99,8 @@ export class CameraModelPage {
             text: 'Confirm',
             handler: () => {
               this.cameraPreview.stopCamera();
-              this.navCtrl.popTo(MotorPage, {
-                pic: this.picture,
-                test: 'test'
-              });
+              storage.set('pic', this.picture);
+              this.navCtrl.pop();
             }
           }
         ]
@@ -122,9 +121,7 @@ export class CameraModelPage {
 
   cancel(){
     this.cameraPreview.stopCamera();
-    this.navCtrl.popTo(MotorPage, {
-      test: "test"
-    });
+    this.navCtrl.pop()
   }
 
 

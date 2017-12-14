@@ -64,8 +64,6 @@ export class MotorPage {
 
     this.address = "Enter an address"
 
-
-
     this.options = null;
     this.images = [];
 
@@ -76,14 +74,15 @@ export class MotorPage {
   }
 
   ionViewDidEnter(){
-    this.selfLicense = this.navParams.get('pic');
+    storage.get('pic').then((val) => {
+      console.log('Your pic is', val);
+      this.selfLicense = val;
+    });
     console.log("pic");
-    console.log(this.navParams.get('test'));
   }
 
   slideChanged() {
     this.currentCard = this.slides.getActiveIndex();
-
   }
 
   nextCard() {

@@ -19,6 +19,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { CameraPreview } from '@ionic-native/camera-preview';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { Ng2ImgToolsModule } from 'ng2-img-tools';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { Ng2ImgToolsModule } from 'ng2-img-tools';
   imports: [
     BrowserModule,
     Ng2ImgToolsModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
