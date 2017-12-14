@@ -99,7 +99,7 @@ export class CameraModelPage {
             text: 'Confirm',
             handler: () => {
               this.cameraPreview.stopCamera();
-              storage.set('pic', this.picture);
+              this.storage.set('pic', this.picture);
               this.navCtrl.pop();
             }
           }

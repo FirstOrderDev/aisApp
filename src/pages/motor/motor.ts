@@ -11,6 +11,7 @@ import { Base64 } from '@ionic-native/base64';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { CameraModelPage } from '../camera-model/camera-model';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { Storage } from '@ionic/storage';
 
 
 
@@ -55,7 +56,7 @@ export class MotorPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController, private imagePicker: ImagePicker,
     private base64: Base64, public loadingCtrl: LoadingController, public modal: ModalController,
-    private camera: Camera, private emailComposer: EmailComposer) {
+    private camera: Camera, private emailComposer: EmailComposer, private storage: Storage) {
     this.currentCard = 0;
 
     this.policy_input = "Policy Number";
@@ -74,7 +75,7 @@ export class MotorPage {
   }
 
   ionViewDidEnter(){
-    storage.get('pic').then((val) => {
+    this.storage.get('pic').then((val) => {
       console.log('Your pic is', val);
       this.selfLicense = val;
     });
