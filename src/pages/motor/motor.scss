@@ -148,6 +148,10 @@ page-motor {
            border-bottom: 1px solid #aeaeae;
            width: 75vw;
          }
+
+         ::placeholder {
+           color: #7c7c7c;
+         }
        }
      }
     .stepTwo{

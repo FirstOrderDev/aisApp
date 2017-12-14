@@ -235,7 +235,10 @@ export class MotorPage {
 
       ],
       subject: 'Cordova Icons',
-      body: 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput,
+      body: 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput
+      + '<br />' + 'Contact Number: ' + this.numberInput + '<br />' + '<br />'
+      + 'Date of incident: ' + this.myDate + '<br />' + 'Address of incident: ' + this.address
+      + '<br />',
       isHtml: true
     };
 
