@@ -19,12 +19,9 @@ import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { CameraPreview } from '@ionic-native/camera-preview';
 import { EmailComposer } from '@ionic-native/email-composer';
-<<<<<<< HEAD
 import { SocialSharing } from '@ionic-native/social-sharing';
-=======
 import { Ng2ImgToolsModule } from 'ng2-img-tools';
 import { IonicStorageModule } from '@ionic/storage';
->>>>>>> ad57585340b89a4a495f42de8f8029da599bb7da
 
 
 @NgModule({
