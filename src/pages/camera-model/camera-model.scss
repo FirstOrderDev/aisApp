@@ -1,3 +1,61 @@
 page-camera-model {
 
+  .no-scroll .scroll-content{
+    overflow: hidden;
+  }
+
+  .cancelBtn{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    right: 8vw;
+    top:5vh;
+    text-align: center;
+    background: #D24D57;
+    color: white;
+    font-size: 15px;
+    i{
+      position: absolute;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      left:0;
+      right:0;
+      top: 1.6vh;
+
+    }
+  }
+
+  .licenseTemplate{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 90vw;
+    height: 35vh;
+    top: 20vh;
+    border: 2px solid white;
+    border-radius: 10px;
+
+  }
+
+  .takePic{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left:0;
+    right:0;
+    text-align: center;
+    bottom: 10vh;
+    width: 85vw;
+    height: 7vh;
+    border-radius: 40px;
+    font-size: 35px;
+    background-color: #424242;
+    color: #aeaeae;
+  }
+
 }
