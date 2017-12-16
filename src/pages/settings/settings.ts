@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 /**
  * Generated class for the SettingsPage page.
@@ -15,7 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public sharing: SocialSharing) {
   }
 
   ionViewDidLoad() {
@@ -24,6 +25,22 @@ export class SettingsPage {
 
   cancel() {
     this.navCtrl.pop();
+  }
+
+  facebookShare() {
+    this.sharing.shareViaFacebook().then(() => {
+      // Success!
+    }).catch(() => {
+      // Error!
+    });
+  }
+
+  smsShare() {
+    this.sharing.shareViaSMS().then(() => {
+      // Success!
+    }).catch(() => {
+      // Error!
+    });
   }
 
 

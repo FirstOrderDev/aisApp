@@ -19,6 +19,7 @@ import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { CameraPreview } from '@ionic-native/camera-preview';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
     ImagePicker,
     CameraPreview,
     EmailComposer,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
