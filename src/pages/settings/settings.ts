@@ -28,7 +28,8 @@ export class SettingsPage {
   }
 
   facebookShare() {
-    this.sharing.shareViaFacebook().then(() => {
+    this.sharing.shareViaFacebook(null,null,null)
+    .then(() => {
       // Success!
     }).catch(() => {
       // Error!
@@ -36,10 +37,11 @@ export class SettingsPage {
   }
 
   smsShare() {
-    this.sharing.shareViaSMS().then(() => {
-      // Success!
-    }).catch(() => {
-      // Error!
+    this.sharing.shareViaSMS(null,null)
+    .then(() => {
+      console.log("Message sent!");
+    }).catch((error) => {
+      console.log(error);
     });
   }
 
