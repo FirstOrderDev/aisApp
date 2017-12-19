@@ -8,7 +8,7 @@ page-motor {
   .circle1White, .circle2White, .circle3White, .circle4White, .circle5White, .circle1Black, .circle2Black, .circle3Black, .circle4Black, .circle5Black{
     position: absolute;
     left: 5vw;
-    top: 4vh;
+    top: 5.5vh;
     background: none;
     border: 1px solid white;
     width: 8vw;
@@ -26,7 +26,7 @@ page-motor {
     padding-top: 1.1vh;
     width: 8.8vw;
     height: 4.9vh;
-    top: 2.8vh;
+    top: 4.3vh;
     font-size: 5vw;
   }
 
@@ -242,7 +242,8 @@ page-motor {
           width: 100%;
           padding: 10px 15px;
           border-radius: 6px;
-          background: #243A56;
+          border: none;
+          background: #4B77BE;
           color: #aeaeae;
         }
 
@@ -259,6 +260,11 @@ page-motor {
 
         .cameraIcon{
           font-size: 160px
+        }
+
+        .selfLicensePic{
+          width: 85%;
+          object-fit: cover;
         }
 
         .nextBtn3, .backBtn3{
@@ -283,7 +289,7 @@ page-motor {
       }
 
       .photoInfoFourCard{
-        padding-top: 26vh;
+        padding-top: 10vh;
         font-size: 75%;
         color:#aeaeae
 
@@ -305,7 +311,7 @@ page-motor {
       }
 
       .nextBtn4, .backBtn4{
-        margin-top: 10vh;
+        margin-top: 24vh;
       }
     }
 

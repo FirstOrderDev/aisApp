@@ -4,7 +4,7 @@ import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, Camer
 import { Ng2ImgToolsService } from 'ng2-img-tools';
 import { MotorPage } from '../motor/motor';
 import { Storage } from '@ionic/storage';
-
+import { LicenseConfrimPage } from '../license-confrim/license-confrim';
 
 
 /**
@@ -22,8 +22,11 @@ import { Storage } from '@ionic/storage';
 export class CameraModelPage {
 
   picture: any;
+  who: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private cameraPreview: CameraPreview, public plt: Platform, private ng2ImgToolsService: Ng2ImgToolsService, private alertCtrl: AlertController, private storage: Storage) {
+
+    this.who = this.navParams.get('who');
 
     this.plt.ready().then(()=> {
        let options = {
@@ -58,10 +61,14 @@ export class CameraModelPage {
   takePicture(){
 
     let pictureOpts = {
-      width: window.screen.width,
-      height: window.screen.height,
-      quality: 100
+      width: 1280,
+      height: 1280,
+      quality: 85
     }
+    // this.navCtrl.push(LicenseConfrimPage, {
+    //   pictureTaken: this.picture,
+    //   who: this.who
+    // })
 
     // take a picture
     this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
@@ -84,28 +91,32 @@ export class CameraModelPage {
       //     //use result.compressedFile or handle specific error cases individually
       // });
 
-      let alert = this.alertCtrl.create({
-        title: 'Use this picture?',
-        message: '<img src="this.picture"/>',
-        buttons: [
-          {
-            text: 'Retake',
-            role: 'cancel',
-            handler: () => {
-              this.picture = null;
-            }
-          },
-          {
-            text: 'Confirm',
-            handler: () => {
-              this.cameraPreview.stopCamera();
-              this.storage.set('pic', this.picture);
-              this.navCtrl.pop();
-            }
-          }
-        ]
-      });
-      alert.present();
+      // let alert = this.alertCtrl.create({
+      //   title: 'Use this picture?',
+      //   template: '<img src="{{.picture}}"/>',
+      //   buttons: [
+      //     {
+      //       text: 'Retake',
+      //       role: 'cancel',
+      //       handler: () => {
+      //         this.picture = null;
+      //       }
+      //     },
+      //     {
+      //       text: 'Confirm',
+      //       handler: () => {
+      //         this.cameraPreview.stopCamera();
+      //         this.storage.set('pic', this.picture);
+      //         this.navCtrl.pop();
+      //       }
+      //     }
+      //   ]
+      // });
+      // alert.present();
+      this.navCtrl.push(LicenseConfrimPage, {
+        pictureTaken: this.picture,
+        who: this.who
+      })
     }, (err) => {
       console.log(err);
       this.picture = null;

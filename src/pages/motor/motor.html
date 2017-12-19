@@ -66,7 +66,7 @@
 
         <ion-item class="dateBox" no-lines>
           <ion-label><i class="icon icon-calendar"></i></ion-label>
-          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate">
+          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate">
           </ion-datetime>
         </ion-item>
 
@@ -107,9 +107,9 @@
           <div class="select">
             <select [(ngModel)]="selectedValue">
               <option >--Select--</option>
-              <option [value]="'Car Crash'">Car Crash</option>
-              <option [value]="'Obstacle Collision'">Obstacle Collision</option>
-              <option [value]="'Other'">Other</option>
+              <option [value]="'Car Crash'">At fault accident</option>
+              <option [value]="'Obstacle Collision'">3rd party at fault</option>
+              <option [value]="'Other'">Fault in dispute</option>
             </select>
           </div>
 
@@ -117,12 +117,14 @@
             Tap below to add a photo of your drivers license
           </p>
 
-          <div class="cameraModel" (click)="openCameraModel()">
+          <div class="cameraModel" (click)="openCameraModel('self')">
             <i class="icon icon-camera cameraIcon" *ngIf="!selfLicense">
             </i>
 
-            <img src="selfLicense" *ngIf="selfLicense"/>
+            <img src="{{selfLicense}}" *ngIf="selfLicense" class="selfLicensePic"/>
           </div>
+
+          <p class="dontHaveTxt">I don't have my drivers license with me</p>
 
 
         <button class="backBtn3" (click)="previousCard()">
@@ -143,10 +145,14 @@
           Tap below to add a photo of the other drivers license
         </p>
 
-        <div class="cameraModel" (click)="openCameraModel()">
-          <i class="icon icon-camera cameraIcon">
+        <div class="cameraModel" (click)="openCameraModel('other')">
+          <i class="icon icon-camera cameraIcon" *ngIf="!otherLicense">
           </i>
+
+          <img src="{{otherLicense}}" *ngIf="otherLicense" class="selfLicensePic"/>
         </div>
+
+        <a class="dontHaveTxt">I don't have my drivers license with me</a>
 
         <button class="backBtn4" (click)="previousCard()">
           Back

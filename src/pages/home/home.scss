@@ -2,10 +2,18 @@
 
 page-home {
 
+  .homeselect{
+    text-align: center;
+    margin-top: 10vh;
+    font-size: 20px;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #aeaeae;
+  }
+
   ion-grid{
     // padding: 20px;
 
-    margin-top: 10vh;
+    margin-top: 6vh;
   }
 
   ion-row{
