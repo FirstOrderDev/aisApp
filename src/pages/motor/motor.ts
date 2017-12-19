@@ -43,6 +43,9 @@ export class MotorPage {
   myDate: any;
   address: any;
 
+  //card 3
+  selectedValue: any;
+
   //card 5
   options: any;
   images: any;
@@ -76,6 +79,7 @@ export class MotorPage {
   nextCard() {
     this.currentCard += 1;
     console.log(this.currentCard);
+    console.log(this.selectedValue);
 
     this.slides.slideNext();
 

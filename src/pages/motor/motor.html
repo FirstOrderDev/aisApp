@@ -105,11 +105,11 @@
         <p class="titleThreeCard">What happened?</p>
 
           <div class="select">
-            <select>
-              <option>--Select--</option>
-              <option>Car Crash</option>
-              <option>Obstacle Collision</option>
-              <option>Other</option>
+            <select [(ngModel)]="selectedValue">
+              <option >--Select--</option>
+              <option [value]="'Car Crash'">Car Crash</option>
+              <option [value]="'Obstacle Collision'">Obstacle Collision</option>
+              <option [value]="'Other'">Other</option>
             </select>
           </div>
 
