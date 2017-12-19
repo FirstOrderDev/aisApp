@@ -11,7 +11,7 @@ page-travel {
   .slideContainer{
     background: linear-gradient(to bottom right, #26a65b 0%, #26c281 100%);
 
-    .cancelBtn, .backBtn{
+    .cancelBtn, .backBtn, .backBtn2{
       font-size: 18px;
       color: #ecf0f1;
       background: #f58f84;
@@ -27,7 +27,7 @@ page-travel {
       height: 9vh;
     }
 
-    .nextBtn{
+    .nextBtn, .nextBtn2{
       font-size: 18px;
       color: #ecf0f1;
       background: #95a5a6;
@@ -67,6 +67,15 @@ page-travel {
       width: 75vw;
     }
 
+    .basicTextLeft, .basicTextLeftV6{
+      color: #6d6d6d;
+      text-align: left;
+      margin-top: 0vh;
+      margin-bottom: 1vh;
+      margin-left: 6vw;
+      padding-top: 2vh;
+    }
+
     .stepOne{
        //background: linear-gradient(to bottom right, #3a7bd5 0%, #3a6073 100%);
        .stepOneCard{
@@ -81,12 +90,16 @@ page-travel {
          border-radius: 5px;
          box-shadow: 0px 0px 10px #006442;
 
-         .policyInput, .nameInput, .contactInput{
+         .insurerInput, .nameInput, .contactInput{
            background: none;
            border: none;
            margin-top: 10vh;
            border-bottom: 1px solid #aeaeae;
            width: 75vw;
+         }
+
+         ::placeholder {
+           color: #7c7c7c;
          }
 
         .contactInput{
@@ -106,6 +119,41 @@ page-travel {
         background: #efefef;
         border-radius: 5px;
         box-shadow: 0px 0px 10px #006442;
+
+        .dateBox{
+          margin-left: auto;
+          margin-right: auto;
+          left: 0;
+          right: 0;
+          text-align: left;
+          border: none;
+          border-radius: 5px;
+          box-shadow: 0px 0px 4px #aeaeae;
+          width: 76vw;
+          height: 9vh;
+
+          i{
+            font-size: 23px;
+          }
+        }
+
+        .choice1, .choice2{
+          margin-left: auto;
+          margin-right: auto;
+          left: 0;
+          right: 0;
+          text-align: left;
+          border: none;
+          border-radius: 3px;
+          box-shadow: 0px 0px 3px #aeaeae;
+          margin-top: 1vh;
+          width: 76vw;
+          height: 6vh;
+        }
+
+        .nextBtn2, .backBtn2{
+          margin-top: 5vh;
+        }
       }
     }
     .stepThree{

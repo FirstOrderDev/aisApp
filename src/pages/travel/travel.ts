@@ -17,7 +17,21 @@ import { Slides } from 'ionic-angular';
 })
 export class TravelPage {
 
+  currentCard: number;
+
+  //card 1
   policyInput: any;
+  nameInput: any;
+  numberInput: any;
+
+  policy_input: any;
+  name_input: any;
+  number_input: any;
+
+  //card 2
+  myDate: any;
+  empOrDir: any;
+  busOrLes: any;
 
   @ViewChild(Slides) slides: Slides;
 
