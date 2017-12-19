@@ -6,9 +6,9 @@
     <ion-slide class= "stepOne">
       <div class="stepOneCard">
 
-        <input placeholder="Policy Number" class="policyInput" [(ngModel)]="policyInput"/>
-        <input placeholder="Your Name" class="nameInput"/>
-        <input placeholder="Contact Number (+61)" class="contactInput" type="tel"/>
+        <input placeholder="{{insurer_input}}" class="insurerInput" [(ngModel)]="insurerInput"/>
+        <input placeholder="{{name_input}}" class="nameInput" [(ngModel)]="nameInput"/>
+        <input placeholder="{{number_input}}" class="contactInput" type="tel" [(ngModel)]="numberInput"/>
 
         <button class="cancelBtn" (click)="cancel()">
           Cancel
@@ -24,15 +24,57 @@
     <ion-slide class= "stepTwo">
       <div class="stepTwoCard">
 
-        <input placeholder="placeholder" class="infoInputBasic" [(ngModel)]="policyInput"/>
-        <input placeholder="placeholder" class="infoInputBasic"/>
-        <input placeholder="placeholder" class="infoInputBasic" type="tel"/>
+        <ion-list radio-group [(ngModel)]="empOrDir">
 
-        <button class="backBtn" (click)="lastFromOne()">
+        <p class="basicTextLeft">
+          Are you an Employee or Director?
+        </p>
+
+        <ion-item no-lines class="choice1">
+          <ion-label>Employee</ion-label>
+          <ion-radio value="Employee"></ion-radio>
+        </ion-item>
+
+        <ion-item no-lines class="choice1">
+          <ion-label>Director</ion-label>
+          <ion-radio value="Director"></ion-radio>
+        </ion-item>
+
+        </ion-list>
+
+        <ion-list radio-group [(ngModel)]="busOrLes">
+
+        <p class="basicTextLeft">
+          Was this trip leisure or business?
+        </p>
+
+        <ion-item no-lines class="choice2">
+          <ion-label>Business</ion-label>
+          <ion-radio value="Business"></ion-radio>
+        </ion-item>
+
+        <ion-item no-lines class="choice2">
+          <ion-label>Leisure</ion-label>
+          <ion-radio value="Leisure"></ion-radio>
+        </ion-item>
+
+        </ion-list>
+
+        <p class="basicTextLeft">
+          Date of incident
+        </p>
+
+        <ion-item class="dateBox" no-lines>
+          <ion-label><i class="icon icon-calendar"></i></ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate">
+          </ion-datetime>
+        </ion-item>
+
+        <button class="backBtn2" (click)="lastFromOne()">
           Back
         </button>
 
-        <button class="nextBtn" (click)="nextFromOne()">
+        <button class="nextBtn2" (click)="nextFromOne()">
           Next
         </button>
 
@@ -42,15 +84,44 @@
     <ion-slide class= "stepThree">
       <div class="stepThreeCard">
 
-        <input placeholder="placeholder" class="infoInputBasic" [(ngModel)]="policyInput"/>
-        <input placeholder="placeholder" class="infoInputBasic"/>
-        <input placeholder="placeholder" class="infoInputBasic" type="tel"/>
+        <p class="basicTextLeft">
+          Location of incident
+        </p>
 
-        <button class="backBtn" (click)="lastFromOne()">
+        <button class="currrentLocBtn" (click)="getCurrentLoc()">
+          Use my current location
+        </button>
+
+        <p>
+          -- Or --
+        </p>
+
+        <button class="adressBox" (click)="enterAddress()">
+          {{address}}
+        </button>
+
+        <br />
+
+        <p class="basicTextLeft">
+          Reason for claim
+        </p>
+
+        <div class="select">
+          <select [(ngModel)]="selectedValue">
+            <option >--Select--</option>
+            <option [value]="'Deposit Loss'">Deposit Loss</option>
+            <option [value]="'Cancellations'">Cancellations</option>
+            <option [value]="'Accidental loss or Damage'">Accidental loss or Damage</option>
+            <option [value]="'Hire car excess'">Hire car excess</option>
+            <option [value]="'Injury'">Injury</option>
+          </select>
+        </div>
+
+        <button class="backBtn3" (click)="lastFromOne()">
           Back
         </button>
 
-        <button class="nextBtn" (click)="nextFromOne()">
+        <button class="nextBtn3" (click)="nextFromOne()">
           Next
         </button>
 

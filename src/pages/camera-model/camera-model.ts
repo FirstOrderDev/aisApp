@@ -28,6 +28,14 @@ export class CameraModelPage {
 
     this.who = this.navParams.get('who');
 
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad CameraModelPage');
+
+  }
+
+  ionViewDidEnter(){
     this.plt.ready().then(()=> {
        let options = {
          x: 0,
@@ -48,13 +56,6 @@ export class CameraModelPage {
            console.log(err)
          });
      })
-
-
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CameraModelPage');
-
   }
 
 
@@ -117,6 +118,7 @@ export class CameraModelPage {
         pictureTaken: this.picture,
         who: this.who
       })
+      this.cameraPreview.stopCamera();
     }, (err) => {
       console.log(err);
       this.picture = null;
