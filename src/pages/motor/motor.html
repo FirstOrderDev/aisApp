@@ -1,35 +1,35 @@
 
 
-<ion-content class="no-scroll">
+
 
   <ion-header>
     <!-- 1 -->
 
-    <div class="animated slideInDown circle1White" *ngIf="currentCard!=0">1</div>
+    <div class="animated slideInDown circle1White" *ngIf="currentCard!=0" (click)="this.slides.slideTo(0)">1</div>
 
-    <div class="animated slideInUp circle1Black" *ngIf="currentCard==0"> <i class="icon icon-contract"></i> </div>
+    <div class="animated slideInUp circle1Black" *ngIf="currentCard==0"> <i class="icon icon-contract" ></i> </div>
 
     <!-- 2 -->
 
-    <div class="animated slideInDown circle2White" *ngIf="currentCard!=1">2</div>
+    <div class="animated slideInDown circle2White" *ngIf="currentCard!=1" (click)="this.slides.slideTo(1)">2</div>
 
     <div class="animated slideInUp circle2Black" *ngIf="currentCard==1"> <i class="icon icon-info"></i> </div>
 
     <!-- 3 -->
 
-    <div class="animated slideInDown circle3White" *ngIf="currentCard!=2">3</div>
+    <div class="animated slideInDown circle3White" *ngIf="currentCard!=2" (click)="this.slides.slideTo(2)">3</div>
 
     <div class="animated slideInUp circle3Black" *ngIf="currentCard==2"> <i class="icon icon-license"></i> </div>
 
     <!-- 4 -->
 
-    <div class="animated slideInDown circle4White" *ngIf="currentCard!=3">4</div>
+    <div class="animated slideInDown circle4White" *ngIf="currentCard!=3" (click)="this.slides.slideTo(3)">4</div>
 
     <div class="animated slideInUp circle4Black" *ngIf="currentCard==3"> <i class="icon icon-license2"></i> </div>
 
     <!-- 5 -->
 
-    <div class="animated slideInDown circle5White" *ngIf="currentCard!=4">5</div>
+    <div class="animated slideInDown circle5White" *ngIf="currentCard!=4" (click)="this.slides.slideTo(4)">5</div>
 
     <div class="animated slideInUp circle5Black" *ngIf="currentCard==4"> <i class="icon icon-evidence"></i> </div>
 
@@ -118,9 +118,10 @@
           </p>
 
           <div class="cameraModel" (click)="openCameraModel()">
-            <i class="icon icon-camera cameraIcon">
+            <i class="icon icon-camera cameraIcon" *ngIf="!selfLicense">
             </i>
 
+            <img src="selfLicense" *ngIf="selfLicense"/>
           </div>
 
 
@@ -161,10 +162,6 @@
     <ion-slide class= "stepFive">
       <div class="stepFiveCard">
 
-        <p class="basicTextLeft">
-          Tap to add photos from your gallery or camera
-        </p>
-
         <button class="stepFiveBtns1" (click)="select()">
           <i class="icon icon-gallery"></i>
         </button>
@@ -179,38 +176,22 @@
 
         <br />
 
-        <!-- <div class="imageGrid">
-          <div class="one-image" *ngFor="let image of images">
-            <img src="{{image}}">
-          </div>
-        </div> -->
+        <p class="emptyText" *ngIf="images.length<1">
+          Tap the buttons above to insert or take pictures of the accident.
+        </p>
 
-        <!-- <ion-grid class="imageGrid">
-          <ion-row>
-            <ion-col col-6 col-md-4 col-xl-3 *ngFor="let image of images">
-              <div class="image-container" [style.background-image]="image.value"></div>
-            </ion-col>
-          </ion-row>
-        </ion-grid> -->
+        <i class="icon icon-camera cameraIconUpload" *ngIf="images.length<1"></i>
 
-        <div class="galleryContent">
-          <ion-content>
-            <div class="spacebrick"></div>
-            <ion-grid class="imageGrid">
-              <ion-row>
-                <ion-col *ngFor="let image of images; let i = index" col-4>
-                  <!-- <p class="imageTitle"># {{i+1}}</p>
-                  <button class="detailsButton" (click)="openImageSettings(i)">
-                    <i class="icon icon-add detailsIcon"></i>
-                  </button> -->
-                  <div class="image-container" [style.background-image]="image.value">
-                    <img [src]="image.pic" width="80">
-                  </div>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-content>
-        </div>
+        <ion-grid class="imageGrid">
+            <ion-content>
+            <ion-row>
+              <ion-col col-3 col-sm col-xs *ngFor="let image of images">
+                <div class="image-container" [style.background-image]="'url(' + image + ')'"></div>
+              </ion-col>
+            </ion-row>
+            </ion-content>
+        </ion-grid>
+
 
         <button class="backBtn5" (click)="previousCard()">
           Back
@@ -224,5 +205,3 @@
     </ion-slide>
 
   </ion-slides>
-
-</ion-content>

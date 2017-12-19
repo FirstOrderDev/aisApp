@@ -1,0 +1,23 @@
+<ion-content class="no-scroll">
+
+  <ion-navbar>
+  <ion-title>SettingsPage</ion-title>
+  </ion-navbar>
+
+        <ion-item-group>
+          <ion-item-divider>Settings</ion-item-divider>
+          <ion-item class="facebookShareBtn" (click)="facebookShare()">Share to Facebook</ion-item>
+          <ion-item class="smsShareBtn" (click)="smsShare()">Share via text</ion-item>
+          <ion-item>Privacy Policy</ion-item>
+          <ion-item>Terms and Conditions</ion-item>
+          <ion-item>Report Bug</ion-item>
+        </ion-item-group>
+
+
+        <button class="cancelBtn" (click)="cancel()">
+          Back
+        </button>
+
+
+
+    </ion-slide>

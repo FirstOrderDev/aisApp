@@ -10,6 +10,7 @@ import { TravelPage } from '../pages/travel/travel';
 import { MotorPage } from '../pages/motor/motor';
 import { PropertyPage } from '../pages/property/property';
 import { CameraModelPage } from '../pages/camera-model/camera-model';
+import { SettingsPage } from '../pages/settings/settings';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
@@ -18,6 +19,9 @@ import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { CameraPreview } from '@ionic-native/camera-preview';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Ng2ImgToolsModule } from 'ng2-img-tools';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -27,12 +31,15 @@ import { EmailComposer } from '@ionic-native/email-composer';
     TravelPage,
     MotorPage,
     PropertyPage,
-    CameraModelPage
+    CameraModelPage,
+    SettingsPage
 
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    Ng2ImgToolsModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,7 +48,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
     TravelPage,
     MotorPage,
     PropertyPage,
-    CameraModelPage
+    CameraModelPage,
+    SettingsPage
 
 
   ],
@@ -55,6 +63,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
     ImagePicker,
     CameraPreview,
     EmailComposer,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
