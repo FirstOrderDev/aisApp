@@ -144,16 +144,13 @@
         Below, you may add additional information to your claim.
         If you have already reported your claim to the police,
         please add the police event number to your additional information.
+        If not, feel free to move to the next slide.
       </p>
 
-      <div class="cameraModel" (click)="openCameraModel('other')">
-        <i class="icon icon-camera cameraIcon" *ngIf="!otherLicense">
-        </i>
 
-        <img src="{{otherLicense}}" *ngIf="otherLicense" class="selfLicensePic"/>
-      </div>
 
-      <a class="dontHaveTxt">I don't have my drivers license with me</a>
+      <textarea class=infoTextArea placeholder="Enter additional information here.." cols="30"
+      rows="10"></textarea>
 
       <button class="backBtn4" (click)="previousCard()">
         Back
