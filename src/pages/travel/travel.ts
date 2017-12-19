@@ -47,7 +47,7 @@ export class TravelPage {
     private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController) {
       this.currentCard = 0;
 
-      this.insurer_input = "Policy Number";
+      this.insurer_input = "Insurer's Name";
       this.name_input = "Your Name";
       this.number_input = "Contact Number (+61)";
 
