@@ -255,28 +255,35 @@ export class MotorPage {
       return;
     }*/
 
+
+
     this.emailComposer.isAvailable().then((available: boolean) =>{
-    if(available) {
-       //Now we know we can send
-     }
+      if(available) {}
     });
 
-    let email = {
-      to: 'harrison.croaker@hotmail.com',
-      attachments: [
-        'this.selfLicense'
-      ],
-      subject: 'Claim from the mobile app',
-      body: 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput
-      + '<br />' + 'Contact Number: ' + this.numberInput + '<br />' + 'Date of incident: ' +
-      this.myDate + '<br />' + 'Address of incident: ' + this.address + '<br />' + 'What Happend: '
-      + this.selectedValue,
 
-      isHtml: true
-    };
+
+     let mail = {
+       to: 'firstordercontact@gmail.com',
+       attachments: [
+         this.selfLicense
+       ],
+       subject: 'Claim from the mobile app',
+       body: 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput
+       + '<br />' + 'Contact Number: ' + this.numberInput + '<br />' + 'Date of incident: ' +
+       this.myDate + '<br />' + 'Address of incident: ' + this.address + '<br />' + 'What Happend: '
+       + this.selectedValue,
+
+       isHtml: true
+     };
+
+      //Now we know we can send
+      this.emailComposer.open(mail);
+
+
 
     // Send a text message using default options
-    this.emailComposer.open(email);
+
 
   }
 
