@@ -1,0 +1,29 @@
+page-license-confrim {
+
+  background: #ededed;
+
+  .pictureTaken{
+    width: 90vw;
+    height: 30vh;
+    object-fit: cover;
+    margin-top: 20vh
+  }
+
+  .retakeBtn{
+    margin-top: 5vh;
+    width:44vw;
+    height: 8vh;
+    background: #D24D57;
+    color: white;
+  }
+
+  .confirmBtn{
+    margin-top: 5vh;
+    width:44vw;
+    height: 8vh;
+    margin-left: 2vw;
+    background:#89C4F4;
+    color: white;
+  }
+
+}

@@ -11,6 +11,7 @@ import { MotorPage } from '../pages/motor/motor';
 import { PropertyPage } from '../pages/property/property';
 import { CameraModelPage } from '../pages/camera-model/camera-model';
 import { SettingsPage } from '../pages/settings/settings';
+import { LicenseConfrimPage } from '../pages/license-confrim/license-confrim';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
@@ -31,7 +32,8 @@ import { IonicStorageModule } from '@ionic/storage';
     MotorPage,
     PropertyPage,
     CameraModelPage,
-    SettingsPage
+    SettingsPage,
+    LicenseConfrimPage
 
   ],
   imports: [
@@ -48,7 +50,8 @@ import { IonicStorageModule } from '@ionic/storage';
     MotorPage,
     PropertyPage,
     CameraModelPage,
-    SettingsPage
+    SettingsPage,
+    LicenseConfrimPage
 
 
   ],

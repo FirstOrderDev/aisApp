@@ -45,7 +45,11 @@ export class MotorPage {
   address: any;
 
   //card 3
+  crashDetail: any;
   selfLicense: any;
+
+  //card 4
+  otherLicense: any;
 
   //card 5
   options: any;
@@ -79,6 +83,11 @@ export class MotorPage {
       console.log('Your pic is', val);
       this.selfLicense = val;
     });
+
+    this.storage.get('otherPic').then((val) => {
+      console.log('Your pic is', val);
+      this.otherLicense = val;
+    });
     console.log("pic");
   }
 
@@ -111,8 +120,17 @@ export class MotorPage {
   }
 
   //card 3 camera model
-  openCameraModel(){
-    this.navCtrl.push(CameraModelPage);
+  openCameraModel(license){
+    if(license=='self'){
+      this.navCtrl.push(CameraModelPage, {
+        who: 'self'
+      });
+    }else{
+      this.navCtrl.push(CameraModelPage, {
+        who: 'other'
+      });
+    }
+
     console.log("hey")
   }
 
@@ -245,13 +263,14 @@ export class MotorPage {
     let email = {
       to: 'harrison.croaker@hotmail.com',
       attachments: [
-
+        'this.selfLicense'
       ],
-      subject: 'Cordova Icons',
+      subject: 'Claim from the mobile app',
       body: 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput
-      + '<br />' + 'Contact Number: ' + this.numberInput + '<br />' + '<br />'
-      + 'Date of incident: ' + this.myDate + '<br />' + 'Address of incident: ' + this.address
-      + '<br />',
+      + '<br />' + 'Contact Number: ' + this.numberInput + '<br />' + 'Date of incident: ' +
+      this.myDate + '<br />' + 'Address of incident: ' + this.address + '<br />' + 'What Happend: '
+      + this.crashDetail,
+
       isHtml: true
     };
 
