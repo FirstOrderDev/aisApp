@@ -20,6 +20,7 @@ import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { CameraPreview } from '@ionic-native/camera-preview';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { SocialSharing } from '@ionic-native/social-sharing';
 import { Ng2ImgToolsModule } from 'ng2-img-tools';
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -65,6 +66,7 @@ import { IonicStorageModule } from '@ionic/storage';
     ImagePicker,
     CameraPreview,
     EmailComposer,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

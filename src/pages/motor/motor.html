@@ -105,12 +105,11 @@
         <p class="titleThreeCard">What happened?</p>
 
           <div class="select">
-            <select [(ngModel)]="crashDetail">
-              <option>--Select--</option>
-              <option [ngValue]="'Someone Crashed Into me'">Someone Crashed Into me</option>
-              <option [ngValue]="'I Crashed Into Someone'">I Crashed Into Someone</option>
-              <option [ngValue]="'Obstacle Collision'">Obstacle Collision</option>
-              <option [ngValue]="'Other'">Other</option>
+            <select [(ngModel)]="selectedValue">
+              <option >--Select--</option>
+              <option [value]="'Car Crash'">At fault accident</option>
+              <option [value]="'Obstacle Collision'">3rd party at fault</option>
+              <option [value]="'Other'">Fault in dispute</option>
             </select>
           </div>
 
