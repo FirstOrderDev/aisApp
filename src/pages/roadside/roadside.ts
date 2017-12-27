@@ -126,7 +126,7 @@ export class RoadsidePage {
     console.log("hey")
   }
 
-  //step 3 (card 2) 
+  //step 3 (card 2)
 
   getCurrentLoc(){
     this.geolocation.getCurrentPosition().then((resp) => {
