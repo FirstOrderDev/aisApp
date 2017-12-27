@@ -103,14 +103,16 @@
         <div class="select">
           <select [(ngModel)]="selectedValue">
             <option >--Select--</option>
-            <option [value]="'Car Crash'">At fault accident</option>
-            <option [value]="'Obstacle Collision'">3rd party at fault</option>
-            <option [value]="'Other'">Fault in dispute</option>
+            <option [value]="'Need tow'">I need a tow truck</option>
+            <option [value]="'Need petrol'">My car has run out of petrol</option>
+            <option [value]="'Need assistance'">I am in need of mechanical assistance</option>
+            <option [value]="'Other'">Other</option>
           </select>
         </div>
 
         <p class="photoInfoThreeCard">
-          Tap below to add a photo of your drivers license
+          Tap below to add a photo to your claim.
+          This may help us better understand the situation so that we may help accordingly.
         </p>
 
         <div class="cameraModel" (click)="openCameraModel('self')">
@@ -120,7 +122,7 @@
           <img src="{{selfLicense}}" *ngIf="selfLicense" class="selfLicensePic"/>
         </div>
 
-        <p class="dontHaveTxt">I don't have my drivers license with me</p>
+
 
 
       <button class="backBtn3" (click)="previousCard()">
