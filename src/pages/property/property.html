@@ -148,9 +148,24 @@
       </p>
 
 
+      <!-- textbox  -->
+    <!-- <ion-item>
+      <ion-textarea
+        class="infoTextArea"
+        placeholder="Enter additional information here.."
+        [(ngModel)]="note" name="note">
+      </ion-textarea>
+    </ion-item> -->
 
-      <textarea class=infoTextArea placeholder="Enter additional information here.." cols="30"
-      rows="10"></textarea>
+      <textarea
+      class="infoTextArea"
+      placeholder="Enter additional information here.."
+      cols="30"
+      rows="10">
+      [(ngModel)]="infoText"
+      </textarea>
+
+
 
       <button class="backBtn4" (click)="previousCard()">
         Back
