@@ -13,6 +13,7 @@ import { CameraModelPage } from '../pages/camera-model/camera-model';
 import { SettingsPage } from '../pages/settings/settings';
 import { RoadsidePage } from '../pages/roadside/roadside';
 import { LicenseConfrimPage } from '../pages/license-confrim/license-confrim';
+import { AdditionalInfoPopoverPage } from '../pages/additional-info-popover/additional-info-popover';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
@@ -24,6 +25,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Ng2ImgToolsModule } from 'ng2-img-tools';
 import { IonicStorageModule } from '@ionic/storage';
+import { PopoverController } from 'ionic-angular';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { IonicStorageModule } from '@ionic/storage';
     CameraModelPage,
     SettingsPage,
     RoadsidePage,
-    LicenseConfrimPage
+    LicenseConfrimPage,
+    AdditionalInfoPopoverPage
 
   ],
   imports: [
@@ -55,7 +58,8 @@ import { IonicStorageModule } from '@ionic/storage';
     CameraModelPage,
     SettingsPage,
     RoadsidePage,
-    LicenseConfrimPage
+    LicenseConfrimPage,
+    AdditionalInfoPopoverPage
 
 
   ],
