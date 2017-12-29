@@ -61,6 +61,10 @@ export class MotorPage {
     private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController, private imagePicker: ImagePicker,
     private base64: Base64, public loadingCtrl: LoadingController, public modal: ModalController,
     private camera: Camera, private emailComposer: EmailComposer, private storage: Storage) {
+
+    this.storage.set('pic', null);
+    this.storage.set('otherPic', null);
+
     this.currentCard = 0;
 
     this.policy_input = "Policy Number";
@@ -82,11 +86,19 @@ export class MotorPage {
     this.storage.get('pic').then((val) => {
       console.log('Your pic is', val);
       this.selfLicense = val;
+      if(this.selfLicense){
+        this.images.push(this.selfLicense)
+      }
+
     });
 
     this.storage.get('otherPic').then((val) => {
       console.log('Your pic is', val);
       this.otherLicense = val;
+      if(this.otherLicense){
+        this.images.push(this.otherLicense)
+      }
+
     });
     console.log("pic");
   }
@@ -264,9 +276,9 @@ export class MotorPage {
 
 
      let mail = {
-       to: 'firstordercontact@gmail.com',
+       to: 'harrison_croaker@hotmail.com',
        attachments: [
-         this.selfLicense
+         'base64:'+ this.selfLicense
        ],
        subject: 'Claim from the mobile app',
        body: 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput
