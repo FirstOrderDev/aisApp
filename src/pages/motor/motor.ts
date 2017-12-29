@@ -55,6 +55,8 @@ export class MotorPage {
   options: any;
   images: any;
 
+  otherImages: any;
+
   @ViewChild(Slides) slides: Slides;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation,
@@ -75,6 +77,8 @@ export class MotorPage {
 
     this.options = null;
     this.images = [];
+
+    this.otherImages = [];
 
   }
 
@@ -223,6 +227,8 @@ export class MotorPage {
     loading.present();
     for (var i = 0; i < results.length; i++) {
 
+          this.otherImages.push(results[i]);
+
           this.base64.encodeFile(results[i]).then((base64File: string) => {
             //console.log(base64File);
             this.images.push(base64File);
@@ -278,7 +284,7 @@ export class MotorPage {
      let mail = {
        to: 'harrison_croaker@hotmail.com',
        attachments: [
-         'base64:'+ this.selfLicense
+         this.otherImages
        ],
        subject: 'Claim from the mobile app',
        body: 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput
