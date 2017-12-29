@@ -4,6 +4,7 @@ import { MotorPage } from '../motor/motor';
 import { TravelPage } from '../travel/travel';
 import { PropertyPage } from '../property/property';
 import { SettingsPage } from '../settings/settings';
+import { RoadsidePage } from '../roadside/roadside';
 
 
 @Component({
@@ -29,6 +30,9 @@ export class HomePage {
     }
     else if(cardTapped=='Settings'){
       this.navCtrl.push(SettingsPage);
+    }
+    else if(cardTapped=='Roadside'){
+      this.navCtrl.push(RoadsidePage);
     }
 
 

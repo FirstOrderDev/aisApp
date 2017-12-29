@@ -57,7 +57,7 @@
     <div class="stepTwoCard">
 
       <p class="basicTextLeft">
-        Date of incident
+        Date of accident
       </p>
 
       <ion-item class="dateBox" no-lines>
@@ -67,7 +67,7 @@
       </ion-item>
 
       <p class="basicTextLeft">
-        Location of property
+        Location of accident
       </p>
 
       <button class="currrentLocBtn" (click)="getCurrentLoc()">
@@ -98,22 +98,21 @@
   <ion-slide class= "stepThree">
     <div class="stepThreeCard">
 
-      <p class="titleThreeCard">Reason for claim</p>
+      <p class="titleThreeCard">What happened?</p>
 
         <div class="select">
           <select [(ngModel)]="selectedValue">
             <option >--Select--</option>
-            <option [value]="'Storm'">Storm/Flood Damage</option>
-            <option [value]="'Loss'">Accidental Loss/Damage</option>
-            <option [value]="'Damage'">Malicious Damage</option>
-            <option [value]="'Glass'">Glass</option>
-            <option [value]="'Theft'">Theft</option>
+            <option [value]="'Need tow'">I need a tow truck</option>
+            <option [value]="'Need petrol'">My car has run out of petrol</option>
+            <option [value]="'Need assistance'">I am in need of mechanical assistance</option>
             <option [value]="'Other'">Other</option>
           </select>
         </div>
 
         <p class="photoInfoThreeCard">
-          Tap below to add a photo to your claim
+          Tap below to add a photo to your claim.
+          This may help us better understand the situation so that we may help accordingly.
         </p>
 
         <div class="cameraModel" (click)="openCameraModel('self')">
@@ -123,7 +122,7 @@
           <img src="{{selfLicense}}" *ngIf="selfLicense" class="selfLicensePic"/>
         </div>
 
-        <!-- <p class="dontHaveTxt">I don't have my drivers license with me</p> -->
+
 
 
       <button class="backBtn3" (click)="previousCard()">
@@ -141,31 +140,17 @@
     <div class="stepFourCard">
 
       <p style="font-family:Arial;" class="photoInfoFourCard">
-        Below, you may add additional information to your claim.
-        If you have already reported your claim to the police,
-        please add the police event number to your additional information.
-        If not, feel free to move to the next slide.
+        Tap below to add a photo of the other drivers license
       </p>
 
+      <div class="cameraModel" (click)="openCameraModel('other')">
+        <i class="icon icon-camera cameraIcon" *ngIf="!otherLicense">
+        </i>
 
-      <!-- textbox  -->
-    <!-- <ion-item>
-      <ion-textarea
-        class="infoTextArea"
-        placeholder="Enter additional information here.."
-        [(ngModel)]="note" name="note">
-      </ion-textarea>
-    </ion-item> -->
+        <img src="{{otherLicense}}" *ngIf="otherLicense" class="selfLicensePic"/>
+      </div>
 
-      <textarea
-      class="infoTextArea"
-      placeholder="Enter additional information here.."
-      cols="30"
-      rows="10">
-      [(ngModel)]="infoText"
-      </textarea>
-
-
+      <a class="dontHaveTxt">I don't have my drivers license with me</a>
 
       <button class="backBtn4" (click)="previousCard()">
         Back
