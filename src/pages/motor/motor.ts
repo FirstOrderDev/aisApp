@@ -284,7 +284,7 @@ export class MotorPage {
      let mail = {
        to: 'harrison_croaker@hotmail.com',
        attachments: [
-         this.otherImages
+         'base64: ' + this.selfLicense
        ],
        subject: 'Claim from the mobile app',
        body: 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput

@@ -1,17 +1,27 @@
+<ion-header>
+
+
+</ion-header>
+
 <ion-content class="no-scroll">
 
-  <ion-navbar>
-  <ion-title>Settings</ion-title>
-  </ion-navbar>
+
+
 
         <ion-item-group>
-          <ion-item-divider>Share to media</ion-item-divider>
-          <ion-item class="facebookShareBtn" (click)="facebookShare()">Share to Facebook</ion-item>
-          <ion-item class="smsShareBtn" (click)="smsShare()">Share via text</ion-item>
-          <ion-item-divider>Policy and Conditions</ion-item-divider>
-          <ion-item>Privacy Policy</ion-item>
-          <ion-item>Terms and Conditions</ion-item>
-          <ion-item>Report Bug</ion-item>
+          <!-- <ion-item-divider>Share to media</ion-item-divider> -->
+
+          <div class="block1">
+            <ion-item class="facebookShareBtn" (click)="facebookShare()"><i class="icon icon-fbShare"></i> Share to Facebook</ion-item>
+            <ion-item class="smsShareBtn" (click)="smsShare()"><i class="icon icon-textShare"></i> Share via text</ion-item>
+          </div>
+          <!-- <ion-item-divider>Policy and Conditions</ion-item-divider> -->
+          <div class="block2">
+            <ion-item><i class="icon icon-privacy"></i> Privacy Policy</ion-item>
+            <ion-item><i class="icon icon-terms"></i>  Terms and Conditions</ion-item>
+            <ion-item><i class="icon icon-report"></i> Report Bug</ion-item>
+          </div>
+
         </ion-item-group>
 
 </ion-content>
