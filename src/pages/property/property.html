@@ -140,29 +140,18 @@
   <ion-slide class= "stepFour">
     <div class="stepFourCard">
 
-      <p style="font-family:Arial;" class="photoInfoFourCard">
-        Below, you may add additional information to your claim.
-        If you have already reported your claim to the police,
-        please add the police event number to your additional information.
-        If not, feel free to move to the next slide.
-      </p>
+      <h1 style="font-family:Arial;" class="additionalInfoTitle">
+        Additional Information
+      </h1>
+
+      <button class= "infoButton" (click)="presentPopover($event)">
+        <i class="icon icon-info"></i>
+      </button>
 
 
-      <!-- textbox  -->
-    <!-- <ion-item>
-      <ion-textarea
-        class="infoTextArea"
-        placeholder="Enter additional information here.."
-        [(ngModel)]="note" name="note">
-      </ion-textarea>
-    </ion-item> -->
+      <input placeholder="Enter police event number here.." class="policeNumber" [(ngModel)]="policeNumber"/>
 
-      <textarea
-      class="infoTextArea"
-      placeholder="Enter additional information here.."
-      cols="30"
-      rows="10">
-      [(ngModel)]="infoText"
+      <textarea class="infoTextArea" placeholder="Enter additional information here.." cols="20" rows="5" [(ngModel)]="infoText">
       </textarea>
 
 

@@ -12,6 +12,9 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { CameraModelPage } from '../camera-model/camera-model';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { Storage } from '@ionic/storage';
+import { PopoverController } from 'ionic-angular';
+import { AdditionalInfoPopoverPage } from '../additional-info-popover/additional-info-popover';
+
 
 
 
@@ -44,6 +47,9 @@ export class PropertyPage {
 
   //card 4
   otherLicense: any;
+  policeNumber: any;
+  police_number: any;
+  info_text: any;
 
   //card 5
   options: any;
@@ -54,7 +60,7 @@ export class PropertyPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController, private imagePicker: ImagePicker,
     private base64: Base64, public loadingCtrl: LoadingController, public modal: ModalController,
-    private camera: Camera, private emailComposer: EmailComposer, private storage: Storage) {
+    private camera: Camera, private emailComposer: EmailComposer, private storage: Storage, public popoverCtrl: PopoverController) {
     this.currentCard = 0;
 
     this.insurer_input = "Insurer Name";
@@ -65,6 +71,9 @@ export class PropertyPage {
 
     this.options = null;
     this.images = [];
+
+    this.police_number = "Police event number"
+    this.info_text = "Other information"
 
   }
 
@@ -129,7 +138,7 @@ export class PropertyPage {
     console.log("hey")
   }
 
-  //step 3 (card 2) of motor
+  //step 3 (card 2)
 
   getCurrentLoc(){
     this.geolocation.getCurrentPosition().then((resp) => {
@@ -174,6 +183,15 @@ export class PropertyPage {
   });
   alert.present();
   }
+
+  //card 4
+
+  presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create(AdditionalInfoPopoverPage);
+  popover.present({
+    ev: myEvent
+  });
+}
 
   //step 6 (card 5)
 
