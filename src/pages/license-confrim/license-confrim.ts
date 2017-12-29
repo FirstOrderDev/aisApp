@@ -18,6 +18,7 @@ import { MotorPage } from '../motor/motor';
 export class LicenseConfrimPage {
 
   takenPicture: any;
+  emailPicture: any;
   who: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
@@ -25,6 +26,7 @@ export class LicenseConfrimPage {
     this.who = this.navParams.get('who');
 
     this.takenPicture = this.navParams.get('pictureTaken');
+    this.emailPicture = this.navParams.get('emailPicture');
   }
 
   ionViewDidLoad() {
@@ -35,8 +37,10 @@ export class LicenseConfrimPage {
 
     if(this.who=='self'){
       this.storage.set('pic', this.takenPicture);
+      this.storage.set('picEmail', this.emailPicture);
     }else{
       this.storage.set('otherPic', this.takenPicture);
+      this.storage.set('otherPicEmail', this.emailPicture);
     }
 
     this.navCtrl.remove(2,1); // This will remove the 'ResultPage' from stack.

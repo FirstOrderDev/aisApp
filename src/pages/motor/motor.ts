@@ -29,6 +29,8 @@ import { Storage } from '@ionic/storage';
 })
 export class MotorPage {
 
+  testImages: any;
+
   currentCard: number;
 
   //card 1
@@ -47,9 +49,11 @@ export class MotorPage {
   //card 3
   selectedValue: any;
   selfLicense: any;
+  selfLicenseEmail: any;
 
   //card 4
   otherLicense: any;
+  otherLicenseEmail: any;
 
   //card 5
   options: any;
@@ -66,6 +70,8 @@ export class MotorPage {
 
     this.storage.set('pic', null);
     this.storage.set('otherPic', null);
+    this.storage.set('picEmail', null);
+    this.storage.set('otherPicEmail', null);
 
     this.currentCard = 0;
 
@@ -75,10 +81,15 @@ export class MotorPage {
 
     this.address = "Enter an address"
 
-    this.options = null;
+    this.options = {
+      quality: 100
+    }
+
     this.images = [];
 
     this.otherImages = [];
+
+    this.testImages = [];
 
   }
 
@@ -88,10 +99,19 @@ export class MotorPage {
 
   ionViewDidEnter(){
     this.storage.get('pic').then((val) => {
-      console.log('Your pic is', val);
+      //console.log('Your pic is', val);
       this.selfLicense = val;
       if(this.selfLicense){
         this.images.push(this.selfLicense)
+      }
+
+    });
+
+    this.storage.get('picEmail').then((val) => {
+      //console.log('Your pic is', val);
+      this.selfLicenseEmail = val;
+      if(this.selfLicenseEmail){
+        this.testImages.push(this.selfLicense)
       }
 
     });
@@ -101,6 +121,16 @@ export class MotorPage {
       this.otherLicense = val;
       if(this.otherLicense){
         this.images.push(this.otherLicense)
+        this.testImages.push(this.otherLicense)
+      }
+
+    });
+
+    this.storage.get('otherPicEmail').then((val) => {
+      //console.log('Your pic is', val);
+      this.otherLicenseEmail = val;
+      if(this.otherLicenseEmail){
+        this.testImages.push(this.otherLicenseEmail)
       }
 
     });
@@ -203,7 +233,7 @@ export class MotorPage {
 
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
+      destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
@@ -211,8 +241,19 @@ export class MotorPage {
     this.camera.getPicture(options).then((imageData) => {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64:
-     let base64Image = 'data:image/jpeg;base64,' + imageData;
-     this.images.push(base64Image);
+     //let base64Image = 'data:image/jpeg;base64,' + imageData;
+
+     this.testImages.push(imageData);
+
+     this.base64.encodeFile(imageData).then((base64File: string) => {
+       //console.log(base64File);
+       this.images.push(base64File);
+     }, (err) => {
+       console.log(err);
+     });
+
+
+     //this.images.push(base64Image);
     }, (err) => {
      // Handle error
     });
@@ -228,6 +269,10 @@ export class MotorPage {
     for (var i = 0; i < results.length; i++) {
 
           this.otherImages.push(results[i]);
+
+          this.testImages.push(results[i]);
+
+
 
           this.base64.encodeFile(results[i]).then((base64File: string) => {
             //console.log(base64File);
@@ -282,14 +327,12 @@ export class MotorPage {
 
 
      let mail = {
-       to: 'harrison_croaker@hotmail.com',
-       attachments: [
-         'base64: ' + this.selfLicense
-       ],
+       to: 'harrison.croaker@hotmail.com',
+       attachments: this.testImages,
        subject: 'Claim from the mobile app',
-       body: 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput
+       body: '<h1>Claim From Mobile App</h1>' + '<br />' + 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput
        + '<br />' + 'Contact Number: ' + this.numberInput + '<br />' + 'Date of incident: ' +
-       this.myDate + '<br />' + 'Address of incident: ' + this.address + '<br />' + 'What Happend: '
+       this.myDate + '<br />' + 'Location of incident: ' + this.address + '<br />' + 'What Happend: '
        + this.selectedValue,
 
        isHtml: true
