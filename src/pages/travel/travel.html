@@ -26,7 +26,7 @@
 
         <ion-list radio-group [(ngModel)]="empOrDir">
 
-        <p class="basicTextLeft">
+        <p class="basicTextLeftV2">
           Are you an Employee or Director?
         </p>
 
@@ -44,7 +44,7 @@
 
         <ion-list radio-group [(ngModel)]="busOrLes">
 
-        <p class="basicTextLeft">
+        <p class="basicTextLeftV2">
           Was this trip leisure or business?
         </p>
 
@@ -60,15 +60,6 @@
 
         </ion-list>
 
-        <p class="basicTextLeft">
-          Date of incident
-        </p>
-
-        <ion-item class="dateBox" no-lines>
-          <ion-label><i class="icon icon-calendar"></i></ion-label>
-          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate">
-          </ion-datetime>
-        </ion-item>
 
         <button class="backBtn2" (click)="lastFromOne()">
           Back
@@ -84,7 +75,17 @@
     <ion-slide class= "stepThree">
       <div class="stepThreeCard">
 
-        <p class="basicTextLeft">
+        <p class="basicTextLeftV3">
+          Date of incident
+        </p>
+
+        <ion-item class="dateBox" no-lines>
+          <ion-label><i class="icon icon-calendar"></i></ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate">
+          </ion-datetime>
+        </ion-item>
+
+        <p class="basicTextLeftV3">
           Location of incident
         </p>
 
@@ -100,7 +101,19 @@
           {{address}}
         </button>
 
-        <br />
+        <button class="backBtn3" (click)="lastFromOne()">
+          Back
+        </button>
+
+        <button class="nextBtn3" (click)="nextFromOne()">
+          Next
+        </button>
+
+      </div>
+    </ion-slide>
+
+    <ion-slide class= "stepFour">
+      <div class="stepFourCard">
 
         <p class="basicTextLeft">
           Reason for claim
@@ -117,29 +130,18 @@
           </select>
         </div>
 
-        <button class="backBtn3" (click)="lastFromOne()">
+        <textarea class="infoTextArea" placeholder="Enter additional information here.." cols="20" rows="5" [(ngModel)]="infoText">
+        </textarea>
+
+        <input placeholder="{{bank_input}}" class="bankInput" [(ngModel)]="bankInput"/>
+        <input placeholder="{{BSB_input}}" class="BSBInput" [(ngModel)]="BSBInput"/>
+        <input placeholder="{{account_input}}" class="accountInput" [(ngModel)]="accountInput"/>
+
+        <button class="backBtn4" (click)="lastFromOne()">
           Back
         </button>
 
-        <button class="nextBtn3" (click)="nextFromOne()">
-          Next
-        </button>
-
-      </div>
-    </ion-slide>
-
-    <ion-slide class= "stepFour">
-      <div class="stepFourCard">
-
-        <input placeholder="placeholder" class="infoInputBasic" [(ngModel)]="policyInput"/>
-        <input placeholder="placeholder" class="infoInputBasic"/>
-        <input placeholder="placeholder" class="infoInputBasic" type="tel"/>
-
-        <button class="backBtn" (click)="lastFromOne()">
-          Back
-        </button>
-
-        <button class="nextBtn" (click)="nextFromOne()">
+        <button class="nextBtn4" (click)="nextFromOne()">
           Next
         </button>
 
@@ -149,15 +151,42 @@
     <ion-slide class= "stepFive">
       <div class="stepFiveCard">
 
-        <input placeholder="placeholder" class="infoInputBasic" [(ngModel)]="policyInput"/>
-        <input placeholder="placeholder" class="infoInputBasic"/>
-        <input placeholder="placeholder" class="infoInputBasic" type="tel"/>
+        <button class="stepFiveBtns1" (click)="select()">
+          <i class="icon icon-gallery"></i>
+        </button>
 
-        <button class="backBtn" (click)="lastFromOne()">
+        <button class="stepFiveBtns2" (click)="openCamera()">
+          <i class="icon icon-picture"></i>
+        </button>
+
+        <button class="stepFiveBtns3">
+          <i class="icon icon-edit"></i>
+        </button>
+
+        <br />
+
+        <p class="emptyText" *ngIf="images.length<1">
+          Tap the buttons above to insert or take pictures of the accident.
+        </p>
+
+        <i class="icon icon-camera cameraIconUpload" *ngIf="images.length<1"></i>
+
+        <ion-grid class="imageGrid">
+            <ion-content>
+            <ion-row>
+              <ion-col col-3 col-sm col-xs *ngFor="let image of images">
+                <div class="image-container" [style.background-image]="'url(' + image + ')'"></div>
+              </ion-col>
+            </ion-row>
+            </ion-content>
+        </ion-grid>
+
+
+        <button class="backBtn5" (click)="lastFromOne()">
           Back
         </button>
 
-        <button class="submitBtn">
+        <button class="submitBtn" (click)="submit()">
           Submit
         </button>
 
