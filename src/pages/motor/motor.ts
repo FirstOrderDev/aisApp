@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, PopoverController } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -12,6 +12,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { CameraModelPage } from '../camera-model/camera-model';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { Storage } from '@ionic/storage';
+
+import { LicenseInputPage } from '../license-input/license-input';
 
 
 
@@ -66,7 +68,7 @@ export class MotorPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController, private imagePicker: ImagePicker,
     private base64: Base64, public loadingCtrl: LoadingController, public modal: ModalController,
-    private camera: Camera, private emailComposer: EmailComposer, private storage: Storage) {
+    private camera: Camera, private emailComposer: EmailComposer, private storage: Storage, public popoverCtrl: PopoverController) {
 
     this.storage.set('pic', null);
     this.storage.set('otherPic', null);
@@ -181,7 +183,12 @@ export class MotorPage {
     console.log("hey")
   }
 
-  //step 3 (card 2) of motor
+  openLicense(){
+    let customPopOver = this.popoverCtrl.create(LicenseInputPage, {}, {cssClass: 'custom-popover'});
+    customPopOver.present();
+  }
+
+  //step 2 (card 2) of motor
 
   getCurrentLoc(){
     this.geolocation.getCurrentPosition().then((resp) => {

@@ -124,7 +124,7 @@
             <img src="{{selfLicense}}" *ngIf="selfLicense" class="selfLicensePic"/>
           </div>
 
-          <p class="dontHaveTxt">I don't have my drivers license with me</p>
+          <button class="dontHaveBtn" (click)="openLicense()">I don't have my drivers license with me</button>
 
 
         <button class="backBtn3" (click)="previousCard()">

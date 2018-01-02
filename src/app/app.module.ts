@@ -14,6 +14,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { RoadsidePage } from '../pages/roadside/roadside';
 import { LicenseConfrimPage } from '../pages/license-confrim/license-confrim';
 import { AdditionalInfoPopoverPage } from '../pages/additional-info-popover/additional-info-popover';
+import { LicenseInputPage } from '../pages/license-input/license-input';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
@@ -39,7 +40,8 @@ import { PopoverController } from 'ionic-angular';
     SettingsPage,
     RoadsidePage,
     LicenseConfrimPage,
-    AdditionalInfoPopoverPage
+    AdditionalInfoPopoverPage,
+    LicenseInputPage
 
   ],
   imports: [
@@ -59,7 +61,8 @@ import { PopoverController } from 'ionic-angular';
     SettingsPage,
     RoadsidePage,
     LicenseConfrimPage,
-    AdditionalInfoPopoverPage
+    AdditionalInfoPopoverPage,
+    LicenseInputPage
 
 
   ],
