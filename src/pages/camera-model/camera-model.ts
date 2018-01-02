@@ -22,6 +22,7 @@ import { LicenseConfrimPage } from '../license-confrim/license-confrim';
 export class CameraModelPage {
 
   picture: any;
+  emailPicture: any;
   who: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private cameraPreview: CameraPreview, public plt: Platform, private ng2ImgToolsService: Ng2ImgToolsService, private alertCtrl: AlertController, private storage: Storage) {
@@ -74,6 +75,7 @@ export class CameraModelPage {
     // take a picture
     this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
       this.picture = 'data:image/jpeg;base64,' + imageData;
+      this.emailPicture = 'base64:image.png//' + imageData;
       // console.log(this.picture);
       // var blob = new Blob([this.picture], {type: 'image/png'});
       // var file = new File([blob], 'imageFileName.png');
@@ -116,7 +118,8 @@ export class CameraModelPage {
       // alert.present();
       this.navCtrl.push(LicenseConfrimPage, {
         pictureTaken: this.picture,
-        who: this.who
+        who: this.who,
+        emailPicture: this.emailPicture
       })
       this.cameraPreview.stopCamera();
     }, (err) => {

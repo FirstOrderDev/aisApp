@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -13,34 +13,21 @@ import { CameraModelPage } from '../camera-model/camera-model';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { Storage } from '@ionic/storage';
 
-import { LicenseInputPage } from '../license-input/license-input';
-
-
-
-/**
- * Generated class for the MotorPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
-  selector: 'page-motor',
-  templateUrl: 'motor.html',
+  selector: 'page-roadside',
+  templateUrl: 'roadside.html',
 })
-export class MotorPage {
-
-  testImages: any;
+export class RoadsidePage {
 
   currentCard: number;
 
   //card 1
-  policyInput: any;
+  insurerInput: any;
   nameInput: any;
   numberInput: any;
 
-  policy_input: any;
+  insurer_input: any;
   name_input: any;
   number_input: any;
 
@@ -51,47 +38,30 @@ export class MotorPage {
   //card 3
   selectedValue: any;
   selfLicense: any;
-  selfLicenseEmail: any;
 
   //card 4
   otherLicense: any;
-  otherLicenseEmail: any;
 
   //card 5
   options: any;
   images: any;
-
-  otherImages: any;
 
   @ViewChild(Slides) slides: Slides;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController, private imagePicker: ImagePicker,
     private base64: Base64, public loadingCtrl: LoadingController, public modal: ModalController,
-    private camera: Camera, private emailComposer: EmailComposer, private storage: Storage, public popoverCtrl: PopoverController) {
-
-    this.storage.set('pic', null);
-    this.storage.set('otherPic', null);
-    this.storage.set('picEmail', null);
-    this.storage.set('otherPicEmail', null);
-
+    private camera: Camera, private emailComposer: EmailComposer, private storage: Storage) {
     this.currentCard = 0;
 
-    this.policy_input = "Policy Number";
+    this.insurer_input = "Insurer Name";
     this.name_input = "Your Name";
     this.number_input = "Contact Number (+61)";
 
     this.address = "Enter an address"
 
-    this.options = {
-      quality: 100
-    }
-
+    this.options = null;
     this.images = [];
-
-    this.otherImages = [];
-
-    this.testImages = [];
 
   }
 
@@ -101,40 +71,13 @@ export class MotorPage {
 
   ionViewDidEnter(){
     this.storage.get('pic').then((val) => {
-      //console.log('Your pic is', val);
+      console.log('Your pic is', val);
       this.selfLicense = val;
-      if(this.selfLicense){
-        this.images.push(this.selfLicense)
-      }
-
-    });
-
-    this.storage.get('picEmail').then((val) => {
-      //console.log('Your pic is', val);
-      this.selfLicenseEmail = val;
-      if(this.selfLicenseEmail){
-        this.testImages.push(this.selfLicense)
-      }
-
     });
 
     this.storage.get('otherPic').then((val) => {
       console.log('Your pic is', val);
       this.otherLicense = val;
-      if(this.otherLicense){
-        this.images.push(this.otherLicense)
-        this.testImages.push(this.otherLicense)
-      }
-
-    });
-
-    this.storage.get('otherPicEmail').then((val) => {
-      //console.log('Your pic is', val);
-      this.otherLicenseEmail = val;
-      if(this.otherLicenseEmail){
-        this.testImages.push(this.otherLicenseEmail)
-      }
-
     });
     console.log("pic");
   }
@@ -183,12 +126,7 @@ export class MotorPage {
     console.log("hey")
   }
 
-  openLicense(){
-    let customPopOver = this.popoverCtrl.create(LicenseInputPage, {}, {cssClass: 'custom-popover'});
-    customPopOver.present();
-  }
-
-  //step 2 (card 2) of motor
+  //step 3 (card 2)
 
   getCurrentLoc(){
     this.geolocation.getCurrentPosition().then((resp) => {
@@ -240,7 +178,7 @@ export class MotorPage {
 
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
@@ -248,19 +186,8 @@ export class MotorPage {
     this.camera.getPicture(options).then((imageData) => {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64:
-     //let base64Image = 'data:image/jpeg;base64,' + imageData;
-
-     this.testImages.push(imageData);
-
-     this.base64.encodeFile(imageData).then((base64File: string) => {
-       //console.log(base64File);
-       this.images.push(base64File);
-     }, (err) => {
-       console.log(err);
-     });
-
-
-     //this.images.push(base64Image);
+     let base64Image = 'data:image/jpeg;base64,' + imageData;
+     this.images.push(base64Image);
     }, (err) => {
      // Handle error
     });
@@ -275,12 +202,6 @@ export class MotorPage {
     loading.present();
     for (var i = 0; i < results.length; i++) {
 
-          this.otherImages.push(results[i]);
-
-          this.testImages.push(results[i]);
-
-
-
           this.base64.encodeFile(results[i]).then((base64File: string) => {
             //console.log(base64File);
             this.images.push(base64File);
@@ -293,11 +214,11 @@ export class MotorPage {
     }
 
   submit(){
-    if(this.policyInput && this.nameInput && this.numberInput){
+    if(this.insurerInput && this.nameInput && this.numberInput){
 
     } else {
-      if(!this.policyInput){
-        this.policy_input = "*Please input a policy number";
+      if(!this.insurerInput){
+        this.insurerInput = "*Please input an insurance provider";
         document.getElementById("p2").style.color = "red";
       }
       if(!this.nameInput){
@@ -325,34 +246,29 @@ export class MotorPage {
       return;
     }*/
 
-
-
     this.emailComposer.isAvailable().then((available: boolean) =>{
-      if(available) {}
+    if(available) {
+       //Now we know we can send
+     }
     });
 
+    let email = {
+      to: 'harrison.croaker@hotmail.com',
+      attachments: [
+        'this.selfLicense'
+      ],
+      subject: 'Claim from the mobile app',
+      body: 'Insurer Name: ' + this.insurerInput + '<br />' +  'Name: ' + this.nameInput
+      + '<br />' + 'Contact Number: ' + this.numberInput + '<br />' + 'Date of incident: ' +
+      this.myDate + '<br />' + 'Address of incident: ' + this.address + '<br />' + 'What Happend: '
+      + this.selectedValue,
 
-
-     let mail = {
-       to: 'harrison.croaker@hotmail.com',
-       attachments: this.testImages,
-       subject: 'Claim from the mobile app',
-       body: '<h1>Claim From Mobile App</h1>' + '<br />' + 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput
-       + '<br />' + 'Contact Number: ' + this.numberInput + '<br />' + 'Date of incident: ' +
-       this.myDate + '<br />' + 'Location of incident: ' + this.address + '<br />' + 'What Happend: '
-       + this.selectedValue,
-
-       isHtml: true
-     };
-
-      //Now we know we can send
-      this.emailComposer.open(mail);
-
-
+      isHtml: true
+    };
 
     // Send a text message using default options
-
+    this.emailComposer.open(email);
 
   }
 
-}
+  }

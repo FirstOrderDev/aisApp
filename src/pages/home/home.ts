@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import { MotorPage } from '../motor/motor';
 import { TravelPage } from '../travel/travel';
 import { PropertyPage } from '../property/property';
 import { SettingsPage } from '../settings/settings';
+import { RoadsidePage } from '../roadside/roadside';
+
+import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+
 
 
 @Component({
@@ -12,11 +16,34 @@ import { SettingsPage } from '../settings/settings';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private cameraPreview: CameraPreview, public plt: Platform) {
+
+    this.plt.ready().then(()=> {
+       let options = {
+         x: 100,
+         y: 200,
+         width: 80,
+         height: 80,
+         camera: 'rear',
+         tapPhoto: false,
+         tapFocus: true,
+         previewDrag: false,
+         toBack: true,
+       }
+       this.cameraPreview.startCamera(options).then(
+         (res)=> {
+           console.log(res)
+         },
+         (err) => {
+           console.log(err)
+         });
+     })
 
   }
 
   open(cardTapped){
+
+    this.cameraPreview.stopCamera();
 
     if(cardTapped=='Motor'){
       this.navCtrl.push(MotorPage);
@@ -29,6 +56,9 @@ export class HomePage {
     }
     else if(cardTapped=='Settings'){
       this.navCtrl.push(SettingsPage);
+    }
+    else if(cardTapped=='Roadside'){
+      this.navCtrl.push(RoadsidePage);
     }
 
 

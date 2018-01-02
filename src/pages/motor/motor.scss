@@ -226,7 +226,7 @@ page-motor {
         }
 
         .photoInfoThreeCard{
-          margin-top: 5vh;
+          margin-top: 3vh;
           font-size: 75%;
           color:#aeaeae
         }
@@ -267,8 +267,19 @@ page-motor {
           object-fit: cover;
         }
 
+        .dontHaveBtn{
+          width: 78vw;
+          height: 7vh;
+          margin-top: 2vh;
+          border-radius: 5px;
+          background: #E68364;
+          color: #ffffff;
+          font-size: 14px;
+          box-shadow: 0px 0px 10px #aeaeae;
+        }
+
         .nextBtn3, .backBtn3{
-          margin-top: 5vh;
+          margin-top: 6vh;
         }
 
       }

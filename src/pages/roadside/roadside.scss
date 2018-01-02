@@ -1,4 +1,4 @@
-page-property {
+page-roadside {
 
   .no-scroll .scroll-content{
     overflow: hidden;
@@ -48,7 +48,7 @@ page-property {
 
 
   .slideContainer{
-    background: linear-gradient(to bottom right, #A569BD 0%, #BB8FCE 100%);
+    background: linear-gradient(to bottom right, #D24D57 0%, #f26871 100%);
 
     .cancelBtn, .backBtn, .backBtn2, .backBtn3, .backBtn4, .backBtn5{
       font-size: 18px;
@@ -69,7 +69,7 @@ page-property {
     .nextBtn, .nextBtn2, .nextBtn3, .nextBtn4{
       font-size: 18px;
       color: #ecf0f1;
-      background: #95a5a6;
+      background: #26C281;
       padding-top: 3vh;
       padding-bottom: 3vh;
       padding-left: 4vw;
@@ -85,7 +85,7 @@ page-property {
     .submitBtn{
       font-size: 18px;
       color: #ecf0f1;
-      background: #26a65b;
+      background: #26C281;
       padding-top: 3vh;
       padding-bottom: 3vh;
       padding-left: 4vw;
@@ -268,7 +268,7 @@ page-property {
         }
 
         .nextBtn3, .backBtn3{
-          margin-top: 13.5vh;
+          margin-top: 5vh;
         }
 
       }
@@ -288,44 +288,12 @@ page-property {
         box-shadow: 0px 0px 10px #006442;
       }
 
-      .infoButton{
-        position: absolute;
-        top: 16.75vh;
-        right: 10vw;
-        background: none;
-        padding: 10px;
-
-
-      }
-
-      .icon-info{
-        font-size: 23px;
-      }
-
-      .additionalInfoTitle{
-        padding-top: 5vh;
-        margin-left: -3vw;
-        font-size: 110%;
+      .photoInfoFourCard{
+        padding-top: 10vh;
+        font-size: 75%;
         color:#aeaeae
+
       }
-
-
-      .policeNumber{
-        background: none;
-        border: none;
-        margin-top: 5vh;
-        border-bottom: 1px solid #aeaeae;
-        width: 75vw;
-      }
-
-      .infoTextArea{
-        border-radius: 10px;
-        margin-top: 6vh;
-        background-color: white;
-        width: 80vw;
-        height: 40vh;
-      }
-
       .cameraModel{
         margin-top: 2vh;
         margin-bottom: 4vh;
@@ -343,7 +311,7 @@ page-property {
       }
 
       .nextBtn4, .backBtn4{
-        margin-top: 6vh;
+        margin-top: 23vh;
       }
     }
 

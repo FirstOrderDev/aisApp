@@ -107,9 +107,9 @@
           <div class="select">
             <select [(ngModel)]="selectedValue">
               <option >--Select--</option>
-              <option [value]="'Car Crash'">Car Crash</option>
-              <option [value]="'Obstacle Collision'">Obstacle Collision</option>
-              <option [value]="'Other'">Other</option>
+              <option [value]="'At fault accident'">At fault accident</option>
+              <option [value]="'3rd party ar fault'">3rd party at fault</option>
+              <option [value]="'Fault in dispute'">Fault in dispute</option>
             </select>
           </div>
 
@@ -123,6 +123,8 @@
 
             <img src="selfLicense" *ngIf="selfLicense"/>
           </div>
+
+          <button class="dontHaveBtn" (click)="openLicense()">I don't have my drivers license with me</button>
 
 
         <button class="backBtn3" (click)="previousCard()">
