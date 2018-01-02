@@ -130,11 +130,18 @@
           </select>
         </div>
 
-        <button class="backBtn" (click)="lastFromOne()">
+        <textarea class="infoTextArea" placeholder="Enter additional information here.." cols="20" rows="5" [(ngModel)]="infoText">
+        </textarea>
+
+        <input placeholder="{{bank_input}}" class="bankInput" [(ngModel)]="bankInput"/>
+        <input placeholder="{{BSB_input}}" class="BSBInput" [(ngModel)]="BSBInput"/>
+        <input placeholder="{{account_input}}" class="accountInput" [(ngModel)]="accountInput"/>
+
+        <button class="backBtn4" (click)="lastFromOne()">
           Back
         </button>
 
-        <button class="nextBtn" (click)="nextFromOne()">
+        <button class="nextBtn4" (click)="nextFromOne()">
           Next
         </button>
 

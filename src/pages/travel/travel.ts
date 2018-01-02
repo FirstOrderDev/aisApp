@@ -47,6 +47,17 @@ export class TravelPage {
   address: any;
   selectedValue: any;
 
+  //card 4
+  infoText: any;
+
+  bankInput: any;
+  BSBInput: any;
+  accountInput: any;
+
+  bank_input: any;
+  BSB_input: any;
+  account_input: any;
+
   //card 5
   options: any;
   images: any;
@@ -68,6 +79,10 @@ export class TravelPage {
       this.address = "Enter an address"
 
       this.images = [];
+
+      this.bank_input = "Your Bank";
+      this.BSB_input = "BSB Number";
+      this.account_input = "Account Number";
 
       this.otherImages = [];
 

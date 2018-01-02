@@ -11,7 +11,7 @@ page-travel {
   .slideContainer{
     background: linear-gradient(to bottom right, #26a65b 0%, #26c281 100%);
 
-    .cancelBtn, .backBtn, .backBtn2, .backBtn3, .backBtn5{
+    .cancelBtn, .backBtn, .backBtn2, .backBtn3, .backBtn4, .backBtn5{
       font-size: 18px;
       color: #ecf0f1;
       background: #f58f84;
@@ -27,7 +27,7 @@ page-travel {
       height: 9vh;
     }
 
-    .nextBtn, .nextBtn2, .nextBtn3{
+    .nextBtn, .nextBtn2, .nextBtn3, .nextBtn4{
       font-size: 18px;
       color: #ecf0f1;
       background: #26C281;
@@ -238,6 +238,27 @@ page-travel {
           border: none;
           background: #4B77BE;
           color: #aeaeae;
+        }
+
+        .infoTextArea{
+          border-radius: 10px;
+          margin-top: 3vh;
+          background-color: white;
+          width: 78vw;
+          height: 10vh;
+          resize: none;
+        }
+
+        .bankInput, .BSBInput, .accountInput{
+          background: none;
+          border: none;
+          margin-top: 7vh;
+          border-bottom: 1px solid #aeaeae;
+          width: 75vw;
+        }
+
+        .backBtn4, .nextBtn4{
+          margin-top: 11vh;
         }
 
       }
