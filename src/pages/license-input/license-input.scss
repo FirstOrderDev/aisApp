@@ -4,17 +4,77 @@ page-license-input {
 
   .no-scroll .scroll-content{
     overflow: hidden;
+    background: none;
   }
 
   .fixed-content{
     background: #59ABE3;
-    height: 12vh;
+    height: 8vh;
     width: 100%;
   }
 
   .toolbar-title{
     font-family: 'Poppins', sans-serif;
     color: white !important;
+  }
+
+  ion-item{
+    background: none !important;
+  }
+
+  .licenseNumber, .address, .dob{
+    margin-top: 1vh;
+    height: 10vh;
+    color: #aeaeae;
+    width: 50vw;
+    margin-left: -8vw;
+
+    ion-label{
+      padding-bottom: 10px;
+    }
+
+    input{
+      border-bottom: 1px solid #aeaeae;
+    }
+
+    ion-input{
+      input{
+        height: 3.5vh;
+        padding-bottom: 10px;
+        padding-left: 3px
+      }
+    }
+  }
+
+  .licenseNumber{
+    margin-top: 2vh;
+  }
+
+  .address{
+    width: 50vw !important;
+  }
+
+
+  ion-datetime.datetime{
+    background: transparent;
+    margin: none;
+    height: 3vh;
+    padding-bottom: 4vh;
+
+    border-bottom: 1px solid #aeaeae;
+    width: 51vw !important;
+    margin-left: -2vw;
+  }
+
+
+  .address{
+    color: #aeaeae;
+    width: 60vw;
+  }
+
+  .dob{
+    color: #aeaeae;
+    width: 60vw;
   }
 
 
