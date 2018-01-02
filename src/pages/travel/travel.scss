@@ -67,7 +67,7 @@ page-travel {
       width: 75vw;
     }
 
-    .basicTextLeft, .basicTextLeftV6{
+    .basicTextLeft, .basicTextLeftV6, .basicTextLeftV2{
       color: #6d6d6d;
       text-align: left;
       margin-top: 0vh;
@@ -120,6 +120,46 @@ page-travel {
         border-radius: 5px;
         box-shadow: 0px 0px 10px #006442;
 
+        .choice1, .choice2{
+          margin-left: auto;
+          margin-right: auto;
+          left: 0;
+          right: 0;
+          text-align: left;
+          border: none;
+          border-radius: 3px;
+          box-shadow: 0px 0px 3px #aeaeae;
+          margin-top: 1vh;
+          width: 76vw;
+          height: 6vh;
+        }
+
+        .choice1{
+          margin-top: 10vh;
+        }
+
+        .basicTextLeftV2{
+          margin-top: 10vh;
+        }
+
+        .nextBtn2, .backBtn2{
+          margin-top: 16vh;
+        }
+      }
+    }
+    .stepThree{
+      .stepThreeCard{
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        width: 87vw;
+        height: 83vh;
+        margin-top: 10vh;
+        background: #efefef;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px #006442;
+
         .dateBox{
           margin-left: auto;
           margin-right: auto;
@@ -136,38 +176,6 @@ page-travel {
             font-size: 23px;
           }
         }
-
-        .choice1, .choice2{
-          margin-left: auto;
-          margin-right: auto;
-          left: 0;
-          right: 0;
-          text-align: left;
-          border: none;
-          border-radius: 3px;
-          box-shadow: 0px 0px 3px #aeaeae;
-          margin-top: 1vh;
-          width: 76vw;
-          height: 6vh;
-        }
-
-        .nextBtn2, .backBtn2{
-          margin-top: 5vh;
-        }
-      }
-    }
-    .stepThree{
-      .stepThreeCard{
-        margin-left: auto;
-        margin-right: auto;
-        left: 0;
-        right: 0;
-        width: 87vw;
-        height: 83vh;
-        margin-top: 10vh;
-        background: #efefef;
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px #006442;
 
         .currrentLocBtn{
           font-size: 18px;
@@ -196,22 +204,6 @@ page-travel {
           margin-bottom: 8vh;
         }
 
-        .select {
-          position: relative;
-          display: inline-block;
-          margin-bottom: 10px;
-          width: 90%;
-        }
-
-        .select select {
-          width: 100%;
-          padding: 10px 15px;
-          border-radius: 6px;
-          border: none;
-          background: #4B77BE;
-          color: #aeaeae;
-        }
-
         .backBtn3, .nextBtn3{
           margin-top: 16vh;
         }
@@ -230,6 +222,24 @@ page-travel {
         background: #efefef;
         border-radius: 5px;
         box-shadow: 0px 0px 10px #006442;
+
+        .select {
+          color: black;
+          position: relative;
+          display: inline-block;
+          margin-bottom: 10px;
+          width: 90%;
+        }
+
+        .select select {
+          width: 100%;
+          padding: 10px 15px;
+          border-radius: 6px;
+          border: none;
+          background: #4B77BE;
+          color: #aeaeae;
+        }
+
       }
     }
     .stepFive{
