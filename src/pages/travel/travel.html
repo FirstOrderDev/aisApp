@@ -75,7 +75,7 @@
     <ion-slide class= "stepThree">
       <div class="stepThreeCard">
 
-        <p class="basicTextLeft">
+        <p class="basicTextLeftV3">
           Date of incident
         </p>
 
@@ -85,7 +85,7 @@
           </ion-datetime>
         </ion-item>
 
-        <p class="basicTextLeft">
+        <p class="basicTextLeftV3">
           Location of incident
         </p>
 
@@ -144,15 +144,42 @@
     <ion-slide class= "stepFive">
       <div class="stepFiveCard">
 
-        <input placeholder="placeholder" class="infoInputBasic" [(ngModel)]="policyInput"/>
-        <input placeholder="placeholder" class="infoInputBasic"/>
-        <input placeholder="placeholder" class="infoInputBasic" type="tel"/>
+        <button class="stepFiveBtns1" (click)="select()">
+          <i class="icon icon-gallery"></i>
+        </button>
 
-        <button class="backBtn" (click)="lastFromOne()">
+        <button class="stepFiveBtns2" (click)="openCamera()">
+          <i class="icon icon-picture"></i>
+        </button>
+
+        <button class="stepFiveBtns3">
+          <i class="icon icon-edit"></i>
+        </button>
+
+        <br />
+
+        <p class="emptyText" *ngIf="images.length<1">
+          Tap the buttons above to insert or take pictures of the accident.
+        </p>
+
+        <i class="icon icon-camera cameraIconUpload" *ngIf="images.length<1"></i>
+
+        <ion-grid class="imageGrid">
+            <ion-content>
+            <ion-row>
+              <ion-col col-3 col-sm col-xs *ngFor="let image of images">
+                <div class="image-container" [style.background-image]="'url(' + image + ')'"></div>
+              </ion-col>
+            </ion-row>
+            </ion-content>
+        </ion-grid>
+
+
+        <button class="backBtn5" (click)="lastFromOne()">
           Back
         </button>
 
-        <button class="submitBtn">
+        <button class="submitBtn" (click)="submit()">
           Submit
         </button>
 
