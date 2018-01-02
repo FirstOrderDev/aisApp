@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Exo+2');
 
 page-license-input {
 
@@ -14,8 +14,10 @@ page-license-input {
   }
 
   .toolbar-title{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Exo 2', sans-serif;
     color: white !important;
+    margin-top: -3vh;
+    font-size: 16px;
   }
 
   ion-item{
