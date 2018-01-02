@@ -64,6 +64,8 @@ export class TravelPage {
 
   otherImages: any;
 
+  testImages: any;
+
   @ViewChild(Slides) slides: Slides;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation,
@@ -95,14 +97,10 @@ export class TravelPage {
 
   nextFromOne() {
     this.slides.slideNext();
-
-    console.log(this.policyInput)
   }
 
   lastFromOne(){
     this.slides.slidePrev();
-
-    console.log(this.policyInput)
   }
 
   cancel() {
@@ -210,11 +208,11 @@ export class TravelPage {
     }
 
   submit(){
-    if(this.policyInput && this.nameInput && this.numberInput){
+    if(this.insurer_input && this.nameInput && this.numberInput){
 
     } else {
-      if(!this.policyInput){
-        this.policy_input = "*Please input a policy number";
+      if(!this.insurer_input){
+        this.insurer_input = "*Please input a policy number";
         document.getElementById("p2").style.color = "red";
       }
       if(!this.nameInput){
