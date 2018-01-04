@@ -157,7 +157,7 @@
       <input placeholder="Enter police event number here.." class="policeNumber" [(ngModel)]="policeNumber"/>
 
       <textarea class="infoTextArea" placeholder="Enter additional information here.."
-      cols="20" rows="5" [(ngModel)]="infoText" (ngModelChange)= "fourthCardChanged()">
+      cols="20" rows="5" [(ngModel)]="infoText">
       </textarea>
 
 
@@ -166,7 +166,7 @@
         Back
       </button>
 
-      <button class="nextBtn4" (click)="nextCard()" [disabled]="!fourthCardValid">
+      <button class="nextBtn4" (click)="nextCard()">
         Next
       </button>
 

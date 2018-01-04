@@ -61,12 +61,12 @@ export class PropertyPage {
   police_number: any;
   info_text: any;
   infotext: any;
-  fourthCardValid: any;
+
 
   //card 5
   options: any;
   images: any;
-  fifthCardValid: any;
+
 
   @ViewChild(Slides) slides: Slides;
 
@@ -96,7 +96,7 @@ export class PropertyPage {
 
     this.police_number = "Police event number"
     this.info_text = "Other information"
-    this.fourthCardValid = false;
+
 
   }
 
@@ -191,18 +191,6 @@ export class PropertyPage {
     }
   }
 
-  fourthCardChanged(){
-    console.log("Changed");
-    if(this.address){
-      this.fourthCardValid = true;
-      console.log("valid");
-      this.slides.lockSwipeToNext(false)
-    }
-    else{
-      this.fourthCardValid = false;
-      this.slides.lockSwipeToNext(true)
-    }
-  }
 
 
 
