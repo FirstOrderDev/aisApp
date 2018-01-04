@@ -95,12 +95,13 @@ export class MotorPage {
 
     this.testImages = [];
 
-    this.slides.lockSwipes(true)
+
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MotorPage');
+    this.slides.lockSwipeToNext(true)
   }
 
   ionViewDidEnter(){
@@ -179,9 +180,11 @@ export class MotorPage {
     if(this.policyInput && this.nameInput && this.numberInput){
       this.firstCardValid = true;
       console.log("valid");
+      this.slides.lockSwipeToNext(false)
     }
     else{
       this.firstCardValid = false;
+      this.slides.lockSwipeToNext(true)
     }
   }
 
