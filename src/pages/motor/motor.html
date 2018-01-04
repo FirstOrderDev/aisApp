@@ -41,9 +41,9 @@
     <ion-slide class= "stepOne">
       <div class="stepOneCard">
 
-        <input id="p2" placeholder="{{policy_input}}" class="policyInput" [(ngModel)]="policyInput" (ngModelChange)="firstCardChanged()"/>
-        <input placeholder="{{name_input}}" class="nameInput" [(ngModel)]="nameInput" (ngModelChange)="firstCardChanged()"/>
-        <input placeholder="{{number_input}}" class="contactInput" type="tel" [(ngModel)]="numberInput" (ngModelChange)="firstCardChanged()"/>
+        <input placeholder="Insurer's Name" class="policyInput" [(ngModel)]="policyInput" (ngModelChange)="firstCardChanged()"/>
+        <input placeholder="Your Name" class="nameInput" [(ngModel)]="nameInput" (ngModelChange)="firstCardChanged()"/>
+        <input placeholder="Contact Number (+61)" class="contactInput" type="tel" [(ngModel)]="numberInput" (ngModelChange)="firstCardChanged()"/>
 
         <button class="cancelBtn" (click)="cancel()">
           Cancel
@@ -66,7 +66,7 @@
 
         <ion-item class="dateBox" no-lines>
           <ion-label><i class="icon icon-calendar"></i></ion-label>
-          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate">
+          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate" (ngModelChange)="secondCardChanged()">
           </ion-datetime>
         </ion-item>
 
@@ -92,7 +92,7 @@
           Back
         </button>
 
-        <button class="nextBtn2" (click)="nextCard()">
+        <button class="nextBtn2" (click)="nextCard()" [disabled]="!secondCardValid">
           Next
         </button>
 

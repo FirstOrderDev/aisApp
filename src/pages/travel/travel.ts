@@ -30,38 +30,33 @@ export class TravelPage {
   currentCard: number;
 
   //card 1
-  policyInput: any;
+  insurerInput: any;
   nameInput: any;
   numberInput: any;
-
-  insurer_input: any;
-  name_input: any;
-  number_input: any;
+  firstCardValid: any;
 
   //card 2
-  myDate: any;
   empOrDir: any;
   busOrLes: any;
+  secondCardValid: any;
 
   //card 3
+  myDate: any;
   address: any;
-  selectedValue: any;
+  thirdCardValid: any;
 
   //card 4
+  selectedValue: any;
   infoText: any;
-
+  fourthCardValid: any;
   bankInput: any;
   BSBInput: any;
   accountInput: any;
 
-  bank_input: any;
-  BSB_input: any;
-  account_input: any;
-
   //card 5
   options: any;
   images: any;
-
+  fifthCardValid: any;
   otherImages: any;
 
   testImages: any;
@@ -74,17 +69,15 @@ export class TravelPage {
     private camera: Camera, private emailComposer: EmailComposer, private storage: Storage) {
       this.currentCard = 0;
 
-      this.insurer_input = "Insurer's Name";
-      this.name_input = "Your Name";
-      this.number_input = "Contact Number (+61)";
+      this.address = "Enter an address";
 
-      this.address = "Enter an address"
+      this.firstCardValid = false;
+      this.secondCardValid = false;
+      this.thirdCardValid = false;
+      this.fourthCardValid = false;
+      this.fifthCardValid = false;
 
       this.images = [];
-
-      this.bank_input = "Your Bank";
-      this.BSB_input = "BSB Number";
-      this.account_input = "Account Number";
 
       this.otherImages = [];
 
@@ -109,6 +102,62 @@ export class TravelPage {
 
   slideChanged() {
     this.currentCard = this.slides.getActiveIndex();
+    console.log(this.currentCard);
+    if(this.currentCard == 0){
+      console.log("Card " + this.currentCard + " is");
+      if(this.firstCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid");
+        this.slides.lockSwipeToNext(false);
+      }
+    }
+    else if (this.currentCard == 1){
+      console.log("Card " + this.currentCard + " is");
+      if(this.secondCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid");
+        this.slides.lockSwipeToNext(false);
+      }
+    }
+    else if (this.currentCard == 2){
+      console.log("Card " + this.currentCard + " is");
+      if(this.thirdCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid")
+        this.slides.lockSwipeToNext(false);
+      }
+    }
+    else if (this.currentCard == 3){
+      console.log("Card " + this.currentCard + " is");
+      if(this.fourthCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid");
+        this.slides.lockSwipeToNext(false);
+      }
+    }
+    else if (this.currentCard == 4){
+      console.log("Card " + this.currentCard + " is");
+      if(this.fifthCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid");
+        this.slides.lockSwipeToNext(false);
+      }
+    }
   }
 
   nextCard() {
@@ -117,6 +166,8 @@ export class TravelPage {
     console.log(this.selectedValue);
 
     this.slides.slideNext();
+
+
 
     // console.log(this.policyInput);
     // console.log(this.nameInput);
@@ -128,6 +179,60 @@ export class TravelPage {
     this.currentCard -= 1;
     console.log(this.currentCard)
     this.slides.slidePrev();
+  }
+
+  firstCardChanged(){
+    console.log("Changed");
+    if(this.insurerInput && this.nameInput && this.numberInput){
+      this.firstCardValid = true;
+      console.log("valid");
+      this.slides.lockSwipeToNext(false)
+    }
+    else{
+      this.firstCardValid = false;
+      this.slides.lockSwipeToNext(true)
+    }
+  }
+
+  secondCardChanged(){
+    console.log("Changed");
+    if(this.empOrDir && this.busOrLes){
+      this.secondCardValid = true;
+      console.log("valid");
+      this.slides.lockSwipeToNext(false)
+    }
+    else{
+      this.secondCardValid = false;
+      this.slides.lockSwipeToNext(true)
+    }
+  }
+
+  thirdCardChanged(){
+    console.log("Changed");
+    if(this.address && this.address != "Enter an address" && this.myDate){
+      this.thirdCardValid = true;
+      console.log("valid");
+      this.slides.lockSwipeToNext(false)
+    }
+    else{
+      console.log("invalid")
+      this.thirdCardValid = false;
+      this.slides.lockSwipeToNext(true)
+    }
+  }
+
+  fourthCardChanged(){
+    console.log("Changed");
+    if(this.selectedValue && this.infoText && this.bankInput && this.BSBInput && this.accountInput){
+      this.fourthCardValid = true;
+      console.log("valid");
+      this.slides.lockSwipeToNext(false)
+    }
+    else{
+      console.log("invalid")
+      this.fourthCardValid = false;
+      this.slides.lockSwipeToNext(true)
+    }
   }
 
   getCurrentLoc(){
@@ -143,6 +248,9 @@ export class TravelPage {
     console.log('Error getting location', error);
     });
     console.log(this.address);
+    if(this.address){
+      this.thirdCardChanged();
+    }
   }
 
   enterAddress(){
@@ -167,6 +275,7 @@ export class TravelPage {
         handler: data => {
           console.log(data.address);
           this.address = data.address;
+          this.thirdCardChanged();
         }
       }
     ]
@@ -228,43 +337,9 @@ export class TravelPage {
       }
       loading.dismiss();
     }, (err) => { });
-    }
+  }
 
   submit(){
-    if(this.insurer_input && this.nameInput && this.numberInput){
-
-    } else {
-      if(!this.insurer_input){
-        this.insurer_input = "*Please input a policy number";
-        document.getElementById("p2").style.color = "red";
-      }
-      if(!this.nameInput){
-        this.name_input = "*Please input your name";
-      }
-      if(!this.numberInput){
-        this.number_input = "*Please input a contact number";
-      }
-      this.slides.slideTo(0);
-      return;
-    }
-
-    if(this.myDate && this.address){
-
-    } else {
-      this.slides.slideTo(1);
-      return;
-    }
-
-
-    /*
-    if(this.options && this.images){
-
-    } else {
-      return;
-    }*/
-
-
-
     this.emailComposer.isAvailable().then((available: boolean) =>{
       if(available) {}
     });
@@ -275,7 +350,7 @@ export class TravelPage {
        to: 'harrison.croaker@hotmail.com',
        attachments: this.testImages,
        subject: 'Claim from the mobile app',
-       body: '<h1>Claim From Mobile App</h1>' + '<br />' + 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput
+       body: '<h1>Claim From Mobile App</h1>' + '<br />' + 'Policy Number: ' + this.insurerInput + '<br />' +  'Name: ' + this.nameInput
        + '<br />' + 'Contact Number: ' + this.numberInput + '<br />' + 'Date of incident: ' +
        this.myDate + '<br />' + 'Location of incident: ' + this.address + '<br />' + 'What Happend: '
        + this.selectedValue,
@@ -286,8 +361,7 @@ export class TravelPage {
       //Now we know we can send
       this.emailComposer.open(mail);
 
-}
+    }
 
     // Send a text message using default options
-
 }

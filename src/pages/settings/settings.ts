@@ -28,16 +28,16 @@ export class SettingsPage {
   }
 
   facebookShare() {
-    this.sharing.shareViaFacebook(null,null,null)
+    this.sharing.shareViaFacebook('Hello world!',null,'http://aisgroup.com.au/index.php')
     .then(() => {
-      // Success!
+      console.log ("shareViaFacebook: Success!")
     }).catch(() => {
-      // Error!
+      console.log ("shareViaFacebook: Error")
     });
   }
 
   smsShare() {
-    this.sharing.shareViaSMS(null,null)
+    this.sharing.shareViaSMS('Check out this app!',null)
     .then(() => {
       console.log("Message sent!");
     }).catch((error) => {
