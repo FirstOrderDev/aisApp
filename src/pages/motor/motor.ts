@@ -41,26 +41,26 @@ export class MotorPage {
   numberInput: any;
   firstCardValid: any;
 
-  policy_input: any;
-  name_input: any;
-  number_input: any;
-
   //card 2
   myDate: any;
   address: any;
+  secondCardValid: any;
 
   //card 3
   selectedValue: any;
   selfLicense: any;
   selfLicenseEmail: any;
+  thirdCardValid: any;
 
   //card 4
   otherLicense: any;
   otherLicenseEmail: any;
+  fourthCardValid: any;
 
   //card 5
   options: any;
   images: any;
+  fifthCardValid: any;
 
   otherImages: any;
 
@@ -78,10 +78,11 @@ export class MotorPage {
 
     this.currentCard = 0;
 
-    this.policy_input = "Policy Number";
-    this.name_input = "Your Name";
-    this.number_input = "Contact Number (+61)";
     this.firstCardValid = false;
+    this.secondCardValid = false;
+    this.thirdCardValid = false;
+    this.fourthCardValid = false;
+    this.fifthCardValid = false;
 
     this.address = "Enter an address"
 
@@ -188,6 +189,32 @@ export class MotorPage {
     }
   }
 
+  secondCardChanged(){
+    console.log("Changed");
+    if(this.address && this.address != "Enter an address" && this.myDate){
+      this.secondCardValid = true;
+      console.log("valid");
+      this.slides.lockSwipeToNext(false)
+    }
+    else{
+      this.secondCardValid = false;
+      this.slides.lockSwipeToNext(true)
+    }
+  }
+
+  thirdCardChanged(){
+    console.log("Changed");
+    if(this.address && this.address != "Enter an address" && this.myDate){
+      this.secondCardValid = true;
+      console.log("valid");
+      this.slides.lockSwipeToNext(false)
+    }
+    else{
+      this.secondCardValid = false;
+      this.slides.lockSwipeToNext(true)
+    }
+  }
+
   //card 3 camera model
   openCameraModel(license){
     if(license=='self'){
@@ -223,6 +250,9 @@ export class MotorPage {
     console.log('Error getting location', error);
     });
     console.log(this.address);
+    if(this.address){
+      this.secondCardChanged();
+    }
   }
 
   enterAddress(){
@@ -247,6 +277,7 @@ export class MotorPage {
         handler: data => {
           console.log(data.address);
           this.address = data.address;
+          this.secondCardChanged();
         }
       }
     ]
@@ -313,39 +344,6 @@ export class MotorPage {
     }
 
   submit(){
-    if(this.policyInput && this.nameInput && this.numberInput){
-
-    } else {
-      if(!this.policyInput){
-        this.policy_input = "*Please input a policy number";
-        document.getElementById("p2").style.color = "red";
-      }
-      if(!this.nameInput){
-        this.name_input = "*Please input your name";
-      }
-      if(!this.numberInput){
-        this.number_input = "*Please input a contact number";
-      }
-      this.slides.slideTo(0);
-      return;
-    }
-
-    if(this.myDate && this.address){
-
-    } else {
-      this.slides.slideTo(1);
-      return;
-    }
-
-
-    /*
-    if(this.options && this.images){
-
-    } else {
-      return;
-    }*/
-
-
 
     this.emailComposer.isAvailable().then((available: boolean) =>{
       if(available) {}
