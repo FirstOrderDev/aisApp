@@ -107,6 +107,29 @@ export class TravelPage {
     this.navCtrl.pop();
   }
 
+  slideChanged() {
+    this.currentCard = this.slides.getActiveIndex();
+  }
+
+  nextCard() {
+    this.currentCard += 1;
+    console.log(this.currentCard);
+    console.log(this.selectedValue);
+
+    this.slides.slideNext();
+
+    // console.log(this.policyInput);
+    // console.log(this.nameInput);
+    // console.log(this.numberInput);
+
+  }
+
+  previousCard(){
+    this.currentCard -= 1;
+    console.log(this.currentCard)
+    this.slides.slidePrev();
+  }
+
   getCurrentLoc(){
     this.geolocation.getCurrentPosition().then((resp) => {
       var lat = resp.coords.latitude;

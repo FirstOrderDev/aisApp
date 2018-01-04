@@ -1,4 +1,38 @@
 
+<ion-header>
+  <!-- 1 -->
+
+  <div class="animated slideInDown circle1White" *ngIf="currentCard!=0" (click)="this.slides.slideTo(0)">1</div>
+
+  <div class="animated slideInUp circle1Black" *ngIf="currentCard==0"> <i class="icon icon-contract" ></i> </div>
+
+  <!-- 2 -->
+
+  <div class="animated slideInDown circle2White" *ngIf="currentCard!=1" (click)="this.slides.slideTo(1)">2</div>
+
+  <div class="animated slideInUp circle2Black" *ngIf="currentCard==1"> <i class="icon icon-info"></i> </div>
+
+  <!-- 3 -->
+
+  <div class="animated slideInDown circle3White" *ngIf="currentCard!=2" (click)="this.slides.slideTo(2)">3</div>
+
+  <div class="animated slideInUp circle3Black" *ngIf="currentCard==2"> <i class="icon icon-license"></i> </div>
+
+  <!-- 4 -->
+
+  <div class="animated slideInDown circle4White" *ngIf="currentCard!=3" (click)="this.slides.slideTo(3)">4</div>
+
+  <div class="animated slideInUp circle4Black" *ngIf="currentCard==3"> <i class="icon icon-license2"></i> </div>
+
+  <!-- 5 -->
+
+  <div class="animated slideInDown circle5White" *ngIf="currentCard!=4" (click)="this.slides.slideTo(4)">5</div>
+
+  <div class="animated slideInUp circle5Black" *ngIf="currentCard==4"> <i class="icon icon-evidence"></i> </div>
+
+
+</ion-header>
+
 <ion-content class="no-scroll">
 
   <ion-slides class= "slideContainer">
@@ -14,7 +48,7 @@
           Cancel
         </button>
 
-        <button class="nextBtn" (click)="nextFromOne()">
+        <button class="nextBtn" (click)="nextCard()">
           Next
         </button>
 
@@ -61,11 +95,11 @@
         </ion-list>
 
 
-        <button class="backBtn2" (click)="lastFromOne()">
+        <button class="backBtn2" (click)="previousCard()">
           Back
         </button>
 
-        <button class="nextBtn2" (click)="nextFromOne()">
+        <button class="nextBtn2" (click)="nextCard()">
           Next
         </button>
 
@@ -101,11 +135,11 @@
           {{address}}
         </button>
 
-        <button class="backBtn3" (click)="lastFromOne()">
+        <button class="backBtn3" (click)="previousCard()">
           Back
         </button>
 
-        <button class="nextBtn3" (click)="nextFromOne()">
+        <button class="nextBtn3" (click)="nextCard()">
           Next
         </button>
 
@@ -137,11 +171,11 @@
         <input placeholder="{{BSB_input}}" class="BSBInput" [(ngModel)]="BSBInput"/>
         <input placeholder="{{account_input}}" class="accountInput" [(ngModel)]="accountInput"/>
 
-        <button class="backBtn4" (click)="lastFromOne()">
+        <button class="backBtn4" (click)="previousCard()">
           Back
         </button>
 
-        <button class="nextBtn4" (click)="nextFromOne()">
+        <button class="nextBtn4" (click)="nextCard()">
           Next
         </button>
 
@@ -182,7 +216,7 @@
         </ion-grid>
 
 
-        <button class="backBtn5" (click)="lastFromOne()">
+        <button class="backBtn5" (click)="previousCard()">
           Back
         </button>
 
