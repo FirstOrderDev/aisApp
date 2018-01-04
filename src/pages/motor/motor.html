@@ -113,18 +113,6 @@
             </select>
           </div>
 
-          <p class="photoInfoThreeCard">
-            Tap below to add a photo of your drivers license
-          </p>
-
-          <div class="cameraModel" (click)="openCameraModel()">
-            <i class="icon icon-camera cameraIcon" *ngIf="!selfLicense">
-            </i>
-
-            <img src="selfLicense" *ngIf="selfLicense"/>
-          </div>
-
-          <button class="dontHaveBtn" (click)="openLicense()">I don't have my drivers license with me</button>
 
 
         <button class="backBtn3" (click)="previousCard()">
@@ -141,14 +129,36 @@
     <ion-slide class= "stepFour">
       <div class="stepFourCard">
 
-        <p style="font-family:Arial;" class="photoInfoFourCard">
-          Tap below to add a photo of the other drivers license
+        <p class="photoInfoCard1">
+          <!-- Tap below to add a photo of your drivers license -->
         </p>
 
-        <div class="cameraModel" (click)="openCameraModel()">
-          <i class="icon icon-camera cameraIcon">
+        <div class="cameraModel1" (click)="openCameraModel()">
+          <i class="icon icon-camera cameraIcon" *ngIf="!selfLicense">
           </i>
+
+          <img src="selfLicense" *ngIf="selfLicense" class="licensePic"/>
         </div>
+
+        <button class="dontHaveBtn1" (click)="openLicense('Your Licence')">I don't have my drivers license with me</button>
+
+        <hr />
+
+
+        <!-- <p style="font-family:Arial;" class="photoInfoCard2">
+          Tap below to add a photo of the other drivers license
+        </p> -->
+
+        <div class="cameraModel2" (click)="openCameraModel()">
+          <i class="icon icon-photo2 cameraIcon" *ngIf="!otherLicense">
+          </i>
+
+          <img src="otherLicense" *ngIf="otherLicense" class="licensePic"/>
+        </div>
+
+        <button class="dontHaveBtn2" (click)="openLicense('Third Party Licence')">I don't have my drivers license with me</button>
+
+
 
         <button class="backBtn4" (click)="previousCard()">
           Back

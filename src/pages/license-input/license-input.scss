@@ -5,13 +5,17 @@ page-license-input {
 
   .no-scroll .scroll-content{
     overflow: hidden;
-    background: none;
   }
 
   .fixed-content{
     background: #59ABE3;
     height: 8vh;
     width: 100%;
+  }
+
+  ion-title{
+    height: 10vh;
+    margin-top: -2.5vh;
   }
 
   .toolbar-title{
@@ -54,7 +58,7 @@ page-license-input {
   }
 
   .licenseNumber{
-    margin-top: 5vh;
+    margin-top: -2vh;
   }
 
   .address{
@@ -82,6 +86,13 @@ page-license-input {
   .dob{
     color: #aeaeae;
     width: 60vw;
+  }
+
+  .photoIcon{
+    position: absolute;
+    font-size: 250px;
+    right: 4vw;
+    top: 16vh;
   }
 
 

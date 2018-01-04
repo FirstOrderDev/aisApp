@@ -203,8 +203,8 @@ export class MotorPage {
     console.log("hey")
   }
 
-  openLicense(){
-    let customPopOver = this.popoverCtrl.create(LicenseInputPage, {}, {cssClass: 'custom-popover'});
+  openLicense(license){
+    let customPopOver = this.popoverCtrl.create(LicenseInputPage, {licence: licence}, {cssClass: 'custom-popover'});
     customPopOver.present();
   }
 

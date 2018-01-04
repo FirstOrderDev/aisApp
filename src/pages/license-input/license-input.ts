@@ -18,7 +18,7 @@ export class LicenseInputPage {
   license: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.license = "Your Drivers Licence"
+    this.license = this.navParams.get('licence')
   }
 
   ionViewDidLoad() {

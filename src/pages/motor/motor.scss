@@ -225,12 +225,6 @@ page-motor {
           color: #aeaeae;
         }
 
-        .photoInfoThreeCard{
-          margin-top: 3vh;
-          font-size: 75%;
-          color:#aeaeae
-        }
-
         .select {
           position: relative;
           display: inline-block;
@@ -247,36 +241,7 @@ page-motor {
           color: #aeaeae;
         }
 
-        .cameraModel{
-          margin-top: 1vh;
-          margin-left: 4.5vw;
-          width: 90%;
-          height: 27vh;
-          border:1px solid black;
-          border-radius:10px;
-          background:#ffffff;
-          z-index: 9000;
-        }
 
-        .cameraIcon{
-          font-size: 160px
-        }
-
-        .selfLicensePic{
-          width: 85%;
-          object-fit: cover;
-        }
-
-        .dontHaveBtn{
-          width: 78vw;
-          height: 7vh;
-          margin-top: 2vh;
-          border-radius: 5px;
-          background: #E68364;
-          color: #ffffff;
-          font-size: 14px;
-          box-shadow: 0px 0px 10px #aeaeae;
-        }
 
         .nextBtn3, .backBtn3{
           margin-top: 6vh;
@@ -299,30 +264,91 @@ page-motor {
         box-shadow: 0px 0px 10px #006442;
       }
 
-      .photoInfoFourCard{
-        padding-top: 10vh;
-        font-size: 75%;
-        color:#aeaeae
-
+      .photoInfoCard1{
+        padding-top: 0.1vh;
+        font-size: 50%;
+        color:#aeaeae;
+        text-align: left;
+        margin-left: 4vw;
       }
-      .cameraModel{
+
+      .photoInfoCard2{
         margin-top: 2vh;
+        font-size: 50%;
+        color:#aeaeae;
+        text-align: left;
+        margin-left: 4vw;
+      }
+
+      hr{
+        margin-top: 2vh;
+        background: #969696;
+        width: 90%;
+      }
+
+      .cameraModel1, .cameraModel2{
+        margin-top: 4vh;
         margin-bottom: 4vh;
         margin-left: 4.5vw;
         width: 90%;
-        height: 27vh;
-        border:1px solid black;
+        height: 21vh;
+        // border:1px solid #ededed;
         border-radius:10px;
         background:#ffffff;
         z-index: 9000;
+        box-shadow: 0px 0px 10px #aeaeae;
+      }
+
+
+
+      .cameraModel1{
+        background: #5D8CAE;
+      }
+
+      .cameraModel2{
+        margin-top: 1.8vh;
+        background: #4DAF7C;
+      }
+
+      .licensePic{
+        width: 100%;
+        object-fit: cover;
+        height: 21vh;
+        border-radius: 10px;
+      }
+
+      .dontHaveBtn1, .dontHaveBtn2{
+        width: 78vw;
+        height: 4vh;
+        border-radius: 5px;
+        background: #E68364;
+        color: #ffffff;
+        font-size: 12px;
+        box-shadow: 0px 0px 10px #aeaeae;
+      }
+
+      .dontHaveBtn1{
+        background: #4B77BE;
+      }
+
+      .dontHaveBtn2{
+        background: #26C281;
       }
 
       .cameraIcon{
-        font-size: 160px
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left:0;
+        right:0;
+        margin-top: 5.5vh;
+        text-align: center;
+        font-size: 60px;
+        color: #ededed;
       }
 
       .nextBtn4, .backBtn4{
-        margin-top: 23vh;
+        margin-top: 3.5vh;
       }
     }
 
