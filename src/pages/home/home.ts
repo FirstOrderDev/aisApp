@@ -18,26 +18,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, private cameraPreview: CameraPreview, public plt: Platform) {
 
-    this.plt.ready().then(()=> {
-       let options = {
-         x: 100,
-         y: 200,
-         width: 80,
-         height: 80,
-         camera: 'rear',
-         tapPhoto: false,
-         tapFocus: true,
-         previewDrag: false,
-         toBack: true,
-       }
-       this.cameraPreview.startCamera(options).then(
-         (res)=> {
-           console.log(res)
-         },
-         (err) => {
-           console.log(err)
-         });
-     })
+
 
   }
 
@@ -59,6 +40,9 @@ export class HomePage {
     }
     else if(cardTapped=='Roadside'){
       this.navCtrl.push(RoadsidePage);
+    }
+    else if(cardTapped=='camera'){
+      
     }
 
 
