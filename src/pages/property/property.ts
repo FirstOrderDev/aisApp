@@ -32,24 +32,33 @@ export class PropertyPage {
   insurerInput: any;
   nameInput: any;
   numberInput: any;
+  bankInput: any;
+  BSBInput: any;
+  accountInput: any;
 
   insurer_input: any;
   name_input: any;
   number_input: any;
+  bank_input: any;
+  BSB_input: any;
+  account_input: any;
 
   //card 2
   myDate: any;
   address: any;
 
   //card 3
-  selectedValue: any;
   selfLicense: any;
+  selfLicensePic: any;
+  selectedValue: any;
+  adInfoText: any;
 
   //card 4
   otherLicense: any;
   policeNumber: any;
   police_number: any;
   info_text: any;
+  infotext: any;
 
   //card 5
   options: any;
@@ -66,11 +75,16 @@ export class PropertyPage {
     this.insurer_input = "Insurer Name";
     this.name_input = "Your Name";
     this.number_input = "Contact Number (+61)";
+    this.bank_input = "Your Bank";
+    this.BSB_input = "BSB Number";
+    this.account_input = "Account Number";
 
     this.address = "Enter an address"
 
     this.options = null;
     this.images = [];
+
+
 
     this.police_number = "Police event number"
     this.info_text = "Other information"
@@ -235,7 +249,7 @@ export class PropertyPage {
     }
 
   submit(){
-    if(this.insurerInput && this.nameInput && this.numberInput){
+    if(this.insurerInput && this.nameInput && this.numberInput && this.bankInput && this.BSBInput && this.accountInput){
 
     } else {
       if(!this.insurerInput){
@@ -248,6 +262,15 @@ export class PropertyPage {
       if(!this.numberInput){
         this.number_input = "*Please input a contact number";
       }
+      if(!this.bankInput){
+        this.bank_input = "*Please input your bank name"
+      }
+      if(!this.BSBInput){
+        this.BSB_input = "*Please input your bsb number"
+      }
+      if(!this.accountInput){
+        this.account_input = "*Please input your account number"
+      }
       this.slides.slideTo(0);
       return;
     }
@@ -258,7 +281,6 @@ export class PropertyPage {
       this.slides.slideTo(1);
       return;
     }
-
 
     /*
     if(this.options && this.images){
@@ -279,10 +301,18 @@ export class PropertyPage {
         'this.selfLicense'
       ],
       subject: 'Claim from the mobile app',
-      body: 'Insurer Name: ' + this.insurerInput + '<br />' +  'Name: ' + this.nameInput
-      + '<br />' + 'Contact Number: ' + this.numberInput + '<br />' + 'Date of incident: ' +
-      this.myDate + '<br />' + 'Address of incident: ' + this.address + '<br />' + 'What Happend: '
-      + this.selectedValue,
+      body: 'Insurer Name: ' + this.insurerInput + '<br />' +
+      'Name: ' + this.nameInput+ '<br />' +
+      'Contact Number: ' + this.numberInput + '<br />' +
+      'Bank Name: ' + this.bankInput + '<br />' +
+      'BSB Number: ' + this.BSBInput + '<br />' +
+      'Account Number: ' + this.accountInput + '<br />' +
+      'Date of incident: ' + this.myDate + '<br />' +
+      'Address of incident: ' + this.address + '<br />' +
+      'Reason: '+ this.selectedValue + '<br />' +
+      'Description: '+ this.adInfoText + '<br />' +
+      'Police Event Number: ' + this.policeNumber + '<br />' +
+      'Additional Information: ' + this.infotext,
 
       isHtml: true
     };
