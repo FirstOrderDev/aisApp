@@ -25,8 +25,6 @@ export class HomePage {
 
   open(cardTapped){
 
-    this.cameraPreview.stopCamera();
-
     if(cardTapped=='Motor'){
       this.navCtrl.push(MotorPage);
     }
@@ -43,26 +41,7 @@ export class HomePage {
       this.navCtrl.push(RoadsidePage);
     }
     else if(cardTapped=='camera'){
-      this.plt.ready().then(()=> {
-         let options = {
-           x: 0,
-           y: 0,
-           width: window.screen.width,
-           height: window.screen.height,
-           camera: 'rear',
-           tapPhoto: false,
-           tapFocus: true,
-           previewDrag: false,
-           toBack: true,
-         }
-         this.cameraPreview.startCamera(options).then(
-           (res)=> {
-             console.log(res)
-           },
-           (err) => {
-             console.log(err)
-           });
-       })
+
     }
 
 
@@ -84,14 +63,7 @@ export class HomePage {
      // If it's base64:
      //let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-     this.testImages.push(imageData);
 
-     this.base64.encodeFile(imageData).then((base64File: string) => {
-       //console.log(base64File);
-       this.images.push(base64File);
-     }, (err) => {
-       console.log(err);
-     });
 
 
      //this.images.push(base64Image);
