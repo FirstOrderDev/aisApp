@@ -39,6 +39,7 @@ export class MotorPage {
   policyInput: any;
   nameInput: any;
   numberInput: any;
+  firstCardValid: any;
 
   policy_input: any;
   name_input: any;
@@ -80,6 +81,7 @@ export class MotorPage {
     this.policy_input = "Policy Number";
     this.name_input = "Your Name";
     this.number_input = "Contact Number (+61)";
+    this.firstCardValid = false;
 
     this.address = "Enter an address"
 
@@ -92,6 +94,8 @@ export class MotorPage {
     this.otherImages = [];
 
     this.testImages = [];
+
+    //this.Slides.lockSwipeToNext(true)
 
   }
 
@@ -168,6 +172,19 @@ export class MotorPage {
     this.navCtrl.pop();
   }
 
+  //1st card
+
+  firstCardChanged(){
+    console.log("Changed");
+    if(this.policyInput && this.nameInput && this.numberInput){
+      this.firstCardValid = true;
+      console.log("valid");
+    }
+    else{
+      this.firstCardValid = false;
+    }
+  }
+
   //card 3 camera model
   openCameraModel(license){
     if(license=='self'){
@@ -242,8 +259,7 @@ export class MotorPage {
       quality: 100,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      saveToPhotoAlbum: true
+      mediaType: this.camera.MediaType.PICTURE
     }
 
     this.camera.getPicture(options).then((imageData) => {
