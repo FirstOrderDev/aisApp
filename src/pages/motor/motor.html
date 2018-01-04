@@ -41,15 +41,15 @@
     <ion-slide class= "stepOne">
       <div class="stepOneCard">
 
-        <input id="p2" placeholder="{{policy_input}}" class="policyInput" [(ngModel)]="policyInput"/>
-        <input placeholder="{{name_input}}" class="nameInput" [(ngModel)]="nameInput"/>
-        <input placeholder="{{number_input}}" class="contactInput" type="tel" [(ngModel)]="numberInput"/>
+        <input id="p2" placeholder="{{policy_input}}" class="policyInput" [(ngModel)]="policyInput" (ngModelChange)="firstCardChanged()"/>
+        <input placeholder="{{name_input}}" class="nameInput" [(ngModel)]="nameInput" (ngModelChange)="firstCardChanged()"/>
+        <input placeholder="{{number_input}}" class="contactInput" type="tel" [(ngModel)]="numberInput" (ngModelChange)="firstCardChanged()"/>
 
         <button class="cancelBtn" (click)="cancel()">
           Cancel
         </button>
 
-        <button class="nextBtn" (click)="nextCard()">
+        <button class="nextBtn" (click)="nextCard()" [disabled]="!firstCardValid">
           Next
         </button>
 
