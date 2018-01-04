@@ -61,10 +61,28 @@
         </ion-col>
 
         <ion-col>
-          <div class = "instantSnapCard" (click)="open('Camera')">
-            <i class="icon icon-done cardIcon"></i>
-            <p class= "cardTxt">Instant Snap</p>
+          <a href="tel: 1800247727">
+          <div class = "instantCallCard">
 
+            <i class="icon icon-phone cardIcon"></i>
+            <p class= "cardTxt">Instant Call</p>
+
+          </div>
+          </a>
+
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row>
+
+        <ion-col>
+
+          <div class="instantSnapCard">
+            <div class="circle" (click)="openCamera()">
+              <i class="icon icon-camera"></i>
+
+            </div>
           </div>
 
         </ion-col>
@@ -74,6 +92,10 @@
     </ion-grid>
 
   </div>
+
+
+
+
 
 
 </ion-content>
