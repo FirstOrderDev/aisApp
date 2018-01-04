@@ -29,12 +29,12 @@ export class PropertyPage {
   currentCard: number;
 
   //card 1
-  insurerInput: any;
   nameInput: any;
   numberInput: any;
   bankInput: any;
   BSBInput: any;
   accountInput: any;
+  firstCardValid: any;
 
   insurer_input: any;
   name_input: any;
@@ -46,12 +46,14 @@ export class PropertyPage {
   //card 2
   myDate: any;
   address: any;
+  secondCardValid: any;
 
   //card 3
   selfLicense: any;
   selfLicensePic: any;
   selectedValue: any;
   adInfoText: any;
+  thirdCardValid: any;
 
   //card 4
   otherLicense: any;
@@ -59,10 +61,12 @@ export class PropertyPage {
   police_number: any;
   info_text: any;
   infotext: any;
+  fourthCardValid: any;
 
   //card 5
   options: any;
   images: any;
+  fifthCardValid: any;
 
   @ViewChild(Slides) slides: Slides;
 
@@ -72,22 +76,27 @@ export class PropertyPage {
     private camera: Camera, private emailComposer: EmailComposer, private storage: Storage, public popoverCtrl: PopoverController) {
     this.currentCard = 0;
 
-    this.insurer_input = "Insurer Name";
+
     this.name_input = "Your Name";
     this.number_input = "Contact Number (+61)";
     this.bank_input = "Your Bank";
     this.BSB_input = "BSB Number";
     this.account_input = "Account Number";
+    this.firstCardValid = false;
 
     this.address = "Enter an address"
+    this.secondCardValid = false;
+
 
     this.options = null;
     this.images = [];
+    this.thirdCardValid = false;
 
 
 
     this.police_number = "Police event number"
     this.info_text = "Other information"
+    this.fourthCardValid = false;
 
   }
 
@@ -137,20 +146,83 @@ export class PropertyPage {
     this.navCtrl.pop();
   }
 
-  //card 3 camera model
-  openCameraModel(license){
-    if(license=='self'){
-      this.navCtrl.push(CameraModelPage, {
-        who: 'self'
-      });
-    }else{
-      this.navCtrl.push(CameraModelPage, {
-        who: 'other'
-      });
-    }
+  //1st card validation
 
-    console.log("hey")
+  firstCardChanged(){
+    console.log("Changed");
+    if(this.bankInput && this.nameInput && this.numberInput && this.BSBInput && this.accountInput){
+      this.firstCardValid = true;
+      console.log("valid");
+      this.slides.lockSwipeToNext(false)
+    }
+    else{
+      this.firstCardValid = false;
+      this.slides.lockSwipeToNext(true)
+    }
   }
+
+  //2nd card validation
+
+  secondCardChanged(){
+    console.log("Changed");
+    if(this.address && this.myDate){
+      this.secondCardValid = true;
+      console.log("valid");
+      this.slides.lockSwipeToNext(false)
+    }
+    else{
+      this.secondCardValid = false;
+      this.slides.lockSwipeToNext(true)
+    }
+  }
+
+  //3rd card validation
+
+  thirdCardChanged(){
+    console.log("Changed");
+    if(this.selectedValue && this.adInfoText){
+      this.thirdCardValid = true;
+      console.log("valid");
+      this.slides.lockSwipeToNext(false)
+    }
+    else{
+      this.thirdCardValid = false;
+      this.slides.lockSwipeToNext(true)
+    }
+  }
+
+  fourthCardChanged(){
+    console.log("Changed");
+    if(this.address){
+      this.fourthCardValid = true;
+      console.log("valid");
+      this.slides.lockSwipeToNext(false)
+    }
+    else{
+      this.fourthCardValid = false;
+      this.slides.lockSwipeToNext(true)
+    }
+  }
+
+
+
+
+
+
+  //card 3 camera model
+  // openCameraModel(license){
+  //   if(license=='self'){
+  //     this.navCtrl.push(CameraModelPage, {
+  //       who: 'self'
+  //     });
+  //   }else{
+  //     this.navCtrl.push(CameraModelPage, {
+  //       who: 'other'
+  //     });
+  //   }
+  //
+  //   console.log("hey")
+  // }
 
   //step 3 (card 2)
 
@@ -207,7 +279,7 @@ export class PropertyPage {
   });
 }
 
-  //step 6 (card 5)
+  // step 6 (card 5)
 
   openCamera(){
 
@@ -249,15 +321,13 @@ export class PropertyPage {
     }
 
   submit(){
-    if(this.insurerInput && this.nameInput && this.numberInput && this.bankInput && this.BSBInput && this.accountInput){
+    if(this.nameInput && this.numberInput && this.bankInput && this.BSBInput && this.accountInput){
 
     } else {
-      if(!this.insurerInput){
-        this.insurerInput = "*Please input an insurance provider";
-        document.getElementById("p2").style.color = "red";
-      }
+
       if(!this.nameInput){
         this.name_input = "*Please input your name";
+        document.getElementById("p2").style.color = "red";
       }
       if(!this.numberInput){
         this.number_input = "*Please input a contact number";
@@ -301,8 +371,8 @@ export class PropertyPage {
         'this.selfLicense'
       ],
       subject: 'Claim from the mobile app',
-      body: 'Insurer Name: ' + this.insurerInput + '<br />' +
-      'Name: ' + this.nameInput+ '<br />' +
+      body:
+      'Name: ' + this.nameInput + '<br />' +
       'Contact Number: ' + this.numberInput + '<br />' +
       'Bank Name: ' + this.bankInput + '<br />' +
       'BSB Number: ' + this.BSBInput + '<br />' +

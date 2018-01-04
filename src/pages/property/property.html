@@ -38,17 +38,17 @@
     <div class="stepOneCard">
 
 
-      <input id="p2" placeholder="{{name_input}}" class="nameInput" [(ngModel)]="nameInput"/>
-      <input placeholder="{{number_input}}" class="contactInput" type="tel" [(ngModel)]="numberInput"/>
-      <input placeholder="{{bank_input}}" class="bankInput" [(ngModel)]="bankInput"/>
-      <input placeholder="{{BSB_input}}" class="BSBInput" [(ngModel)]="BSBInput"/>
-      <input placeholder="{{account_input}}" class="accountInput" [(ngModel)]="accountInput"/>
+      <input id="p2" placeholder="{{name_input}}" class="nameInput" [(ngModel)]="nameInput" (ngModelChange)="firstCardChanged()"/>
+      <input placeholder="{{number_input}}" class="contactInput" type="tel" [(ngModel)]="numberInput" (ngModelChange)="firstCardChanged()"/>
+      <input placeholder="{{bank_input}}" class="bankInput" [(ngModel)]="bankInput" (ngModelChange)="firstCardChanged()"/>
+      <input placeholder="{{BSB_input}}" class="BSBInput" [(ngModel)]="BSBInput" (ngModelChange)="firstCardChanged()"/>
+      <input placeholder="{{account_input}}" class="accountInput" [(ngModel)]="accountInput" (ngModelChange)="firstCardChanged()"/>
 
       <button class="cancelBtn" (click)="cancel()">
         Cancel
       </button>
 
-      <button class="nextBtn" (click)="nextCard()">
+      <button class="nextBtn" (click)="nextCard()" [disabled]="!firstCardValid">
         Next
       </button>
 
@@ -65,7 +65,7 @@
 
       <ion-item class="dateBox" no-lines>
         <ion-label><i class="icon icon-calendar"></i></ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate">
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate" (ngModelChange)="secondCardChanged()">
         </ion-datetime>
       </ion-item>
 
@@ -91,7 +91,7 @@
         Back
       </button>
 
-      <button class="nextBtn2" (click)="nextCard()">
+      <button class="nextBtn2" (click)="nextCard()" [disabled]="!secondCardValid">
         Next
       </button>
 
@@ -104,7 +104,7 @@
       <p class="titleThreeCard">Reason for claim</p>
 
         <div class="select">
-          <select [(ngModel)]="selectedValue">
+          <select [(ngModel)]="selectedValue" (ngModelChange)="thirdCardChanged()">
             <option>--Select--</option>
             <option [value]="'Storm'">Storm/Flood Damage</option>
             <option [value]="'Loss'">Accidental Loss/Damage</option>
@@ -122,7 +122,7 @@
         </p>
 
         <textarea class="adInfoTextArea" placeholder="Enter description here.."
-        cols="10" rows="3" [(ngModel)]="adInfoText">
+        cols="10" rows="3" [(ngModel)]="adInfoText" (ngModelChange)= "thirdCardChanged()">
         </textarea>
 
           <img src="{{selfLicense}}" *ngIf="selfLicense" class="selfLicensePic"/>
@@ -135,7 +135,7 @@
         Back
         </button>
 
-      <button class="nextBtn3" (click)="nextCard()">
+      <button class="nextBtn3" (click)="nextCard()" [disabled]= "!thirdCardValid">
         Next
       </button>
 
@@ -157,7 +157,7 @@
       <input placeholder="Enter police event number here.." class="policeNumber" [(ngModel)]="policeNumber"/>
 
       <textarea class="infoTextArea" placeholder="Enter additional information here.."
-      cols="20" rows="5" [(ngModel)]="infoText">
+      cols="20" rows="5" [(ngModel)]="infoText" (ngModelChange)= "fourthCardChanged()">
       </textarea>
 
 
@@ -166,7 +166,7 @@
         Back
       </button>
 
-      <button class="nextBtn4" (click)="nextCard()">
+      <button class="nextBtn4" (click)="nextCard()" [disabled]="!fourthCardValid">
         Next
       </button>
 
