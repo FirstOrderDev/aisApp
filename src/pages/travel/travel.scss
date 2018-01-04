@@ -8,6 +8,50 @@ page-travel {
     overflow: hidden;
   }
 
+  // Top bar
+  .circle1White, .circle2White, .circle3White, .circle4White, .circle5White, .circle1Black, .circle2Black, .circle3Black, .circle4Black, .circle5Black{
+    position: absolute;
+    left: 5vw;
+    top: 5.5vh;
+    background: none;
+    border: 1px solid white;
+    width: 8vw;
+    height: 4.5vh;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 0.9vh;
+    color: white;
+    font-size: 4vw;
+  }
+
+  .circle1Black, .circle2Black, .circle3Black, .circle4Black, .circle5Black{
+    border: none;
+    background: #252525;
+    padding-top: 1.1vh;
+    width: 8.8vw;
+    height: 4.9vh;
+    top: 4.3vh;
+    font-size: 5vw;
+  }
+
+  .circle2White, .circle2Black{
+    left: 25vw;
+  }
+
+  .circle3White, .circle3Black{
+    left: 45vw;
+  }
+
+  .circle4White, .circle4Black{
+    left: 65vw;
+  }
+
+  .circle5White, .circle5Black{
+    left: 85vw;
+  }
+
+
+
   .slideContainer{
     background: linear-gradient(to bottom right, #26a65b 0%, #26c281 100%);
 
