@@ -100,6 +100,10 @@ export class TravelPage {
     this.navCtrl.pop();
   }
 
+  goTo(cardNum){
+    if(this.currentCard>=cardNum){this.slides.slideTo(cardNum)}
+  }
+
   slideChanged() {
     this.currentCard = this.slides.getActiveIndex();
     console.log(this.currentCard);

@@ -231,7 +231,7 @@ export class MotorPage {
   }
 
   openLicense(license){
-    let customPopOver = this.popoverCtrl.create(LicenseInputPage, {licence: licence}, {cssClass: 'custom-popover'});
+    let customPopOver = this.popoverCtrl.create(LicenseInputPage, {license: license}, {cssClass: 'custom-popover'});
     customPopOver.present();
   }
 
