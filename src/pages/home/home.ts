@@ -42,7 +42,26 @@ export class HomePage {
       this.navCtrl.push(RoadsidePage);
     }
     else if(cardTapped=='camera'){
-      
+      this.plt.ready().then(()=> {
+         let options = {
+           x: 0,
+           y: 0,
+           width: window.screen.width,
+           height: window.screen.height,
+           camera: 'rear',
+           tapPhoto: false,
+           tapFocus: true,
+           previewDrag: false,
+           toBack: true,
+         }
+         this.cameraPreview.startCamera(options).then(
+           (res)=> {
+             console.log(res)
+           },
+           (err) => {
+             console.log(err)
+           });
+       })
     }
 
 

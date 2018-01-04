@@ -95,7 +95,7 @@ export class MotorPage {
 
     this.testImages = [];
 
-    //this.Slides.lockSwipeToNext(true)
+    this.slides.lockSwipes(true)
 
   }
 
