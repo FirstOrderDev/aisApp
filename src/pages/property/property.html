@@ -37,9 +37,12 @@
   <ion-slide class= "stepOne">
     <div class="stepOneCard">
 
-      <input id="p2" placeholder="{{insurer_input}}" class="insurerInput" [(ngModel)]="insurerInput"/>
-      <input placeholder="{{name_input}}" class="nameInput" [(ngModel)]="nameInput"/>
+
+      <input id="p2" placeholder="{{name_input}}" class="nameInput" [(ngModel)]="nameInput"/>
       <input placeholder="{{number_input}}" class="contactInput" type="tel" [(ngModel)]="numberInput"/>
+      <input placeholder="{{bank_input}}" class="bankInput" [(ngModel)]="bankInput"/>
+      <input placeholder="{{BSB_input}}" class="BSBInput" [(ngModel)]="BSBInput"/>
+      <input placeholder="{{account_input}}" class="accountInput" [(ngModel)]="accountInput"/>
 
       <button class="cancelBtn" (click)="cancel()">
         Cancel
@@ -102,26 +105,28 @@
 
         <div class="select">
           <select [(ngModel)]="selectedValue">
-            <option >--Select--</option>
+            <option>--Select--</option>
             <option [value]="'Storm'">Storm/Flood Damage</option>
             <option [value]="'Loss'">Accidental Loss/Damage</option>
             <option [value]="'Damage'">Malicious Damage</option>
             <option [value]="'Glass'">Glass</option>
             <option [value]="'Theft'">Theft</option>
+            <option [value]="'Impact'">Impact</option>
+            <option [value]="'Fusion'">Fusion</option>
             <option [value]="'Other'">Other</option>
           </select>
         </div>
 
         <p class="photoInfoThreeCard">
-          Tap below to add a photo to your claim
+          Description of property lost or damaged
         </p>
 
-        <div class="cameraModel" (click)="openCameraModel('self')">
-          <i class="icon icon-camera cameraIcon" *ngIf="!selfLicense">
-          </i>
+        <textarea class="adInfoTextArea" placeholder="Enter description here.."
+        cols="10" rows="3" [(ngModel)]="adInfoText">
+        </textarea>
 
           <img src="{{selfLicense}}" *ngIf="selfLicense" class="selfLicensePic"/>
-        </div>
+
 
         <!-- <p class="dontHaveTxt">I don't have my drivers license with me</p> -->
 
@@ -151,7 +156,8 @@
 
       <input placeholder="Enter police event number here.." class="policeNumber" [(ngModel)]="policeNumber"/>
 
-      <textarea class="infoTextArea" placeholder="Enter additional information here.." cols="20" rows="5" [(ngModel)]="infoText">
+      <textarea class="infoTextArea" placeholder="Enter additional information here.."
+      cols="20" rows="5" [(ngModel)]="infoText">
       </textarea>
 
 
