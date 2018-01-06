@@ -12,6 +12,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { CameraModelPage } from '../camera-model/camera-model';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { Storage } from '@ionic/storage';
+import { CallNumber } from '@ionic-native/call-number';
 
 import { LicenseInputPage } from '../license-input/license-input';
 
@@ -81,7 +82,8 @@ export class MotorPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController, private imagePicker: ImagePicker,
     private base64: Base64, public loadingCtrl: LoadingController, public modal: ModalController,
-    private camera: Camera, private emailComposer: EmailComposer, private storage: Storage, public popoverCtrl: PopoverController, public toastCtrl: ToastController, public plt: Platform) {
+    private camera: Camera, private emailComposer: EmailComposer, private storage: Storage, public popoverCtrl: PopoverController,
+    public toastCtrl: ToastController, public plt: Platform, private callNumber: CallNumber) {
 
     this.storage.set('pic', null);
     this.storage.set('otherPic', null);
@@ -127,6 +129,7 @@ export class MotorPage {
               {
                 text: 'No thanks',
                 handler: () => {
+                  this.navCtrl.pop();
                   console.log('Disagree clicked');
                 }
               },
@@ -134,6 +137,12 @@ export class MotorPage {
                 text: 'Yes Please',
                 handler: () => {
                   console.log('Agree clicked');
+                  this.callNumber.callNumber("0402638984", true)
+                    .then(() => console.log('Launched dialer!'))
+                    .catch(() => {
+                      console.log('Error launching dialer')
+                      this.navCtrl.pop();
+                    });
                 }
               }
             ]
@@ -154,12 +163,19 @@ export class MotorPage {
         {
           text: 'No thanks',
           handler: () => {
+            this.navCtrl.pop();
             console.log('Disagree clicked');
           }
         },
         {
           text: 'Yes Please',
           handler: () => {
+            this.callNumber.callNumber("0402638984", true)
+              .then(() => console.log('Launched dialer!'))
+              .catch(() => {
+                console.log('Error launching dialer')
+                this.navCtrl.pop();
+              });
             console.log('Agree clicked');
           }
         }
@@ -220,8 +236,68 @@ export class MotorPage {
     console.log("pic");
   }
 
+  goTo(cardNum){
+    if(this.currentCard>=cardNum){this.slides.slideTo(cardNum)}
+  }
+
   slideChanged() {
     this.currentCard = this.slides.getActiveIndex();
+    console.log(this.currentCard);
+    if(this.currentCard == 0){
+      console.log("Card " + this.currentCard + " is");
+      if(this.firstCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid");
+        this.slides.lockSwipeToNext(false);
+      }
+    }
+    else if (this.currentCard == 1){
+      console.log("Card " + this.currentCard + " is");
+      if(this.secondCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid");
+        this.slides.lockSwipeToNext(false);
+      }
+    }
+    else if (this.currentCard == 2){
+      console.log("Card " + this.currentCard + " is");
+      if(this.thirdCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid")
+        this.slides.lockSwipeToNext(false);
+      }
+    }
+    else if (this.currentCard == 3){
+      console.log("Card " + this.currentCard + " is");
+      if(this.fourthCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid");
+        this.slides.lockSwipeToNext(false);
+      }
+    }
+    else if (this.currentCard == 4){
+      console.log("Card " + this.currentCard + " is");
+      if(this.fifthCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid");
+        this.slides.lockSwipeToNext(false);
+      }
+    }
   }
 
   nextCard() {
@@ -290,6 +366,18 @@ export class MotorPage {
     }
   }
 
+  fourthCardChanged(){
+    console.log("Changed");
+    if(this.selfLicenseInput){
+      this.fourthCardValid = true
+      this.slides.lockSwipeToNext(false);
+    }
+    else{
+      this.fourthCardValid = false;
+      this.slides.lockSwipeToNext(true);
+    }
+  }
+
   //card 3 camera model
   openCameraModel(license){
     if(license=='self'){
@@ -326,6 +414,10 @@ export class MotorPage {
             });
             toast.present();
             console.log(val);
+            this.fourthCardChanged();
+          }
+          else{
+            this.selfLicenseInput = null
           }
 
         });
@@ -342,6 +434,10 @@ export class MotorPage {
               duration: 3000
             });
             toast.present();
+            this.fourthCardChanged();
+          }
+          else{
+            this.otherLicenseInput = null;
           }
 
         });
@@ -478,10 +574,16 @@ export class MotorPage {
      to: 'harrison.croaker@hotmail.com',
      attachments: this.testImages,
      subject: 'Motor Vehicle claim from the mobile app',
-     body: '<h1>Motor vehicle Claim From Mobile App</h1>' + '<br />' + 'Policy Number: ' + this.insurersNameInput + '<br />' +  'Name: ' + this.nameInput
-     + '<br />' + 'Contact Number: ' + this.numberInput + '<br />' + 'Date of incident: ' +
-     this.myDate + '<br />' + 'Location of incident: ' + this.address + '<br />' + 'What Happend: '
-     + this.selectedValue,
+     body: '<h1>Motor vehicle Claim From the Mobile App</h1>' + '<br />' + 'Claim submitted on: ' + date + '<br />' + '<h3>Insurers Name</h3>: ' + this.insurersNameInput + '<br />' +  '<h3>Name:</h3> ' + this.nameInput
+     + '<br />' + '<h3>Contact Number:</h3> ' + this.numberInput + '<br />' + '<h3>Date of incident:</h3> ' +
+     this.myDate + '<br />' + '<h3>Location of incident:</h3> ' + this.address + '<br />' + '<h3>Cause of incident</h3>: '
+     + this.selectedValue + '<br />' + '<h3>Vehicle details: </h3>' + '<br />' + 'Make: ' + this.vehicleDetailsMake + '<br />' + 'Model: ' + this.vehicleDetailsModel + '<br />'
+     + 'Year: ' + this.vehicleDetailsYear + '<br />' + 'Registration: ' + this.vehicleDetailsRegistration + '<br />' +
+     '<h3>First Party License details (If there is no information, the first photo will show a picture of the first parties license):' + '<br />' +
+     'First parties license number: ' + this.selfLicenseInput[0] + '<br />' + 'First parties license address: ' + this.selfLicenseInput[1] +
+     '<br />' + 'First parties DOB: ' + this.selfLicenseInput[2] + '<br />' + '<h3>Third Party License details (If there is no information, the second photo will show a picture of the third parties license)' +
+     'Third parties license number: ' + this.otherLicenseInput[0] + '<br />' + 'Third parties license address: ' + this.otherLicenseInput[1] +
+     '<br />' + 'Third parties DOB: ' + this.otherLicenseInput[2] + '<br />' + 'Images of incident are attatched below.' + '<br />' + "Tech support <a href='tel: 0402638984'>0402638984</a>",
 
      isHtml: true
    };

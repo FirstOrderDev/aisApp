@@ -27,6 +27,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { Ng2ImgToolsModule } from 'ng2-img-tools';
 import { IonicStorageModule } from '@ionic/storage';
 import { PopoverController } from 'ionic-angular';
+import { CallNumber } from '@ionic-native/call-number';
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import { PopoverController } from 'ionic-angular';
     CameraPreview,
     EmailComposer,
     SocialSharing,
+    CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

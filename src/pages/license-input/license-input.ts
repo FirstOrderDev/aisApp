@@ -36,12 +36,24 @@ export class LicenseInputPage {
 
   ionViewWillLeave() {
     if(this.license=="Your License"){
-      console.log("first Party")
-      this.storage.set('firstPartyLicenseInput', [this.firstPartyLicenseNumber, this.firstPartyLicenseAddress, this.firstPartyLicenseDOB])
+      console.log("first Party");
+      if(this.firstPartyLicenseNumber || this.firstPartyLicenseAddress || this.firstPartyLicenseDOB){
+        this.storage.set('firstPartyLicenseInput', [this.firstPartyLicenseNumber, this.firstPartyLicenseAddress, this.firstPartyLicenseDOB])
+      }
+      else{
+        this.storage.set('thirdPartyLicenseInput', null);
+      }
+
     }
     else{
       console.log("Third Party")
-      this.storage.set('thirdPartyLicenseInput', [this.thirdPartyLicenseNumber, this.thirdPartyLicenseAddress, this.thirdPartyLicenseDOB])
+      if(this.thirdPartyLicenseNumber || this.thirdPartyLicenseAddress || this.thirdPartyLicenseDOB){
+        this.storage.set('thirdPartyLicenseInput', [this.thirdPartyLicenseNumber, this.thirdPartyLicenseAddress, this.thirdPartyLicenseDOB])
+      }
+      else{
+        this.storage.set('thirdPartyLicenseInput', null);
+      }
+
     }
   }
 

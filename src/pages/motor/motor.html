@@ -5,31 +5,31 @@
   <ion-header>
     <!-- 1 -->
 
-    <div class="animated slideInDown circle1White" *ngIf="currentCard!=0" (click)="this.slides.slideTo(0)">1</div>
+    <div class="animated slideInDown circle1White" *ngIf="currentCard!=0" (click)="goTo(0)">1</div>
 
     <div class="animated slideInUp circle1Black" *ngIf="currentCard==0"> <i class="icon icon-contract" ></i> </div>
 
     <!-- 2 -->
 
-    <div class="animated slideInDown circle2White" *ngIf="currentCard!=1" (click)="this.slides.slideTo(1)">2</div>
+    <div class="animated slideInDown circle2White" *ngIf="currentCard!=1" (click)="goTo(1)">2</div>
 
     <div class="animated slideInUp circle2Black" *ngIf="currentCard==1"> <i class="icon icon-info"></i> </div>
 
     <!-- 3 -->
 
-    <div class="animated slideInDown circle3White" *ngIf="currentCard!=2" (click)="this.slides.slideTo(2)">3</div>
+    <div class="animated slideInDown circle3White" *ngIf="currentCard!=2" (click)="goTo(2)">3</div>
 
     <div class="animated slideInUp circle3Black" *ngIf="currentCard==2"> <i class="icon icon-license"></i> </div>
 
     <!-- 4 -->
 
-    <div class="animated slideInDown circle4White" *ngIf="currentCard!=3" (click)="this.slides.slideTo(3)">4</div>
+    <div class="animated slideInDown circle4White" *ngIf="currentCard!=3" (click)="goTo(3)">4</div>
 
     <div class="animated slideInUp circle4Black" *ngIf="currentCard==3"> <i class="icon icon-license2"></i> </div>
 
     <!-- 5 -->
 
-    <div class="animated slideInDown circle5White" *ngIf="currentCard!=4" (click)="this.slides.slideTo(4)">5</div>
+    <div class="animated slideInDown circle5White" *ngIf="currentCard!=4" (click)="goTo(4)">5</div>
 
     <div class="animated slideInUp circle5Black" *ngIf="currentCard==4"> <i class="icon icon-evidence"></i> </div>
 
@@ -184,7 +184,7 @@
           Back
         </button>
 
-        <button class="nextBtn4" (click)="nextCard()" [disabled]="!selfLicenseInput">
+        <button class="nextBtn4" (click)="nextCard()" [disabled]="!fourthCardValid">
           Next
         </button>
 
