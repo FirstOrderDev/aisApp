@@ -28,6 +28,32 @@ export class LicenseInputPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
     this.license = this.navParams.get('license')
+
+    if(this.license=="Your License"){
+      console.log("first Party");
+
+      this.storage.get('firstPartyLicenseInput').then( (selfLicense)=> {
+        if(selfLicense){
+          this.firstPartyLicenseNumber = selfLicense[0];
+          this.firstPartyLicenseAddress = selfLicense[1];
+          this.firstPartyLicenseDOB = selfLicense[2];
+        }
+
+      });
+
+
+    }
+    else{
+      console.log("Third Party")
+      this.storage.get('thirdPartyLicenseInput').then( (otherLicense)=> {
+        if(otherLicense){
+          this.thirdPartyLicenseNumber = otherLicense[0];
+          this.thirdPartyLicenseAddress = otherLicense[1];
+          this.thirdPartyLicenseDOB = otherLicense[2];
+        }
+      });
+
+    }
   }
 
   ionViewDidLoad() {
