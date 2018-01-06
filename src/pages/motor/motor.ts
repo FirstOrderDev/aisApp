@@ -114,7 +114,7 @@ export class MotorPage {
 
 
     this.plt.ready().then((readySource) => {
-      if(this.plt.is('cordova')){
+      if(this.plt.is('ios')){
         console.log('Platform ready from', readySource);
         this.emailComposer.isAvailable().then((available: boolean) =>{
           if(available) {
