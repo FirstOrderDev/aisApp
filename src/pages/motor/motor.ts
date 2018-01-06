@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, PopoverController, ToastController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, PopoverController, ToastController, Platform  } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -31,11 +31,13 @@ import { LicenseInputPage } from '../license-input/license-input';
 })
 export class MotorPage {
 
+  mailAvailable: any;
+
   testImages: any;
   currentCard: number;
 
   //card 1
-  policyInput: any;
+  insurersNameInput: any;
   nameInput: any;
   numberInput: any;
   firstCardValid: any;
@@ -79,7 +81,7 @@ export class MotorPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController, private imagePicker: ImagePicker,
     private base64: Base64, public loadingCtrl: LoadingController, public modal: ModalController,
-    private camera: Camera, private emailComposer: EmailComposer, private storage: Storage, public popoverCtrl: PopoverController, public toastCtrl: ToastController) {
+    private camera: Camera, private emailComposer: EmailComposer, private storage: Storage, public popoverCtrl: PopoverController, public toastCtrl: ToastController, public plt: Platform) {
 
     this.storage.set('pic', null);
     this.storage.set('otherPic', null);
@@ -109,6 +111,62 @@ export class MotorPage {
     this.testImages = [];
 
 
+    this.plt.ready().then((readySource) => {
+      if(this.plt.is('cordova')){
+        console.log('Platform ready from', readySource);
+        this.emailComposer.isAvailable().then((available: boolean) =>{
+          if(available) {
+            this.mailAvailable = true;
+          }
+          else{
+
+            let confirm = this.alertCtrl.create({
+            title: 'Unable to access mail',
+            message: 'It looks like you are unable to access your email plugin, would you like to call AIS to make the claim instead?',
+            buttons: [
+              {
+                text: 'No thanks',
+                handler: () => {
+                  console.log('Disagree clicked');
+                }
+              },
+              {
+                text: 'Yes Please',
+                handler: () => {
+                  console.log('Agree clicked');
+                }
+              }
+            ]
+          });
+          confirm.present();
+
+          }
+        });
+      }
+
+    });
+
+    if(!this.mailAvailable){
+      let confirm = this.alertCtrl.create({
+      title: 'Unable to access mail',
+      message: 'It looks like you are unable to access your email plugin, would you like to call AIS to make the claim instead?',
+      buttons: [
+        {
+          text: 'No thanks',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Yes Please',
+          handler: () => {
+            console.log('Agree clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
+    }
 
   }
 
@@ -118,42 +176,47 @@ export class MotorPage {
   }
 
   ionViewDidEnter(){
-    this.storage.get('pic').then((val) => {
-      //console.log('Your pic is', val);
-      this.selfLicense = val;
-      if(this.selfLicense){
-        this.images.push(this.selfLicense)
-      }
+    if(!this.selfLicense){
+      this.storage.get('pic').then((val) => {
+        //console.log('Your pic is', val);
+        this.selfLicense = val;
+        if(this.selfLicense){
+          this.images.push(this.selfLicense)
+        }
 
-    });
+      });
 
-    this.storage.get('picEmail').then((val) => {
-      //console.log('Your pic is', val);
-      this.selfLicenseEmail = val;
-      if(this.selfLicenseEmail){
-        this.testImages.push(this.selfLicense)
-      }
+      this.storage.get('picEmail').then((val) => {
+        //console.log('Your pic is', val);
+        this.selfLicenseEmail = val;
+        if(this.selfLicenseEmail){
+          this.testImages.push(this.selfLicense)
+        }
 
-    });
+      });
+    }
 
-    this.storage.get('otherPic').then((val) => {
-      console.log('Your pic is', val);
-      this.otherLicense = val;
-      if(this.otherLicense){
-        this.images.push(this.otherLicense)
-        this.testImages.push(this.otherLicense)
-      }
+    if(!this.otherLicense){
+      this.storage.get('otherPic').then((val) => {
+        console.log('Your pic is', val);
+        this.otherLicense = val;
+        if(this.otherLicense){
+          this.images.push(this.otherLicense)
+          this.testImages.push(this.otherLicense)
+        }
 
-    });
+      });
 
-    this.storage.get('otherPicEmail').then((val) => {
-      //console.log('Your pic is', val);
-      this.otherLicenseEmail = val;
-      if(this.otherLicenseEmail){
-        this.testImages.push(this.otherLicenseEmail)
-      }
+      this.storage.get('otherPicEmail').then((val) => {
+        //console.log('Your pic is', val);
+        this.otherLicenseEmail = val;
+        if(this.otherLicenseEmail){
+          this.testImages.push(this.otherLicenseEmail)
+        }
 
-    });
+      });
+    }
+
     console.log("pic");
   }
 
@@ -190,7 +253,7 @@ export class MotorPage {
 
   firstCardChanged(){
     console.log("Changed");
-    if(this.policyInput && this.nameInput && this.numberInput){
+    if(this.insurersNameInput && this.nameInput && this.numberInput){
       this.firstCardValid = true;
       console.log("valid");
       this.slides.lockSwipeToNext(false)
@@ -230,10 +293,13 @@ export class MotorPage {
   //card 3 camera model
   openCameraModel(license){
     if(license=='self'){
+      this.selfLicense=null;
       this.navCtrl.push(CameraModelPage, {
         who: 'self'
       });
+
     }else{
+      this.otherLicense=null;
       this.navCtrl.push(CameraModelPage, {
         who: 'other'
       });
@@ -372,48 +438,59 @@ export class MotorPage {
     });
 
     this.imagePicker.getPictures(this.options).then((results) => {
-    loading.present();
-    for (var i = 0; i < results.length; i++) {
+      if(results.length<15){
+        loading.present();
+        for (var i = 0; i < results.length; i++) {
 
-          this.otherImages.push(results[i]);
+              this.otherImages.push(results[i]);
 
-          this.testImages.push(results[i]);
+              this.testImages.push(results[i]);
 
 
 
-          this.base64.encodeFile(results[i]).then((base64File: string) => {
-            //console.log(base64File);
-            this.images.push(base64File);
-          }, (err) => {
-            console.log(err);
-          });
+              this.base64.encodeFile(results[i]).then((base64File: string) => {
+                //console.log(base64File);
+                this.images.push(base64File);
+              }, (err) => {
+                console.log(err);
+              });
+        }
+        loading.dismiss();
       }
-      loading.dismiss();
+      else{
+
+      }
+
     }, (err) => { });
-    }
+  }
 
   submit(){
 
     this.emailComposer.isAvailable().then((available: boolean) =>{
-      if(available) {}
+      if(available) {
+        this.mailAvailable = true;
+      }
     });
 
+    var date = new Date();
 
+   let mail = {
+     to: 'harrison.croaker@hotmail.com',
+     attachments: this.testImages,
+     subject: 'Motor Vehicle claim from the mobile app',
+     body: '<h1>Motor vehicle Claim From Mobile App</h1>' + '<br />' + 'Policy Number: ' + this.insurersNameInput + '<br />' +  'Name: ' + this.nameInput
+     + '<br />' + 'Contact Number: ' + this.numberInput + '<br />' + 'Date of incident: ' +
+     this.myDate + '<br />' + 'Location of incident: ' + this.address + '<br />' + 'What Happend: '
+     + this.selectedValue,
 
-     let mail = {
-       to: 'harrison.croaker@hotmail.com',
-       attachments: this.testImages,
-       subject: 'Claim from the mobile app',
-       body: '<h1>Claim From Mobile App</h1>' + '<br />' + 'Policy Number: ' + this.policyInput + '<br />' +  'Name: ' + this.nameInput
-       + '<br />' + 'Contact Number: ' + this.numberInput + '<br />' + 'Date of incident: ' +
-       this.myDate + '<br />' + 'Location of incident: ' + this.address + '<br />' + 'What Happend: '
-       + this.selectedValue,
+     isHtml: true
+   };
 
-       isHtml: true
-     };
-
-      //Now we know we can send
+    //Now we know we can send
+    if(this.mailAvailable){
       this.emailComposer.open(mail);
+    }
+
 
 
 
