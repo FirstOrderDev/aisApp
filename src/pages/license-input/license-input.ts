@@ -41,7 +41,7 @@ export class LicenseInputPage {
         this.storage.set('firstPartyLicenseInput', [this.firstPartyLicenseNumber, this.firstPartyLicenseAddress, this.firstPartyLicenseDOB])
       }
       else{
-        this.storage.set('thirdPartyLicenseInput', null);
+        this.storage.set('firstPartyLicenseInput', null);
       }
 
     }

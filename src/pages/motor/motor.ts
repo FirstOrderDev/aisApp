@@ -417,7 +417,8 @@ export class MotorPage {
             this.fourthCardChanged();
           }
           else{
-            this.selfLicenseInput = null
+            this.selfLicenseInput = null;
+            this.fourthCardChanged();
           }
 
         });
@@ -438,6 +439,7 @@ export class MotorPage {
           }
           else{
             this.otherLicenseInput = null;
+            this.fourthCardChanged();
           }
 
         });

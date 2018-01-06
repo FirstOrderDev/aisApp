@@ -37,7 +37,8 @@
     </ion-item>
   </ion-list>
 
-  <i class="icon icon-smile photoIcon"></i>
+  <i class="icon icon-self photoIcon" *ngIf="license=='Your License'"></i>
+  <i class="icon icon-smile photoIcon" ngIf="license=='Third Party License'"></i>
 
 
 </ion-content>
