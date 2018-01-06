@@ -1,21 +1,39 @@
 <ion-content padding class="no-scroll" no-bounce>
   <ion-title>{{license}} <br /> <p>Add license details below </p></ion-title>
 
-  <ion-list no-lines>
+  <ion-list no-lines *ngIf="license=='Your License'">
 
     <ion-item class="licenseNumber">
       <ion-label floating>License Number</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="firstPartyLicenseNumber"></ion-input>
     </ion-item>
 
     <ion-item class="address">
       <ion-label floating>Address</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="firstPartyLicenseAddress"></ion-input>
     </ion-item>
 
     <ion-item class="dob">
       <ion-label floating>Date of Birth</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY"></ion-datetime>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="firstPartyLicenseDOB"></ion-datetime>
+    </ion-item>
+  </ion-list>
+
+  <ion-list no-lines *ngIf="license=='Third Party License'">
+
+    <ion-item class="licenseNumber" >
+      <ion-label floating>License Number</ion-label>
+      <ion-input type="text" [(ngModel)]="thirdPartyLicenseNumber"></ion-input>
+    </ion-item>
+
+    <ion-item class="address">
+      <ion-label floating>Address</ion-label>
+      <ion-input type="text" [(ngModel)]="thirdPartyLicenseAddress"></ion-input>
+    </ion-item>
+
+    <ion-item class="dob">
+      <ion-label floating>Date of Birth</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="thirdPartyLicenseDOB"></ion-datetime>
     </ion-item>
   </ion-list>
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, PopoverController, ToastController  } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -32,7 +32,6 @@ import { LicenseInputPage } from '../license-input/license-input';
 export class MotorPage {
 
   testImages: any;
-
   currentCard: number;
 
   //card 1
@@ -41,21 +40,32 @@ export class MotorPage {
   numberInput: any;
   firstCardValid: any;
 
+
   //card 2
   myDate: any;
   address: any;
   secondCardValid: any;
 
+
   //card 3
   selectedValue: any;
-  selfLicense: any;
-  selfLicenseEmail: any;
+  vehicleDetailsMake: any
+  vehicleDetailsModel: any;
+  vehicleDetailsRegistration: any;
+  vehicleDetailsYear: any
   thirdCardValid: any;
 
+
   //card 4
+  selfLicense: any;
+  selfLicenseEmail: any;
+  selfLicenseInput: any;
+
   otherLicense: any;
   otherLicenseEmail: any;
+  otherLicenseInput: any;
   fourthCardValid: any;
+
 
   //card 5
   options: any;
@@ -69,12 +79,14 @@ export class MotorPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder, private alertCtrl: AlertController, private imagePicker: ImagePicker,
     private base64: Base64, public loadingCtrl: LoadingController, public modal: ModalController,
-    private camera: Camera, private emailComposer: EmailComposer, private storage: Storage, public popoverCtrl: PopoverController) {
+    private camera: Camera, private emailComposer: EmailComposer, private storage: Storage, public popoverCtrl: PopoverController, public toastCtrl: ToastController) {
 
     this.storage.set('pic', null);
     this.storage.set('otherPic', null);
     this.storage.set('picEmail', null);
     this.storage.set('otherPicEmail', null);
+    this.storage.set('firstPartyLicenseInput', null);
+    this.storage.set('thirdPartyLicenseInput', null);
 
     this.currentCard = 0;
 
@@ -174,7 +186,7 @@ export class MotorPage {
     this.navCtrl.pop();
   }
 
-  //1st card
+  /// Validators ///
 
   firstCardChanged(){
     console.log("Changed");
@@ -204,13 +216,13 @@ export class MotorPage {
 
   thirdCardChanged(){
     console.log("Changed");
-    if(this.address && this.address != "Enter an address" && this.myDate){
-      this.secondCardValid = true;
+    if(this.selectedValue && this.vehicleDetailsMake && this.vehicleDetailsModel && this.vehicleDetailsRegistration && this.vehicleDetailsYear){
+      this.thirdCardValid = true;
       console.log("valid");
       this.slides.lockSwipeToNext(false)
     }
     else{
-      this.secondCardValid = false;
+      this.thirdCardValid = false;
       this.slides.lockSwipeToNext(true)
     }
   }
@@ -233,6 +245,43 @@ export class MotorPage {
   openLicense(license){
     let customPopOver = this.popoverCtrl.create(LicenseInputPage, {license: license}, {cssClass: 'custom-popover'});
     customPopOver.present();
+    customPopOver.onDidDismiss(() => {
+
+
+      if(license=="Your License"){
+        this.storage.get('firstPartyLicenseInput').then((val) => {
+          //console.log('Your pic is', val);
+
+          if(val){
+            this.selfLicenseInput = val;
+            let toast = this.toastCtrl.create({
+              message: 'Your license was saved',
+              duration: 3000
+            });
+            toast.present();
+            console.log(val);
+          }
+
+        });
+      }
+
+      if(license=="Third Party License"){
+        this.storage.get('thirdPartyLicenseInput').then((val2) => {
+          //console.log('Your pic is', val);
+          console.log("back")
+          if(val2){
+            this.otherLicenseInput = val2;
+            let toast = this.toastCtrl.create({
+              message: 'Third party license was saved',
+              duration: 3000
+            });
+            toast.present();
+          }
+
+        });
+      }
+
+    });
   }
 
   //step 2 (card 2) of motor

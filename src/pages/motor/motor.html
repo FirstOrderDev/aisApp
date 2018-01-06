@@ -105,12 +105,25 @@
         <p class="titleThreeCard">What happened?</p>
 
           <div class="select">
-            <select [(ngModel)]="selectedValue">
+            <select [(ngModel)]="selectedValue" (ngModelChange)="thirdCardChanged()">
               <option >--Select--</option>
               <option [value]="'At fault accident'">At fault accident</option>
               <option [value]="'3rd party ar fault'">3rd party at fault</option>
               <option [value]="'Fault in dispute'">Fault in dispute</option>
             </select>
+          </div>
+
+          <div class="vehicleDetails">
+
+            <p class="vehicleDetailsTxt">
+              Vehicle details
+            </p>
+
+            <input class="vehicleDetailsMake" [(ngModel)]="vehicleDetailsMake" (ngModelChange)="thirdCardChanged()" placeholder="Car Make" /><input class="vehicleDetailsModel" type="text" [(ngModel)]="vehicleDetailsModel" placeholder="Model" (ngModelChange)="thirdCardChanged()"/>
+
+            <input class="vehicleDetailsRegistration" type="text" [(ngModel)]="vehicleDetailsRegistration" placeholder="Registration" (ngModelChange)="thirdCardChanged()"/><ion-datetime  class="vehicleDetailsYear" [(ngModel)]="vehicleDetailsYear" placeholder="Year" (ngModelChange)="thirdCardChanged()" displayFormat="MM/DD/YYYY" ></ion-datetime>
+
+
           </div>
 
 
@@ -119,7 +132,7 @@
           Back
           </button>
 
-        <button class="nextBtn3" (click)="nextCard()">
+        <button class="nextBtn3" (click)="nextCard()" [disabled]="!thirdCardValid">
           Next
         </button>
 
@@ -136,6 +149,9 @@
         <div class="cameraModel1" (click)="openCameraModel()">
           <i class="icon icon-camera cameraIcon" *ngIf="!selfLicense">
           </i>
+          <p class="licenseTxt" *ngIf="!selfLicense">
+            Tap to upload photo of your license
+          </p>
 
           <img src="selfLicense" *ngIf="selfLicense" class="licensePic"/>
         </div>
@@ -149,9 +165,13 @@
           Tap below to add a photo of the other drivers license
         </p> -->
 
-        <div class="cameraModel2" (click)="openCameraModel()">
-          <i class="icon icon-photo2 cameraIcon" *ngIf="!otherLicense">
+        <div class="cameraModel2" (click)="openCameraModel()" >
+          <i class="icon icon-photo2 cameraIcon" *ngIf="!otherLicense" >
           </i>
+
+          <p class="licenseTxt" *ngIf="!otherLicense">
+            Tap to upload photo of third party license
+          </p>
 
           <img src="otherLicense" *ngIf="otherLicense" class="licensePic"/>
         </div>
@@ -164,7 +184,7 @@
           Back
         </button>
 
-        <button class="nextBtn4" (click)="nextCard()">
+        <button class="nextBtn4" (click)="nextCard()" [disabled]="!selfLicenseInput">
           Next
         </button>
 
