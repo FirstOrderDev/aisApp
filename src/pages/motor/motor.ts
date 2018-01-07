@@ -113,76 +113,76 @@ export class MotorPage {
     this.testImages = [];
 
 
-    this.plt.ready().then((readySource) => {
-      if(this.plt.is('ios')){
-        console.log('Platform ready from', readySource);
-        this.emailComposer.isAvailable().then((available: boolean) =>{
-          if(available) {
-            this.mailAvailable = true;
-          }
-          else{
-
-            let confirm = this.alertCtrl.create({
-            title: 'Unable to access mail',
-            message: 'It looks like you are unable to access your email plugin, would you like to call AIS to make the claim instead?',
-            buttons: [
-              {
-                text: 'No thanks',
-                handler: () => {
-                  this.navCtrl.pop();
-                  console.log('Disagree clicked');
-                }
-              },
-              {
-                text: 'Yes Please',
-                handler: () => {
-                  console.log('Agree clicked');
-                  this.callNumber.callNumber("0402638984", true)
-                    .then(() => console.log('Launched dialer!'))
-                    .catch(() => {
-                      console.log('Error launching dialer')
-                      this.navCtrl.pop();
-                    });
-                }
-              }
-            ]
-          });
-          confirm.present();
-
-          }
-        });
-      }
-
-    });
-
-    if(!this.mailAvailable){
-      let confirm = this.alertCtrl.create({
-      title: 'Unable to access mail',
-      message: 'It looks like you are unable to access your email plugin, would you like to call AIS to make the claim instead?',
-      buttons: [
-        {
-          text: 'No thanks',
-          handler: () => {
-            this.navCtrl.pop();
-            console.log('Disagree clicked');
-          }
-        },
-        {
-          text: 'Yes Please',
-          handler: () => {
-            this.callNumber.callNumber("0402638984", true)
-              .then(() => console.log('Launched dialer!'))
-              .catch(() => {
-                console.log('Error launching dialer')
-                this.navCtrl.pop();
-              });
-            console.log('Agree clicked');
-          }
-        }
-      ]
-    });
-    confirm.present();
-    }
+    // this.plt.ready().then((readySource) => {
+    //   if(this.plt.is('ios')){
+    //     console.log('Platform ready from', readySource);
+    //     this.emailComposer.isAvailable().then((available: boolean) =>{
+    //       if(available) {
+    //         this.mailAvailable = true;
+    //       }
+    //       else{
+    //
+    //         let confirm = this.alertCtrl.create({
+    //         title: 'Unable to access mail',
+    //         message: 'It looks like you are unable to access your email plugin, would you like to call AIS to make the claim instead?',
+    //         buttons: [
+    //           {
+    //             text: 'No thanks',
+    //             handler: () => {
+    //               this.navCtrl.pop();
+    //               console.log('Disagree clicked');
+    //             }
+    //           },
+    //           {
+    //             text: 'Yes Please',
+    //             handler: () => {
+    //               console.log('Agree clicked');
+    //               this.callNumber.callNumber("0402638984", true)
+    //                 .then(() => console.log('Launched dialer!'))
+    //                 .catch(() => {
+    //                   console.log('Error launching dialer')
+    //                   this.navCtrl.pop();
+    //                 });
+    //             }
+    //           }
+    //         ]
+    //       });
+    //       confirm.present();
+    //
+    //       }
+    //     });
+    //   }
+    //
+    // });
+    //
+    // if(!this.mailAvailable){
+    //   let confirm = this.alertCtrl.create({
+    //   title: 'Unable to access mail',
+    //   message: 'It looks like you are unable to access your email plugin, would you like to call AIS to make the claim instead?',
+    //   buttons: [
+    //     {
+    //       text: 'No thanks',
+    //       handler: () => {
+    //         this.navCtrl.pop();
+    //         console.log('Disagree clicked');
+    //       }
+    //     },
+    //     {
+    //       text: 'Yes Please',
+    //       handler: () => {
+    //         this.callNumber.callNumber("0402638984", true)
+    //           .then(() => console.log('Launched dialer!'))
+    //           .catch(() => {
+    //             console.log('Error launching dialer')
+    //             this.navCtrl.pop();
+    //           });
+    //         console.log('Agree clicked');
+    //       }
+    //     }
+    //   ]
+    // });
+    // confirm.present();
+    // }
 
   }
 
@@ -565,16 +565,13 @@ export class MotorPage {
   submit(){
 
     this.emailComposer.isAvailable().then((available: boolean) =>{
-      if(available) {
-        this.mailAvailable = true;
-      }
+      if(available) {}
     });
 
     var date = new Date();
 
    let mail = {
      to: 'harrison.croaker@hotmail.com',
-     attachments: this.testImages,
      subject: 'Motor Vehicle claim from the mobile app',
      body: '<h1>Motor vehicle Claim From the Mobile App</h1>' + '<br />' + 'Claim submitted on: ' + date + '<br />' + '<h3>Insurers Name</h3>: ' + this.insurersNameInput + '<br />' +  '<h3>Name:</h3> ' + this.nameInput
      + '<br />' + '<h3>Contact Number:</h3> ' + this.numberInput + '<br />' + '<h3>Date of incident:</h3> ' +
@@ -591,9 +588,7 @@ export class MotorPage {
    };
 
     //Now we know we can send
-    if(this.mailAvailable){
-      this.emailComposer.open(mail);
-    }
+    this.emailComposer.open(mail);
 
 
 
