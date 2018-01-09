@@ -1,7 +1,7 @@
 <ion-slides class= "slideContainer" (ionSlideDidChange)="slideChanged()">
 
   <ion-slide class= "slides" *ngFor="let card of cards">
-    <div class="defultCard" *ngIf="card.type=='default'">
+    <div class="defultCard" *ngIf="card.type=='default'" (click)="openPhotoRoadsideInput()">
       <p class="addPhotoTxt">
         Add a photo of your card
       </p>
@@ -9,7 +9,7 @@
 
       <hr  class="dividingLine"/>
 
-      <p class="Manually Input">
+      <p class="manuallyInputTxt" (click)="openManualRoadsideInput()">
         Manually input your card
       </p>
 

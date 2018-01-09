@@ -8,6 +8,9 @@ import { Base64 } from '@ionic-native/base64';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Storage } from '@ionic/storage';
 
+import { RoadsideManualInputPage } from '../roadside-manual-input/roadside-manual-input';
+import { RoadsidePhotoInputPage } from '../roadside-photo-input/roadside-photo-input';
+
 @IonicPage()
 @Component({
   selector: 'page-roadside',
@@ -46,6 +49,16 @@ export class RoadsidePage {
 
   slideChanged(){
     console.log("Changed");
+  }
+
+  openPhotoRoadsideInput(){
+    console.log("Photo input");
+    this.navCtrl.push(RoadsidePhotoInputPage);
+  }
+
+  openManualRoadsideInput(){
+    console.log("Manual input");
+    this.navCtrl.push(RoadsideManualInputPage);
   }
 
 
