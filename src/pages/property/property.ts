@@ -325,7 +325,7 @@ export class PropertyPage {
 
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
+      destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
@@ -333,8 +333,8 @@ export class PropertyPage {
     this.camera.getPicture(options).then((imageData) => {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64:
-     let base64Image = 'data:image/jpeg;base64,' + imageData;
-     this.images.push(base64Image);
+
+     this.images.push(imageData0);
     }, (err) => {
      // Handle error
     });
@@ -348,88 +348,35 @@ export class PropertyPage {
     this.imagePicker.getPictures(this.options).then((results) => {
     loading.present();
     for (var i = 0; i < results.length; i++) {
-
-          this.base64.encodeFile(results[i]).then((base64File: string) => {
-            //console.log(base64File);
-            this.images.push(base64File);
-          }, (err) => {
-            console.log(err);
-          });
+          this.images.push(results[i]);
       }
       loading.dismiss();
     }, (err) => { });
     }
 
-  submit(){
-    if(this.nameInput && this.numberInput && this.bankInput && this.BSBInput && this.accountInput){
+    submit(){
 
-    } else {
+      this.emailComposer.isAvailable().then((available: boolean) =>{
+        if(available) {}
+      });
 
-      if(!this.nameInput){
-        this.name_input = "*Please input your name";
-        document.getElementById("p2").style.color = "red";
-      }
-      if(!this.numberInput){
-        this.number_input = "*Please input a contact number";
-      }
-      if(!this.bankInput){
-        this.bank_input = "*Please input your bank name"
-      }
-      if(!this.BSBInput){
-        this.BSB_input = "*Please input your bsb number"
-      }
-      if(!this.accountInput){
-        this.account_input = "*Please input your account number"
-      }
-      this.slides.slideTo(0);
-      return;
+      var date = new Date();
+      console.log(this.images);
+
+      var mail;
+
+      mail = {
+        to: 'harrison.croaker@hotmail.com',
+        attachments: this.images,
+        subject: 'Property claim from the mobile app',
+        body: '<h1>Property Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + '<br />' + date +  '<h3>First party name: </h3> ' + this.nameInput + '<h3>Contact Number: </h3>' + this.numberInput
+        + '<br />' + '<h3>Account Name: </h3> ' + this.bankInput + '<br />' + '<h3>BSB Number: </h3> ' + this.BSBInput + '<br />' + '<h3>Account Number: </h3> ' + this.accountInput + '<br />'
+        + '<h3>Date of Incident: </h3> ' + this.myDate + '<br />' + '<h3>Location of incident: </h3> ' + this.address + '<br />' + '<h3>Reason for Claim: </h3> '
+        + this.selectedValue + '<br />' + '<h3>Additional Information:</h3>' + this.adInfoText + '<br />'
+        + 'Police Event Number: ' + this.policeNumber + '<br />' + 'Additional Information: ' + this.infotext,
+
+        isHtml: true
+      };
     }
-
-    if(this.myDate && this.address){
-
-    } else {
-      this.slides.slideTo(1);
-      return;
-    }
-
-    /*
-    if(this.options && this.images){
-
-    } else {
-      return;
-    }*/
-
-    this.emailComposer.isAvailable().then((available: boolean) =>{
-    if(available) {
-       //Now we know we can send
-     }
-    });
-
-    let email = {
-      to: 'harrison.croaker@hotmail.com',
-      attachments: [
-        'this.selfLicense'
-      ],
-      subject: 'Claim from the mobile app',
-      body:
-      'Name: ' + this.nameInput + '<br />' +
-      'Contact Number: ' + this.numberInput + '<br />' +
-      'Bank Name: ' + this.bankInput + '<br />' +
-      'BSB Number: ' + this.BSBInput + '<br />' +
-      'Account Number: ' + this.accountInput + '<br />' +
-      'Date of incident: ' + this.myDate + '<br />' +
-      'Address of incident: ' + this.address + '<br />' +
-      'Reason: '+ this.selectedValue + '<br />' +
-      'Description: '+ this.adInfoText + '<br />' +
-      'Police Event Number: ' + this.policeNumber + '<br />' +
-      'Additional Information: ' + this.infotext,
-
-      isHtml: true
-    };
-
-    // Send a text message using default options
-    this.emailComposer.open(email);
-
-  }
 
 }
