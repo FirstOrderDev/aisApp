@@ -104,7 +104,7 @@ export class PropertyPage {
   }
 
   ionViewDidEnter(){
-  
+
   }
 
   goTo(cardNum){
@@ -368,6 +368,17 @@ export class PropertyPage {
 
         isHtml: true
       };
+
+      this.emailComposer.open(mail).then(() => {
+        let alert = this.alertCtrl.create({
+          title: 'Success!',
+          subTitle: 'Thankyou for submitting your claim to Australian Insurance Solutions. A dedicated claims manager will be in contact with you as soon as possible.',
+          buttons: ['OK']
+        });
+        alert.present();
+        this.navCtrl.pop();
+
+      });
     }
 
 }

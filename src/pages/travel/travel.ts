@@ -364,7 +364,16 @@ export class TravelPage {
      };
 
       //Now we know we can send
-      this.emailComposer.open(mail);
+      this.emailComposer.open(mail).then(() => {
+        let alert = this.alertCtrl.create({
+          title: 'Success!',
+          subTitle: 'Thankyou for submitting your claim to Australian Insurance Solutions. A dedicated claims manager will be in contact with you as soon as possible.',
+          buttons: ['OK']
+        });
+        alert.present();
+        this.navCtrl.pop();
+
+      });
 
     }
 
