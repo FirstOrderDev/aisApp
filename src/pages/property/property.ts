@@ -36,7 +36,6 @@ export class PropertyPage {
   accountInput: any;
   firstCardValid: any;
 
-  insurer_input: any;
   name_input: any;
   number_input: any;
   bank_input: any;
@@ -49,18 +48,16 @@ export class PropertyPage {
   secondCardValid: any;
 
   //card 3
-  selfLicense: any;
-  selfLicensePic: any;
   selectedValue: any;
   adInfoText: any;
   thirdCardValid: any;
 
   //card 4
-  otherLicense: any;
   policeNumber: any;
   police_number: any;
   info_text: any;
   infotext: any;
+  fourthCardValid: any;
 
 
   //card 5
@@ -96,12 +93,14 @@ export class PropertyPage {
 
     this.police_number = "Police event number"
     this.info_text = "Other information"
+    this.fourthCardValid = false;
 
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MotorPage');
+    this.slides.lockSwipeToNext(true)
   }
 
   ionViewDidEnter(){
@@ -117,8 +116,57 @@ export class PropertyPage {
     console.log("pic");
   }
 
+  goTo(cardNum){
+    if(this.currentCard>=cardNum){this.slides.slideTo(cardNum)}
+  }
+
   slideChanged() {
     this.currentCard = this.slides.getActiveIndex();
+    console.log(this.currentCard);
+    if(this.currentCard == 0){
+      console.log("Card " + this.currentCard + " is");
+      if(this.firstCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid");
+        this.slides.lockSwipeToNext(false);
+      }
+    }
+    else if (this.currentCard == 1){
+      console.log("Card " + this.currentCard + " is");
+      if(this.secondCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid");
+        this.slides.lockSwipeToNext(false);
+      }
+    }
+    else if (this.currentCard == 2){
+      console.log("Card " + this.currentCard + " is");
+      if(this.thirdCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid")
+        this.slides.lockSwipeToNext(false);
+      }
+    }
+    else if (this.currentCard == 3){
+      console.log("Card " + this.currentCard + " is");
+      if(this.fourthCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid");
+        this.slides.lockSwipeToNext(false);
+      }
+    }
   }
 
   nextCard() {
@@ -131,9 +179,6 @@ export class PropertyPage {
     // console.log(this.policyInput);
     // console.log(this.nameInput);
     // console.log(this.numberInput);
-
-
-
   }
 
   previousCard(){
@@ -146,11 +191,9 @@ export class PropertyPage {
     this.navCtrl.pop();
   }
 
-  //1st card validation
-
   firstCardChanged(){
     console.log("Changed");
-    if(this.bankInput && this.nameInput && this.numberInput && this.BSBInput && this.accountInput){
+    if(this.nameInput && this.numberInput && this.bankInput && this.BSBInput && this.accountInput){
       this.firstCardValid = true;
       console.log("valid");
       this.slides.lockSwipeToNext(false)
@@ -161,11 +204,9 @@ export class PropertyPage {
     }
   }
 
-  //2nd card validation
-
   secondCardChanged(){
     console.log("Changed");
-    if(this.address && this.myDate){
+    if(this.address && this.address != "Enter an address" && this.myDate){
       this.secondCardValid = true;
       console.log("valid");
       this.slides.lockSwipeToNext(false)
@@ -176,8 +217,6 @@ export class PropertyPage {
     }
   }
 
-  //3rd card validation
-
   thirdCardChanged(){
     console.log("Changed");
     if(this.selectedValue && this.adInfoText){
@@ -186,16 +225,25 @@ export class PropertyPage {
       this.slides.lockSwipeToNext(false)
     }
     else{
+      console.log("invalid")
       this.thirdCardValid = false;
       this.slides.lockSwipeToNext(true)
     }
   }
 
-
-
-
-
-
+  fourthCardChanged(){
+    console.log("Changed");
+    if(this.policeNumber && this.infotext){
+      this.fourthCardValid = true;
+      console.log("valid");
+      this.slides.lockSwipeToNext(false)
+    }
+    else{
+      console.log("invalid")
+      this.fourthCardValid = false;
+      this.slides.lockSwipeToNext(true)
+    }
+  }
 
   //card 3 camera model
   // openCameraModel(license){
@@ -227,6 +275,9 @@ export class PropertyPage {
     console.log('Error getting location', error);
     });
     console.log(this.address);
+    if(this.address){
+      this.secondCardChanged();
+    }
   }
 
   enterAddress(){
@@ -251,6 +302,7 @@ export class PropertyPage {
         handler: data => {
           console.log(data.address);
           this.address = data.address;
+          this.secondCardChanged();
         }
       }
     ]
