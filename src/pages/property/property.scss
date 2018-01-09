@@ -69,7 +69,7 @@ page-property {
     .nextBtn, .nextBtn2, .nextBtn3, .nextBtn4{
       font-size: 18px;
       color: #ecf0f1;
-      background: #95a5a6;
+      background: #26C281;
       padding-top: 3vh;
       padding-bottom: 3vh;
       padding-left: 4vw;
@@ -83,7 +83,7 @@ page-property {
     }
 
     .nextBtn, .cancelBtn{
-      margin-top: 8vh;
+      margin-top: 10vh;
 
     }
 
@@ -146,12 +146,47 @@ page-property {
          border-radius: 5px 5px 5px 5px;
          box-shadow: 0px 0px 10px 0px;
 
-         .nameInput, .contactInput,  .bankInput, .BSBInput, .accountInput{
+         .contactText{
+           font-size: 70%;
+           color: #aeaeae;
+           float: left;
+           padding-left: 3.5vh;
+           margin-top: 8vh;
+           margin-bottom: -3vh;
+         }
+
+         .nameInput, .contactInput{
            background: none;
            border: none;
-           margin-top: 9vh;
+           margin-top: 6vh;
            border-bottom: 1px solid #aeaeae;
            width: 75vw;
+         }
+
+         .bankText{
+           font-size: 70%;
+           color: #aeaeae;
+           float: left;
+           padding-left: 3.5vh;
+           margin-top: 12vh;
+           margin-bottom: -4vh;
+         }
+
+         .bankInput{
+           width: 77.5vw;
+           height: 7vh;
+           padding: 7px;
+           border: none;
+           margin-top: 7vh !important;
+         }
+
+         .BSBInput, .accountInput{
+           width: 37.5vw;
+           height: 7vh;
+           padding: 7px;
+           border: none;
+           margin-top: 3vh!important;
+           font-size: 85%;
          }
 
 

@@ -37,9 +37,18 @@
   <ion-slide class= "stepOne">
     <div class="stepOneCard">
 
+      <p class= "contactText">
+        Contact Details
+      </p>
+
 
       <input id="p2" placeholder="{{name_input}}" class="nameInput" [(ngModel)]="nameInput" (ngModelChange)="firstCardChanged()"/>
       <input placeholder="{{number_input}}" class="contactInput" type="tel" [(ngModel)]="numberInput" (ngModelChange)="firstCardChanged()"/>
+
+      <p class="bankText">
+        Bank Details
+      </p>
+
       <input placeholder="{{bank_input}}" class="bankInput" [(ngModel)]="bankInput" (ngModelChange)="firstCardChanged()"/>
       <input placeholder="{{BSB_input}}" class="BSBInput" [(ngModel)]="BSBInput" (ngModelChange)="firstCardChanged()"/>
       <input placeholder="{{account_input}}" class="accountInput" [(ngModel)]="accountInput" (ngModelChange)="firstCardChanged()"/>
@@ -153,20 +162,18 @@
         <i class="icon icon-info"></i>
       </button>
 
-
-      <input placeholder="Enter police event number here.." class="policeNumber" [(ngModel)]="policeNumber"/>
+      <input placeholder="Enter police event number here.." class="policeNumber" [(ngModel)]="policeNumber"
+      (ngModelChange)= "fourthCardChanged()"/>
 
       <textarea class="infoTextArea" placeholder="Enter additional information here.."
-      cols="20" rows="5" [(ngModel)]="infoText">
+      cols="20" rows="5" [(ngModel)]="infotext" (ngModelChange)= "fourthCardChanged()">
       </textarea>
-
-
 
       <button class="backBtn4" (click)="previousCard()">
         Back
       </button>
 
-      <button class="nextBtn4" (click)="nextCard()">
+      <button class="nextBtn4" (click)="nextCard()" [disabled]="!fourthCardValid">
         Next
       </button>
 

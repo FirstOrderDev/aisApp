@@ -558,7 +558,7 @@ export class MotorPage {
       };
     }
     else{
-      console.log("First choice");
+      console.log("Fourth choice");
       mail = {
         to: 'harrison.croaker@hotmail.com',
         attachments: this.testImages,

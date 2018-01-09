@@ -86,7 +86,8 @@ export class TravelPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TravelPage');
-  }
+    this.slides.lockSwipeToNext(true)
+    }
 
   nextFromOne() {
     this.slides.slideNext();
