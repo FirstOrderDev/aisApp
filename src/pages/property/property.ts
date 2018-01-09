@@ -76,7 +76,7 @@ export class PropertyPage {
 
     this.name_input = "Your Name";
     this.number_input = "Contact Number (+61)";
-    this.bank_input = "Your Bank";
+    this.bank_input = "Account Name";
     this.BSB_input = "BSB Number";
     this.account_input = "Account Number";
     this.firstCardValid = false;

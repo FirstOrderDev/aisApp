@@ -167,7 +167,7 @@
         <textarea class="infoTextArea" placeholder="Enter additional information here.." cols="20" rows="5" [(ngModel)]="infoText" (ngModelChange)="fourthCardChanged()">
         </textarea>
 
-        <input placeholder="Your Bank" class="bankInput" [(ngModel)]="bankInput" (ngModelChange)="fourthCardChanged()"/>
+        <input placeholder="Account Name" class="bankInput" [(ngModel)]="bankInput" (ngModelChange)="fourthCardChanged()"/>
         <input placeholder="BSB Number" class="BSBInput" type="number" [(ngModel)]="BSBInput" (ngModelChange)="fourthCardChanged()"/>
         <input placeholder="Account Number" class="accountInput" type="number" [(ngModel)]="accountInput" (ngModelChange)="fourthCardChanged()"/>
 
@@ -200,7 +200,7 @@
         <br />
 
         <p class="emptyText" *ngIf="images.length<1">
-          Tap the buttons above to insert or take pictures of the accident.
+          Tap the buttons above to insert or take pictures of relevant documents.
         </p>
 
         <i class="icon icon-camera cameraIconUpload" *ngIf="images.length<1"></i>
