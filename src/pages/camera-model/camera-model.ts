@@ -65,7 +65,7 @@ export class CameraModelPage {
     let pictureOpts = {
       width: 1280,
       height: 1280,
-      quality: 85
+      quality: 80
     }
     // this.navCtrl.push(LicenseConfrimPage, {
     //   pictureTaken: this.picture,

@@ -121,7 +121,7 @@
 
             <input class="vehicleDetailsMake" [(ngModel)]="vehicleDetailsMake" (ngModelChange)="thirdCardChanged()" placeholder="Car Make" /><input class="vehicleDetailsModel" type="text" [(ngModel)]="vehicleDetailsModel" placeholder="Model" (ngModelChange)="thirdCardChanged()"/>
 
-            <input class="vehicleDetailsRegistration" type="text" [(ngModel)]="vehicleDetailsRegistration" placeholder="Registration" (ngModelChange)="thirdCardChanged()"/><ion-datetime  class="vehicleDetailsYear" [(ngModel)]="vehicleDetailsYear" placeholder="Year" (ngModelChange)="thirdCardChanged()" displayFormat="MM/DD/YYYY" ></ion-datetime>
+            <input class="vehicleDetailsRegistration" type="text" [(ngModel)]="vehicleDetailsRegistration" placeholder="Registration" (ngModelChange)="thirdCardChanged()"/><ion-datetime  class="vehicleDetailsYear" [(ngModel)]="vehicleDetailsYear" placeholder="Year" (ngModelChange)="thirdCardChanged()" displayFormat="YYYY" ></ion-datetime>
 
 
           </div>
@@ -146,14 +146,14 @@
           <!-- Tap below to add a photo of your drivers license -->
         </p>
 
-        <div class="cameraModel1" (click)="openCameraModel()">
+        <div class="cameraModel1" (click)="openCameraModel('self')">
           <i class="icon icon-camera cameraIcon" *ngIf="!selfLicense">
           </i>
           <p class="licenseTxt" *ngIf="!selfLicense">
             Tap to upload photo of your license
           </p>
 
-          <img src="selfLicense" *ngIf="selfLicense" class="licensePic"/>
+          <img src="{{selfLicense}}" *ngIf="selfLicense" class="licensePic"/>
         </div>
 
         <button class="dontHaveBtn1" (click)="openLicense('Your License')">I don't have my drivers license with me</button>
@@ -165,7 +165,7 @@
           Tap below to add a photo of the other drivers license
         </p> -->
 
-        <div class="cameraModel2" (click)="openCameraModel()" >
+        <div class="cameraModel2" (click)="openCameraModel('other')" >
           <i class="icon icon-photo2 cameraIcon" *ngIf="!otherLicense" >
           </i>
 
@@ -173,7 +173,7 @@
             Tap to upload photo of third party license
           </p>
 
-          <img src="otherLicense" *ngIf="otherLicense" class="licensePic"/>
+          <img src="{{otherLicense}}" *ngIf="otherLicense" class="licensePic"/>
         </div>
 
         <button class="dontHaveBtn2" (click)="openLicense('Third Party License')">I don't have their drivers license with me</button>

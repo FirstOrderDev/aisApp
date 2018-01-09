@@ -75,8 +75,6 @@ export class MotorPage {
   images: any;
   fifthCardValid: any;
 
-  otherImages: any;
-
   @ViewChild(Slides) slides: Slides;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation,
@@ -107,82 +105,7 @@ export class MotorPage {
     }
 
     this.images = [];
-
-    this.otherImages = [];
-
     this.testImages = [];
-
-
-    // this.plt.ready().then((readySource) => {
-    //   if(this.plt.is('ios')){
-    //     console.log('Platform ready from', readySource);
-    //     this.emailComposer.isAvailable().then((available: boolean) =>{
-    //       if(available) {
-    //         this.mailAvailable = true;
-    //       }
-    //       else{
-    //
-    //         let confirm = this.alertCtrl.create({
-    //         title: 'Unable to access mail',
-    //         message: 'It looks like you are unable to access your email plugin, would you like to call AIS to make the claim instead?',
-    //         buttons: [
-    //           {
-    //             text: 'No thanks',
-    //             handler: () => {
-    //               this.navCtrl.pop();
-    //               console.log('Disagree clicked');
-    //             }
-    //           },
-    //           {
-    //             text: 'Yes Please',
-    //             handler: () => {
-    //               console.log('Agree clicked');
-    //               this.callNumber.callNumber("0402638984", true)
-    //                 .then(() => console.log('Launched dialer!'))
-    //                 .catch(() => {
-    //                   console.log('Error launching dialer')
-    //                   this.navCtrl.pop();
-    //                 });
-    //             }
-    //           }
-    //         ]
-    //       });
-    //       confirm.present();
-    //
-    //       }
-    //     });
-    //   }
-    //
-    // });
-    //
-    // if(!this.mailAvailable){
-    //   let confirm = this.alertCtrl.create({
-    //   title: 'Unable to access mail',
-    //   message: 'It looks like you are unable to access your email plugin, would you like to call AIS to make the claim instead?',
-    //   buttons: [
-    //     {
-    //       text: 'No thanks',
-    //       handler: () => {
-    //         this.navCtrl.pop();
-    //         console.log('Disagree clicked');
-    //       }
-    //     },
-    //     {
-    //       text: 'Yes Please',
-    //       handler: () => {
-    //         this.callNumber.callNumber("0402638984", true)
-    //           .then(() => console.log('Launched dialer!'))
-    //           .catch(() => {
-    //             console.log('Error launching dialer')
-    //             this.navCtrl.pop();
-    //           });
-    //         console.log('Agree clicked');
-    //       }
-    //     }
-    //   ]
-    // });
-    // confirm.present();
-    // }
 
   }
 
@@ -197,7 +120,8 @@ export class MotorPage {
         //console.log('Your pic is', val);
         this.selfLicense = val;
         if(this.selfLicense){
-          this.images.push(this.selfLicense)
+          this.images[0] = this.selfLicense;
+          this.fourthCardChanged();
         }
 
       });
@@ -206,7 +130,9 @@ export class MotorPage {
         //console.log('Your pic is', val);
         this.selfLicenseEmail = val;
         if(this.selfLicenseEmail){
-          this.testImages.push(this.selfLicense)
+          this.testImages[0] = this.selfLicenseEmail;
+          this.fourthCardChanged();
+
         }
 
       });
@@ -217,8 +143,8 @@ export class MotorPage {
         console.log('Your pic is', val);
         this.otherLicense = val;
         if(this.otherLicense){
-          this.images.push(this.otherLicense)
-          this.testImages.push(this.otherLicense)
+          this.images[1] = this.otherLicense;
+          this.fourthCardChanged();
         }
 
       });
@@ -227,7 +153,8 @@ export class MotorPage {
         //console.log('Your pic is', val);
         this.otherLicenseEmail = val;
         if(this.otherLicenseEmail){
-          this.testImages.push(this.otherLicenseEmail)
+          this.testImages[1] = this.otherLicenseEmail;
+          this.fourthCardChanged();
         }
 
       });
@@ -368,7 +295,7 @@ export class MotorPage {
 
   fourthCardChanged(){
     console.log("Changed");
-    if(this.selfLicenseInput){
+    if((this.selfLicenseInput || this.selfLicense) && (this.otherLicenseInput || this.otherLicense)){
       this.fourthCardValid = true
       this.slides.lockSwipeToNext(false);
     }
@@ -457,15 +384,18 @@ export class MotorPage {
       console.log(lat);
       console.log(long);
       this.nativeGeocoder.reverseGeocode(lat, long)
-      .then((result: NativeGeocoderReverseResult) => this.address = result.subThoroughfare + ' ' + result.thoroughfare + ', ' + result.administrativeArea + ', ' + result.postalCode)
+      .then((result: NativeGeocoderReverseResult) => {
+        this.address = result.subThoroughfare + ' ' + result.thoroughfare + ', ' + result.administrativeArea + ', ' + result.postalCode;
+        console.log(this.address);
+        if(this.address){
+          this.secondCardChanged();
+        }
+      })
       .catch((error: any) => console.log(error));
     }).catch((error) => {
     console.log('Error getting location', error);
     });
-    console.log(this.address);
-    if(this.address){
-      this.secondCardChanged();
-    }
+
   }
 
   enterAddress(){
@@ -518,7 +448,9 @@ export class MotorPage {
 
      this.base64.encodeFile(imageData).then((base64File: string) => {
        //console.log(base64File);
-       this.images.push(base64File);
+       let base64Image = base64File;
+       this.images.push(base64Image);
+       console.log("Image done!")
      }, (err) => {
        console.log(err);
      });
@@ -527,6 +459,7 @@ export class MotorPage {
      //this.images.push(base64Image);
     }, (err) => {
      // Handle error
+     console.log(err);
     });
   }
 
@@ -536,28 +469,24 @@ export class MotorPage {
     });
 
     this.imagePicker.getPictures(this.options).then((results) => {
-      if(results.length<15){
-        loading.present();
-        for (var i = 0; i < results.length; i++) {
 
-              this.otherImages.push(results[i]);
+      loading.present();
+      for (var i = 0; i < results.length; i++) {
 
-              this.testImages.push(results[i]);
+            this.testImages.push(results[i]);
 
 
 
-              this.base64.encodeFile(results[i]).then((base64File: string) => {
-                //console.log(base64File);
-                this.images.push(base64File);
-              }, (err) => {
-                console.log(err);
-              });
-        }
-        loading.dismiss();
+            this.base64.encodeFile(results[i]).then((base64File: string) => {
+              //console.log(base64File);
+              let base64Image = base64File;
+              this.images.push(base64Image);
+            }, (err) => {
+              console.log(err);
+            });
       }
-      else{
+      loading.dismiss();
 
-      }
 
     }, (err) => { });
   }
@@ -569,28 +498,95 @@ export class MotorPage {
     });
 
     var date = new Date();
+    console.log(this.testImages);
 
-   let mail = {
-     to: 'harrison.croaker@hotmail.com',
-     subject: 'Motor Vehicle claim from the mobile app',
-     body: '<h1>Motor vehicle Claim From the Mobile App</h1>' + '<br />' + 'Claim submitted on: ' + date + '<br />' + '<h3>Insurers Name</h3>: ' + this.insurersNameInput + '<br />' +  '<h3>Name:</h3> ' + this.nameInput
-     + '<br />' + '<h3>Contact Number:</h3> ' + this.numberInput + '<br />' + '<h3>Date of incident:</h3> ' +
-     this.myDate + '<br />' + '<h3>Location of incident:</h3> ' + this.address + '<br />' + '<h3>Cause of incident</h3>: '
-     + this.selectedValue + '<br />' + '<h3>Vehicle details: </h3>' + '<br />' + 'Make: ' + this.vehicleDetailsMake + '<br />' + 'Model: ' + this.vehicleDetailsModel + '<br />'
-     + 'Year: ' + this.vehicleDetailsYear + '<br />' + 'Registration: ' + this.vehicleDetailsRegistration + '<br />' +
-     '<h3>First Party License details (If there is no information, the first photo will show a picture of the first parties license):' + '<br />' +
-     'First parties license number: ' + this.selfLicenseInput[0] + '<br />' + 'First parties license address: ' + this.selfLicenseInput[1] +
-     '<br />' + 'First parties DOB: ' + this.selfLicenseInput[2] + '<br />' + '<h3>Third Party License details (If there is no information, the second photo will show a picture of the third parties license)' +
-     'Third parties license number: ' + this.otherLicenseInput[0] + '<br />' + 'Third parties license address: ' + this.otherLicenseInput[1] +
-     '<br />' + 'Third parties DOB: ' + this.otherLicenseInput[2] + '<br />' + 'Images of incident are attatched below.' + '<br />' + "Tech support <a href='tel: 0402638984'>0402638984</a>",
+    var mail;
 
-     isHtml: true
-   };
+    if(this.selfLicenseInput && this.otherLicenseInput){
+      console.log("First choice")
+      mail = {
+        to: 'harrison.croaker@hotmail.com',
+        attachments: this.testImages,
+        subject: 'Motor Vehicle claim from the mobile app',
+        body: '<h1>Motor vehicle Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + '<br />' + date + '<h3>Insurers Name:</h3> ' + this.insurersNameInput + '<br />' +  '<h3>First party name:</h3> ' + this.nameInput
+        + '<br />' + '<h3>Contact Number:</h3> ' + this.numberInput + '<br />' + '<h3>Date of incident:</h3> ' +
+        this.myDate + '<br />' + '<h3>Location of incident:</h3> ' + this.address + '<br />' + '<h3>Cause of incident:</h3> '
+        + this.selectedValue + '<br />' + '<h3>Vehicle details: </h3>' + 'Make: ' + this.vehicleDetailsMake + '<br />' + 'Model: ' + this.vehicleDetailsModel + '<br />'
+        + 'Year: ' + this.vehicleDetailsYear + '<br />' + 'Registration: ' + this.vehicleDetailsRegistration + '<br />' +
+        '<h3>First Party License details:</h3>'  + 'First parties license number: ' + this.selfLicenseInput[0] + '<br />' + 'First parties license address: ' + this.selfLicenseInput[1] +
+        '<br />' + 'First parties DOB: ' + this.selfLicenseInput[2] + '<br />' + '<h3>Third Party License details:</h3>' + 'Third parties license number: ' + this.otherLicenseInput[0] +
+        '<br />' + 'Third parties license address: ' + this.otherLicenseInput[1] + '<br />' + 'Third parties DOB: ' + this.otherLicenseInput[2] + '<br />' + '<br />' + 'Images of incident are attatched below.'
+        + '<br />' + "Tech support <a href='tel: 0402638984'>0402638984</a>",
+
+        isHtml: true
+      };
+    }
+    else if(this.selfLicenseInput){
+      console.log("Second choice")
+      mail = {
+        to: 'harrison.croaker@hotmail.com',
+        attachments: this.testImages,
+        subject: 'Motor Vehicle claim from the mobile app',
+        body: '<h1>Motor vehicle Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + '<br />' + date + '<h3>Insurers Name:</h3> ' + this.insurersNameInput + '<br />' +  '<h3>First party name:</h3> ' + this.nameInput
+        + '<br />' + '<h3>Contact Number:</h3> ' + this.numberInput + '<br />' + '<h3>Date of incident:</h3> ' +
+        this.myDate + '<br />' + '<h3>Location of incident:</h3> ' + this.address + '<br />' + '<h3>Cause of incident:</h3> '
+        + this.selectedValue + '<br />' + '<h3>Vehicle details: </h3>' + 'Make: ' + this.vehicleDetailsMake + '<br />' + 'Model: ' + this.vehicleDetailsModel + '<br />'
+        + 'Year: ' + this.vehicleDetailsYear + '<br />' + 'Registration: ' + this.vehicleDetailsRegistration + '<br />' +
+        '<h3>First Party License details:</h3>'  + 'First parties license number: ' + this.selfLicenseInput[0] + '<br />' + 'First parties license address: ' + this.selfLicenseInput[1] +
+        '<br />' + 'First parties DOB: ' + this.selfLicenseInput[2] + '<br />' + '<h3>Third Party License details provided via picture (Photo 1):</h3>' + '<br />' + '<br />' + 'Images of incident are attatched below.'
+        + '<br />' + "Tech support <a href='tel: 0402638984'>0402638984</a>",
+
+        isHtml: true
+      };
+    }
+    else if(this.otherLicenseInput){
+      console.log("Third choice");
+      mail = {
+        to: 'harrison.croaker@hotmail.com',
+        attachments: this.testImages,
+        subject: 'Motor Vehicle claim from the mobile app',
+        body: '<h1>Motor vehicle Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + '<br />' + date + '<h3>Insurers Name:</h3> ' + this.insurersNameInput + '<br />' +  '<h3>First party name:</h3> ' + this.nameInput
+        + '<br />' + '<h3>Contact Number:</h3> ' + this.numberInput + '<br />' + '<h3>Date of incident:</h3> ' +
+        this.myDate + '<br />' + '<h3>Location of incident:</h3> ' + this.address + '<br />' + '<h3>Cause of incident:</h3> '
+        + this.selectedValue + '<br />' + '<h3>Vehicle details: </h3>' + 'Make: ' + this.vehicleDetailsMake + '<br />' + 'Model: ' + this.vehicleDetailsModel + '<br />'
+        + 'Year: ' + this.vehicleDetailsYear + '<br />' + 'Registration: ' + this.vehicleDetailsRegistration + '<br />' +
+        '<h3>First Party License details provided via picture (Photo 1):</h3>' + '<br />' + '<h3>Third Party License details:</h3>' + 'Third parties license number: ' + this.otherLicenseInput[0] +
+        '<br />' + 'Third parties license address: ' + this.otherLicenseInput[1] + '<br />' + 'Third parties DOB: ' + this.otherLicenseInput[2] + '<br />' + '<br />' + 'Images of incident are attatched below.'
+        + '<br />' + "Tech support <a href='tel: 0402638984'>0402638984</a>",
+
+        isHtml: true
+      };
+    }
+    else{
+      console.log("First choice");
+      mail = {
+        to: 'harrison.croaker@hotmail.com',
+        attachments: this.testImages,
+        subject: 'Motor Vehicle claim from the mobile app',
+        body: '<h1>Motor vehicle Claim From the Mobile App</h1>' + '<h2>Claim submitted on: </h2>' + date + '<br />' + '<h3>Insurers Name:</h3> ' + this.insurersNameInput + '<br />' +  '<h3>First party name:</h3> ' + this.nameInput
+        + '<br />' + '<h3>Contact Number:</h3> ' + this.numberInput + '<br />' + '<h3>Date of incident:</h3> ' +
+        this.myDate + '<br />' + '<h3>Location of incident:</h3> ' + this.address + '<br />' + '<h3>Cause of incident:</h3> '
+        + this.selectedValue + '<br />' + '<h3>Vehicle details: </h3>' + 'Make: ' + this.vehicleDetailsMake + '<br />' + 'Model: ' + this.vehicleDetailsModel + '<br />'
+        + 'Year: ' + this.vehicleDetailsYear + '<br />' + 'Registration: ' + this.vehicleDetailsRegistration + '<br />' +
+        '<h3>First Party License details provided via picture (Photo 1):</h3>' + '<br />' + '<h3>Third Party License details provided via picture (Photo 2):</h3>' + '<br />' + '<br />' + 'Images of incident are attatched below.'
+        + '<br />' + "Tech support <a href='tel: +61402638984'>0402638984</a>",
+
+        isHtml: true
+      };
+    }
+
 
     //Now we know we can send
-    this.emailComposer.open(mail);
+    this.emailComposer.open(mail).then(() => {
+      let alert = this.alertCtrl.create({
+        title: 'Success!',
+        subTitle: 'Thankyou for submitting your claim to Australian Insurance Solutions. A dedicated claims manager will be in contact with you as soon as possible.',
+        buttons: ['OK']
+      });
+      alert.present();
+      this.navCtrl.pop();
 
-
+    });
 
 
     // Send a text message using default options
