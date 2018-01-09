@@ -20,11 +20,11 @@ export class LicenseInputPage {
 
   firstPartyLicenseNumber: any;
   firstPartyLicenseAddress: any;
-  firstPartyLicenseDOB: any;
+  firstPartyLicenseName: any;
 
   thirdPartyLicenseNumber: any;
   thirdPartyLicenseAddress: any;
-  thirdPartyLicenseDOB: any;
+  thirdPartyLicenseName: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
     this.license = this.navParams.get('license')
@@ -36,7 +36,7 @@ export class LicenseInputPage {
         if(selfLicense){
           this.firstPartyLicenseNumber = selfLicense[0];
           this.firstPartyLicenseAddress = selfLicense[1];
-          this.firstPartyLicenseDOB = selfLicense[2];
+          this.firstPartyLicenseName = selfLicense[2];
         }
 
       });
@@ -49,7 +49,7 @@ export class LicenseInputPage {
         if(otherLicense){
           this.thirdPartyLicenseNumber = otherLicense[0];
           this.thirdPartyLicenseAddress = otherLicense[1];
-          this.thirdPartyLicenseDOB = otherLicense[2];
+          this.thirdPartyLicenseName = otherLicense[2];
         }
       });
 
