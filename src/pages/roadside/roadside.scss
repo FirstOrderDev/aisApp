@@ -4,8 +4,12 @@ page-roadside {
     overflow: hidden;
   }
 
+  .Infotxt{
+    color: #aeaeae
+  }
+
   .dividingLine{
-    background: #ededed;
+    background: #545454;
     width: 75vw !important;
   }
 
@@ -22,25 +26,24 @@ page-roadside {
     background: #ededed;
     top: 7.5vh;
 
-    // .addPhotoTxt{
-    //   position: absolute;
-    // }
-    //
-    // .cameraIcon{
-    //   position: absolute;
-    // }
-    //
-    // .dividingLine{
-    //   position: absolute;
-    // }
-    //
-    // .manuallyInputTxt{
-    //   position: absolute;
-    // }
-    //
-    // .addIcon{
-    //   position: absolute;
-    // }
+    .addPhotoTxt{
+      margin-top: 30vh;
+    }
+
+    .cameraIcon{
+      font-size: 95px;
+    }
+
+    .dividingLine{
+
+    }
+
+    .manuallyInputTxt{
+    }
+
+    .addIcon{
+      font-size: 100px
+    }
   }
 
 }

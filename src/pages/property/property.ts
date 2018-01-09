@@ -104,16 +104,7 @@ export class PropertyPage {
   }
 
   ionViewDidEnter(){
-    this.storage.get('pic').then((val) => {
-      console.log('Your pic is', val);
-      this.selfLicense = val;
-    });
-
-    this.storage.get('otherPic').then((val) => {
-      console.log('Your pic is', val);
-      this.otherLicense = val;
-    });
-    console.log("pic");
+  
   }
 
   goTo(cardNum){
@@ -334,7 +325,7 @@ export class PropertyPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64:
 
-     this.images.push(imageData0);
+     this.images.push(imageData);
     }, (err) => {
      // Handle error
     });
