@@ -36,7 +36,6 @@ export class PropertyPage {
   accountInput: any;
   firstCardValid: any;
 
-  insurer_input: any;
   name_input: any;
   number_input: any;
   bank_input: any;
@@ -49,18 +48,16 @@ export class PropertyPage {
   secondCardValid: any;
 
   //card 3
-  selfLicense: any;
-  selfLicensePic: any;
   selectedValue: any;
   adInfoText: any;
   thirdCardValid: any;
 
   //card 4
-  otherLicense: any;
   policeNumber: any;
   police_number: any;
   info_text: any;
   infotext: any;
+  fourthCardValid: any;
 
 
   //card 5
@@ -79,7 +76,7 @@ export class PropertyPage {
 
     this.name_input = "Your Name";
     this.number_input = "Contact Number (+61)";
-    this.bank_input = "Your Bank";
+    this.bank_input = "Account Name";
     this.BSB_input = "BSB Number";
     this.account_input = "Account Number";
     this.firstCardValid = false;
@@ -96,12 +93,14 @@ export class PropertyPage {
 
     this.police_number = "Police event number"
     this.info_text = "Other information"
+    this.fourthCardValid = false;
 
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MotorPage');
+    this.slides.lockSwipeToNext(true)
   }
 
   ionViewDidEnter(){
@@ -117,8 +116,57 @@ export class PropertyPage {
     console.log("pic");
   }
 
+  goTo(cardNum){
+    if(this.currentCard>=cardNum){this.slides.slideTo(cardNum)}
+  }
+
   slideChanged() {
     this.currentCard = this.slides.getActiveIndex();
+    console.log(this.currentCard);
+    if(this.currentCard == 0){
+      console.log("Card " + this.currentCard + " is");
+      if(this.firstCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid");
+        this.slides.lockSwipeToNext(false);
+      }
+    }
+    else if (this.currentCard == 1){
+      console.log("Card " + this.currentCard + " is");
+      if(this.secondCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid");
+        this.slides.lockSwipeToNext(false);
+      }
+    }
+    else if (this.currentCard == 2){
+      console.log("Card " + this.currentCard + " is");
+      if(this.thirdCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid")
+        this.slides.lockSwipeToNext(false);
+      }
+    }
+    else if (this.currentCard == 3){
+      console.log("Card " + this.currentCard + " is");
+      if(this.fourthCardValid == false){
+        console.log("invalid");
+        this.slides.lockSwipeToNext(true);
+      }
+      else{
+        console.log("valid");
+        this.slides.lockSwipeToNext(false);
+      }
+    }
   }
 
   nextCard() {
@@ -131,9 +179,6 @@ export class PropertyPage {
     // console.log(this.policyInput);
     // console.log(this.nameInput);
     // console.log(this.numberInput);
-
-
-
   }
 
   previousCard(){
@@ -146,11 +191,9 @@ export class PropertyPage {
     this.navCtrl.pop();
   }
 
-  //1st card validation
-
   firstCardChanged(){
     console.log("Changed");
-    if(this.bankInput && this.nameInput && this.numberInput && this.BSBInput && this.accountInput){
+    if(this.nameInput && this.numberInput && this.bankInput && this.BSBInput && this.accountInput){
       this.firstCardValid = true;
       console.log("valid");
       this.slides.lockSwipeToNext(false)
@@ -161,11 +204,9 @@ export class PropertyPage {
     }
   }
 
-  //2nd card validation
-
   secondCardChanged(){
     console.log("Changed");
-    if(this.address && this.myDate){
+    if(this.address && this.address != "Enter an address" && this.myDate){
       this.secondCardValid = true;
       console.log("valid");
       this.slides.lockSwipeToNext(false)
@@ -176,8 +217,6 @@ export class PropertyPage {
     }
   }
 
-  //3rd card validation
-
   thirdCardChanged(){
     console.log("Changed");
     if(this.selectedValue && this.adInfoText){
@@ -186,16 +225,25 @@ export class PropertyPage {
       this.slides.lockSwipeToNext(false)
     }
     else{
+      console.log("invalid")
       this.thirdCardValid = false;
       this.slides.lockSwipeToNext(true)
     }
   }
 
-
-
-
-
-
+  fourthCardChanged(){
+    console.log("Changed");
+    if(this.policeNumber && this.infotext){
+      this.fourthCardValid = true;
+      console.log("valid");
+      this.slides.lockSwipeToNext(false)
+    }
+    else{
+      console.log("invalid")
+      this.fourthCardValid = false;
+      this.slides.lockSwipeToNext(true)
+    }
+  }
 
   //card 3 camera model
   // openCameraModel(license){
@@ -227,6 +275,9 @@ export class PropertyPage {
     console.log('Error getting location', error);
     });
     console.log(this.address);
+    if(this.address){
+      this.secondCardChanged();
+    }
   }
 
   enterAddress(){
@@ -251,6 +302,7 @@ export class PropertyPage {
         handler: data => {
           console.log(data.address);
           this.address = data.address;
+          this.secondCardChanged();
         }
       }
     ]
@@ -273,7 +325,7 @@ export class PropertyPage {
 
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
+      destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
@@ -281,8 +333,8 @@ export class PropertyPage {
     this.camera.getPicture(options).then((imageData) => {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64:
-     let base64Image = 'data:image/jpeg;base64,' + imageData;
-     this.images.push(base64Image);
+
+     this.images.push(imageData0);
     }, (err) => {
      // Handle error
     });
@@ -296,88 +348,35 @@ export class PropertyPage {
     this.imagePicker.getPictures(this.options).then((results) => {
     loading.present();
     for (var i = 0; i < results.length; i++) {
-
-          this.base64.encodeFile(results[i]).then((base64File: string) => {
-            //console.log(base64File);
-            this.images.push(base64File);
-          }, (err) => {
-            console.log(err);
-          });
+          this.images.push(results[i]);
       }
       loading.dismiss();
     }, (err) => { });
     }
 
-  submit(){
-    if(this.nameInput && this.numberInput && this.bankInput && this.BSBInput && this.accountInput){
+    submit(){
 
-    } else {
+      this.emailComposer.isAvailable().then((available: boolean) =>{
+        if(available) {}
+      });
 
-      if(!this.nameInput){
-        this.name_input = "*Please input your name";
-        document.getElementById("p2").style.color = "red";
-      }
-      if(!this.numberInput){
-        this.number_input = "*Please input a contact number";
-      }
-      if(!this.bankInput){
-        this.bank_input = "*Please input your bank name"
-      }
-      if(!this.BSBInput){
-        this.BSB_input = "*Please input your bsb number"
-      }
-      if(!this.accountInput){
-        this.account_input = "*Please input your account number"
-      }
-      this.slides.slideTo(0);
-      return;
+      var date = new Date();
+      console.log(this.images);
+
+      var mail;
+
+      mail = {
+        to: 'harrison.croaker@hotmail.com',
+        attachments: this.images,
+        subject: 'Property claim from the mobile app',
+        body: '<h1>Property Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + '<br />' + date +  '<h3>First party name: </h3> ' + this.nameInput + '<h3>Contact Number: </h3>' + this.numberInput
+        + '<br />' + '<h3>Account Name: </h3> ' + this.bankInput + '<br />' + '<h3>BSB Number: </h3> ' + this.BSBInput + '<br />' + '<h3>Account Number: </h3> ' + this.accountInput + '<br />'
+        + '<h3>Date of Incident: </h3> ' + this.myDate + '<br />' + '<h3>Location of incident: </h3> ' + this.address + '<br />' + '<h3>Reason for Claim: </h3> '
+        + this.selectedValue + '<br />' + '<h3>Additional Information:</h3>' + this.adInfoText + '<br />'
+        + 'Police Event Number: ' + this.policeNumber + '<br />' + 'Additional Information: ' + this.infotext,
+
+        isHtml: true
+      };
     }
-
-    if(this.myDate && this.address){
-
-    } else {
-      this.slides.slideTo(1);
-      return;
-    }
-
-    /*
-    if(this.options && this.images){
-
-    } else {
-      return;
-    }*/
-
-    this.emailComposer.isAvailable().then((available: boolean) =>{
-    if(available) {
-       //Now we know we can send
-     }
-    });
-
-    let email = {
-      to: 'harrison.croaker@hotmail.com',
-      attachments: [
-        'this.selfLicense'
-      ],
-      subject: 'Claim from the mobile app',
-      body:
-      'Name: ' + this.nameInput + '<br />' +
-      'Contact Number: ' + this.numberInput + '<br />' +
-      'Bank Name: ' + this.bankInput + '<br />' +
-      'BSB Number: ' + this.BSBInput + '<br />' +
-      'Account Number: ' + this.accountInput + '<br />' +
-      'Date of incident: ' + this.myDate + '<br />' +
-      'Address of incident: ' + this.address + '<br />' +
-      'Reason: '+ this.selectedValue + '<br />' +
-      'Description: '+ this.adInfoText + '<br />' +
-      'Police Event Number: ' + this.policeNumber + '<br />' +
-      'Additional Information: ' + this.infotext,
-
-      isHtml: true
-    };
-
-    // Send a text message using default options
-    this.emailComposer.open(email);
-
-  }
 
 }

@@ -162,20 +162,18 @@
         <i class="icon icon-info"></i>
       </button>
 
-
-      <input placeholder="Enter police event number here.." class="policeNumber" [(ngModel)]="policeNumber"/>
+      <input placeholder="Enter police event number here.." class="policeNumber" [(ngModel)]="policeNumber"
+      (ngModelChange)= "fourthCardChanged()"/>
 
       <textarea class="infoTextArea" placeholder="Enter additional information here.."
-      cols="20" rows="5" [(ngModel)]="infoText">
+      cols="20" rows="5" [(ngModel)]="infotext" (ngModelChange)= "fourthCardChanged()">
       </textarea>
-
-
 
       <button class="backBtn4" (click)="previousCard()">
         Back
       </button>
 
-      <button class="nextBtn4" (click)="nextCard()">
+      <button class="nextBtn4" (click)="nextCard()" [disabled]="!fourthCardValid">
         Next
       </button>
 
