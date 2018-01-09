@@ -342,7 +342,7 @@ export class PropertyPage {
           this.images.push(results[i]);
       }
       loading.dismiss();
-    }, (err) => { });
+      }, (err) => { });
     }
 
     submit(){
@@ -360,11 +360,11 @@ export class PropertyPage {
         to: 'harrison.croaker@hotmail.com',
         attachments: this.images,
         subject: 'Property claim from the mobile app',
-        body: '<h1>Property Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + '<br />' + date +  '<h3>First party name: </h3> ' + this.nameInput + '<h3>Contact Number: </h3>' + this.numberInput
+        body: '<h1>Property Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + date + '<br />' +  '<h3>First party name: </h3> ' + this.nameInput + '<br />' + '<h3>Contact Number: </h3>' + this.numberInput
         + '<br />' + '<h3>Account Name: </h3> ' + this.bankInput + '<br />' + '<h3>BSB Number: </h3> ' + this.BSBInput + '<br />' + '<h3>Account Number: </h3> ' + this.accountInput + '<br />'
         + '<h3>Date of Incident: </h3> ' + this.myDate + '<br />' + '<h3>Location of incident: </h3> ' + this.address + '<br />' + '<h3>Reason for Claim: </h3> '
-        + this.selectedValue + '<br />' + '<h3>Additional Information:</h3>' + this.adInfoText + '<br />'
-        + 'Police Event Number: ' + this.policeNumber + '<br />' + 'Additional Information: ' + this.infotext,
+        + this.selectedValue + '<br />' + '<h3>Additional Information: </h3>' + this.adInfoText + '<br />'
+        + '<h3>Police Event Number: </h3>' + this.policeNumber + '<br />' + '<h3>Additional Information: </h3>' + this.infotext,
 
         isHtml: true
       };
