@@ -66,7 +66,7 @@ page-travel {
       border: none;
       border-radius: 5px;
       box-shadow: 0px 0px 4px #aeaeae;
-      margin-top: 30vh;
+      margin-top: 21vh;
       width: 38vw;
       height: 9vh;
     }
@@ -82,7 +82,7 @@ page-travel {
       border: none;
       border-radius: 5px;
       box-shadow: 0px 0px 4px #aeaeae;
-      margin-top: 30vh;
+      margin-top: 21vh;
       width: 38vw;
       height: 9vh;
     }
@@ -134,6 +134,15 @@ page-travel {
          border-radius: 5px;
          box-shadow: 0px 0px 10px #006442;
 
+         .contactDetailsTitle{
+           font-size: 85%;
+           color: #aeaeae;
+           float: left;
+           padding-left: 3.5vh;
+           margin-top: 8vh;
+           margin-bottom: -5vh;
+         }
+
          .insurerInput, .nameInput, .contactInput{
            background: none;
            border: none;
@@ -179,11 +188,15 @@ page-travel {
         }
 
         .basicTextLeftV2{
-          padding-top: 8vh;
+          font-size: 85%;
+          color: #aeaeae;
+          float: left;
+          margin-top: 4vh;
+          margin-bottom: 3vh;
         }
 
         .nextBtn2, .backBtn2{
-          margin-top: 9vh;
+          margin-top: 7vh;
         }
       }
     }
@@ -218,7 +231,11 @@ page-travel {
         }
 
         .basicTextLeftV3{
-          padding-top: 7vh;
+          font-size: 85%;
+          color: #aeaeae;
+          float: left;
+          margin-top: 3vh;
+          margin-bottom: 2vh;
         }
 
         .currrentLocBtn{
@@ -245,11 +262,11 @@ page-travel {
           margin-left: 1vw;
           width: 76vw;
           height: 9vh;
-          margin-bottom: 8vh;
+          margin-bottom: 6vh;
         }
 
         .backBtn3, .nextBtn3{
-          margin-top: 5vh;
+          margin-top: 7vh;
         }
 
       }
@@ -266,6 +283,23 @@ page-travel {
         background: #efefef;
         border-radius: 5px;
         box-shadow: 0px 0px 10px #006442;
+
+        .pageFourTitle{
+          font-size: 110%;
+          color: #aeaeae;
+          text-align: center;
+          padding-top: 3vh;
+          margin-bottom: 2vh;
+        }
+
+        .categoryTitle{
+          font-size: 85%;
+          color: #aeaeae;
+          float: left;
+          padding-left: 3.5vh;
+          margin-top: 2vh;
+          margin-bottom: 1vh;
+        }
 
         .select {
           color: black;
@@ -286,23 +320,42 @@ page-travel {
 
         .infoTextArea{
           border-radius: 10px;
-          margin-top: 3vh;
+          margin-top: 1vh;
           background-color: white;
           width: 78vw;
-          height: 10vh;
+          height: 14vh;
           resize: none;
         }
 
-        .bankInput, .BSBInput, .accountInput{
-          background: none;
+        .bankDetailTitle{
+          font-size: 85%;
+          color: #aeaeae;
+          float: left;
+          padding-left: 3.5vh;
+          margin-top: 3vh;
+          margin-bottom: 1vh;
+        }
+
+        .bankInput{
+          width: 77.5vw;
+          height: 7vh;
+          padding: 7px;
           border: none;
-          margin-top: 7vh;
-          border-bottom: 1px solid #aeaeae;
-          width: 75vw;
+          font-size: 85%;
+        }
+
+        .BSBInput, .accountInput{
+          width: 37.5vw;
+          height: 7vh;
+          padding: 7px;
+          border: none;
+          margin-top: 1vh;
+          font-size: 85%;
+
         }
 
         .backBtn4, .nextBtn4{
-          margin-top: 11vh;
+          margin-top: 8vh;
         }
 
       }

@@ -6,13 +6,22 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>reportBugModal</ion-title>
-  </ion-navbar>
+  <ion-title>Report Bug</ion-title>
 
 </ion-header>
 
-
 <ion-content padding>
+
+  <div>
+    <input placeholder="Device Used" class="deviceInput" [(ngModel)]="deviceInput" (ngModelChange)="bugReportChanged()"/>
+    <input placeholder="Page Containing Bug" class="pageInput" [(ngModel)]="pageInput" (ngModelChange)="bugReportChanged()"/>
+
+    <textarea class="infoText" placeholder="Enter description here.."
+    cols="10" rows="3" [(ngModel)]="infoText" (ngModelChange)="bugReportChanged()">
+    </textarea>
+  </div>
+
+  <button (click)="this.navCtrl.pop()" class="backBtn">Back</button>
+  <button (click)="submit()" [disabled]="!bugReportValid" class="submitBtn">Continue</button>
 
 </ion-content>

@@ -1,3 +1,4 @@
+
 <ion-slides class= "slideContainer" (ionSlideDidChange)="slideChanged()">
 
   <ion-slide class= "slides" *ngFor="let card of cards">
@@ -5,17 +6,15 @@
       <p class="Infotxt">
         This page allows you to add and store your roadside assistant cards.
       </p>
+
       <p class="addPhotoTxt">
-        Add a photo of your card
+        Take a photo of your card.
       </p>
+
       <i class="icon icon-camera cameraIcon" (click)="openPhotoRoadsideInput()"></i>
 
-      <hr  class="dividingLine"/>
-
-
-
       <p class="manuallyInputTxt" >
-        Manually input your card
+        Manually input your card.
       </p>
 
       <i class="icon icon-add addIcon" (click)="openManualRoadsideInput()" ></i>

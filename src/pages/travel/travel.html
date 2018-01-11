@@ -40,6 +40,10 @@
     <ion-slide class= "stepOne">
       <div class="stepOneCard">
 
+        <p class="contactDetailsTitle">
+          Contact Details
+        </p>
+
         <input placeholder="Insurer's Name" class="insurerInput" [(ngModel)]="insurerInput" (ngModelChange)="firstCardChanged()"/>
         <input placeholder="Your name" class="nameInput" [(ngModel)]="nameInput" (ngModelChange)="firstCardChanged()"/>
         <input placeholder="Contact Number (+61)" class="contactInput" type="tel" [(ngModel)]="numberInput" (ngModelChange)="firstCardChanged()"/>
@@ -149,9 +153,14 @@
     <ion-slide class= "stepFour">
       <div class="stepFourCard">
 
-        <p class="basicTextLeft">
+        <p class="pageFourTitle">
           Reason for claim
         </p>
+
+        <p class="categoryTitle">
+          Select a category
+        </p>
+
 
         <div class="select">
           <select [(ngModel)]="selectedValue" (ngModelChange)="fourthCardChanged()">
@@ -166,6 +175,10 @@
 
         <textarea class="infoTextArea" placeholder="Enter additional information here.." cols="20" rows="5" [(ngModel)]="infoText" (ngModelChange)="fourthCardChanged()">
         </textarea>
+
+        <p class="bankDetailTitle">
+        Bank Details
+        </p>
 
         <input placeholder="Account Name" class="bankInput" [(ngModel)]="bankInput" (ngModelChange)="fourthCardChanged()"/>
         <input placeholder="BSB Number" class="BSBInput" type="number" [(ngModel)]="BSBInput" (ngModelChange)="fourthCardChanged()"/>
