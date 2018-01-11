@@ -1,3 +1,4 @@
+<<<<<<< current
 
 
 
@@ -251,3 +252,159 @@
     </ion-slide>
 
   </ion-slides>
+=======
+
+
+<ion-content class="no-scroll">
+
+  <ion-slides class= "slideContainer">
+
+    <ion-slide class= "stepOne">
+      <div class="stepOneCard">
+
+        <input placeholder="Policy Number" class="policyInput" [(ngModel)]="policyInput"/>
+        <input placeholder="Your Name" class="nameInput" [(ngModel)]="nameInput"/>
+        <input placeholder="Contact Number (+61)" class="contactInput" type="tel" [(ngModel)]="numberInput"/>
+
+        <button class="cancelBtn" (click)="cancel()">
+          Cancel
+        </button>
+
+        <button class="nextBtn" (click)="nextFromOne('1')">
+          Next
+        </button>
+
+
+      </div>
+    </ion-slide>
+
+    <ion-slide class= "stepTwo">
+      <div class="stepTwoCard">
+
+        <p class="basicTextLeft">
+          Date of accident
+        </p>
+
+        <ion-item class="dateBox" no-lines>
+          <ion-label><i class="icon icon-calendar"></i></ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate">
+          </ion-datetime>
+        </ion-item>
+
+        <p class="basicTextLeft">
+          Location of accident
+        </p>
+
+        <button class="currrentLocBtn" (click)="getCurrentLoc()">
+          Use my current location
+        </button>
+
+        <p>
+          -- Or --
+        </p>
+
+        <button class="adressBox" (click)="enterAddress()">
+          {{address}}
+        </button>
+
+        <br />
+
+        <button class="backBtn2" (click)="lastFromOne()">
+          Back
+        </button>
+
+        <button class="nextBtn2" (click)="nextFromOne('2')">
+          Next
+        </button>
+
+      </div>
+    </ion-slide>
+
+    <ion-slide class= "stepThree">
+      <div class="stepThreeCard">
+
+        <p class="titleThreeCard">What happened?</p>
+
+          <div class="select">
+            <select>
+              <option>--Select--</option>
+              <option>Car Crash</option>
+              <option>Obstacle Collision</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <p class="photoInfoThreeCard">
+            Tap below to add a photo of your drivers license
+          </p>
+
+          <div class="cameraModel">
+
+
+          </div>
+
+          <button class="backBtn3" (click)="lastFromOne()">
+          Back
+          </button>
+
+        <button class="nextBtn" (click)="nextFromOne('3')">
+          Next
+          </button>
+
+      </div>
+    </ion-slide>
+
+    <ion-slide class= "stepFour">
+      <div class="stepFourCard">
+
+        <input placeholder="placeholder" class="infoInputBasic" [(ngModel)]="policyInput"/>
+        <input placeholder="placeholder" class="infoInputBasic"/>
+        <input placeholder="placeholder" class="infoInputBasic" type="tel"/>
+
+        <button class="backBtn" (click)="lastFromOne()">
+          Back
+        </button>
+
+        <button class="nextBtn" (click)="nextFromOne('4')">
+          Next
+        </button>
+
+      </div>
+    </ion-slide>
+
+    <ion-slide class= "stepFive">
+      <div class="stepFiveCard">
+
+        <p class="basicTextLeft">
+          Tap to add photos from your gallery or camera
+        </p>
+
+        <button class="stepFiveBtns">
+          1
+        </button>
+
+        <button class="stepFiveBtns">
+          2
+        </button>
+
+        <button class="stepFiveBtns">
+          3
+        </button>
+
+        <br />
+
+        <button class="backBtn" (click)="lastFromOne()">
+          Back
+        </button>
+
+        <button class="submitBtn">
+          Submit
+        </button>
+
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+
+</ion-content>
+>>>>>>> before discard

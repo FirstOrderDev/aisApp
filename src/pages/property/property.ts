@@ -93,7 +93,7 @@ export class PropertyPage {
 
     this.police_number = "Police event number"
     this.info_text = "Other information"
-    this.fourthCardValid = false;
+    this.fourthCardValid = true;
 
 
   }
@@ -355,6 +355,18 @@ export class PropertyPage {
       console.log(this.images);
 
       var mail;
+
+      if(this.policeNumber){
+
+      }else{
+
+      }
+
+      if(this.infotext){
+
+      }else{
+
+      }
 
       mail = {
         to: 'harrison.croaker@hotmail.com',
