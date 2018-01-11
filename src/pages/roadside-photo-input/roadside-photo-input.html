@@ -36,8 +36,12 @@
     <input class="cardNumberInput" type="number" placeholder="Card phone number" [(ngModel)]="cardPhoneNumberInput" (ngModelChange)="roadsidePhotoChanged()"/>
   </div>
 
-  <button (click)="this.navCtrl.pop()" class="backBtn">Back</button>
-  <button (click)="sumbitPhotoCard()" [disabled]="!roadsidePhotoValid" class="submitBtn">Continue</button>
+  <div class="bottomButtons">
+    <button (click)="this.navCtrl.pop()" class="backBtn">Back</button>
+    <button (click)="sumbitPhotoCard()" [disabled]="!roadsidePhotoValid" class="submitBtn">Continue</button>
+  </div>
+
+
 
 
 

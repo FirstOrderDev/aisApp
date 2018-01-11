@@ -25,12 +25,15 @@ page-roadside {
     text-align: center;
     background: #ededed;
     top: 7.5vh;
+    color: #aeaeae;
 
     .addPhotoTxt{
+      color: #6C7A89;
       margin-top: 12vh;
     }
 
     .cameraIcon{
+      color: #6C7A89;
       font-size: 95px;
     }
 
@@ -39,10 +42,12 @@ page-roadside {
     }
 
     .manuallyInputTxt{
+      color: #95A5A6;
       margin-top: 8vh;
     }
 
     .addIcon{
+      color: #95A5A6;
       font-size: 100px
     }
   }

@@ -596,7 +596,7 @@ export class MotorPage {
 
 
     //Now we know we can send
-    this.emailComposer.open(mail).then(() => {
+    this.emailComposer.open(mail).then(null, function() {
       let alert = this.alertCtrl.create({
         title: 'Success!',
         subTitle: 'Thankyou for submitting your claim to Australian Insurance Solutions. A dedicated claims manager will be in contact with you as soon as possible.',

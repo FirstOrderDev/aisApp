@@ -61,7 +61,7 @@ export class SettingsPage {
     });
 
     var date = new Date();
-    console.log(this.images);
+    //console.log(this.images);
 
     var mail;
 

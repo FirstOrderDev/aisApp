@@ -61,36 +61,34 @@ page-roadside-photo-input {
     }
   }
 
+  .bottomButtons{
+    width: 90vw;
+    height: 9vh;
+    margin-top: 5vh
+  }
+
   .backBtn{
     font-size: 18px;
     color: #ecf0f1;
     background: #f58f84;
-    padding-top: 3vh;
-    padding-bottom: 3vh;
-    padding-left: 3vw;
-    padding-right: 4vw;
     border: none;
     border-radius: 5px;
     box-shadow: 0px 0px 4px #aeaeae;
-    margin-top: 3vh;
-    width: 44vw;
+    width: 43.5vw;
     height: 9vh;
+
   }
 
   .submitBtn{
     font-size: 18px;
     color: #ecf0f1;
     background: #26C281;
-    padding-top: 3vh;
-    padding-bottom: 3vh;
-    padding-left: 4vw;
-    padding-right: 4vw;
     border: none;
     border-radius: 5px;
     box-shadow: 0px 0px 4px #aeaeae;
-    margin-top: 5vh;
-    width: 44vw;
+    width: 43.5vw;
     height: 9vh;
+    margin-left: 1vw;
   }
 
   //
