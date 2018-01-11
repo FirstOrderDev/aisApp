@@ -37,7 +37,7 @@ export class SettingsPage {
   }
 
   smsShare() {
-    this.sharing.shareViaSMS('Check out this app!',null)
+    this.sharing.shareViaSMS('Check out this app! http://aisgroup.com.au/index.php',null)
     .then(() => {
       console.log("Message sent!");
     }).catch((error) => {
