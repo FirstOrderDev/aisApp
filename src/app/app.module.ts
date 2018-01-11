@@ -17,6 +17,7 @@ import { AdditionalInfoPopoverPage } from '../pages/additional-info-popover/addi
 import { LicenseInputPage } from '../pages/license-input/license-input';
 import { RoadsideManualInputPage } from '../pages/roadside-manual-input/roadside-manual-input';
 import { RoadsidePhotoInputPage } from '../pages/roadside-photo-input/roadside-photo-input';
+import { ReportBugModalPage } from '../pages/report-bug-modal/report-bug-modal';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
@@ -46,7 +47,8 @@ import { CallNumber } from '@ionic-native/call-number';
     AdditionalInfoPopoverPage,
     LicenseInputPage,
     RoadsideManualInputPage,
-    RoadsidePhotoInputPage
+    RoadsidePhotoInputPage,
+    ReportBugModalPage
 
   ],
   imports: [
@@ -69,8 +71,9 @@ import { CallNumber } from '@ionic-native/call-number';
     AdditionalInfoPopoverPage,
     LicenseInputPage,
     RoadsideManualInputPage,
-    RoadsidePhotoInputPage
-
+    RoadsidePhotoInputPage,
+    ReportBugModalPage
+    
   ],
   providers: [
     StatusBar,
