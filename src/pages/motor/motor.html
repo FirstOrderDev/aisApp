@@ -41,9 +41,21 @@
     <ion-slide class= "stepOne">
       <div class="stepOneCard">
 
+        <p class= "contactText">
+          Contact Details
+        </p>
+
         <input placeholder="Insured Name" class="policyInput" [(ngModel)]="insurersNameInput" (ngModelChange)="firstCardChanged()"/>
         <input placeholder="Your Name" class="nameInput" [(ngModel)]="nameInput" (ngModelChange)="firstCardChanged()"/>
         <input placeholder="Contact Number (+61)" class="contactInput" type="tel" [(ngModel)]="numberInput" (ngModelChange)="firstCardChanged()"/>
+
+        <p class="bankText">
+          Bank Details
+        </p>
+
+        <input placeholder="{{bank_input}}" class="bankInput" [(ngModel)]="bankInput" (ngModelChange)="firstCardChanged()"/>
+        <input placeholder="{{BSB_input}}" class="BSBInput" [(ngModel)]="BSBInput" (ngModelChange)="firstCardChanged()"/>
+        <input placeholder="{{account_input}}" class="accountInput" [(ngModel)]="accountInput" (ngModelChange)="firstCardChanged()"/>
 
         <button class="cancelBtn" (click)="cancel()">
           Cancel
@@ -103,6 +115,8 @@
       <div class="stepThreeCard">
 
         <p class="titleThreeCard">What happened?</p>
+
+        <p class="categorySelectText">Select a category</p>
 
           <div class="select">
             <select [(ngModel)]="selectedValue" (ngModelChange)="thirdCardChanged()">

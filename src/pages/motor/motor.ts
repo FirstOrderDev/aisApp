@@ -41,7 +41,16 @@ export class MotorPage {
   insurersNameInput: any;
   nameInput: any;
   numberInput: any;
+  bankInput: any;
+  BSBInput: any;
+  accountInput: any;
   firstCardValid: any;
+
+  name_input: any;
+  number_input: any;
+  bank_input: any;
+  BSB_input: any;
+  account_input: any;
 
 
   //card 2
@@ -92,10 +101,20 @@ export class MotorPage {
 
     this.currentCard = 0;
 
+
+    this.name_input = "Your Name";
+    this.number_input = "Contact Number (+61)";
+    this.bank_input = "Account Name";
+    this.BSB_input = "BSB Number";
+    this.account_input = "Account Number";
     this.firstCardValid = false;
+
     this.secondCardValid = false;
+
     this.thirdCardValid = false;
+
     this.fourthCardValid = false;
+
     this.fifthCardValid = false;
 
     this.address = "Enter an address"
