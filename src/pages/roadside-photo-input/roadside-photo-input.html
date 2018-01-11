@@ -6,13 +6,40 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>roadsidePhotoInput</ion-title>
-  </ion-navbar>
+  <!-- <ion-navbar> -->
+    <ion-title>Roadside Card</ion-title>
+  <!-- </ion-navbar> -->
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <div class="photoInputCard" (click)="takePhoto()">
+    <div class="photoBox">
+      <p *ngIf="!photoTaken">
+        Tap to take a photo of your roadside card.
+      </p>
+      <i class="icon icon-camera" *ngIf="!photoTaken"></i>
+      <img src="photoTaken" *ngIf="photoTaken"/>
+    </div>
+
+  </div>
+
+  <div class="cardNamediv">
+    <i class="icon icon-contract"></i>
+    <input class="cardNameInput" type="text" placeholder="Card Name" [(ngModel)]="cardNameInput" (ngModelChange)="roadsidePhotoChanged()"/>
+  </div>
+
+  <div class="cardNumberDiv">
+    <i class="icon icon-phone"></i>
+    <input class="cardNumberInput" type="number" placeholder="Card phone number" [(ngModel)]="cardPhoneNumberInput" (ngModelChange)="roadsidePhotoChanged()"/>
+  </div>
+
+  <button (click)="this.navCtrl.pop()" class="backBtn">Back</button>
+  <button (click)="sumbitPhotoCard()" [disabled]="!roadsidePhotoValid" class="submitBtn">Continue</button>
+
+
+
 
 </ion-content>

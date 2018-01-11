@@ -1,3 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+
 page-roadside-photo-input {
+
+  text-align: center;
+
+  ion-header{
+    background: none;
+  }
+
+  ion-title{
+    background: none;
+  }
+
+  .toolbar-title{
+    font-size: 30px;
+    text-align: left;
+    margin-left: 4vw;
+    margin-top: 5vh;
+    font-family: 'Archivo Black', sans-serif;
+    color: #6C7A89;
+    background: none;
+  }
+
+  .photoBox{
+    margin-top: 6vh;
+    width: 90vw;
+    height: 40vh;
+    border: 1px solid black;
+    border-radius: 5px;
+    p{
+      margin-top: 15vh;
+      color: #aeaeae;
+    }
+    i{
+      font-size: 50px;
+      color: #aeaeae;
+    }
+  }
+
+  .cardNamediv, .cardNumberDiv{
+    width:90vw;
+    height: 7vh;
+    margin-top: 4vh;
+
+    i{
+      position: absolute;
+      font-size: 18px;
+      margin-top: 2.2vh;
+      margin-left: 4vw;
+      color: black;
+    }
+
+    input{
+      width: 89vw;
+      height: 7vh;
+      background: #ededed;
+      padding: 8px;
+      padding-left: 55px;
+      border: none;
+    }
+  }
+
+  .backBtn{
+    font-size: 18px;
+    color: #ecf0f1;
+    background: #f58f84;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    padding-left: 3vw;
+    padding-right: 4vw;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px #aeaeae;
+    margin-top: 3vh;
+    width: 44vw;
+    height: 9vh;
+  }
+
+  .submitBtn{
+    font-size: 18px;
+    color: #ecf0f1;
+    background: #26C281;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px #aeaeae;
+    margin-top: 5vh;
+    width: 44vw;
+    height: 9vh;
+  }
+
+  //
 
 }

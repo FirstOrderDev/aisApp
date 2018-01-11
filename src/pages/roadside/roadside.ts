@@ -19,7 +19,7 @@ import { RoadsidePhotoInputPage } from '../roadside-photo-input/roadside-photo-i
 export class RoadsidePage {
 
   cards: any;
-  localCards: any;
+  localCardsArray: any;
 
 
 
@@ -33,7 +33,7 @@ export class RoadsidePage {
       //this.cards = this.storage.get("Cards");
       this.storage.get('Cards').then((val) => {
         //console.log('Your pic is', val);
-        this.localCards = val;
+        this.localCardsArray = val;
 
       });
       this.cards.push({
@@ -53,12 +53,12 @@ export class RoadsidePage {
 
   openPhotoRoadsideInput(){
     console.log("Photo input");
-    this.navCtrl.push(RoadsidePhotoInputPage);
+    this.navCtrl.push(RoadsidePhotoInputPage, {'Cards': this.localCardsArray});
   }
 
   openManualRoadsideInput(){
     console.log("Manual input");
-    this.navCtrl.push(RoadsideManualInputPage);
+    this.navCtrl.push(RoadsideManualInputPage, {'Cards': this.localCardsArray});
   }
 
 
