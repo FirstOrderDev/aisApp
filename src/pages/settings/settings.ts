@@ -55,35 +55,4 @@ export class SettingsPage {
     this.navCtrl.push(ReportBugModalPage);
   }
 
-  sendBugReport(){
-    this.emailComposer.isAvailable().then((available: boolean) =>{
-      if(available) {}
-    });
-
-    var date = new Date();
-    console.log(this.images);
-
-    var mail;
-
-    mail = {
-      to: 'harrison.croaker@hotmail.com',
-      subject: 'Bug Report for Mobile App',
-      body: '',
-
-      isHtml: true
-    };
-
-    this.emailComposer.open(mail).then(() => {
-      let alert = this.alertCtrl.create({
-        title: 'Success!',
-        subTitle: 'Thank you for submitting your Bug Report! We appreciate you helping us improve our Mobile App.',
-        buttons: ['OK']
-      });
-      alert.present();
-      this.navCtrl.pop();
-
-    });
-  }
-
-
 }
