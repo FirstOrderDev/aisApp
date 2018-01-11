@@ -124,7 +124,19 @@ page-property {
       width: 75vw;
     }
 
-    .basicTextLeft, .basicTextLeftV6{
+    .basicTextLeft{
+      font-size: 85%;
+      color: #aeaeae;
+      text-align: left;
+      margin-top: 0vh;
+      margin-bottom: 3vh;
+      margin-left: 6vw;
+      padding-top: 7vh;
+
+
+    }
+
+    .basicTextLeftV6{
       color: #6d6d6d;
       text-align: left;
       margin-top: 0vh;
@@ -147,7 +159,7 @@ page-property {
          box-shadow: 0px 0px 10px 0px;
 
          .contactText{
-           font-size: 70%;
+           font-size: 85%;
            color: #aeaeae;
            float: left;
            padding-left: 3.5vh;
@@ -164,7 +176,7 @@ page-property {
          }
 
          .bankText{
-           font-size: 70%;
+           font-size: 85%;
            color: #aeaeae;
            float: left;
            padding-left: 3.5vh;
@@ -236,6 +248,7 @@ page-property {
           margin-left: 1vw;
           width: 76vw;
           height: 9vh;
+          margin-bottom: -5vh;
         }
 
         .backBtn2, .nextBtn2{
@@ -260,18 +273,28 @@ page-property {
 
 
         .titleThreeCard{
-          padding-top: 5vh;
-          padding-bottom: 2vh;
-          margin-left: -3vw;
           font-size: 110%;
-          color:#aeaeae
+          color: #aeaeae;
+          text-align: center;
+          padding-top: 4vh;
+        }
 
+        .categorySelectText{
+          font-size: 85%;
+          color: #aeaeae;
+          float: left;
+          padding-left: 3.5vh;
+          margin-top: 1vh;
         }
 
         .photoInfoThreeCard{
-          margin-top: 5vh;
-          font-size: 75%;
-          color:#aeaeae
+          font-size: 85%;
+          color: #aeaeae;
+          float: left;
+          padding-left: 3.5vh;
+          margin-top: 4vh;
+          margin-bottom: 1vh;
+
         }
 
         .select {
@@ -292,10 +315,10 @@ page-property {
 
         .adInfoTextArea {
           border-radius: 10px;
-          margin-top: 1vh;
+          margin-top: 0.5vh;
           background-color: white;
           width: 80vw;
-          height: 34vh;
+          height: 32vh;
           padding-left: 2vw;
           padding-top: 1vh;
         }
