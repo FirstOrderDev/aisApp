@@ -5,31 +5,31 @@
   <ion-header>
     <!-- 1 -->
 
-    <div class="animated slideInDown circle1White" *ngIf="currentCard!=0" (click)="this.slides.slideTo(0)">1</div>
+    <div class="animated slideInDown circle1White" *ngIf="currentCard!=0" (click)="goTo(0)">1</div>
 
     <div class="animated slideInUp circle1Black" *ngIf="currentCard==0"> <i class="icon icon-contract" ></i> </div>
 
     <!-- 2 -->
 
-    <div class="animated slideInDown circle2White" *ngIf="currentCard!=1" (click)="this.slides.slideTo(1)">2</div>
+    <div class="animated slideInDown circle2White" *ngIf="currentCard!=1" (click)="goTo(1)">2</div>
 
     <div class="animated slideInUp circle2Black" *ngIf="currentCard==1"> <i class="icon icon-info"></i> </div>
 
     <!-- 3 -->
 
-    <div class="animated slideInDown circle3White" *ngIf="currentCard!=2" (click)="this.slides.slideTo(2)">3</div>
+    <div class="animated slideInDown circle3White" *ngIf="currentCard!=2" (click)="goTo(2)">3</div>
 
     <div class="animated slideInUp circle3Black" *ngIf="currentCard==2"> <i class="icon icon-license"></i> </div>
 
     <!-- 4 -->
 
-    <div class="animated slideInDown circle4White" *ngIf="currentCard!=3" (click)="this.slides.slideTo(3)">4</div>
+    <div class="animated slideInDown circle4White" *ngIf="currentCard!=3" (click)="goTo(3)">4</div>
 
     <div class="animated slideInUp circle4Black" *ngIf="currentCard==3"> <i class="icon icon-license2"></i> </div>
 
     <!-- 5 -->
 
-    <div class="animated slideInDown circle5White" *ngIf="currentCard!=4" (click)="this.slides.slideTo(4)">5</div>
+    <div class="animated slideInDown circle5White" *ngIf="currentCard!=4" (click)="goTo(4)">5</div>
 
     <div class="animated slideInUp circle5Black" *ngIf="currentCard==4"> <i class="icon icon-evidence"></i> </div>
 
@@ -41,9 +41,21 @@
     <ion-slide class= "stepOne">
       <div class="stepOneCard">
 
-        <input placeholder="Insurer's Name" class="policyInput" [(ngModel)]="policyInput" (ngModelChange)="firstCardChanged()"/>
+        <p class= "contactText">
+          Contact Details
+        </p>
+
+        <input placeholder="Insured Name" class="policyInput" [(ngModel)]="insurersNameInput" (ngModelChange)="firstCardChanged()"/>
         <input placeholder="Your Name" class="nameInput" [(ngModel)]="nameInput" (ngModelChange)="firstCardChanged()"/>
         <input placeholder="Contact Number (+61)" class="contactInput" type="tel" [(ngModel)]="numberInput" (ngModelChange)="firstCardChanged()"/>
+
+        <p class="bankText">
+          Bank Details
+        </p>
+
+        <input placeholder="{{bank_input}}" class="bankInput" [(ngModel)]="bankInput" (ngModelChange)="firstCardChanged()"/>
+        <input placeholder="{{BSB_input}}" class="BSBInput" [(ngModel)]="BSBInput" (ngModelChange)="firstCardChanged()"/>
+        <input placeholder="{{account_input}}" class="accountInput" [(ngModel)]="accountInput" (ngModelChange)="firstCardChanged()"/>
 
         <button class="cancelBtn" (click)="cancel()">
           Cancel
@@ -66,7 +78,7 @@
 
         <ion-item class="dateBox" no-lines>
           <ion-label><i class="icon icon-calendar"></i></ion-label>
-          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate" (ngModelChange)="secondCardChanged()">
+          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate" (ngModelChange)="secondCardChanged()">
           </ion-datetime>
         </ion-item>
 
@@ -104,8 +116,10 @@
 
         <p class="titleThreeCard">What happened?</p>
 
+        <p class="categorySelectText">Select a category</p>
+
           <div class="select">
-            <select [(ngModel)]="selectedValue">
+            <select [(ngModel)]="selectedValue" (ngModelChange)="thirdCardChanged()">
               <option >--Select--</option>
               <option [value]="'At fault accident'">At fault accident</option>
               <option [value]="'3rd party ar fault'">3rd party at fault</option>
@@ -113,25 +127,26 @@
             </select>
           </div>
 
-          <p class="photoInfoThreeCard">
-            Tap below to add a photo of your drivers license
-          </p>
+          <div class="vehicleDetails">
 
-          <div class="cameraModel" (click)="openCameraModel()">
-            <i class="icon icon-camera cameraIcon" *ngIf="!selfLicense">
-            </i>
+            <p class="vehicleDetailsTxt">
+              Vehicle details
+            </p>
 
-            <img src="selfLicense" *ngIf="selfLicense"/>
+            <input class="vehicleDetailsMake" [(ngModel)]="vehicleDetailsMake" (ngModelChange)="thirdCardChanged()" placeholder="Vehicle Make" /><input class="vehicleDetailsModel" type="text" [(ngModel)]="vehicleDetailsModel" placeholder="Model" (ngModelChange)="thirdCardChanged()"/>
+
+            <input class="vehicleDetailsRegistration" type="text" [(ngModel)]="vehicleDetailsRegistration" placeholder="Registration" (ngModelChange)="thirdCardChanged()"/><ion-datetime  class="vehicleDetailsYear" [(ngModel)]="vehicleDetailsYear" placeholder="Year" (ngModelChange)="thirdCardChanged()" displayFormat="YYYY" ></ion-datetime>
+
+
           </div>
 
-          <button class="dontHaveBtn" (click)="openLicense()">I don't have my drivers license with me</button>
 
 
         <button class="backBtn3" (click)="previousCard()">
           Back
           </button>
 
-        <button class="nextBtn3" (click)="nextCard()">
+        <button class="nextBtn3" (click)="nextCard()" [disabled]="!thirdCardValid">
           Next
         </button>
 
@@ -141,20 +156,49 @@
     <ion-slide class= "stepFour">
       <div class="stepFourCard">
 
-        <p style="font-family:Arial;" class="photoInfoFourCard">
-          Tap below to add a photo of the other drivers license
+        <p class="photoInfoCard1">
+          <!-- Tap below to add a photo of your drivers license -->
         </p>
 
-        <div class="cameraModel" (click)="openCameraModel()">
-          <i class="icon icon-camera cameraIcon">
+        <div class="cameraModel1" (click)="openCameraModel('self')">
+          <i class="icon icon-camera cameraIcon" *ngIf="!selfLicense">
           </i>
+          <p class="licenseTxt" *ngIf="!selfLicense">
+            Tap to upload photo of your license
+          </p>
+
+          <img src="{{selfLicense}}" *ngIf="selfLicense" class="licensePic"/>
         </div>
+
+        <button class="dontHaveBtn1" (click)="openLicense('Your License')">I don't have my drivers license with me</button>
+
+        <hr />
+
+
+        <!-- <p style="font-family:Arial;" class="photoInfoCard2">
+          Tap below to add a photo of the other drivers license
+        </p> -->
+
+        <div class="cameraModel2" (click)="openCameraModel('other')" >
+          <i class="icon icon-photo2 cameraIcon" *ngIf="!otherLicense" >
+          </i>
+
+          <p class="licenseTxt" *ngIf="!otherLicense">
+            Tap to upload photo of third party license
+          </p>
+
+          <img src="{{otherLicense}}" *ngIf="otherLicense" class="licensePic"/>
+        </div>
+
+        <button class="dontHaveBtn2" (click)="openLicense('Third Party License')">I don't have their drivers license with me</button>
+
+
 
         <button class="backBtn4" (click)="previousCard()">
           Back
         </button>
 
-        <button class="nextBtn4" (click)="nextCard()">
+        <button class="nextBtn4" (click)="nextCard()" [disabled]="!fourthCardValid">
           Next
         </button>
 

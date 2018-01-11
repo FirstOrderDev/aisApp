@@ -86,7 +86,8 @@ export class TravelPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TravelPage');
-  }
+    this.slides.lockSwipeToNext(true)
+    }
 
   nextFromOne() {
     this.slides.slideNext();
@@ -98,6 +99,10 @@ export class TravelPage {
 
   cancel() {
     this.navCtrl.pop();
+  }
+
+  goTo(cardNum){
+    if(this.currentCard>=cardNum){this.slides.slideTo(cardNum)}
   }
 
   slideChanged() {
@@ -321,47 +326,46 @@ export class TravelPage {
     this.imagePicker.getPictures(this.options).then((results) => {
     loading.present();
     for (var i = 0; i < results.length; i++) {
-
-          this.otherImages.push(results[i]);
-
-          this.testImages.push(results[i]);
-
-
-
-          this.base64.encodeFile(results[i]).then((base64File: string) => {
-            //console.log(base64File);
-            this.images.push(base64File);
-          }, (err) => {
-            console.log(err);
-          });
+          this.images.push(results[i]);
       }
       loading.dismiss();
-    }, (err) => { });
-  }
-
-  submit(){
-    this.emailComposer.isAvailable().then((available: boolean) =>{
-      if(available) {}
-    });
-
-
-
-     let mail = {
-       to: 'harrison.croaker@hotmail.com',
-       attachments: this.testImages,
-       subject: 'Claim from the mobile app',
-       body: '<h1>Claim From Mobile App</h1>' + '<br />' + 'Policy Number: ' + this.insurerInput + '<br />' +  'Name: ' + this.nameInput
-       + '<br />' + 'Contact Number: ' + this.numberInput + '<br />' + 'Date of incident: ' +
-       this.myDate + '<br />' + 'Location of incident: ' + this.address + '<br />' + 'What Happend: '
-       + this.selectedValue,
-
-       isHtml: true
-     };
-
-      //Now we know we can send
-      this.emailComposer.open(mail);
-
+      }, (err) => { });
     }
 
-    // Send a text message using default options
+    submit(){
+
+      this.emailComposer.isAvailable().then((available: boolean) =>{
+        if(available) {}
+      });
+
+      var date = new Date();
+      console.log(this.images);
+
+      var mail;
+
+      mail = {
+        to: 'harrison.croaker@hotmail.com',
+        attachments: this.images,
+        subject: 'Travel claim from the mobile app',
+        body: '<h1>Travel Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + date + '<br />' + '<h3>Insured Name: </h3>' + this.insurerInput + '<br />'
+        + '<h3>First party name: </h3> ' + this.nameInput + '<h3>Contact Number: </h3>' + this.numberInput
+        + '<br />' + '<h3>Employee or Director?: </h3> ' + this.empOrDir + '<br />' + '<h3>Business or Leisure?: </h3> ' + this.busOrLes + '<br />'
+        + '<h3>Reason for Claim: </h3> ' + this.selectedValue + '<br />' + '<h3>Additional Information: </h3> ' + this.infoText + '<br />' + '<h3>Account Name: </h3> '
+        + this.bankInput + '<br />' + '<h3>BSB Number: </h3>' + this.BSBInput + '<br />' + '<h3>Account Number: </h3>' + this.accountInput,
+
+        isHtml: true
+      };
+
+      //Now we know we can send
+      this.emailComposer.open(mail).then(() => {
+        let alert = this.alertCtrl.create({
+          title: 'Success!',
+          subTitle: 'Thankyou for submitting your claim to Australian Insurance Solutions. A dedicated claims manager will be in contact with you as soon as possible.',
+          buttons: ['OK']
+        });
+        alert.present();
+        this.navCtrl.pop();
+
+      });
+    }
 }

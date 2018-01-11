@@ -48,7 +48,7 @@ page-property {
 
 
   .slideContainer{
-    background: linear-gradient(to bottom right, #A569BD 0%, #BB8FCE 100%);
+    background: linear-gradient(to bottom right, #e68364 0%, #d24d57 126%);
 
     .cancelBtn, .backBtn, .backBtn2, .backBtn3, .backBtn4, .backBtn5{
       font-size: 18px;
@@ -69,7 +69,7 @@ page-property {
     .nextBtn, .nextBtn2, .nextBtn3, .nextBtn4{
       font-size: 18px;
       color: #ecf0f1;
-      background: #95a5a6;
+      background: #26C281;
       padding-top: 3vh;
       padding-bottom: 3vh;
       padding-left: 4vw;
@@ -83,7 +83,7 @@ page-property {
     }
 
     .nextBtn, .cancelBtn{
-      margin-top: 8vh;
+      margin-top: 10vh;
 
     }
 
@@ -124,7 +124,19 @@ page-property {
       width: 75vw;
     }
 
-    .basicTextLeft, .basicTextLeftV6{
+    .basicTextLeft{
+      font-size: 85%;
+      color: #aeaeae;
+      text-align: left;
+      margin-top: 0vh;
+      margin-bottom: 3vh;
+      margin-left: 6vw;
+      padding-top: 7vh;
+
+
+    }
+
+    .basicTextLeftV6{
       color: #6d6d6d;
       text-align: left;
       margin-top: 0vh;
@@ -146,12 +158,48 @@ page-property {
          border-radius: 5px 5px 5px 5px;
          box-shadow: 0px 0px 10px 0px;
 
-         .nameInput, .contactInput,  .bankInput, .BSBInput, .accountInput{
+         .contactText{
+           font-size: 85%;
+           color: #aeaeae;
+           float: left;
+           padding-left: 3.5vh;
+           margin-top: 8vh;
+           margin-bottom: -3vh;
+         }
+
+         .nameInput, .contactInput{
            background: none;
            border: none;
-           margin-top: 9vh;
+           margin-top: 6vh;
            border-bottom: 1px solid #aeaeae;
            width: 75vw;
+         }
+
+         .bankText{
+           font-size: 85%;
+           color: #aeaeae;
+           float: left;
+           padding-left: 3.5vh;
+           margin-top: 10vh;
+           margin-bottom: -4vh;
+         }
+
+         .bankInput{
+           width: 77.5vw;
+           height: 7vh;
+           padding: 7px;
+           border: none;
+           margin-top: 7vh !important;
+         }
+
+         .BSBInput, .accountInput{
+           width: 37.5vw;
+           height: 7vh;
+           padding: 7px;
+           border: none;
+           margin-top: 3vh!important;
+           font-size: 85%;
+           margin-bottom: -2vh;
          }
 
 
@@ -201,10 +249,11 @@ page-property {
           margin-left: 1vw;
           width: 76vw;
           height: 9vh;
+          margin-bottom: -5vh;
         }
 
         .backBtn2, .nextBtn2{
-          margin-top: 13vh;
+          margin-top: 12vh;
         }
 
       }
@@ -225,18 +274,28 @@ page-property {
 
 
         .titleThreeCard{
-          padding-top: 5vh;
-          padding-bottom: 2vh;
-          margin-left: -3vw;
           font-size: 110%;
-          color:#aeaeae
+          color: #aeaeae;
+          text-align: center;
+          padding-top: 4vh;
+        }
 
+        .categorySelectText{
+          font-size: 85%;
+          color: #aeaeae;
+          float: left;
+          padding-left: 3.5vh;
+          margin-top: 1vh;
         }
 
         .photoInfoThreeCard{
-          margin-top: 5vh;
-          font-size: 75%;
-          color:#aeaeae
+          font-size: 85%;
+          color: #aeaeae;
+          float: left;
+          padding-left: 3.5vh;
+          margin-top: 4vh;
+          margin-bottom: 1vh;
+
         }
 
         .select {
@@ -257,12 +316,13 @@ page-property {
 
         .adInfoTextArea {
           border-radius: 10px;
-          margin-top: 1vh;
+          margin-top: 0.5vh;
           background-color: white;
           width: 80vw;
-          height: 34vh;
+          height: 32vh;
           padding-left: 2vw;
           padding-top: 1vh;
+          padding-bottom: 2vh;
         }
 
         // .cameraModel{
@@ -286,7 +346,7 @@ page-property {
         // }
 
         .nextBtn3, .backBtn3{
-          margin-top: 5vh;
+          margin-top: 6vh;
         }
 
       }
@@ -364,7 +424,7 @@ page-property {
       }
 
       .nextBtn4, .backBtn4{
-        margin-top: 6vh;
+        margin-top: 4vh;
       }
     }
 
