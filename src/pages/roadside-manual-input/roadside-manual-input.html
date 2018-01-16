@@ -1,20 +1,46 @@
-<!--
-  Generated template for the RoadsideManualInputPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
+  <!-- <ion-navbar> -->
     <ion-title>Roadside Card</ion-title>
-  </ion-navbar>
+  <!-- </ion-navbar> -->
 
 </ion-header>
 
 
 <ion-content padding>
 
-  
+  <div class="cardNamediv">
+    <i class="icon icon-contract"></i>
+    <input class="cardNameInput" type="text" placeholder="Card Name" [(ngModel)]="cardNameInput" (ngModelChange)="roadsideManualChanged()"/>
+  </div>
+
+  <div class="cardMembershipNumberdiv">
+    <i class="icon icon-self"></i>
+    <input class="membershipeNumberinput" type="text" placeholder="Membership Number" [(ngModel)]="cardMemberShipNumberInput" (ngModelChange)="roadsideManualChanged()"/>
+  </div>
+
+  <div class="cardNumberDiv">
+    <i class="icon icon-info"></i>
+    <input class="cardNumberInput" type="text" placeholder="Card Number" [(ngModel)]="cardNumberInput" (ngModelChange)="roadsideManualChanged()"/>
+  </div>
+
+  <div class="cardPhoneNumberDiv">
+    <i class="icon icon-phone"></i>
+    <input class="cardPhoneNumberInput" type="tel" placeholder="Card phone number" [(ngModel)]="cardPhoneNumberInput" (ngModelChange)="roadsideManualChanged()"/>
+  </div>
+
+  <div class="cardAdditionalInfoDiv">
+    <textarea class="cardAdditionalInfoInput" placeholder="Additional Information" [(ngModel)]="cardAdditionalInfoInput" (ngModelChange)="roadsideManualChanged()"></textarea>
+  </div>
+
+  <div class="bottomButtons">
+    <button (click)="this.navCtrl.pop()" class="backBtn">Back</button>
+    <button (click)="submitManualCard()" [disabled]="!roadsideManualValid" class="submitBtn">Continue</button>
+  </div>
+
+
+
+
+
 
 </ion-content>

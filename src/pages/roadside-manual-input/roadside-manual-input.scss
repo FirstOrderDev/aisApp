@@ -1,3 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
 page-roadside-manual-input {
+
+
+  text-align: center;
+
+  ion-header{
+    background: none;
+  }
+
+  ion-title{
+    background: none;
+  }
+
+  .toolbar-title{
+    font-size: 30px;
+    text-align: left;
+    margin-left: 4vw;
+    margin-top: 5vh;
+    font-family: 'Archivo Black', sans-serif;
+    color: #6C7A89;
+    background: none;
+  }
+
+  .cardNamediv, .cardMembershipNumberdiv, .cardNumberDiv, .cardPhoneNumberDiv{
+    width:90vw;
+    height: 7vh;
+    margin-top: 4vh;
+
+    i{
+      position: absolute;
+      font-size: 18px;
+      margin-top: 2.2vh;
+      margin-left: 4vw;
+      color: black;
+    }
+
+    input{
+      width: 89vw;
+      height: 7vh;
+      background: #ededed;
+      padding: 8px;
+      padding-left: 55px;
+      border: none;
+    }
+  }
+
+  .cardAdditionalInfoDiv{
+    width: 90vw;
+    margin-top: 4vh;
+    .cardAdditionalInfoInput{
+      width:89vw;
+      height:15vh;
+      background: #ededed;
+      padding: 8px;
+      border: none;
+      resize: none;
+    }
+  }
+
+
+
+  .bottomButtons{
+    width: 90vw;
+    height: 9vh;
+    margin-top: 5vh
+  }
+
+  .backBtn{
+    font-size: 18px;
+    color: #ecf0f1;
+    background: #f58f84;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px #aeaeae;
+    width: 43.5vw;
+    height: 9vh;
+
+  }
+
+  .submitBtn{
+    font-size: 18px;
+    color: #ecf0f1;
+    background: #26C281;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px #aeaeae;
+    width: 43.5vw;
+    height: 9vh;
+    margin-left: 1vw;
+  }
+
+
 
 }

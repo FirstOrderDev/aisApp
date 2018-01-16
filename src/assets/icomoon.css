@@ -1,0 +1,125 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?2mrog2');
+  src:  url('fonts/icomoon.eot?2mrog2#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?2mrog2') format('truetype'),
+    url('fonts/icomoon.woff?2mrog2') format('woff'),
+    url('fonts/icomoon.svg?2mrog2#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-add:before {
+  content: "\e920";
+}
+.icon-smile:before {
+  content: "\e91f";
+}
+.icon-photo2:before {
+  content: "\e91e";
+}
+.icon-self:before {
+  content: "\e91d";
+}
+.icon-phone:before {
+  content: "\e91c";
+}
+.icon-report:before {
+  content: "\e919";
+}
+.icon-terms:before {
+  content: "\e91a";
+}
+.icon-privacy:before {
+  content: "\e91b";
+}
+.icon-textShare:before {
+  content: "\e918";
+}
+.icon-fbShare:before {
+  content: "\e917";
+}
+.icon-calendar:before {
+  content: "\e916";
+}
+.icon-pole:before {
+  content: "\e90a";
+}
+.icon-picture:before {
+  content: "\e90b";
+}
+.icon-photo:before {
+  content: "\e90c";
+}
+.icon-next:before {
+  content: "\e90d";
+}
+.icon-location:before {
+  content: "\e90e";
+}
+.icon-license2:before {
+  content: "\e90f";
+}
+.icon-license:before {
+  content: "\e910";
+}
+.icon-info:before {
+  content: "\e911";
+}
+.icon-gallery:before {
+  content: "\e912";
+}
+.icon-evidence:before {
+  content: "\e913";
+}
+.icon-edit:before {
+  content: "\e914";
+}
+.icon-camera:before {
+  content: "\e915";
+}
+.icon-travel:before {
+  content: "\e900";
+}
+.icon-settings:before {
+  content: "\e901";
+}
+.icon-roadside:before {
+  content: "\e902";
+}
+.icon-property:before {
+  content: "\e903";
+}
+.icon-done:before {
+  content: "\e904";
+}
+.icon-contract:before {
+  content: "\e905";
+}
+.icon-close:before {
+  content: "\e906";
+}
+.icon-carCrash:before {
+  content: "\e907";
+}
+.icon-backspace2:before {
+  content: "\e908";
+}
+.icon-backspace:before {
+  content: "\e909";
+}

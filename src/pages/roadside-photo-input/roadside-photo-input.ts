@@ -28,6 +28,7 @@ export class RoadsidePhotoInputPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private storage: Storage) {
     this.roadsidePhotoValid = false;
+    //this.photoTaken = "https://static.pexels.com/photos/207962/pexels-photo-207962.jpeg"
   }
 
   ionViewDidLoad() {
@@ -58,11 +59,15 @@ export class RoadsidePhotoInputPage {
     if(this.photoTaken && this.cardNameInput && this.cardPhoneNumberInput){
       this.roadsidePhotoValid = true;
     }
+    else{
+      this.roadsidePhotoValid = false;
+    }
   }
 
   submitPhotoCard(){
     var localCardsArray = this.navParams.get('Cards');
-    localCardsArray.push({type: "photo", photo: this.photoTaken, cardName: this.cardNameInput, cardNumber: this.cardPhoneNumberInput});
+    localCardsArray.unshift({type: "photo", photo: this.photoTaken, cardName: this.cardNameInput, cardPhoneNumber: this.cardPhoneNumberInput});
+    this.storage.set("Cards", localCardsArray);
   }
 
 }

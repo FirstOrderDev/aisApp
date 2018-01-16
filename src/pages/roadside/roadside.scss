@@ -1,11 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+
 page-roadside {
   background: linear-gradient(to top left, #875f9a 0%, #ffccff 200%);
   .no-scroll .scroll-content{
     overflow: hidden;
   }
 
+  .exitDiv, .addDiv{
+    position: absolute;
+    width: 15vw;
+    height: 15vw;
+    background: #ededed;
+    border-radius: 5px;
+    border: none;
+    left: 2vw;
+    margin-top: auto;
+    margin-bottom: auto;
+    top:0;
+    bottom: 0;
+    z-index: 9000;
+    opacity: 0.6;
+    box-shadow: 0px 2px 10px #566556;
+  }
+
+  .addDiv{
+    left: 83vw !important;
+  }
+
   .Infotxt{
-    color: #aeaeae
+    color: #565656;
+    text-align: center;
+    margin-top: 1vh;
   }
 
   .dividingLine{
@@ -17,39 +42,92 @@ page-roadside {
     position: absolute;
     width: 90vw;
     height: 85vh;
-    border-radius: 1px solid black;
+    border-radius: 5px;
     margin-left: auto;
     margin-right: auto;
     left:0;
     right:0;
     text-align: center;
-    background: #ededed;
+    background: #19B5FE;
     top: 7.5vh;
-    color: #aeaeae;
+    color: #ffffff;
+    border: none;
+    box-shadow: 0px 2px 10px #565656;
 
     .addPhotoTxt{
-      color: #6C7A89;
+      color: #ffffff;
       margin-top: 12vh;
     }
 
     .cameraIcon{
-      color: #6C7A89;
+      color: #ffffff;
       font-size: 95px;
     }
 
     .dividingLine{
       margin-top: 5vh;
+      background: #ffffff;
     }
 
     .manuallyInputTxt{
-      color: #95A5A6;
+      color: #ffffff;
       margin-top: 8vh;
     }
 
     .addIcon{
-      color: #95A5A6;
+      color: #ffffff;
       font-size: 100px
     }
   }
 
+}
+
+.manualCard{
+  position: absolute;
+  width: 90vw;
+  height: 85vh;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right:0;
+  text-align: left;
+  background: #ededed;
+  top: 7.5vh;
+  color: #aeaeae;
+  border: none;
+  box-shadow: 0px 2px 10px #565656;
+
+  .manualCardTitle{
+    text-align: left;
+    font-family: 'Archivo Black', sans-serif;
+    margin-left: 6vw;
+    margin-top: 4vh;
+    color: #ffffff;
+    font-size: 40px;
+    text-transform: capitalize;
+  }
+
+  .manualCardMembershipNumber, .manualCardNumber, .manualCardAdditionalInfo{
+    margin-top: 10vh;
+    margin-left: 6vw;
+    color: #565656;
+  }
+
+  .mobilePhoneTitle{
+    margin-top: 10vh;
+    margin-left: 6vw;
+  }
+
+  .manualCardPhoneNumber{
+    margin-left: 6vw;
+  }
+
+
+
+}
+
+
+.roadSideLoading{
+  text-align: center;
 }

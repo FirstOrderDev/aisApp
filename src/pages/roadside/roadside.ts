@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController} from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
@@ -19,9 +19,8 @@ import { RoadsidePhotoInputPage } from '../roadside-photo-input/roadside-photo-i
 export class RoadsidePage {
 
   cards: any;
-  localCardsArray: any;
-
-
+  locallyStoredCards: any;
+  loader: any;
 
   @ViewChild(Slides) slides: Slides;
 
@@ -29,22 +28,71 @@ export class RoadsidePage {
     private base64: Base64, public loadingCtrl: LoadingController, public modal: ModalController,
     private storage: Storage) {
       this.cards = [];
+      this.locallyStoredCards = [];
 
-      //this.cards = this.storage.get("Cards");
-      this.storage.get('Cards').then((val) => {
-        //console.log('Your pic is', val);
-        this.localCardsArray = val;
-
+      // this.cards.push({
+      //   type: "default",
+      // })
+      this.loader = this.loadingCtrl.create({
+        spinner: 'hide',
+        content: `<img src="assets/imgs/carLoading.gif"/> <br /> <p>Gathering your roadside assistance cards...<p>`,
+        cssClass: 'roadSideLoading',
       });
-      this.cards.push({
-        type: "default",
-      })
 
-
+      this.loader.present();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MotorPage');
+    console.log("Entered");
+    this.storage.get('Cards').then((val) => {
+
+      if(val){
+        this.locallyStoredCards = val;
+      }
+
+    });
+
+  }
+
+  ionViewDidEnter(){
+
+
+
+    console.log("Entered");
+    this.storage.get('Cards').then((val) => {
+
+      if(val){
+        this.locallyStoredCards = val;
+      }
+
+    });
+
+    console.log(this.locallyStoredCards);
+
+    if(this.locallyStoredCards){
+
+      this.cards = [];
+
+      this.locallyStoredCards.forEach((cardObject)=>{
+        this.cards.push(cardObject);
+      });
+
+      this.cards.push({
+        type: "default",
+      })
+
+    }else{
+      this.cards.push({
+        type: "default",
+      })
+    }
+
+    this.loader.dismiss();
+    console.log(this.cards);
+
+
+
   }
 
   slideChanged(){
@@ -53,12 +101,16 @@ export class RoadsidePage {
 
   openPhotoRoadsideInput(){
     console.log("Photo input");
-    this.navCtrl.push(RoadsidePhotoInputPage, {'Cards': this.localCardsArray});
+    this.navCtrl.push(RoadsidePhotoInputPage, {
+      'Cards': this.locallyStoredCards
+    });
   }
 
   openManualRoadsideInput(){
     console.log("Manual input");
-    this.navCtrl.push(RoadsideManualInputPage, {'Cards': this.localCardsArray});
+    this.navCtrl.push(RoadsideManualInputPage, {
+      'Cards': this.locallyStoredCards
+    });
   }
 
 
