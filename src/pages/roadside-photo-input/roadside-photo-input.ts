@@ -66,7 +66,7 @@ export class RoadsidePhotoInputPage {
 
   submitPhotoCard(){
     var localCardsArray = this.navParams.get('Cards');
-    localCardsArray.unshift({type: "photo", photo: this.photoTaken, cardName: this.cardNameInput, cardPhoneNumber: this.cardPhoneNumberInput});
+    localCardsArray.unshift({type: "photo", cardPhoto: this.photoTaken, cardName: this.cardNameInput, cardPhoneNumber: this.cardPhoneNumberInput});
     this.storage.set("Cards", localCardsArray);
   }
 

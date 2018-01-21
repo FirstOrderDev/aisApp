@@ -38,7 +38,7 @@
 
   <ion-slides class= "slideContainer" (ionSlideDidChange)="slideChanged()">
 
-    <ion-slide class= "stepOne">
+    <ion-slide class= "animated fadeIn stepOne">
       <div class="stepOneCard">
 
         <p class= "contactText">
@@ -49,7 +49,7 @@
         <input placeholder="Your Name" class="nameInput" [(ngModel)]="nameInput" (ngModelChange)="firstCardChanged()"/>
         <input placeholder="Contact Number (+61)" class="contactInput" type="tel" [(ngModel)]="numberInput" (ngModelChange)="firstCardChanged()"/>
 
-
+        <img class="aisLogo" src="assets/imgs/AISLogo.png"/>
 
         <button class="cancelBtn" (click)="cancel()">
           Cancel

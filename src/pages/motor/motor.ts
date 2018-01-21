@@ -306,7 +306,7 @@ export class MotorPage {
 
   fourthCardChanged(){
     console.log("Changed");
-    if((this.selfLicenseInput || this.selfLicense) && (this.otherLicenseInput || this.otherLicense)){
+    if((this.selfLicenseInput || this.selfLicense)){
       this.fourthCardValid = true
       this.slides.lockSwipeToNext(false);
     }
@@ -524,15 +524,15 @@ export class MotorPage {
         this.myDate + '<br />' + '<h3>Location of incident:</h3> ' + this.address + '<br />' + '<h3>Cause of incident:</h3> '
         + this.selectedValue + '<br />' + '<h3>Vehicle details: </h3>' + 'Make: ' + this.vehicleDetailsMake + '<br />' + 'Model: ' + this.vehicleDetailsModel + '<br />'
         + 'Year: ' + this.vehicleDetailsYear + '<br />' + 'Registration: ' + this.vehicleDetailsRegistration + '<br />' +
-        '<h3>First Party License details:</h3>'  + 'First parties Name: ' + this.selfLicenseInput[2] + 'First parties license number: ' + this.selfLicenseInput[0] + '<br />' + 'First parties license address: ' + this.selfLicenseInput[1] +
-        '<br />'  + '<br />' + '<h3>Third Party License details:</h3>' + 'Third parties Name: ' + this.otherLicenseInput[2] + 'Third parties license number: ' + this.otherLicenseInput[0] +
+        '<h3>First Party License details:</h3>'  + 'First parties Name: ' + this.selfLicenseInput[2] + '<br />' + 'First parties license number: ' + this.selfLicenseInput[0] + '<br />' + 'First parties license address: ' + this.selfLicenseInput[1] +
+        '<br />'  + '<br />' + '<h3>Third Party License details:</h3>' + 'Third parties Name: ' + this.otherLicenseInput[2] + '<br />' + 'Third parties license number: ' + this.otherLicenseInput[0] +
         '<br />' + 'Third parties license address: ' + this.otherLicenseInput[1] + '<br />' + '<br />' + '<br />' + 'Images of incident are attatched below.'
         + '<br />',
 
         isHtml: true
       };
     }
-    else if(this.selfLicenseInput){
+    else if(this.selfLicenseInput && this.otherLicenseEmail){
       console.log("Second choice")
       mail = {
         to: 'harrison.croaker@hotmail.com',
@@ -543,7 +543,7 @@ export class MotorPage {
         this.myDate + '<br />' + '<h3>Location of incident:</h3> ' + this.address + '<br />' + '<h3>Cause of incident:</h3> '
         + this.selectedValue + '<br />' + '<h3>Vehicle details: </h3>' + 'Make: ' + this.vehicleDetailsMake + '<br />' + 'Model: ' + this.vehicleDetailsModel + '<br />'
         + 'Year: ' + this.vehicleDetailsYear + '<br />' + 'Registration: ' + this.vehicleDetailsRegistration + '<br />' +
-        '<h3>First Party License details:</h3>' + 'First parties Name: ' + this.selfLicenseInput[2] + 'First parties license number: ' + this.selfLicenseInput[0] + '<br />' + 'First parties license address: ' + this.selfLicenseInput[1] +
+        '<h3>First Party License details:</h3>' + 'First parties Name: ' + this.selfLicenseInput[2] + '<br />' + 'First parties license number: ' + this.selfLicenseInput[0] + '<br />' + 'First parties license address: ' + this.selfLicenseInput[1] +
         '<br />' + '<br />' + '<h3>Third Party License details provided via picture (Photo 1):</h3>' + '<br />' + '<br />' + 'Images of incident are attatched below.'
         + '<br />',
 
@@ -568,8 +568,26 @@ export class MotorPage {
         isHtml: true
       };
     }
+    else if (this.selfLicenseInput && (!this.otherLicenseEmail && !this.otherLicenseInput)){
+      console.log("Fourth choice")
+      mail = {
+        to: 'harrison.croaker@hotmail.com',
+        attachments: this.testImages,
+        subject: 'Motor Vehicle claim from the mobile app',
+        body: '<h1>Motor vehicle Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + '<br />' + date + '<h3>Insured Name:</h3> ' + this.insurersNameInput + '<br />' +  '<h3>First party name:</h3> ' + this.nameInput
+        + '<br />' + '<h3>Contact Number:</h3> ' + this.numberInput + '<br />' + '<h3>Date of incident:</h3> ' +
+        this.myDate + '<br />' + '<h3>Location of incident:</h3> ' + this.address + '<br />' + '<h3>Cause of incident:</h3> '
+        + this.selectedValue + '<br />' + '<h3>Vehicle details: </h3>' + 'Make: ' + this.vehicleDetailsMake + '<br />' + 'Model: ' + this.vehicleDetailsModel + '<br />'
+        + 'Year: ' + this.vehicleDetailsYear + '<br />' + 'Registration: ' + this.vehicleDetailsRegistration + '<br />' +
+        '<h3>First Party License details:</h3>' + 'First parties Name: ' + this.selfLicenseInput[2] + '<br />' + 'First parties license number: ' + this.selfLicenseInput[0] + '<br />' + 'First parties license address: ' + this.selfLicenseInput[1] +
+        '<br />' + '<br />' + '<h3>Third Party License details not provided</h3>' + '<br />' + '<br />' + 'Images of incident are attatched below.'
+        + '<br />',
+
+        isHtml: true
+      };
+    }
     else{
-      console.log("Fourth choice");
+      console.log("Fifth choice");
       mail = {
         to: 'harrison.croaker@hotmail.com',
         attachments: this.testImages,
@@ -588,7 +606,9 @@ export class MotorPage {
 
 
     //Now we know we can send
-    this.emailComposer.open(mail).then(null, function() {
+    var emailSent = this.emailComposer.open(mail);
+
+    if(emailSent){
       let alert = this.alertCtrl.create({
         title: 'Success!',
         subTitle: 'Thankyou for submitting your claim to Australian Insurance Solutions. A dedicated claims manager will be in contact with you as soon as possible.',
@@ -596,8 +616,10 @@ export class MotorPage {
       });
       alert.present();
       this.navCtrl.pop();
-
-    });
+    }
+    else{
+      
+    }
 
 
     // Send a text message using default options
