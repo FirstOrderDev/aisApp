@@ -1,17 +1,21 @@
 
+<div class="exitDiv" (click)="this.navCtrl.pop()">
+  <i class="icon icon-close"></i>
+</div>
+
+<div class="addDiv" (click)=this.slides.slideTo(this.cards.length)>
+  <i class="icon icon-add"></i>
+</div>
+
 <ion-slides class= "slideContainer" (ionSlideDidChange)="slideChanged()" pager="true">
 
-  <div class="exitDiv">
-    <i class="icon icon-close"></i>
-  </div>
 
-  <div class="addDiv">
-    <i class="icon icon-add"></i>
-  </div>
 
   <ion-slide class= "slides" *ngFor="let card of cards">
 
-    <div class="defultCard" *ngIf="card.type=='default'">
+    <!-- Default card -->
+
+    <div class="animated fadeIn defultCard" *ngIf="card.type=='default'">
       <p class="Infotxt">
         <i class="icon icon-info"></i>
         This page allows you to add and store your roadside assistant cards.
@@ -33,7 +37,9 @@
 
     </div>
 
-    <div class="manualCard" *ngIf="card.type=='manual'">
+    <!-- Manual Card -->
+
+    <div class="animated fadeIn manualCard" *ngIf="card.type=='manual'">
       <h1 class="manualCardTitle">{{card.cardName}}</h1>
 
       <p class="manualCardMembershipNumber">
@@ -56,10 +62,33 @@
       </a>
 
       <p class="manualCardAdditionalInfo" *ngIf="card.cardAdditionalInfo">
+        Additional Info: <br />
         {{card.cardAdditionalInfo}}
       </p>
 
     </div>
+
+    <!-- Photo Card -->
+
+    <div class="animated fadeIn photoCard" *ngIf="card.type=='photo'">
+      <h1 class="manualCardTitle">{{card.cardName}}</h1>
+
+      <div class="photoBox">
+
+        <img src="{{card.cardPhoto}}"/>
+      </div>
+
+
+
+      <a href="tel: {{card.cardPhoneNumber}}">
+      <p class="manualCardPhoneNumber">
+        {{card.cardPhoneNumber}}
+      </p>
+      </a>
+
+
+    </div>
+
   </ion-slide>
 
 </ion-slides>

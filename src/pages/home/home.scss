@@ -2,22 +2,37 @@
 
 page-home {
 
+  background: url("../assets/imgs/background.jpg");
+  background-position: center;
+  background-size:auto;
+
   .no-scroll .scroll-content{
     overflow: hidden;
   }
 
+  img{
+    position: absolute;
+    top:5vh;
+    width:65vw;
+    margin-left: auto;
+    margin-right: auto;
+    left:0;
+    right:0;
+  }
+
   .homeselect{
     text-align: center;
-    margin-top: 5vh;
+    margin-top: 15vh;
     font-size: 20px;
     font-family: 'Nunito Sans', sans-serif;
-    color: #aeaeae;
+    color: #ffffff;
+    margin-bottom: 0;
   }
 
   ion-grid{
     // padding: 20px;
 
-    margin-top: 3vh;
+    margin-top: 0vh;
   }
 
   ion-row{
@@ -37,9 +52,10 @@ page-home {
   .motorVehicle, .travelCard, .propertyCard, .roadsideCard, .settingsCard, .instantCallCard {
     // border:1px solid black;
     height: 20vh;
-    box-shadow: 0px 0px 10px #aeaeae;
+    box-shadow: 0px 2px 10px #aeaeae;
     border-radius: 6px;
     background-color: #f4f4f4;
+    border: none;
 
 
     .cardIcon {
@@ -49,7 +65,7 @@ page-home {
       left: 0;
       right:0;
       text-align: center;
-      font-size: 90px;
+      font-size: 70px;
       margin-top: 2vh;
       padding-left: 2vw;
 
@@ -72,9 +88,37 @@ page-home {
 
   }
 
+  @media (min-height: 812px) and (min-width: 375px) {
+    img{
+      top:10vh;
+    }
+    .homeselect{
+      margin-top: 22vh;
+    }
+    .motorVehicle, .travelCard, .propertyCard, .roadsideCard, .settingsCard, .instantCallCard {
+      // border:1px solid black;
+      height: 17vh;
+
+
+      .cardIcon {
+
+
+
+      }
+
+      .cardTxt {
+
+        margin-top: 13vh;
+      }
+
+    }
+
+  }
+
   .motorVehicle{
     i{
       color: #59ABE3;
+      //color: #D24D57;
     }
 
   }
@@ -82,20 +126,25 @@ page-home {
   .travelCard{
     i{
       color: #4DAF7C;
+      //color: #D24D57;
     }
 
   }
 
   .propertyCard{
     i{
+      font-size: 80px !important;
       color: #D24D57;
+      //color: #D24D57;
     }
 
   }
 
   .roadsideCard{
     i{
+      font-size: 80px !important;
       color: #875F9A;
+      //color: #D24D57;
     }
 
   }
@@ -103,6 +152,7 @@ page-home {
   .settingsCard{
     i{
       color: #6C7A89;
+      //color: #D24D57;
     }
 
   }
@@ -110,6 +160,7 @@ page-home {
   .instantCallCard{
     i{
       color: #6C7A89;
+      //color: #D24D57;
     }
   }
 
@@ -123,25 +174,39 @@ page-home {
       margin:auto;
       left: 0;
       right:0;
-      width: 80px;
-      height: 80px;
+      width: 65px;
+      height: 65px;
       text-align: center;
       background-color: #f4f4f4;
       border-radius: 50%;
       top:0;
-      bottom: 0;
+      bottom: 4vh;
       box-shadow: 0px 0px 12px #aeaeae;
       i{
         margin-top: 3vh;
-        font-size: 75px;
+        font-size: 60px;
         color: #6C7A89;
       }
     }
   }
 }
 
+<<<<<<< HEAD
 @media (min-width: 375px) and (max-height:812px){
   .motorVehicle, .travelCard, .propertyCard, .roadsideCard, .settingsCard, .instantCallCard {
     height:17vh;
   }
+=======
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> e6d65dcdfee2ac191685fe080e44bb4220910d14
 }
