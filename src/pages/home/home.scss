@@ -138,14 +138,10 @@ page-home {
       }
     }
   }
+}
 
-
-
-
-
-
-
-
-
-
+@media (min-width: 375px) and (max-height:812px){
+  .motorVehicle, .travelCard, .propertyCard, .roadsideCard, .settingsCard, .instantCallCard {
+    height:17vh;
+  }
 }
