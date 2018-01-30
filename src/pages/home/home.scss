@@ -88,7 +88,7 @@ page-home {
 
   }
 
-  @media (min-height: 812px) and (min-width: 375px) {
+  @media (max-height: 812px) and (min-width: 375px) {
     img{
       top:10vh;
     }
@@ -189,5 +189,8 @@ page-home {
 
       }
   }
+<<<<<<< HEAD
 }
+=======
+>>>>>>> 586de63cb287e84f5cca26ff7d60226a4d0294bc
 }
