@@ -716,6 +716,70 @@ page-motor {
 
        }
      }
+
+     .stepThree{
+       .stepThreeCard{
+         height: 70vh !important;
+         margin-top: 15vh !important;
+
+         .vehicleDetailsTxt{
+           margin-top: 2vh !important;
+         }
+
+       }
+     }
+
+     .stepFour{
+       .stepFourCard{
+         height: 70vh !important;
+         margin-top: 15vh !important;
+       }
+
+       .cameraModel1, .cameraModel2{
+         height: 16vh !important;
+
+       }
+
+       .licenseTxt{
+         position: absolute;
+         margin-top: 11.5vh !important;
+       }
+
+       .cameraIcon{
+         margin-top: 3.5vh !important;
+       }
+
+       .licensePic{
+         height: 16vh !important;
+       }
+
+       .nextBtn4, .backBtn4{
+         margin-top:3.5vh !important;
+       }
+     }
+
+     .stepFive{
+       .stepFiveCard{
+         height: 70vh !important;
+         margin-top: 15vh !important;
+
+         .imageGrid{
+           height: 45vh !important;
+         }
+
+
+       }
+
+
+
+
+       .backBtn5{
+         margin-top: 50vh !important;
+       }
+
+     }
+
+
   }
 
   @media (min-width: 768px) {
