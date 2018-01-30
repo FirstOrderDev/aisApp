@@ -621,15 +621,12 @@ page-property {
          }
 
          .nextBtn{
-           margin-top: 7vh !important;
+           margin-top: 8vh !important;
          }
 
          .cancelBtn{
-           margin-top: 7vh !important;
+           margin-top: 8vh !important;
          }
-
-
-
        }
      }
 
@@ -649,7 +646,7 @@ page-property {
          }
 
          .backBtn2, .nextBtn2{
-           margin-top: 4vh !important;
+           margin-top: 9vh !important;
          }
 
          .basicTextLeft{
@@ -658,28 +655,23 @@ page-property {
          }
 
        }
+     }
 
      .stepThree{
        .stepThreeCard{
          height: 70vh !important;
          margin-top: 15vh !important;
 
-         .dateBox{
-
-           i{
-             font-size: 23px;
-           }
+         .vehicleDetailsTxt{
+           margin-top: 2vh !important;
          }
 
-         .adressBox{
-         }
-
-         .backBtn2, .nextBtn2{
+         .backBtn3, .nextBtn3{
            margin-top: 1vh !important;
          }
 
-         .basicTextLeft{
-           padding-top: 4vh;
+         .adInfoTextArea{
+           height: 28vh !important
 
          }
 
@@ -690,26 +682,36 @@ page-property {
        .stepFourCard{
          height: 70vh !important;
          margin-top: 15vh !important;
+       }
 
-         .dateBox{
+       .cameraModel1, .cameraModel2{
+         height: 16vh !important;
 
-           i{
-             font-size: 23px;
-           }
-         }
+       }
 
-         .adressBox{
-         }
+       .licenseTxt{
+         position: absolute;
+         margin-top: 11.5vh !important;
+       }
 
-         .backBtn2, .nextBtn2{
-           margin-top: 1vh !important;
-         }
+       .cameraIcon{
+         margin-top: 3.5vh !important;
+       }
 
-         .basicTextLeft{
-           padding-top: 4vh;
+       .licensePic{
+         height: 16vh !important;
+       }
 
-         }
+       .infoTextArea{
+         height:34vh !important;
+       }
 
+       .infoButton{
+         margin-top: 9vh !important;
+       }
+
+       .nextBtn4, .backBtn4{
+         margin-top: 1vh !important;
        }
      }
 
@@ -718,31 +720,20 @@ page-property {
          height: 70vh !important;
          margin-top: 15vh !important;
 
-         .dateBox{
-
-           i{
-             font-size: 23px;
-           }
-         }
-
-         .adressBox{
-         }
-
-         .backBtn2, .nextBtn2{
-           margin-top: 1vh !important;
-         }
-
-         .basicTextLeft{
-           padding-top: 4vh;
-
+         .imageGrid{
+           height: 45vh !important;
          }
 
        }
+       .backBtn5{
+         margin-top: 50vh !important;
+       }
+
      }
 
 
-
   }
+
   @media (min-width: 768px) {
     .circle1White, .circle2White, .circle3White, .circle4White, .circle5White, .circle1Black, .circle2Black, .circle3Black, .circle4Black, .circle5Black{
       position: absolute;
@@ -777,5 +768,4 @@ page-property {
       left: 85vw;
     }
   }
-}
 }
