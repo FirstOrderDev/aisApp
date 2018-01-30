@@ -568,4 +568,204 @@ page-property {
 
     }
   }
+  @media (min-height: 812px) and (min-width: 375px) {
+    .circle1White, .circle2White, .circle3White, .circle4White, .circle5White, .circle1Black, .circle2Black, .circle3Black, .circle4Black, .circle5Black{
+      position: absolute;
+      left: 5vw;
+      top: 13.5vh;
+      width: 8vw;
+      height: 4vh;
+    }
+
+    .circle1Black, .circle2Black, .circle3Black, .circle4Black, .circle5Black{
+      border: none;
+      background: #252525;
+      padding-top: 1.1vh;
+      width: 8.8vw;
+      height: 4.4vh;
+      top: 12.3vh;
+    }
+
+    .circle2White, .circle2Black{
+      left: 25vw;
+    }
+
+    .circle3White, .circle3Black{
+      left: 45vw;
+    }
+
+    .circle4White, .circle4Black{
+      left: 65vw;
+    }
+
+    .circle5White, .circle5Black{
+      left: 85vw;
+    }
+
+    .stepOne{
+       .stepOneCard{
+         width: 87vw;
+         height: 70vh !important;
+         margin-top: 15vh !important;
+
+         .contactText{
+           margin-top: 3vh !important;
+         }
+
+         .policyInput, .nameInput, .contactInput{
+         }
+
+         .aisLogo{
+           width: 60vw !important;
+           top: 63vh !important;
+         }
+
+         .nextBtn{
+           margin-top: 8vh !important;
+         }
+
+         .cancelBtn{
+           margin-top: 8vh !important;
+         }
+       }
+     }
+
+     .stepTwo{
+       .stepTwoCard{
+         height: 70vh !important;
+         margin-top: 15vh !important;
+
+         .dateBox{
+
+           i{
+             font-size: 23px;
+           }
+         }
+
+         .adressBox{
+         }
+
+         .backBtn2, .nextBtn2{
+           margin-top: 9vh !important;
+         }
+
+         .basicTextLeft{
+           padding-top: 4vh;
+
+         }
+
+       }
+     }
+
+     .stepThree{
+       .stepThreeCard{
+         height: 70vh !important;
+         margin-top: 15vh !important;
+
+         .vehicleDetailsTxt{
+           margin-top: 2vh !important;
+         }
+
+         .backBtn3, .nextBtn3{
+           margin-top: 1vh !important;
+         }
+
+         .adInfoTextArea{
+           height: 28vh !important
+
+         }
+
+       }
+     }
+
+     .stepFour{
+       .stepFourCard{
+         height: 70vh !important;
+         margin-top: 15vh !important;
+       }
+
+       .cameraModel1, .cameraModel2{
+         height: 16vh !important;
+
+       }
+
+       .licenseTxt{
+         position: absolute;
+         margin-top: 11.5vh !important;
+       }
+
+       .cameraIcon{
+         margin-top: 3.5vh !important;
+       }
+
+       .licensePic{
+         height: 16vh !important;
+       }
+
+       .infoTextArea{
+         height:34vh !important;
+       }
+
+       .infoButton{
+         margin-top: 9vh !important;
+       }
+
+       .nextBtn4, .backBtn4{
+         margin-top: 1vh !important;
+       }
+     }
+
+     .stepFive{
+       .stepFiveCard{
+         height: 70vh !important;
+         margin-top: 15vh !important;
+
+         .imageGrid{
+           height: 45vh !important;
+         }
+
+       }
+       .backBtn5{
+         margin-top: 50vh !important;
+       }
+
+     }
+
+
+  }
+
+  @media (min-width: 768px) {
+    .circle1White, .circle2White, .circle3White, .circle4White, .circle5White, .circle1Black, .circle2Black, .circle3Black, .circle4Black, .circle5Black{
+      position: absolute;
+      left: 5vw;
+      top: 13.5vh;
+      width: 8vw;
+      height: 5.5vh;
+    }
+
+    .circle1Black, .circle2Black, .circle3Black, .circle4Black, .circle5Black{
+      border: none;
+      background: #252525;
+      padding-top: 1.1vh;
+      width: 8.8vw;
+      height: 5.9vh;
+      top: 12.3vh;
+    }
+
+    .circle2White, .circle2Black{
+      left: 25vw;
+    }
+
+    .circle3White, .circle3Black{
+      left: 45vw;
+    }
+
+    .circle4White, .circle4Black{
+      left: 65vw;
+    }
+
+    .circle5White, .circle5Black{
+      left: 85vw;
+    }
+  }
 }
