@@ -54,7 +54,7 @@ import { CallNumber } from '@ionic-native/call-number';
   imports: [
     BrowserModule,
     Ng2ImgToolsModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, { animate: false }),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -73,7 +73,7 @@ import { CallNumber } from '@ionic-native/call-number';
     RoadsideManualInputPage,
     RoadsidePhotoInputPage,
     ReportBugModalPage
-    
+
   ],
   providers: [
     StatusBar,
