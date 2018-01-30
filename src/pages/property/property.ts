@@ -266,7 +266,7 @@ export class PropertyPage {
     console.log('Error getting location', error);
     });
     console.log(this.address);
-      this.secondCardChanged();
+    this.secondCardChanged();
   }
 
   enterAddress(){
