@@ -398,9 +398,7 @@ export class MotorPage {
       .then((result: NativeGeocoderReverseResult) => {
         this.address = result.subThoroughfare + ' ' + result.thoroughfare + ', ' + result.administrativeArea + ', ' + result.postalCode;
         console.log(this.address);
-        if(this.address){
-          this.secondCardChanged();
-        }
+        this.secondCardChanged();
       })
       .catch((error: any) => console.log(error));
     }).catch((error) => {
@@ -618,7 +616,7 @@ export class MotorPage {
       this.navCtrl.pop();
     }
     else{
-      
+
     }
 
 

@@ -253,9 +253,7 @@ export class TravelPage {
     console.log('Error getting location', error);
     });
     console.log(this.address);
-    if(this.address){
-      this.thirdCardChanged();
-    }
+    this.thirdCardChanged();  
   }
 
   enterAddress(){
