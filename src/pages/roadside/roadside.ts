@@ -60,36 +60,40 @@ export class RoadsidePage {
 
 
     console.log("Entered");
-    this.storage.get('Cards').then((val) => {
+    this.storage.get("Cards").then((val) => {
 
       if(val){
         this.locallyStoredCards = val;
       }
 
+      console.log(this.locallyStoredCards);
+
+      if(this.locallyStoredCards){
+
+        this.cards = [];
+
+        this.locallyStoredCards.forEach((cardObject)=>{
+          this.cards.push(cardObject);
+        });
+
+        this.cards.push({
+          type: "default",
+        })
+
+      }else{
+        this.cards.push({
+          type: "default",
+        })
+      }
+
+      this.loader.dismiss();
+      console.log(this.cards);
+
     });
 
-    console.log(this.locallyStoredCards);
 
-    if(this.locallyStoredCards){
 
-      this.cards = [];
 
-      this.locallyStoredCards.forEach((cardObject)=>{
-        this.cards.push(cardObject);
-      });
-
-      this.cards.push({
-        type: "default",
-      })
-
-    }else{
-      this.cards.push({
-        type: "default",
-      })
-    }
-
-    this.loader.dismiss();
-    console.log(this.cards);
 
 
 
