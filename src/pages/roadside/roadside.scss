@@ -101,7 +101,7 @@ page-roadside {
     }
   }
 
-}
+
 
 .manualCard{
   position: absolute;
@@ -214,4 +214,17 @@ page-roadside {
 
 .roadSideLoading{
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .exitDiv, .addDiv{
+    width: 15vw;
+    height: 10vw;
+  }
+
+  .mobilePhoneTitle{
+    margin-top: 20vh !important;
+  }
+}
+
 }

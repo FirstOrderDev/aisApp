@@ -88,33 +88,6 @@ page-home {
 
   }
 
-  @media (max-height: 812px) and (min-width: 375px) {
-    img{
-      top:10vh;
-    }
-    .homeselect{
-      margin-top: 22vh;
-    }
-    .motorVehicle, .travelCard, .propertyCard, .roadsideCard, .settingsCard, .instantCallCard {
-      // border:1px solid black;
-      height: 17vh;
-
-
-      .cardIcon {
-
-
-
-      }
-
-      .cardTxt {
-
-        margin-top: 13vh;
-      }
-
-    }
-
-  }
-
   .motorVehicle{
     i{
       color: #59ABE3;
@@ -188,6 +161,36 @@ page-home {
         color: #6C7A89;
 
       }
+    }
   }
-}
+
+  @media (max-height: 812px) and (min-width: 375px) {
+    img{
+      top:10vh;
+    }
+    .homeselect{
+      margin-top: 22vh;
+    }
+    .motorVehicle, .travelCard, .propertyCard, .roadsideCard, .settingsCard, .instantCallCard {
+      // border:1px solid black;
+      height: 17vh;
+
+
+      .cardIcon {
+
+
+
+      }
+
+      .cardTxt {
+
+        margin-top: 13vh;
+      }
+
+    }
+  }
+
+  @media (min-width: 768px) {
+    background-size: 6000px 6000px; 
+  }
 }
