@@ -69,7 +69,7 @@ export class TravelPage {
     private camera: Camera, private emailComposer: EmailComposer, private storage: Storage) {
       this.currentCard = 0;
 
-      this.address = "Enter an address";
+      this.address = "Enter a location or address";
 
       this.firstCardValid = false;
       this.secondCardValid = false;
@@ -228,7 +228,7 @@ export class TravelPage {
 
   fourthCardChanged(){
     console.log("Changed");
-    if(this.selectedValue && this.infoText && this.bankInput && this.BSBInput && this.accountInput){
+    if(this.infoText && this.bankInput && this.BSBInput && this.accountInput){
       this.fourthCardValid = true;
       console.log("valid");
       this.slides.lockSwipeToNext(false)
@@ -247,22 +247,26 @@ export class TravelPage {
       console.log(lat);
       console.log(long);
       this.nativeGeocoder.reverseGeocode(lat, long)
-      .then((result: NativeGeocoderReverseResult) => this.address = result.subThoroughfare + ' ' + result.thoroughfare + ', ' + result.administrativeArea + ', ' + result.postalCode)
+      .then((result: NativeGeocoderReverseResult) => {
+        this.address = result.subThoroughfare + ' ' + result.thoroughfare + ', ' + result.administrativeArea + ', ' + result.postalCode
+        this.thirdCardChanged();
+      })
       .catch((error: any) => console.log(error));
     }).catch((error) => {
     console.log('Error getting location', error);
     });
     console.log(this.address);
-    this.thirdCardChanged();  
+
   }
 
   enterAddress(){
     let alert = this.alertCtrl.create({
-    title: 'Enter address',
+    title: 'Enter location or address',
+    cssClass: 'normalAlert',
     inputs: [
       {
         name: 'address',
-        placeholder: 'Address'
+        placeholder: 'Location or Address..'
       },
     ],
     buttons: [
@@ -342,28 +346,38 @@ export class TravelPage {
       var mail;
 
       mail = {
-        to: 'harrison.croaker@hotmail.com',
+        to: 'admin@aisgroup.com.au',
         attachments: this.images,
         subject: 'Travel claim from the mobile app',
         body: '<h1>Travel Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + date + '<br />' + '<h3>Insured Name: </h3>' + this.insurerInput + '<br />'
         + '<h3>First party name: </h3> ' + this.nameInput + '<h3>Contact Number: </h3>' + this.numberInput
         + '<br />' + '<h3>Employee or Director?: </h3> ' + this.empOrDir + '<br />' + '<h3>Business or Leisure?: </h3> ' + this.busOrLes + '<br />'
-        + '<h3>Reason for Claim: </h3> ' + this.selectedValue + '<br />' + '<h3>Additional Information: </h3> ' + this.infoText + '<br />' + '<h3>Account Name: </h3> '
+        + '<h3>Reason for Claim: </h3> ' + this.infoText + '<br />' + '<h3>Account Name: </h3> '
         + this.bankInput + '<br />' + '<h3>BSB Number: </h3>' + this.BSBInput + '<br />' + '<h3>Account Number: </h3>' + this.accountInput,
 
         isHtml: true
       };
 
       //Now we know we can send
-      this.emailComposer.open(mail).then(() => {
+      try{
+        this.emailComposer.open(mail).then(() => {
+          let alert = this.alertCtrl.create({
+            title: 'Success!',
+            subTitle: 'Thankyou for submitting your claim to Australian Insurance Solutions. A dedicated claims manager will be in contact with you as soon as possible.',
+            buttons: ['OK']
+          });
+          alert.present();
+          this.navCtrl.pop();
+
+        });
+      }
+      catch{
         let alert = this.alertCtrl.create({
-          title: 'Success!',
-          subTitle: 'Thankyou for submitting your claim to Australian Insurance Solutions. A dedicated claims manager will be in contact with you as soon as possible.',
+          title: 'Unsuccessful!',
+          subTitle: 'An error occured while submitting your claim. Please ensure you have mail set up on your phone.',
           buttons: ['OK']
         });
         alert.present();
-        this.navCtrl.pop();
-
-      });
+      }
     }
 }

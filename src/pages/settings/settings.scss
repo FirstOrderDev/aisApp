@@ -29,14 +29,42 @@ page-settings {
 
   .block1{
     margin-top: 5vh;
+    .icon-fbShare{
+      color: #4C82F7;
+      padding-right: 5px;
+    }
+
+    .icon-textShare{
+      color: #5CC85A;
+      padding-right: 5px;
+    }
   }
 
   .block2{
     margin-top: 5vh;
+
+    .icon-privacy{
+      color: #E68364;
+      padding-right: 5px;
+    }
+
+    .icon-terms{
+      color: #6C7A89;
+      padding-right: 5px;
+    }
+
+    .icon-report{
+      color: #CF000F;
+      padding-right: 5px;
+    }
   }
 
   .block3{
     margin-top: 5vh;
+    .icon-property{
+      color: #5B3256;
+      padding-right: 5px;
+    }
   }
 
   ion-item{

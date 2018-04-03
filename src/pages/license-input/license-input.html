@@ -17,6 +17,8 @@
       <ion-label floating>Address</ion-label>
       <ion-input type="text" [(ngModel)]="firstPartyLicenseAddress"></ion-input>
     </ion-item>
+
+    <button class="doneBtn" (click)="closeAndSave()">Done</button>
   </ion-list>
 
   <ion-list no-lines *ngIf="license=='Third Party License'">
@@ -26,15 +28,17 @@
       <ion-input type="text" [(ngModel)]="thirdPartyLicenseName"></ion-input>
     </ion-item>
 
-    <ion-item class="licenseNumber" >
-      <ion-label floating>License Number</ion-label>
-      <ion-input type="text" [(ngModel)]="thirdPartyLicenseNumber"></ion-input>
-    </ion-item>
-
     <ion-item class="address">
       <ion-label floating>Address</ion-label>
       <ion-input type="text" [(ngModel)]="thirdPartyLicenseAddress"></ion-input>
     </ion-item>
+
+    <ion-item class="mobileNum">
+      <ion-label floating>Mobile Number</ion-label>
+      <ion-input type="text" [(ngModel)]="thirdPartyLicenseMobileNumber"></ion-input>
+    </ion-item>
+
+    <button class="doneBtn" (click)="closeAndSave()">Done</button>
 
 
   </ion-list>

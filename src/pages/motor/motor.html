@@ -112,27 +112,39 @@
 
         <p class="categorySelectText">Select a category</p>
 
-          <div class="select">
-            <select [(ngModel)]="selectedValue" (ngModelChange)="thirdCardChanged()">
-              <option >--Select--</option>
-              <option [value]="'At fault accident'">At fault accident</option>
-              <option [value]="'3rd party ar fault'">3rd party at fault</option>
-              <option [value]="'Fault in dispute'">Fault in dispute</option>
-            </select>
-          </div>
-
-          <div class="vehicleDetails">
-
-            <p class="vehicleDetailsTxt">
-              Vehicle details
-            </p>
-
-            <input class="vehicleDetailsMake" [(ngModel)]="vehicleDetailsMake" (ngModelChange)="thirdCardChanged()" placeholder="Vehicle Make" /><input class="vehicleDetailsModel" type="text" [(ngModel)]="vehicleDetailsModel" placeholder="Model" (ngModelChange)="thirdCardChanged()"/>
-
-            <input class="vehicleDetailsRegistration" type="text" [(ngModel)]="vehicleDetailsRegistration" placeholder="Registration" (ngModelChange)="thirdCardChanged()"/><ion-datetime  class="vehicleDetailsYear" [(ngModel)]="vehicleDetailsYear" placeholder="Year" (ngModelChange)="thirdCardChanged()" displayFormat="YYYY" ></ion-datetime>
+        <div class="selectContainer">
+          <!-- <div class="selectLabel">
+            <p>Select</p>
+          </div> -->
 
 
-          </div>
+
+          <ion-item no-lines>
+            <ion-label>Select</ion-label>
+            <ion-select [(ngModel)]="selectedValue" (ngModelChange)="thirdCardChanged()">
+              <ion-option [value]="'At fault accident'">At fault accident</ion-option>
+              <ion-option [value]="'3rd party ar fault'">3rd party at fault</ion-option>
+              <ion-option [value]="'Fault in dispute'">Fault in dispute</ion-option>
+            </ion-select>
+          </ion-item>
+
+
+        </div>
+
+
+
+        <div class="vehicleDetails">
+
+          <p class="vehicleDetailsTxt">
+            Vehicle details
+          </p>
+
+          <input class="vehicleDetailsMake" [(ngModel)]="vehicleDetailsMake" (ngModelChange)="thirdCardChanged()" placeholder="Vehicle Make" /><input class="vehicleDetailsModel" type="text" [(ngModel)]="vehicleDetailsModel" placeholder="Model" (ngModelChange)="thirdCardChanged()"/>
+
+          <input class="vehicleDetailsRegistration" type="text" [(ngModel)]="vehicleDetailsRegistration" placeholder="Registration" (ngModelChange)="thirdCardChanged()"/><ion-datetime  class="vehicleDetailsYear" [(ngModel)]="vehicleDetailsYear" placeholder="Year" (ngModelChange)="thirdCardChanged()" displayFormat="YYYY" ></ion-datetime>
+
+
+        </div>
 
 
 

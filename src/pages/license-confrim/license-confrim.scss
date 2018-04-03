@@ -2,11 +2,22 @@ page-license-confrim {
 
   background: #ededed;
 
+  p{
+    font-size: 30px;
+    text-align: left;
+    margin-left: 5vw;
+    margin-top: 5vh;
+    font-family: 'Archivo Black', sans-serif;
+    color: #6C7A89;
+    background: none;
+  }
+
   .pictureTaken{
     width: 90vw;
     height: 30vh;
     object-fit: cover;
-    margin-top: 20vh
+    margin-top: 10vh;
+    border-radius: 5px;
   }
 
   .retakeBtn{

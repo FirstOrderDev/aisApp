@@ -163,7 +163,7 @@ export class PropertyPage {
   nextCard() {
     this.currentCard += 1;
     console.log(this.currentCard);
-    console.log(this.selectedValue);
+    //console.log(this.selectedValue);
 
     this.slides.slideNext();
 
@@ -210,7 +210,7 @@ export class PropertyPage {
 
   thirdCardChanged(){
     console.log("Changed");
-    if(this.selectedValue && this.adInfoText){
+    if(this.adInfoText){
       this.thirdCardValid = true;
       console.log("valid");
       this.slides.lockSwipeToNext(false)
@@ -224,16 +224,9 @@ export class PropertyPage {
 
   fourthCardChanged(){
     console.log("Changed");
-    if(this.policeNumber && this.infotext){
-      this.fourthCardValid = true;
-      console.log("valid");
-      this.slides.lockSwipeToNext(false)
-    }
-    else{
-      console.log("invalid")
-      this.fourthCardValid = false;
-      this.slides.lockSwipeToNext(true)
-    }
+    this.fourthCardValid = true;
+    console.log("valid");
+    this.slides.lockSwipeToNext(false)
   }
 
   //card 3 camera model
@@ -260,18 +253,22 @@ export class PropertyPage {
       console.log(lat);
       console.log(long);
       this.nativeGeocoder.reverseGeocode(lat, long)
-      .then((result: NativeGeocoderReverseResult) => this.address = result.subThoroughfare + ' ' + result.thoroughfare + ', ' + result.administrativeArea + ', ' + result.postalCode)
+      .then((result: NativeGeocoderReverseResult) => {
+        this.address = result.subThoroughfare + ' ' + result.thoroughfare + ', ' + result.administrativeArea + ', ' + result.postalCode;
+        this.secondCardChanged();
+      })
       .catch((error: any) => console.log(error));
     }).catch((error) => {
     console.log('Error getting location', error);
     });
     console.log(this.address);
-    this.secondCardChanged();
+
   }
 
   enterAddress(){
     let alert = this.alertCtrl.create({
     title: 'Enter address',
+    cssClass: 'normalAlert',
     inputs: [
       {
         name: 'address',
@@ -354,41 +351,82 @@ export class PropertyPage {
 
       var mail;
 
-      if(this.policeNumber){
+      if(this.policeNumber && this.infotext){
+        mail = {
+          to: 'admin@aisgroup.com.au',
+          attachments: this.images,
+          subject: 'Property claim from the mobile app',
+          body: '<h1>Property Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + date + '<br />' +  '<h3>First party name: </h3> ' + this.nameInput + '<br />' + '<h3>Contact Number: </h3>' + this.numberInput
+          + '<br />' + '<h3>Account Name: </h3> ' + this.bankInput + '<br />' + '<h3>BSB Number: </h3> ' + this.BSBInput + '<br />' + '<h3>Account Number: </h3> ' + this.accountInput + '<br />'
+          + '<h3>Date of Incident: </h3> ' + this.myDate + '<br />' + '<h3>Location of incident: </h3> ' + this.address + '<br />' + '<h3>Reason for Claim: </h3> '
+          + this.adInfoText + '<br />'
+          + '<h3>Police Event Number: </h3>' + this.policeNumber + '<br />' + '<h3>Additional Information: </h3>' + this.infotext,
 
-      }else{
+          isHtml: true
+        };
+      }
+      else if(this.policeNumber && !this.infotext){
+        mail = {
+          to: 'admin@aisgroup.com.au',
+          attachments: this.images,
+          subject: 'Property claim from the mobile app',
+          body: '<h1>Property Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + date + '<br />' +  '<h3>First party name: </h3> ' + this.nameInput + '<br />' + '<h3>Contact Number: </h3>' + this.numberInput
+          + '<br />' + '<h3>Account Name: </h3> ' + this.bankInput + '<br />' + '<h3>BSB Number: </h3> ' + this.BSBInput + '<br />' + '<h3>Account Number: </h3> ' + this.accountInput + '<br />'
+          + '<h3>Date of Incident: </h3> ' + this.myDate + '<br />' + '<h3>Location of incident: </h3> ' + this.address + '<br />' + '<h3>Reason for Claim: </h3> '
+          + this.adInfoText + '<br />'
+          + '<h3>Police Event Number: </h3>' + this.policeNumber + '<br />' ,
 
+          isHtml: true
+        };
+      }
+      else if(this.infotext && !this.policeNumber){
+        mail = {
+          to: 'admin@aisgroup.com.au',
+          attachments: this.images,
+          subject: 'Property claim from the mobile app',
+          body: '<h1>Property Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + date + '<br />' +  '<h3>First party name: </h3> ' + this.nameInput + '<br />' + '<h3>Contact Number: </h3>' + this.numberInput
+          + '<br />' + '<h3>Account Name: </h3> ' + this.bankInput + '<br />' + '<h3>BSB Number: </h3> ' + this.BSBInput + '<br />' + '<h3>Account Number: </h3> ' + this.accountInput + '<br />'
+          + '<h3>Date of Incident: </h3> ' + this.myDate + '<br />' + '<h3>Location of incident: </h3> ' + this.address + '<br />' + '<h3>Reason for Claim: </h3> '
+          + this.adInfoText + '<br />'
+          + '<h3>Additional Information: </h3>' + this.infotext,
+
+          isHtml: true
+        };
+      }
+      else{
+        mail = {
+          to: 'admin@aisgroup.com.au',
+          attachments: this.images,
+          subject: 'Property claim from the mobile app',
+          body: '<h1>Property Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + date + '<br />' +  '<h3>First party name: </h3> ' + this.nameInput + '<br />' + '<h3>Contact Number: </h3>' + this.numberInput
+          + '<br />' + '<h3>Account Name: </h3> ' + this.bankInput + '<br />' + '<h3>BSB Number: </h3> ' + this.BSBInput + '<br />' + '<h3>Account Number: </h3> ' + this.accountInput + '<br />'
+          + '<h3>Date of Incident: </h3> ' + this.myDate + '<br />' + '<h3>Location of incident: </h3> ' + this.address + '<br />' + '<h3>Reason for Claim: </h3> '
+          + this.adInfoText + '<br />',
+
+          isHtml: true
+        };
       }
 
-      if(this.infotext){
+      try{
+        this.emailComposer.open(mail).then(() => {
+          let alert = this.alertCtrl.create({
+            title: 'Success!',
+            subTitle: 'Thankyou for submitting your claim to Australian Insurance Solutions. A dedicated claims manager will be in contact with you as soon as possible.',
+            buttons: ['OK']
+          });
+          alert.present();
+          this.navCtrl.pop();
 
-      }else{
-
+        });
       }
-
-      mail = {
-        to: 'harrison.croaker@hotmail.com',
-        attachments: this.images,
-        subject: 'Property claim from the mobile app',
-        body: '<h1>Property Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + date + '<br />' +  '<h3>First party name: </h3> ' + this.nameInput + '<br />' + '<h3>Contact Number: </h3>' + this.numberInput
-        + '<br />' + '<h3>Account Name: </h3> ' + this.bankInput + '<br />' + '<h3>BSB Number: </h3> ' + this.BSBInput + '<br />' + '<h3>Account Number: </h3> ' + this.accountInput + '<br />'
-        + '<h3>Date of Incident: </h3> ' + this.myDate + '<br />' + '<h3>Location of incident: </h3> ' + this.address + '<br />' + '<h3>Reason for Claim: </h3> '
-        + this.selectedValue + '<br />' + '<h3>Additional Information: </h3>' + this.adInfoText + '<br />'
-        + '<h3>Police Event Number: </h3>' + this.policeNumber + '<br />' + '<h3>Additional Information: </h3>' + this.infotext,
-
-        isHtml: true
-      };
-
-      this.emailComposer.open(mail).then(() => {
+      catch{
         let alert = this.alertCtrl.create({
-          title: 'Success!',
-          subTitle: 'Thankyou for submitting your claim to Australian Insurance Solutions. A dedicated claims manager will be in contact with you as soon as possible.',
+          title: 'Unsuccessful!',
+          subTitle: 'An error occured while submitting your claim. Please ensure you have mail set up on your phone.',
           buttons: ['OK']
         });
         alert.present();
-        this.navCtrl.pop();
-
-      });
+      }
     }
 
 }

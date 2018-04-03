@@ -4,18 +4,19 @@
           <!-- <ion-item-divider>Share to media</ion-item-divider> -->
 
           <div class="topBlock">
-            <img src="assets/imgs/AISLogo.png"/>
+            <img src="assets/imgs/AISLogo.svg"/>
 
           </div>
+
           <div class="block1">
             <ion-item class="facebookShareBtn" (click)="facebookShare()"><i class="icon icon-fbShare"></i> Share to Facebook</ion-item>
             <ion-item class="smsShareBtn" (click)="smsShare()"><i class="icon icon-textShare"></i> Share via text</ion-item>
           </div>
           <!-- <ion-item-divider>Policy and Conditions</ion-item-divider> -->
           <div class="block2">
-            <ion-item><i class="icon icon-privacy"></i> Privacy Policy</ion-item>
-            <ion-item><i class="icon icon-terms"></i>  Give feedback</ion-item>
-            <ion-item (click)="reportBug()"><i class="icon icon-report"></i> Report Bug</ion-item>
+            <ion-item (click)="openPrivacy()"><i class="icon icon-privacy"></i> Privacy Policy</ion-item>
+            <ion-item (click)="reportBug('feedback')"><i class="icon icon-terms"></i>  Give feedback</ion-item>
+            <ion-item (click)="reportBug('bug')"><i class="icon icon-report"></i> Report Bug</ion-item>
           </div>
 
           <div class="block3">

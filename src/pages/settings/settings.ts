@@ -5,6 +5,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { AlertController } from 'ionic-angular';
 import { ModalController, ViewController } from 'ionic-angular';
 import { ReportBugModalPage } from '../report-bug-modal/report-bug-modal';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 /**
  * Generated class for the SettingsPage page.
@@ -21,7 +22,7 @@ import { ReportBugModalPage } from '../report-bug-modal/report-bug-modal';
 export class SettingsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public sharing: SocialSharing,
-    private emailComposer: EmailComposer, private alertCtrl: AlertController, public modalCtrl: ModalController) {
+    private emailComposer: EmailComposer, private alertCtrl: AlertController, public modalCtrl: ModalController, private iab: InAppBrowser) {
   }
 
   ionViewDidLoad() {
@@ -33,7 +34,7 @@ export class SettingsPage {
   }
 
   facebookShare() {
-    this.sharing.shareViaFacebook('Hello world!',null,'http://aisgroup.com.au/index.php')
+    this.sharing.shareViaFacebook('Download the AIS Claims App, Iphone: http://aisgroup.com.au/index.php, Android: http://aisgroup.com.au/index.php', null,null)
     .then(() => {
       console.log ("shareViaFacebook: Success!")
     }).catch(() => {
@@ -42,7 +43,7 @@ export class SettingsPage {
   }
 
   smsShare() {
-    this.sharing.shareViaSMS('Check out this app! http://aisgroup.com.au/index.php',null)
+    this.sharing.shareViaSMS('Download the AIS Claims App, Iphone: http://aisgroup.com.au/index.php, Android: http://aisgroup.com.au/index.php',null)
     .then(() => {
       console.log("Message sent!");
     }).catch((error) => {
@@ -50,9 +51,18 @@ export class SettingsPage {
     });
   }
 
-  reportBug() {
+  openPrivacy(){
+    const browser = this.iab.create('https://sites.google.com/site/aisclaimsprivacy/');
+  }
+
+  reportBug(clicked) {
     console.log("start bug report");
-    this.navCtrl.push(ReportBugModalPage);
+    if(clicked=='bug'){
+      this.navCtrl.push(ReportBugModalPage, {type: "bug"});
+    }
+    else{
+      this.navCtrl.push(ReportBugModalPage, {type: "feedback"});
+    }
   }
 
 }

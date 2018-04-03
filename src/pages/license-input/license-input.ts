@@ -22,7 +22,7 @@ export class LicenseInputPage {
   firstPartyLicenseAddress: any;
   firstPartyLicenseName: any;
 
-  thirdPartyLicenseNumber: any;
+  thirdPartyLicenseMobileNumber: any;
   thirdPartyLicenseAddress: any;
   thirdPartyLicenseName: any;
 
@@ -47,9 +47,9 @@ export class LicenseInputPage {
       console.log("Third Party")
       this.storage.get('thirdPartyLicenseInput').then( (otherLicense)=> {
         if(otherLicense){
-          this.thirdPartyLicenseNumber = otherLicense[0];
+          this.thirdPartyLicenseName = otherLicense[0];
           this.thirdPartyLicenseAddress = otherLicense[1];
-          this.thirdPartyLicenseName = otherLicense[2];
+          this.thirdPartyLicenseMobileNumber = otherLicense[2];
         }
       });
 
@@ -58,6 +58,11 @@ export class LicenseInputPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LicenseInputPage');
+  }
+
+  closeAndSave(){
+    console.log("Close and save");
+    this.navCtrl.pop();
   }
 
   ionViewWillLeave() {
@@ -73,8 +78,8 @@ export class LicenseInputPage {
     }
     else{
       console.log("Third Party")
-      if(this.thirdPartyLicenseNumber || this.thirdPartyLicenseAddress || this.thirdPartyLicenseName){
-        this.storage.set('thirdPartyLicenseInput', [this.thirdPartyLicenseNumber, this.thirdPartyLicenseAddress, this.thirdPartyLicenseName])
+      if(this.thirdPartyLicenseMobileNumber || this.thirdPartyLicenseAddress || this.thirdPartyLicenseName){
+        this.storage.set('thirdPartyLicenseInput', [this.thirdPartyLicenseMobileNumber, this.thirdPartyLicenseAddress, this.thirdPartyLicenseName])
       }
       else{
         this.storage.set('thirdPartyLicenseInput', null);

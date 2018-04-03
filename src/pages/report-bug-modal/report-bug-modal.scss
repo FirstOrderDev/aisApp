@@ -69,7 +69,7 @@ page-report-bug-modal {
     height: 9vh;
   }
 
-  .infoText {
+  .infoText , .infoText2{
     resize: none;
     left: 0;
     right: 0;
@@ -84,5 +84,22 @@ page-report-bug-modal {
     padding-top: 1vh;
     padding-bottom: 2vh;
   }
+
+  .ratingTitle{
+    text-align: left;
+    margin-left: 5%;
+    margin-top:5vh;
+  }
+
+  ion-range{
+    margin-top: 2vh;
+  }
+
+  .infoText2{
+    margin-top: 5vh;
+    padding: 8px;
+  }
+
+
 
 }

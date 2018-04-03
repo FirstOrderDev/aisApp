@@ -71,6 +71,7 @@ export class MotorPage {
   otherLicense: any;
   otherLicenseEmail: any;
   otherLicenseInput: any;
+  thirdPartyMobile: any;
   fourthCardValid: any;
 
 
@@ -165,6 +166,32 @@ export class MotorPage {
         this.otherLicenseEmail = val;
         if(this.otherLicenseEmail){
           this.testImages[1] = this.otherLicenseEmail;
+          let alert = this.alertCtrl.create({
+            title: 'Third Party Mobile Number!',
+            subTitle: 'Please Input a thrid party mobile number.',
+            inputs: [
+              {
+                name: '3rdPartyMobile',
+                placeholder: 'Third Party Mobile Number'
+              },
+            ],
+            buttons: [
+              {
+                text: 'I do not have',
+                handler: data => {
+                  console.log('Dont have clicked');
+                }
+              },
+              {
+                text: 'Continue',
+                handler: data => {
+                  console.log('Continue Clicked');
+                  this.thirdPartyMobile = data;
+                }
+              }
+            ]
+          });
+          alert.present();
           this.fourthCardChanged();
         }
 
@@ -410,6 +437,7 @@ export class MotorPage {
   enterAddress(){
     let alert = this.alertCtrl.create({
     title: 'Enter address',
+    cssClass: 'normalAlert',
     inputs: [
       {
         name: 'address',
@@ -514,7 +542,7 @@ export class MotorPage {
     if(this.selfLicenseInput && this.otherLicenseInput){
       console.log("First choice")
       mail = {
-        to: 'harrison.croaker@hotmail.com',
+        to: 'admin@aisgroup.com.au',
         attachments: this.testImages,
         subject: 'Motor Vehicle claim from the mobile app',
         body: '<h1>Motor vehicle Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + '<br />' + date + '<h3>Insured Name:</h3> ' + this.insurersNameInput + '<br />' +  '<h3>First party name:</h3> ' + this.nameInput
@@ -523,17 +551,17 @@ export class MotorPage {
         + this.selectedValue + '<br />' + '<h3>Vehicle details: </h3>' + 'Make: ' + this.vehicleDetailsMake + '<br />' + 'Model: ' + this.vehicleDetailsModel + '<br />'
         + 'Year: ' + this.vehicleDetailsYear + '<br />' + 'Registration: ' + this.vehicleDetailsRegistration + '<br />' +
         '<h3>First Party License details:</h3>'  + 'First parties Name: ' + this.selfLicenseInput[2] + '<br />' + 'First parties license number: ' + this.selfLicenseInput[0] + '<br />' + 'First parties license address: ' + this.selfLicenseInput[1] +
-        '<br />'  + '<br />' + '<h3>Third Party License details:</h3>' + 'Third parties Name: ' + this.otherLicenseInput[2] + '<br />' + 'Third parties license number: ' + this.otherLicenseInput[0] +
+        '<br />'  + '<br />' + '<h3>Third Party License details:</h3>' + 'Third parties Name: ' + this.otherLicenseInput[0] + '<br />' + 'Third parties license mobile number: ' + this.otherLicenseInput[2] +
         '<br />' + 'Third parties license address: ' + this.otherLicenseInput[1] + '<br />' + '<br />' + '<br />' + 'Images of incident are attatched below.'
         + '<br />',
 
         isHtml: true
       };
     }
-    else if(this.selfLicenseInput && this.otherLicenseEmail){
+    else if(this.selfLicenseInput && this.otherLicenseEmail && this.thirdPartyMobile){
       console.log("Second choice")
       mail = {
-        to: 'harrison.croaker@hotmail.com',
+        to: 'admin@aisgroup.com.au',
         attachments: this.testImages,
         subject: 'Motor Vehicle claim from the mobile app',
         body: '<h1>Motor vehicle Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + '<br />' + date + '<h3>Insured Name:</h3> ' + this.insurersNameInput + '<br />' +  '<h3>First party name:</h3> ' + this.nameInput
@@ -542,16 +570,15 @@ export class MotorPage {
         + this.selectedValue + '<br />' + '<h3>Vehicle details: </h3>' + 'Make: ' + this.vehicleDetailsMake + '<br />' + 'Model: ' + this.vehicleDetailsModel + '<br />'
         + 'Year: ' + this.vehicleDetailsYear + '<br />' + 'Registration: ' + this.vehicleDetailsRegistration + '<br />' +
         '<h3>First Party License details:</h3>' + 'First parties Name: ' + this.selfLicenseInput[2] + '<br />' + 'First parties license number: ' + this.selfLicenseInput[0] + '<br />' + 'First parties license address: ' + this.selfLicenseInput[1] +
-        '<br />' + '<br />' + '<h3>Third Party License details provided via picture (Photo 1):</h3>' + '<br />' + '<br />' + 'Images of incident are attatched below.'
+        '<br />' + '<br />' + '<h3>Third Party Phone Number: </h3>' + this.thirdPartyMobile + '<br/>' + '<h3>Third Party License details provided via picture (Photo 1):</h3>' + '<br />' + '<br />' + 'Images of incident are attatched below.'
         + '<br />',
 
         isHtml: true
       };
     }
-    else if(this.otherLicenseInput){
-      console.log("Third choice");
+    else if(this.selfLicenseInput && this.otherLicenseEmail){
       mail = {
-        to: 'harrison.croaker@hotmail.com',
+        to: 'admin@aisgroup.com.au',
         attachments: this.testImages,
         subject: 'Motor Vehicle claim from the mobile app',
         body: '<h1>Motor vehicle Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + '<br />' + date + '<h3>Insured Name:</h3> ' + this.insurersNameInput + '<br />' +  '<h3>First party name:</h3> ' + this.nameInput
@@ -559,17 +586,35 @@ export class MotorPage {
         this.myDate + '<br />' + '<h3>Location of incident:</h3> ' + this.address + '<br />' + '<h3>Cause of incident:</h3> '
         + this.selectedValue + '<br />' + '<h3>Vehicle details: </h3>' + 'Make: ' + this.vehicleDetailsMake + '<br />' + 'Model: ' + this.vehicleDetailsModel + '<br />'
         + 'Year: ' + this.vehicleDetailsYear + '<br />' + 'Registration: ' + this.vehicleDetailsRegistration + '<br />' +
-        '<h3>First Party License details provided via picture (Photo 1):</h3>' + '<br />' + '<h3>Third Party License details:</h3>' + 'Third parties Name: ' + this.otherLicenseInput[2] + 'Third parties license number: ' + this.otherLicenseInput[0] +
+        '<h3>First Party License details:</h3>' + 'First parties Name: ' + this.selfLicenseInput[2] + '<br />' + 'First parties license number: ' + this.selfLicenseInput[0] + '<br />' + 'First parties license address: ' + this.selfLicenseInput[1] +
+        '<br />' + '<br />' + '<h3>Third Party Phone Number Not Provided: </h3>' + '<h3>Third Party License details provided via picture (Photo 1):</h3>' + '<br />' + '<br />' + 'Images of incident are attatched below.'
+        + '<br />',
+
+        isHtml: true
+      };
+    }
+    else if(this.selfLicenseEmail && this.otherLicenseInput ){
+      console.log("Third choice");
+      mail = {
+        to: 'admin@aisgroup.com.au',
+        attachments: this.testImages,
+        subject: 'Motor Vehicle claim from the mobile app',
+        body: '<h1>Motor vehicle Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + '<br />' + date + '<h3>Insured Name:</h3> ' + this.insurersNameInput + '<br />' +  '<h3>First party name:</h3> ' + this.nameInput
+        + '<br />' + '<h3>Contact Number:</h3> ' + this.numberInput + '<br />' + '<h3>Date of incident:</h3> ' +
+        this.myDate + '<br />' + '<h3>Location of incident:</h3> ' + this.address + '<br />' + '<h3>Cause of incident:</h3> '
+        + this.selectedValue + '<br />' + '<h3>Vehicle details: </h3>' + 'Make: ' + this.vehicleDetailsMake + '<br />' + 'Model: ' + this.vehicleDetailsModel + '<br />'
+        + 'Year: ' + this.vehicleDetailsYear + '<br />' + 'Registration: ' + this.vehicleDetailsRegistration + '<br />' +
+        '<h3>First Party License details provided via picture (Photo 1):</h3>' + '<br />' + '<h3>Third Party License details:</h3>' + 'Third parties Name: ' + this.otherLicenseInput[0] + 'Third parties license mobile number: ' + this.otherLicenseInput[2] +
         '<br />' + 'Third parties license address: ' + this.otherLicenseInput[1] + '<br />' + '<br />' + '<br />' + 'Images of incident are attatched below.'
         + '<br />',
 
         isHtml: true
       };
     }
-    else if (this.selfLicenseInput && (!this.otherLicenseEmail && !this.otherLicenseInput)){
+    else if (this.selfLicenseInput && !(this.otherLicenseEmail && this.otherLicenseInput)){
       console.log("Fourth choice")
       mail = {
-        to: 'harrison.croaker@hotmail.com',
+        to: 'admin@aisgroup.com.au',
         attachments: this.testImages,
         subject: 'Motor Vehicle claim from the mobile app',
         body: '<h1>Motor vehicle Claim From the Mobile App</h1>' + '<br />' + '<h3>Claim submitted on: </h3>' + '<br />' + date + '<h3>Insured Name:</h3> ' + this.insurersNameInput + '<br />' +  '<h3>First party name:</h3> ' + this.nameInput
@@ -587,7 +632,7 @@ export class MotorPage {
     else{
       console.log("Fifth choice");
       mail = {
-        to: 'harrison.croaker@hotmail.com',
+        to: 'admin@aisgroup.com.au',
         attachments: this.testImages,
         subject: 'Motor Vehicle claim from the mobile app',
         body: '<h1>Motor vehicle Claim From the Mobile App</h1>' + '<h2>Claim submitted on: </h2>' + date + '<br />' + '<h3>Insured Name:</h3> ' + this.insurersNameInput + '<br />' +  '<h3>First party name:</h3> ' + this.nameInput
@@ -602,22 +647,27 @@ export class MotorPage {
       };
     }
 
+    try{
+      this.emailComposer.open(mail).then(() => {
+        let alert = this.alertCtrl.create({
+          title: 'Success!',
+          subTitle: 'Thankyou for submitting your claim to Australian Insurance Solutions. A dedicated claims manager will be in contact with you as soon as possible.',
+          buttons: ['OK']
+        });
+        alert.present();
+        this.navCtrl.pop();
 
-    //Now we know we can send
-    var emailSent = this.emailComposer.open(mail);
-
-    if(emailSent){
+      });
+    }
+    catch{
       let alert = this.alertCtrl.create({
-        title: 'Success!',
-        subTitle: 'Thankyou for submitting your claim to Australian Insurance Solutions. A dedicated claims manager will be in contact with you as soon as possible.',
+        title: 'Unsuccessful!',
+        subTitle: 'An error occured while submitting your claim. Please ensure you have mail set up on your phone.',
         buttons: ['OK']
       });
       alert.present();
-      this.navCtrl.pop();
     }
-    else{
 
-    }
 
 
     // Send a text message using default options

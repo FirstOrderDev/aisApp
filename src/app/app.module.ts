@@ -31,6 +31,7 @@ import { Ng2ImgToolsModule } from 'ng2-img-tools';
 import { IonicStorageModule } from '@ionic/storage';
 import { PopoverController } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import { CallNumber } from '@ionic-native/call-number';
     EmailComposer,
     SocialSharing,
     CallNumber,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

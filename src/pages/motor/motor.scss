@@ -291,21 +291,34 @@ page-motor {
           margin-top: 1vh;
         }
 
-        .select {
-          position: relative;
+        .selectContainer{
           display: inline-block;
-          margin-bottom: 10px;
           width: 90%;
+          //border: 1px solid black;
+          height: 8vh;
+          p{
+            position: absolute;
+            //border: 1px solid black;
+            text-align: left;
+            margin: 0;
+            margin-top: 1.5vh;
+            margin-left: 2vw;
+            width: 20vw;
+          }
+
+          .selectList{
+            float: right;
+            //border: 1px solid black;
+            width: 40vw;
+
+            ion-select .item-cover{
+              display: block;
+            }
+          }
+
+
         }
 
-        .select select {
-          width: 100%;
-          padding: 10px 15px;
-          border-radius: 6px;
-          border: none;
-          background: #4B77BE;
-          color: #aeaeae;
-        }
 
         .vehicleDetailsTxt{
           font-size: 85%;

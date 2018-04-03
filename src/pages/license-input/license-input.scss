@@ -32,7 +32,7 @@ page-license-input {
     background: none !important;
   }
 
-  .licenseNumber, .address, .dob{
+  .licenseNumber, .address, .dob, .mobileNum{
     margin-top: 2vh;
     height: 10vh;
     color: #aeaeae;
@@ -93,6 +93,18 @@ page-license-input {
     font-size: 250px;
     right: 4vw;
     top: 16vh;
+  }
+
+  .doneBtn{
+    position: absolute;
+    right: 3vw;
+    z-index: 900;
+    width: 20vw;
+    height: 5vh;
+    bottom: 16%;
+    border: none;
+    background: #59ABE3;
+    color: white;
   }
 
 

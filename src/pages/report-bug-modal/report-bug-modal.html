@@ -6,22 +6,47 @@
 -->
 <ion-header>
 
-  <ion-title>Report Bug</ion-title>
+  <ion-title *ngIf="type=='bug'">Report Bug</ion-title>
+  <ion-title *ngIf="type=='feedback'">Give Feedback</ion-title>
+
 
 </ion-header>
 
 <ion-content padding>
 
-  <div>
-    <input placeholder="Device Used" class="deviceInput" [(ngModel)]="deviceInput" (ngModelChange)="bugReportChanged()"/>
-    <input placeholder="Page Containing Bug" class="pageInput" [(ngModel)]="pageInput" (ngModelChange)="bugReportChanged()"/>
+  <div *ngIf="type=='bug'">
+    <div>
+      <input placeholder="Device Used" class="deviceInput" [(ngModel)]="deviceInput" (ngModelChange)="bugReportChanged()"/>
+      <input placeholder="Page Containing Bug" class="pageInput" [(ngModel)]="pageInput" (ngModelChange)="bugReportChanged()"/>
 
-    <textarea class="infoText" placeholder="Enter description here.."
-    cols="10" rows="3" [(ngModel)]="infoText" (ngModelChange)="bugReportChanged()">
-    </textarea>
+      <textarea class="infoText" placeholder="Enter description here.."
+      cols="10" rows="3" [(ngModel)]="infoText" (ngModelChange)="bugReportChanged()">
+      </textarea>
+    </div>
+
+    <button (click)="this.navCtrl.pop()" class="backBtn">Back</button>
+    <button (click)="submit()" [disabled]="!bugReportValid" class="submitBtn">Continue</button>
   </div>
 
-  <button (click)="this.navCtrl.pop()" class="backBtn">Back</button>
-  <button (click)="submit()" [disabled]="!bugReportValid" class="submitBtn">Continue</button>
+  <div *ngIf="type=='feedback'">
+    <div>
+
+      <ion-label class="ratingTitle"> Give our app a rating: {{rating}}</ion-label>
+      <ion-item no-lines>
+        <ion-range min="0" max="10" [(ngModel)]="rating" color="secondary">
+          <ion-label range-left>0</ion-label>
+          <ion-label range-right>10</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <textarea class="infoText2" placeholder="Reason for rating.."
+      cols="10" rows="3" [(ngModel)]="infoText" (ngModelChange)="bugReportChanged()">
+      </textarea>
+    </div>
+
+    <button (click)="this.navCtrl.pop()" class="backBtn">Back</button>
+    <button (click)="submit()" [disabled]="!bugReportValid" class="submitBtn">Continue</button>
+  </div>
+
 
 </ion-content>
