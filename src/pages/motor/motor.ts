@@ -171,7 +171,7 @@ export class MotorPage {
             subTitle: 'Please Input a thrid party mobile number.',
             inputs: [
               {
-                name: '3rdPartyMobile',
+                name: 'mobile',
                 placeholder: 'Third Party Mobile Number'
               },
             ],
